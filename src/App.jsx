@@ -2,15 +2,15 @@ import "./App.css";
 
 // Components
 import Layout from "./Components/Layout.jsx";
-import Hero from "./components/Hero";
-import Services from "./components/Services";
-import ServicesInfo from "./components/Services-info";
-import About from "./components/About";
-import Testimonials from "./components/Testimonials";
-import Projects from "./components/Projects";
-import Team from "./components/Team";
-import Footer from "./components/Footer";
-// import Company from "./components/Company";
+import Hero from "./Components/Hero";
+import Services from "./Components/Services";
+import ServicesInfo from "./Components/Services-info";
+import About from "./Components/About";
+import Testimonials from "./Components/Testimonials";
+import Projects from "./Components/Projects";
+import Team from "./Components/Team";
+import Footer from "./Components/Footer";
+// import Company from "./Components/Company";
 
 function App() {
   return (
