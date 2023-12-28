@@ -1,7 +1,7 @@
 import "./App.css";
 import Layout from "./Components/Layout.jsx";
-import hero from "./Assets/hero.png";
-import frame from "./Assets/hero-frame.png";
+import hero from "./assets/hero.png";
+import frame from "./assets/hero-frame.png";
 
 function App() {
   return (
