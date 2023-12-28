@@ -7,7 +7,7 @@ import { useScrollPosition } from "../Hooks";
 import hero from "../assets/hero.png";
 import frame from "../assets/hero-frame.png";
 import backgroundImg from "../assets/img/banner-background1440.png";
-import heroImage from "../assets/img/1-hero535.png";
+import contactImage from "../assets/contact-us.png";
 
 const navigation = [
   { name: "Home", section: "home" },
@@ -31,7 +31,7 @@ export default function Hero() {
 
   return (
     <div
-      className="md:h-screen"
+      className="md:h-screen w-screen relative"
       name="home"
       style={{
         // backgroundImage: `url(${backgroundImg})`,
@@ -40,6 +40,10 @@ export default function Hero() {
         backgroundSize: "cover",
       }}
     >
+      <div className="absolute inset-0 z-0">
+        <img className="w-[200px] object-cover" src={frame} alt="Hero" />
+      </div>
+
       {/* Tutorial To Change NavBar On Scroll https://www.youtube.com/watch?v=UvWMlNZuQTc&t=237s */}
       <header
         className={classNamesNavBarScroll(
@@ -151,7 +155,7 @@ export default function Hero() {
               </div>
               <img
                 className="h-auto w-auto max-w-lg object-cover hidden md:flex md:w-96 md:h-96"
-                src={heroImage}
+                src={contactImage}
                 alt="Graphic"
               />
             </div>
