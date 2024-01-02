@@ -7,7 +7,7 @@ const navigation = [
   { name: "Home", section: "home" },
   { name: "Services", section: "services" },
   { name: "About", section: "about" },
-  { name: "Clients", section: "testimonials" },
+  { name: "Testimonials", section: "testimonials" },
   // { name: "Contact", section: "footer" },
 ];
 function classNamesNavBarScroll(...classes) {
@@ -24,23 +24,23 @@ export default function NavBar() {
       <header
         className={classNamesNavBarScroll(
           scrollPosition > 0
-            ? "md:shadow md:bg-[#132577] md:-translate-y-6 md:h-auto"
-            : "md:shadow-none md:bg-none md:translate-y-0 md:h-none",
-          "absolute md:fixed top-0 inset-x-0 z-40 md:transition-shadow-xl md:shadow-black md:transition-color duration-500 md:-translate-y-6 md:h-20 lg:h-24"
+            ? "md:h-auto md:-translate-y-6 md:bg-[#132577] md:shadow"
+            : "md:h-none md:translate-y-0 md:bg-none md:shadow-none",
+          "md:transition-shadow-xl md:transition-color absolute inset-x-0 top-0 z-40 duration-500 md:fixed md:h-20 md:-translate-y-6 md:shadow-black lg:h-24",
         )}
       >
         <nav
           className="flex items-center justify-end p-12 md:px-10 lg:px-20"
           aria-label="Global"
         >
-          <div className="hidden md:flex md:gap-x-8 lg:gap-x-12 md:justify-end">
+          <div className="hidden md:flex md:justify-end md:gap-x-8 lg:gap-x-12">
             {navigation.map((item) => (
               <Link
                 to={item.section}
                 smooth={true}
                 key={item.name}
                 duration={500}
-                className="text-sm font-semibold leading-6 text-white hover:underline hover:text-gray-400 cursor-pointer"
+                className="cursor-pointer text-sm font-semibold leading-6 text-white hover:text-gray-400 hover:underline"
               >
                 {item.name}
               </Link>
@@ -64,7 +64,7 @@ export default function NavBar() {
                       smooth={true}
                       key={item.name}
                       duration={500}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50 hover:text-zinc-900 cursor-pointer"
+                      className="-mx-3 block cursor-pointer rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50 hover:text-zinc-900"
                     >
                       {item.name}
                     </Link>
