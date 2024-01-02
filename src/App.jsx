@@ -16,15 +16,15 @@ function App() {
   return (
     <>
       <Layout>
-        <Hero />
+        {/* <Hero /> */}
         <Services />
         <ServicesInfo />
         <About />
         {/* <Company /> */}
-        <Testimonials />
+        {/* <Testimonials />
         <Projects />
         <Team />
-        <Footer />
+        <Footer /> */}
       </Layout>
     </>
   );

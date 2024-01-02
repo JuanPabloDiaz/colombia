@@ -4,9 +4,8 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-scroll";
 import { useScrollPosition } from "../Hooks";
 // Assets
-import hero from "../assets/hero.png";
 import frame from "../assets/hero-frame.png";
-import backgroundImg from "../assets/img/banner-background1440.png";
+import backgroundImg from "../assets/banner-background1440.png";
 import contactImage from "../assets/contact-us.png";
 
 const navigation = [
