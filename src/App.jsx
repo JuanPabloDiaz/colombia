@@ -4,7 +4,6 @@ import "./App.css";
 import Layout from "./Components/Layout.jsx";
 import Hero from "./Components/Hero";
 import Services from "./Components/Services";
-import ServicesInfo from "./Components/Services-info";
 import About from "./Components/About";
 import Testimonials from "./Components/Testimonials";
 import Projects from "./Components/Projects";
@@ -17,14 +16,12 @@ function App() {
     <>
       <Layout>
         <Hero />
-        {/* <Services />
-        <ServicesInfo />
-        <About /> */}
-        {/* <Company /> */}
-        {/* <Testimonials />
+        <Services />
+        <About />
+        <Testimonials />
         <Projects />
         <Team />
-        <Footer /> */}
+        <Footer />
       </Layout>
     </>
   );
