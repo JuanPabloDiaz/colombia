@@ -11,79 +11,67 @@ const Testimonials = () => {
   const testimonials = [
     {
       avatar: person1,
-      name: "Beth Escobar",
-      title: "Founder of Kenzo",
+      name: "Martin escobar",
+      title: "Founder of meta",
       quote:
-        "This team is professional, knowledgeable, and always goes above and beyond to ensure our needs are met.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et est hendrerit, porta nunc vitae.",
+    },
+    {
+      avatar: person1,
+      name: "Martin escobar",
+      title: "Founder of meta",
+      quote:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et est hendrerit, porta nunc vitae.",
     },
     {
       avatar: person2,
-      name: "Simon Andrew",
-      title: "Software engineer",
+      name: "Angela stian",
+      title: "Product designer",
       quote:
-        "I highly recommend their services to anyone looking for top-notch quality and exceptional customer service.",
+        "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.",
     },
     {
       avatar: person3,
-      name: "Julia Worin",
-      title: "Product designer",
+      name: "Karim ahmed",
+      title: "DevOp engineer",
       quote:
-        "They deliver exceptional results and expertise that's second to none. Highly recommended!",
+        "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain.",
     },
   ];
 
   return (
-    <section
-      name="testimonials"
-      className="relative pt-24 pb-6 md:pt-32 sm:pb-6"
-    >
-      <div className="relative max-w-screen-xl mx-auto px-4 md:px-8">
+    <section className="py-14">
+      <div className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="max-w-xl sm:text-center md:mx-auto">
-          <h2 className="text-4xl tracking-tight text-[#132577] sm:text-2xl">
-            TESTIMONIALS
-          </h2>
-          <p className="mt-2 text-3xl font-bold leading-8 text-black-600">
-            Our successful clients
-          </p>
+          <h3 className="text-3xl font-semibold text-gray-800 sm:text-4xl">
+            Testymonials
+          </h3>
         </div>
         <div className="mt-12">
-          <ul className="grid items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 group">
+          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
             {testimonials.map((item, idx) => (
-              <li key={idx} className="bg-white rounded-xl border shadow-md ">
-                <div className="p-4 duration-1000 group-hover:scale-75 group-hover:opacity-20">
-                  <img
-                    src={quoteIcon}
-                    className="w-140 h-auto mx-auto mt-6 opacity-60"
-                    alt="5 star rating"
-                  />
-                </div>
+              <li key={idx} className="rounded-xl bg-gray-100 p-4">
                 <figure>
-                  <blockquote>
-                    <p className="text-gray-800 text-lg font-semibold px-4 py-1">
-                      {item.quote}
-                    </p>
-                  </blockquote>
-                  <img
-                    src={starIcon}
-                    className="w-140 h-auto mx-auto mt-6 duration-1000 group-hover:scale-105 group-hover:opacity-80"
-                    alt="5 star rating"
-                  />
-                  <div className="flex items-center gap-x-4 p-4 mt-6 bg-[#ffc107]/20">
-                    <img
-                      src={item.avatar}
-                      className="w-16 h-16 rounded-full border-2 border-[#132577]"
-                      alt="{item.name}"
-                    />
+                  <div className="flex items-center gap-x-4">
+                    <img src={item.avatar} className="h-16 w-16 rounded-full" />
                     <div>
-                      <span className="block text-gray-800 font-semibold">
+                      <span className="block font-semibold text-gray-800">
                         {item.name}
                       </span>
-                      <span className="block text-[#132577] text-sm mt-0.5">
+                      <span className="mt-0.5 block text-sm text-gray-600">
                         {item.title}
                       </span>
                     </div>
                   </div>
+                  <blockquote>
+                    <p className="mt-6 text-gray-700">{item.quote}</p>
+                  </blockquote>
                 </figure>
+                <img
+                  src={starIcon}
+                  className="w-140 mx-auto mt-6 h-auto duration-1000 group-hover:scale-105 group-hover:opacity-80"
+                  alt="5 star rating"
+                />
               </li>
             ))}
           </ul>

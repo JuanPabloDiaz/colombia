@@ -30,36 +30,28 @@ const posts = [
       href: "https://litslink.com/services/web-development",
     },
   },
-  {
-    id: 1,
-    title: "Server and Network Solutions",
-    href: "https://litslink.com/solutions",
-    description:
-      "Our team of experienced server and network engineers can help you design, deploy, and maintain the infrastructure you need to keep your business running smoothly. From cloud-based solutions to on-premises systems, we have the expertise to help you build a reliable and secure network that meets your specific needs. Let us help you optimize your server and network solutions for maximum performance and uptime.",
-    buttonLM: { title: "Learn More >", href: "https://litslink.com/solutions" },
-  },
 ];
 
 export default function Example() {
   return (
-    <div name="services" className="pt-24 pb-6 md:pt-32 sm:pb-6">
+    <div name="services" className="pb-6 pt-24 sm:pb-6 md:pt-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 ">
-        <div className="mx-auto lg:mx-0 text-center">
+        <div className="mx-auto text-center lg:mx-0">
           <h2 className="text-4xl tracking-tight text-[#132577] sm:text-2xl">
             SERVICES
           </h2>
-          <p className="mt-2 text-3xl font-bold leading-8 text-black-600">
+          <p className="text-black-600 mt-2 text-3xl font-bold leading-8">
             We Provide All-In-One Solution
           </p>
-          <p className="text-3xl font-bold leading-8 text-black-600">
+          <p className="text-black-600 text-3xl font-bold leading-8">
             For Every IT Job
           </p>
         </div>
-        <div className="mx-auto mt-4 grid max-w-8xl grid-cols-1 gap-4 lg:gap-8 pt-5 border-gray-200 md:pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+        <div className="max-w-8xl mx-auto mt-4 grid grid-cols-1 gap-4 border-gray-200 pt-5 md:pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-8">
           {posts.map((post) => (
             <article
               key={post.id}
-              className="flex max-w-4xl flex-col items-start justify-between border-spacing-x-28 rounded-lg shadow-xl hover:shadow-2xl box-border p-4 md:p-6 lg:p-8 bg-[#ffc107] hover:bg-[#ffbd07]"
+              className="box-border flex max-w-4xl border-spacing-x-28 flex-col items-start justify-between rounded-lg bg-[#95D4EB] p-4 shadow-xl hover:bg-[#2E8CAD] hover:shadow-2xl md:p-6 lg:p-8"
             >
               <div className="group relative p-2">
                 <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
@@ -68,14 +60,14 @@ export default function Example() {
                     {post.title}
                   </a>
                 </h3>
-                <p className="mt-5 mb-5 line-clamp-3 text-sm leading-6">
+                <p className="mb-5 mt-5 line-clamp-3 text-sm leading-6">
                   {post.description}
                 </p>
               </div>
               <div className="flex items-center gap-x-4 text-xs">
                 <a
                   href={post.buttonLM.href}
-                  className="relative z-10 rounded-full px-3 py-1.5 font-medium text-gray-600 hover:text-gray-500 active:text-[#132577] underline underline-offset-2 "
+                  className="relative z-10 rounded-full px-3 py-1.5 font-medium text-gray-600 underline underline-offset-2 hover:text-gray-500 active:text-[#132577] "
                 >
                   {post.buttonLM.title}
                 </a>
