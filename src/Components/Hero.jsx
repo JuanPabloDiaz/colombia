@@ -31,7 +31,7 @@ export default function Hero() {
           <div>
             <div className="flex justify-around ">
               <div className="max-w-3xl text-left">
-                <h1 className="text-3xl font-bold tracking-tight text-[#2E8CAD] sm:text-5xl">
+                <h1 className="text-4xl font-semibold tracking-tight text-[#2E8CAD] sm:text-6xl">
                   Talent For AI
                 </h1>
                 <p className="mt-12 w-96 text-justify text-lg leading-8 text-black">
