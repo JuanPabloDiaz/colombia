@@ -17,7 +17,11 @@ export default function Hero() {
       }}
     >
       <div className="absolute inset-0 z-0">
-        <img className="w-[200px] object-cover" src={frame} alt="Hero" />
+        <img
+          className="w-full object-cover md:w-11/12 lg:w-1/2"
+          src={frame}
+          alt="Hero"
+        />
       </div>
 
       <NavBar />
