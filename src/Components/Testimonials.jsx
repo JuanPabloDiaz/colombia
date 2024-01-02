@@ -43,9 +43,9 @@ const Testimonials = () => {
     <section className="py-14">
       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="max-w-xl sm:text-center md:mx-auto">
-          <h3 className="text-3xl font-semibold text-gray-800 sm:text-4xl">
+          <h2 className="flex items-center justify-center text-3xl font-bold text-[#2E8CAD]">
             Testymonials
-          </h3>
+          </h2>
         </div>
         <div className="mt-12">
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">

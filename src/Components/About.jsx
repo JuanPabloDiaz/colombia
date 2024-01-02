@@ -14,9 +14,9 @@ const About = () => {
       <div className="x-4 mx-auto w-screen max-w-screen-xl justify-between gap-16 text-gray-600 md:px-8 lg:flex">
         <div className="flex w-full flex-col items-center justify-center">
           <div className="max-w-6xl space-y-3 md:max-w-xl">
-            <h3 className="flex items-center justify-center text-3xl font-bold text-[#2E8CAD]">
+            <h2 className="flex items-center justify-center text-3xl font-bold text-[#2E8CAD]">
               ABOUT US
-            </h3>
+            </h2>
           </div>
           <div className="m-6 grid grid-flow-col grid-rows-2 gap-12  p-4">
             <div className="w-60">

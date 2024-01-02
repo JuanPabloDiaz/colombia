@@ -37,7 +37,7 @@ export default function Example() {
     <div name="services" className="pb-6 pt-24 sm:pb-6 md:pt-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 ">
         <div className="mx-auto text-center lg:mx-0">
-          <h2 className="text-4xl tracking-tight text-[#132577] sm:text-2xl">
+          <h2 className="flex items-center justify-center text-3xl font-bold text-[#2E8CAD]">
             SERVICES
           </h2>
         </div>
