@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-scroll";
 import { useScrollPosition } from "../Hooks";
 // Assets
@@ -34,7 +33,6 @@ export default function Hero() {
       className="md:h-screen w-screen relative"
       name="home"
       style={{
-        // backgroundImage: `url(${backgroundImg})`,
         backgroundImage: `url(${backgroundImg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
