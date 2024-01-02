@@ -24,7 +24,7 @@ export default function NavBar() {
       <header
         className={classNamesNavBarScroll(
           scrollPosition > 0
-            ? "md:h-auto md:-translate-y-6 md:bg-[#132577] md:shadow"
+            ? "md:h-auto md:-translate-y-6 md:bg-[#95D4EB] md:shadow"
             : "md:h-none md:translate-y-0 md:bg-none md:shadow-none",
           "md:transition-shadow-xl md:transition-color absolute inset-x-0 top-0 z-40 duration-500 md:fixed md:h-20 md:-translate-y-6 md:shadow-black lg:h-24",
         )}

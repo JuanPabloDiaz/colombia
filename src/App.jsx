@@ -6,9 +6,7 @@ import Hero from "./Components/Hero";
 import Services from "./Components/Services";
 import About from "./Components/About";
 import Testimonials from "./Components/Testimonials";
-import Team from "./Components/Team";
 import Footer from "./Components/Footer";
-// import Company from "./Components/Company";
 
 function App() {
   return (
@@ -18,7 +16,6 @@ function App() {
         <About />
         <Services />
         <Testimonials />
-        <Team />
         <Footer />
       </Layout>
     </>
