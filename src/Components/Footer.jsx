@@ -62,7 +62,7 @@ const Footer = () => {
   return (
     <footer
       name="footer"
-      className="text-white bg-[#132577] px-4 py-5 max-w-full mx-auto md:px-12 lg:px-20"
+      className="text-white bg-[#132577] px-0 py-5 max-w-full mx-auto w-full md:px-12 lg:px-0"
     >
       <div className="gap-6 md:flex justify-between">
         <div className="flex-none md:flex-1">

@@ -7,10 +7,7 @@ const navigation = [
   { name: "Home", section: "home" },
   { name: "Services", section: "services" },
   { name: "About", section: "about" },
-  { name: "Values", section: "company" },
   { name: "Clients", section: "testimonials" },
-  { name: "Portfolio", section: "projects" },
-  { name: "Expertise", section: "team" },
   // { name: "Contact", section: "footer" },
 ];
 function classNamesNavBarScroll(...classes) {

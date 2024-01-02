@@ -30,14 +30,6 @@ const posts = [
       href: "https://litslink.com/services/web-development",
     },
   },
-  {
-    id: 1,
-    title: "Server and Network Solutions",
-    href: "https://litslink.com/solutions",
-    description:
-      "Our team of experienced server and network engineers can help you design, deploy, and maintain the infrastructure you need to keep your business running smoothly. From cloud-based solutions to on-premises systems, we have the expertise to help you build a reliable and secure network that meets your specific needs. Let us help you optimize your server and network solutions for maximum performance and uptime.",
-    buttonLM: { title: "Learn More >", href: "https://litslink.com/solutions" },
-  },
 ];
 
 export default function Example() {
