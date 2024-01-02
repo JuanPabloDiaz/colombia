@@ -3,100 +3,52 @@
 const Footer = () => {
   const footerNavs = [
     {
-      label: "Services",
-      items: [
-        {
-          href: "https://www.hostinger.com/web-hosting",
-          name: "Web Hosting",
-        },
-        {
-          href: "https://porkbun.com/products/domains",
-          name: "Domains",
-        },
-        {
-          href: "https://www.infinityfree.com/premium/",
-          name: "Premium Hosting",
-        },
-        {
-          href: "https://www.hostinger.com/vps-hosting",
-          name: "Private Server",
-        },
-        {
-          href: "https://www.hostinger.com/business-email",
-          name: "E-mail Hosting",
-        },
-      ],
+      href: "javascript:void()",
+      name: "Terms",
     },
     {
-      label: "Follow Us",
-      items: [
-        {
-          href: "https://facebook.com/1diazdev",
-          name: "Facebook",
-        },
-        {
-          href: "https://twitter.com/1diazdev",
-          name: "Twitter",
-        },
-        {
-          href: "https://instagram.com/1diazdev",
-          name: "Instagram",
-        },
-        {
-          href: "https://www.linkedin.com/in/1diazdev/",
-          name: "LinkedIn",
-        },
-      ],
+      href: "javascript:void()",
+      name: "License",
     },
     {
-      label: "Contact Us",
-      items: [
-        {
-          href: "mailto:jpdiaz@gmx.com?subject = From%your%Landing%Page%with%React&body = Hello%Juan",
-          name: "jpdiaz@gmx.com",
-        },
-      ],
+      href: "javascript:void()",
+      name: "Privacy",
+    },
+    {
+      href: "javascript:void()",
+      name: "About us",
     },
   ];
-
   return (
-    <footer
-      name="footer"
-      className="mx-auto w-full max-w-full bg-[#132577] px-0 py-5 text-white md:px-12 lg:px-0"
-    >
-      <div className="justify-between gap-6 md:flex">
-        <div className="flex-none md:flex-1">
-          <div className="md:max-w-xs">
-            <p className="text-md mt-2 md:pt-20 md:text-lg">
-              Digital experience is always embedded in a physical experience.
+    <footer className="w-full pt-10">
+      <div className="mx-auto max-w-screen-xl px-4 text-gray-600 md:px-8">
+        <div className="justify-between sm:flex">
+          <div className="space-y-6">
+            <img src="https://www.floatui.com/logo.svg" className="w-32" />
+            <p className="max-w-md">
+              Nulla auctor metus vitae lectus iaculis, vel euismod massa
+              efficitur.
             </p>
-          </div>
-        </div>
-        <div className="flex justify-between md:flex-1">
-          {footerNavs.map((item, idx) => (
-            <ul className="space-y-2 md:space-y-4" key={idx}>
-              <h4 className="text-lg font-bold text-[#92989F] md:text-xl">
-                {item.label}
-              </h4>
-              {item.items.map((footerElement, idx) => (
-                <li key={idx}>
-                  <a
-                    href={footerElement.href}
-                    className="hover:text-[#ffc107] hover:underline"
-                  >
-                    {footerElement.name}
+            <ul className="flex flex-wrap items-center gap-4 text-sm sm:text-base">
+              {footerNavs.map((item, idx) => (
+                <li className="text-gray-800 duration-150 hover:text-gray-500">
+                  <a key={idx} href={item.href}>
+                    {item.name}
                   </a>
                 </li>
               ))}
             </ul>
-          ))}
+          </div>
+          <div className="mt-6">
+            <p className="font-semibold text-gray-700">Developed by</p>
+            <div className="mt-3 flex items-center gap-3 sm:block">
+              <a href="https://www.jpdiaz.dev/">Juan Diaz</a>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="mt-4 flex items-center justify-between py-2 text-xs text-gray-500">
-        <div className="mt-4 sm:mt-0">
-          &copy; Design with love © Juan Diaz 2023. All right reserved
+        <div className="mt-10 border-t py-10 md:text-center">
+          <p>© 2022 Float UI Inc. All rights reserved.</p>
         </div>
-        <div className="mt-4 sm:mt-0">Claim Privacy Terms</div>
       </div>
     </footer>
   );
