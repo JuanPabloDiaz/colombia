@@ -28,22 +28,6 @@ const About = () => {
               </p>
             </div>
             <div className="w-60">
-              <TbCircleNumber2 className="h-6 w-6 text-[#2E8CAD]" />
-
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-                laudantium architecto dignissimos.
-              </p>
-            </div>
-            <div className="w-60">
-              <TbCircleNumber3 className="h-6 w-6 text-[#2E8CAD]" />
-
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-                laudantium architecto dignissimos.
-              </p>
-            </div>
-            <div className="w-60">
               <TbCircleNumber4 className="h-6 w-6 text-[#2E8CAD]" />
 
               <p>
@@ -52,7 +36,23 @@ const About = () => {
               </p>
             </div>
             <div className="w-60">
+              <TbCircleNumber2 className="h-6 w-6 text-[#2E8CAD]" />
+
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+                laudantium architecto dignissimos.
+              </p>
+            </div>
+            <div className="w-60">
               <TbCircleNumber5 className="h-6 w-6 text-[#2E8CAD]" />
+
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+                laudantium architecto dignissimos.
+              </p>
+            </div>
+            <div className="w-60">
+              <TbCircleNumber3 className="h-6 w-6 text-[#2E8CAD]" />
 
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
