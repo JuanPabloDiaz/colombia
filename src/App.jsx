@@ -16,10 +16,10 @@ function App() {
   return (
     <>
       <Layout>
-        {/* <Hero /> */}
-        <Services />
+        <Hero />
+        {/* <Services />
         <ServicesInfo />
-        <About />
+        <About /> */}
         {/* <Company /> */}
         {/* <Testimonials />
         <Projects />

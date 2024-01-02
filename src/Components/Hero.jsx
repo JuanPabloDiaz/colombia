@@ -7,6 +7,7 @@ import { useScrollPosition } from "../Hooks";
 import frame from "../assets/hero-frame.png";
 import backgroundImg from "../assets/banner-background1440.png";
 import contactImage from "../assets/contact-us.png";
+import service from "../assets/img/16-face50.png";
 
 const navigation = [
   { name: "Home", section: "home" },
@@ -34,7 +35,7 @@ export default function Hero() {
       name="home"
       style={{
         // backgroundImage: `url(${backgroundImg})`,
-        backgroundImage: `url(${hero})`,
+        backgroundImage: `url(${backgroundImg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
@@ -134,8 +135,7 @@ export default function Hero() {
             <div className="flex justify-around ">
               <div className="text-left max-w-3xl">
                 <h1 className="text-3xl font-bold tracking-tight text-slate-100 sm:text-5xl">
-                  Software solution providers that help brands thrive and stand
-                  out
+                  Talent For AI
                 </h1>
                 <p className="mt-12 text-lg leading-8 text-slate-300">
                   Revolutionize your customer experience with our AI chatbot,
@@ -143,6 +143,20 @@ export default function Hero() {
                   recommendations, and seamless purchasing. Our experts will
                   elevate your customer interactions.
                 </p>
+                <ul className="mt-4 text-lg leading-2 text-slate-300">
+                  <li className="flex justify-start items-center gap-2">
+                    <img src={service} alt="img" className="w-5 h-5" />
+                    <span>services 1</span>
+                  </li>
+                  <li className="flex justify-start items-center gap-2">
+                    <img src={service} alt="img" className="w-5 h-5" />
+                    <span>services 2</span>
+                  </li>
+                  <li className="flex justify-start items-center gap-2">
+                    <img src={service} alt="img" className="w-5 h-5" />
+                    <span>services 3</span>
+                  </li>
+                </ul>
                 <div className="mt-10 flex items-center justify-left gap-x-6">
                   <a
                     href="https://litslink.com/technologies"
