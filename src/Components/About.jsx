@@ -11,15 +11,15 @@ import {
 const About = () => {
   return (
     <section name="about" className="pb-6 pt-24 sm:pb-6 md:pt-32">
-      <div className="mx-auto max-w-screen-xl justify-between gap-16 px-4 text-gray-600 md:px-8 lg:flex">
-        <div>
-          <div className="md:max-w-8xl max-w-6xl space-y-3">
+      <div className="x-4 mx-auto w-screen max-w-screen-xl justify-between gap-16 text-gray-600 md:px-8 lg:flex">
+        <div className="flex w-full flex-col items-center justify-center">
+          <div className="max-w-6xl space-y-3 md:max-w-xl">
             <h3 className="flex items-center justify-center text-3xl font-bold text-[#2E8CAD]">
               ABOUT US
             </h3>
           </div>
-          <div className="grid grid-flow-col grid-rows-2 gap-12 p-4">
-            <div className="w-40">
+          <div className="m-6 grid grid-flow-col grid-rows-2 gap-12  p-4">
+            <div className="w-60">
               <TbCircleNumber1 className="h-6 w-6 text-[#2E8CAD]" />
 
               <p className=" text-justify">
@@ -27,7 +27,7 @@ const About = () => {
                 laudantium architecto dignissimos.
               </p>
             </div>
-            <div className="w-40">
+            <div className="w-60">
               <TbCircleNumber2 className="h-6 w-6 text-[#2E8CAD]" />
 
               <p>
@@ -35,7 +35,7 @@ const About = () => {
                 laudantium architecto dignissimos.
               </p>
             </div>
-            <div className="w-40">
+            <div className="w-60">
               <TbCircleNumber3 className="h-6 w-6 text-[#2E8CAD]" />
 
               <p>
@@ -43,7 +43,7 @@ const About = () => {
                 laudantium architecto dignissimos.
               </p>
             </div>
-            <div className="w-40">
+            <div className="w-60">
               <TbCircleNumber4 className="h-6 w-6 text-[#2E8CAD]" />
 
               <p>
@@ -51,7 +51,7 @@ const About = () => {
                 laudantium architecto dignissimos.
               </p>
             </div>
-            <div className="w-40">
+            <div className="w-60">
               <TbCircleNumber5 className="h-6 w-6 text-[#2E8CAD]" />
 
               <p>
@@ -59,7 +59,7 @@ const About = () => {
                 laudantium architecto dignissimos.
               </p>
             </div>
-            <div className="w-40">
+            <div className="w-60">
               <TbCircleNumber6 className="h-6 w-6 text-[#2E8CAD]" />
 
               <p>

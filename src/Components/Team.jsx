@@ -34,6 +34,14 @@ const Team = () => {
       twitter: "https://twitter.com/1diazdev",
       facebook: "https://www.facebook.com/1diazdev",
     },
+    {
+      avatar: teamImg2,
+      name: "Martiana dialan",
+      title: "Human Resources",
+      linkedin: "https://www.linkedin.com/in/1diazdev/",
+      twitter: "https://twitter.com/1diazdev",
+      facebook: "https://www.facebook.com/1diazdev",
+    },
   ];
 
   return (
