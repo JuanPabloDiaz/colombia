@@ -1,33 +1,38 @@
+import service1 from "../assets/banner-background1440.png";
+
 const posts = [
   {
     id: 1,
     title: "Software Development",
-    href: "https://litslink.com/",
+    href: "javascript:void()",
+    img: service1,
     description:
       "From web applications to mobile apps, our team of experienced developers can bring your ideas to life. We specialize in creating custom software solutions tailored to your specific needs, using the latest technologies and best practices. Let us help you build the software that will take your business to the next level.",
-    buttonLM: { title: "Learn More >", href: "https://litslink.com/" },
+    buttonLM: { title: "Learn More >", href: "javascript:void()" },
   },
   // More posts...
   {
     id: 2,
     title: "AI Programmer & Technical",
-    href: "https://litslink.com/services/artificial-intelligence",
+    href: "javascript:void()",
+    img: service1,
     description:
       "Our team of AI programmers and technical experts are dedicated to creating cutting-edge solutions that leverage the latest advancements in artificial intelligence. From natural language processing to computer vision, we have the expertise to help you build intelligent systems that can learn, reason, and adapt. Let us help you harness the power of AI to transform your business.",
     buttonLM: {
       title: "Learn More >",
-      href: "https://litslink.com/services/artificial-intelligence",
+      href: "javascript:void()",
     },
   },
   {
     id: 1,
     title: "System Application Development",
-    href: "https://litslink.com/services/web-development",
+    href: "javascript:void()",
+    img: service1,
     description:
       "Whether you need a custom enterprise solution or a specialized system for your business, our team of expert developers can help. We specialize in system application development, using the latest technologies and best practices to create powerful, scalable, and secure systems that meet your unique needs. Let us help you build the system that will take your business to the next level.",
     buttonLM: {
       title: "Learn More >",
-      href: "https://litslink.com/services/web-development",
+      href: "javascript:void()",
     },
   },
 ];
@@ -45,8 +50,13 @@ export default function Example() {
           {posts.map((post) => (
             <article
               key={post.id}
-              className="box-border flex max-w-4xl border-spacing-x-28 flex-col items-start justify-between rounded-lg bg-[#95D4EB] p-4 shadow-xl hover:bg-[#2E8CAD] hover:shadow-2xl md:p-6 lg:p-8"
+              className="box-border flex max-w-4xl border-spacing-x-28 flex-col items-start justify-between rounded-lg bg-[#95D4EB] p-4 shadow-xl hover:bg-[#95D4EB]/80 hover:shadow-2xl md:p-6 lg:p-8"
             >
+              <img
+                src={post.img}
+                alt="img"
+                className="h-full w-full rounded-lg object-cover"
+              />
               <div className="group relative p-2">
                 <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                   <a href={post.href}>

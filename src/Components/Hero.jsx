@@ -35,10 +35,10 @@ export default function Hero() {
                   Talent For AI
                 </h1>
                 <p className="mt-12 w-96 text-justify text-lg leading-8 text-black">
-                  Revolutionize your customer experience with our AI chatbot,
-                  offering natural language understanding, personalized
-                  recommendations, and seamless purchasing. Our experts will
-                  elevate your customer interactions.
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Porro ea obcaecati atque velit doloribus ex non nostrum
+                  commodi cupiditate, quibusdam maxime, eius voluptate beatae
+                  unde corporis omnis, provident voluptatum hic!
                 </p>
                 <ul className="leading-2 mt-4 text-lg font-semibold text-[#2E8CAD]">
                   <a href="javascript:void()">
