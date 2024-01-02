@@ -41,22 +41,28 @@ export default function Hero() {
                   elevate your customer interactions.
                 </p>
                 <ul className="leading-2 mt-4 text-lg text-black">
-                  <li className="flex items-center justify-start gap-2">
-                    <img src={service} alt="img" className="h-5 w-5" />
-                    <span>services 1</span>
-                  </li>
-                  <li className="flex items-center justify-start gap-2">
-                    <img src={service} alt="img" className="h-5 w-5" />
-                    <span>services 2</span>
-                  </li>
-                  <li className="flex items-center justify-start gap-2">
-                    <img src={service} alt="img" className="h-5 w-5" />
-                    <span>services 3</span>
-                  </li>
+                  <a href="javascript:void()">
+                    <li className="flex items-center justify-start gap-2">
+                      <img src={service} alt="img" className="h-5 w-5" />
+                      <span>services 1</span>
+                    </li>
+                  </a>
+                  <a href="javascript:void()">
+                    <li className="flex items-center justify-start gap-2">
+                      <img src={service} alt="img" className="h-5 w-5" />
+                      <span>services 2</span>
+                    </li>
+                  </a>
+                  <a href="javascript:void()">
+                    <li className="flex items-center justify-start gap-2">
+                      <img src={service} alt="img" className="h-5 w-5" />
+                      <span>services 3</span>
+                    </li>
+                  </a>
                 </ul>
                 <div className="justify-left mt-10 flex items-center gap-x-6">
                   <a
-                    href="#"
+                    href="javascript:void()"
                     className="hover:bg-white-500 mt-32 rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-[#92989f] hover:text-[#132577] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     EXPLORE MORE
