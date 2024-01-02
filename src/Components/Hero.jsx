@@ -31,16 +31,16 @@ export default function Hero() {
           <div>
             <div className="flex justify-around ">
               <div className="max-w-3xl text-left">
-                <h1 className="text-3xl font-bold tracking-tight text-slate-100 sm:text-5xl">
+                <h1 className="text-3xl font-bold tracking-tight text-[#2E8CAD] sm:text-5xl">
                   Talent For AI
                 </h1>
-                <p className="mt-12 text-lg leading-8 text-slate-300">
+                <p className="mt-12 text-lg leading-8 text-black">
                   Revolutionize your customer experience with our AI chatbot,
                   offering natural language understanding, personalized
                   recommendations, and seamless purchasing. Our experts will
                   elevate your customer interactions.
                 </p>
-                <ul className="leading-2 mt-4 text-lg text-slate-300">
+                <ul className="leading-2 mt-4 text-lg text-black">
                   <li className="flex items-center justify-start gap-2">
                     <img src={service} alt="img" className="h-5 w-5" />
                     <span>services 1</span>
@@ -56,7 +56,7 @@ export default function Hero() {
                 </ul>
                 <div className="justify-left mt-10 flex items-center gap-x-6">
                   <a
-                    href="https://litslink.com/technologies"
+                    href="#"
                     className="hover:bg-white-500 mt-32 rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-[#92989f] hover:text-[#132577] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     EXPLORE MORE
