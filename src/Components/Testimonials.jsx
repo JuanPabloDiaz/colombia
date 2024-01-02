@@ -35,50 +35,50 @@ const Testimonials = () => {
   return (
     <section
       name="testimonials"
-      className="relative pt-24 pb-6 md:pt-32 sm:pb-6"
+      className="relative pb-6 pt-24 sm:pb-6 md:pt-32"
     >
-      <div className="relative max-w-screen-xl mx-auto px-4 md:px-8">
+      <div className="relative mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="max-w-xl sm:text-center md:mx-auto">
           <h2 className="text-4xl tracking-tight text-[#132577] sm:text-2xl">
             TESTIMONIALS
           </h2>
-          <p className="mt-2 text-3xl font-bold leading-8 text-black-600">
+          <p className="text-black-600 mt-2 text-3xl font-bold leading-8">
             Our successful clients
           </p>
         </div>
         <div className="mt-12">
-          <ul className="grid items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 group">
+          <ul className="group grid items-center gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((item, idx) => (
-              <li key={idx} className="bg-white rounded-xl border shadow-md ">
+              <li key={idx} className="rounded-xl border bg-white shadow-md ">
                 <div className="p-4 duration-1000 group-hover:scale-75 group-hover:opacity-20">
                   <img
                     src={quoteIcon}
-                    className="w-140 h-auto mx-auto mt-6 opacity-60"
+                    className="w-140 mx-auto mt-6 h-auto opacity-60"
                     alt="5 star rating"
                   />
                 </div>
                 <figure>
                   <blockquote>
-                    <p className="text-gray-800 text-lg font-semibold px-4 py-1">
+                    <p className="px-4 py-1 text-lg font-semibold text-gray-800">
                       {item.quote}
                     </p>
                   </blockquote>
                   <img
                     src={starIcon}
-                    className="w-140 h-auto mx-auto mt-6 duration-1000 group-hover:scale-105 group-hover:opacity-80"
+                    className="w-140 mx-auto mt-6 h-auto duration-1000 group-hover:scale-105 group-hover:opacity-80"
                     alt="5 star rating"
                   />
-                  <div className="flex items-center gap-x-4 p-4 mt-6 bg-[#ffc107]/20">
+                  <div className="mt-6 flex items-center gap-x-4 bg-[#ffc107]/20 p-4">
                     <img
                       src={item.avatar}
-                      className="w-16 h-16 rounded-full border-2 border-[#132577]"
+                      className="h-16 w-16 rounded-full border-2 border-[#132577]"
                       alt="{item.name}"
                     />
                     <div>
-                      <span className="block text-gray-800 font-semibold">
+                      <span className="block font-semibold text-gray-800">
                         {item.name}
                       </span>
-                      <span className="block text-[#132577] text-sm mt-0.5">
+                      <span className="mt-0.5 block text-sm text-[#132577]">
                         {item.title}
                       </span>
                     </div>

@@ -62,27 +62,27 @@ const Footer = () => {
   return (
     <footer
       name="footer"
-      className="text-white bg-[#132577] px-0 py-5 max-w-full mx-auto w-full md:px-12 lg:px-0"
+      className="mx-auto w-full max-w-full bg-[#132577] px-0 py-5 text-white md:px-12 lg:px-0"
     >
-      <div className="gap-6 md:flex justify-between">
+      <div className="justify-between gap-6 md:flex">
         <div className="flex-none md:flex-1">
           <div className="md:max-w-xs">
-            <p className="mt-2 text-md md:text-lg md:pt-20">
+            <p className="text-md mt-2 md:pt-20 md:text-lg">
               Digital experience is always embedded in a physical experience.
             </p>
           </div>
         </div>
-        <div className="flex md:flex-1 justify-between">
+        <div className="flex justify-between md:flex-1">
           {footerNavs.map((item, idx) => (
-            <ul className="md:space-y-4 space-y-2" key={idx}>
-              <h4 className="text-[#92989F] font-bold text-lg md:text-xl">
+            <ul className="space-y-2 md:space-y-4" key={idx}>
+              <h4 className="text-lg font-bold text-[#92989F] md:text-xl">
                 {item.label}
               </h4>
               {item.items.map((footerElement, idx) => (
                 <li key={idx}>
                   <a
                     href={footerElement.href}
-                    className="hover:underline hover:text-[#ffc107]"
+                    className="hover:text-[#ffc107] hover:underline"
                   >
                     {footerElement.name}
                   </a>
@@ -92,7 +92,7 @@ const Footer = () => {
           ))}
         </div>
       </div>
-      <div className="mt-4 py-2 flex justify-between items-center text-gray-500 text-xs">
+      <div className="mt-4 flex items-center justify-between py-2 text-xs text-gray-500">
         <div className="mt-4 sm:mt-0">
           &copy; Design with love © Juan Diaz 2023. All right reserved
         </div>

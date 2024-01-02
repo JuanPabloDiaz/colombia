@@ -8,7 +8,7 @@ import NavBar from "./Navbar";
 export default function Hero() {
   return (
     <div
-      className="md:h-screen w-screen relative"
+      className="relative w-screen md:h-screen"
       name="home"
       style={{
         backgroundImage: `url(${backgroundImg})`,
@@ -23,10 +23,10 @@ export default function Hero() {
       <NavBar />
 
       <div className="relative isolate px-6 pt-14 lg:px-8">
-        <div className="mx-auto max-w-8xl py-32 sm:py-48 lg:py-56">
+        <div className="max-w-8xl mx-auto py-32 sm:py-48 lg:py-56">
           <div>
             <div className="flex justify-around ">
-              <div className="text-left max-w-3xl">
+              <div className="max-w-3xl text-left">
                 <h1 className="text-3xl font-bold tracking-tight text-slate-100 sm:text-5xl">
                   Talent For AI
                 </h1>
@@ -36,31 +36,31 @@ export default function Hero() {
                   recommendations, and seamless purchasing. Our experts will
                   elevate your customer interactions.
                 </p>
-                <ul className="mt-4 text-lg leading-2 text-slate-300">
-                  <li className="flex justify-start items-center gap-2">
-                    <img src={service} alt="img" className="w-5 h-5" />
+                <ul className="leading-2 mt-4 text-lg text-slate-300">
+                  <li className="flex items-center justify-start gap-2">
+                    <img src={service} alt="img" className="h-5 w-5" />
                     <span>services 1</span>
                   </li>
-                  <li className="flex justify-start items-center gap-2">
-                    <img src={service} alt="img" className="w-5 h-5" />
+                  <li className="flex items-center justify-start gap-2">
+                    <img src={service} alt="img" className="h-5 w-5" />
                     <span>services 2</span>
                   </li>
-                  <li className="flex justify-start items-center gap-2">
-                    <img src={service} alt="img" className="w-5 h-5" />
+                  <li className="flex items-center justify-start gap-2">
+                    <img src={service} alt="img" className="h-5 w-5" />
                     <span>services 3</span>
                   </li>
                 </ul>
-                <div className="mt-10 flex items-center justify-left gap-x-6">
+                <div className="justify-left mt-10 flex items-center gap-x-6">
                   <a
                     href="https://litslink.com/technologies"
-                    className="mt-32 rounded-md bg-white hover:bg-[#92989f] px-3.5 py-2.5 text-sm font-semibold text-black hover:text-[#132577] shadow-sm hover:bg-white-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="hover:bg-white-500 mt-32 rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-[#92989f] hover:text-[#132577] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     EXPLORE MORE
                   </a>
                 </div>
               </div>
               <img
-                className="h-auto w-auto max-w-lg object-cover hidden md:flex md:w-96 md:h-96"
+                className="hidden h-auto w-auto max-w-lg object-cover md:flex md:h-96 md:w-96"
                 src={contactImage}
                 alt="Graphic"
               />
