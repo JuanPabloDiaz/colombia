@@ -21,8 +21,8 @@ const Footer = () => {
     },
   ];
   return (
-    <footer className="w-full pt-10">
-      <div className="mx-auto max-w-screen-xl px-4 text-gray-600 md:px-8">
+    <footer className="w-full bg-[#47626B] pt-10">
+      <div className="mx-auto max-w-screen-xl px-4 text-white md:px-8">
         <div className="justify-between sm:flex">
           <div className="space-y-6">
             <img src={logo} className="w-32" />
@@ -32,7 +32,7 @@ const Footer = () => {
             </p>
             <ul className="flex flex-wrap items-center gap-4 text-sm sm:text-base">
               {footerNavs.map((item, idx) => (
-                <li className="text-gray-800 duration-150 hover:text-gray-500">
+                <li className="text-white duration-150 hover:text-white/50">
                   <a key={idx} href={item.href}>
                     {item.name}
                   </a>
@@ -41,14 +41,14 @@ const Footer = () => {
             </ul>
           </div>
           <div className="mt-6">
-            <p className="font-semibold text-gray-700">Developed by</p>
+            <p className="font-semibold text-white">Developed by</p>
             <div className="mt-3 flex items-center gap-3 sm:block">
               <a href="https://www.jpdiaz.dev/">Juan Diaz</a>
             </div>
           </div>
         </div>
         <div className="mt-10 border-t py-10 md:text-center">
-          <p>© 2022 Float UI Inc. All rights reserved.</p>
+          <p>© 2023. All rights reserved.</p>
         </div>
       </div>
     </footer>
