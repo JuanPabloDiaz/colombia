@@ -40,12 +40,6 @@ export default function Example() {
           <h2 className="text-4xl tracking-tight text-[#132577] sm:text-2xl">
             SERVICES
           </h2>
-          <p className="text-black-600 mt-2 text-3xl font-bold leading-8">
-            We Provide All-In-One Solution
-          </p>
-          <p className="text-black-600 text-3xl font-bold leading-8">
-            For Every IT Job
-          </p>
         </div>
         <div className="max-w-8xl mx-auto mt-4 grid grid-cols-1 gap-4 border-gray-200 pt-5 md:pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-8">
           {posts.map((post) => (
