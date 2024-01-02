@@ -1,4 +1,5 @@
 // Source: https://www.floatui.com/components/footers
+import logo from "../assets/logo.svg";
 
 const Footer = () => {
   const footerNavs = [
@@ -24,7 +25,7 @@ const Footer = () => {
       <div className="mx-auto max-w-screen-xl px-4 text-gray-600 md:px-8">
         <div className="justify-between sm:flex">
           <div className="space-y-6">
-            <img src="https://www.floatui.com/logo.svg" className="w-32" />
+            <img src={logo} className="w-32" />
             <p className="max-w-md">
               Nulla auctor metus vitae lectus iaculis, vel euismod massa
               efficitur.
