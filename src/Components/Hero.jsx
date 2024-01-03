@@ -4,6 +4,7 @@ import backgroundImg from "../assets/banner-background1440.png";
 import contactImage from "../assets/contact-us.png";
 import { PiDrop } from "react-icons/pi";
 import NavBar from "./Navbar";
+import Contact from "./Contact";
 
 export default function Hero() {
   return (
@@ -69,11 +70,12 @@ export default function Hero() {
                   </a>
                 </div>
               </div>
-              <img
+              {/* <img
                 className="hidden h-auto w-auto max-w-lg object-cover md:flex md:h-96 md:w-96"
                 src={contactImage}
                 alt="Graphic"
-              />
+              /> */}
+              <Contact />
             </div>
           </div>
         </div>
