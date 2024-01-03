@@ -44,7 +44,7 @@ const Testimonials = () => {
       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="max-w-xl sm:text-center md:mx-auto">
           <h2 className="flex items-center justify-center text-3xl font-bold text-[#2E8CAD]">
-            Testymonials
+            Testimonials
           </h2>
         </div>
         <div className="mt-12">
