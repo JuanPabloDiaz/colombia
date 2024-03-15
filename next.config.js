@@ -6,6 +6,10 @@ const nextConfig = {
         hostname: "flagcdn.com",
         protocol: "https",
       },
+      {
+        hostname: "apicolombiastorage.blob.core.windows.net",
+        protocol: "https",
+      },
     ],
   },
 };

@@ -180,7 +180,7 @@ export const DataProvider = ({ children }) => {
     fetch("https://api-colombia.com/api/v1/InvasiveSpecie")
       .then((response) => response.json())
       .then((json) => {
-        // console.log("Invasive Specie Data: ", json);
+        console.log("Invasive Specie Data: ", json);
         setInvasiveSpecieData(json);
         setIsLoading(false);
       })
