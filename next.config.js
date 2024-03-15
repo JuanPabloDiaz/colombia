@@ -1,15 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	images: {
-    domains: ['flagcdn.com'],
+  images: {
+    remotePatterns: [
+      {
+        hostname: "flagcdn.com",
+        protocol: "https",
+      },
+      {
+        hostname: "apicolombiastorage.blob.core.windows.net",
+        protocol: "https",
+      },
+    ],
   },
-	// images: {
-  //   remotePatterns: [
-  //     {
-  //       hostname: "flagcdn.com",
-  //       protocol: "https",
-  //     },
-  //   ],
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

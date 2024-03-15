@@ -5,12 +5,10 @@ import { AppContext } from "../../context";
 import Image from "next/image";
 
 export default function Col() {
-
-	const { generalData } = useContext(AppContext);
-	return (
-		<>
-
-			<h1>{generalData.name}</h1>
+  const { generalData } = useContext(AppContext);
+  return (
+    <>
+      <h1>{generalData.name}</h1>
       <h2>
         Capital: <span>{generalData.stateCapital}</span>
       </h2>
@@ -70,8 +68,13 @@ export default function Col() {
         </div>
         <div>
           {generalData.flags?.map((flag, index) => (
-            <Image key={index} src={flag} alt={generalData.name} width={500}
-            height={300} />
+            <Image
+              key={index}
+              src={flag}
+              alt={generalData.name}
+              width={500}
+              height={300}
+            />
           ))}
         </div>
         <div>
@@ -80,7 +83,6 @@ export default function Col() {
           ))}
         </div>
       </div>
-		</>
-	)
+    </>
+  );
 }
-
