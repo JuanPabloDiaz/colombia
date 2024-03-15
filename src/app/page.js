@@ -1,8 +1,5 @@
 import Info from "../components/info.jsx";
 
-import CardDivider from "../components/Chakra/Card/CardDivider";
-import CardDetail from "../components/Chakra/Card/CardDetail";
-
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center px-4 py-24 md:px-8 xl:px-10">
@@ -17,9 +14,6 @@ export default function Home() {
       </h2>
       <div className="grid w-full max-w-[1400px] gap-10 lg:grid-cols-2 xl:grid-cols-3">
         <Info />
-
-        <CardDivider />
-        <CardDetail />
       </div>
     </main>
   );
