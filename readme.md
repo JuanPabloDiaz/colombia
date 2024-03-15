@@ -1,7 +1,6 @@
 <div id="top"></div>
 
-# amocol Library 📊
-
+# amoCol
 
 <div align="center">
 

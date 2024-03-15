@@ -12,14 +12,34 @@ export default function Home() {
       </h2>
       <div className="grid xl:grid-cols-3 lg:grid-cols-2 w-full gap-10 max-w-[1400px]">
 
-      <GridItem title="Datos">
-        </GridItem>
-        <GridItem title="Colombia">
-          <Button/>
-        </GridItem>
-        <GridItem title="Info Colombia">
+      <GridItem title="General">
           <Info/>
         </GridItem>
+        <GridItem title="Departments">
+        </GridItem>
+        <GridItem title="Region">
+        </GridItem>
+        <GridItem title="Tourists">
+        </GridItem>
+        <GridItem title="Presidents">
+        </GridItem>
+        <GridItem title="Natural Area">
+        </GridItem>
+        <GridItem title="Category Natural Area">
+        </GridItem>
+        <GridItem title="Map">
+        </GridItem>
+        <GridItem title="Invasive Specie">
+        </GridItem>
+        <GridItem title="Native Community">
+        </GridItem>
+        <GridItem title="Indigenous Reservation">
+        </GridItem>
+        <GridItem title="Airport">
+        </GridItem>
+        <GridItem title="Constitution Article">
+        </GridItem>
+
 
 
       </div>

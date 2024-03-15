@@ -11,8 +11,8 @@ const fontSans = FontSans({
 });
 
 export const metadata = {
-  title: "Recharts Next.js",
-  description: "An example of using Recharts with Next.js",
+  title: "Colombia",
+  description: "Personal project to express my love for Colombia and share some information about it.",
 };
 
 export default function RootLayout({ children }) {
