@@ -7,22 +7,22 @@ export const Footer = () => {
   const socials = [
     {
       href: "https://github.com/juanpablodiaz",
-      icon: <Github className="w-4 h-4" />,
+      icon: <Github className="h-4 w-4" />,
     },
     {
       href: "https://www.linkedin.com/in/1diazdev/",
-      icon: <Linkedin className="w-4 h-4" />,
+      icon: <Linkedin className="h-4 w-4" />,
     },
     {
       href: "https://twitter.com/1diazdev",
-      icon: <Twitter className="w-4 h-4" />,
+      icon: <Twitter className="h-4 w-4" />,
     },
   ];
 
   return (
-    <div className="mt-2 py-4 w-full">
+    <div className="mt-2 w-full py-4">
       <div>
-        <ul className="flex justify-center gap-4 items-center">
+        <ul className="flex items-center justify-center gap-4">
           {socials.map((social, index) => (
             <Link href={social.href} key={index}>
               <li>{social.icon}</li>
@@ -34,7 +34,7 @@ export const Footer = () => {
         Developed by
         <a
           href="https://jpdiaz.dev/"
-          className="text-white/40 px-2 hover:underline"
+          className="px-2 text-white/40 hover:underline"
         >
           Juan Diaz
         </a>

@@ -1,15 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	images: {
-    domains: ['flagcdn.com'],
+  images: {
+    domains: ["flagcdn.com"],
   },
-	// images: {
+  // images: {
   //   remotePatterns: [
   //     {
   //       hostname: "flagcdn.com",
   //       protocol: "https",
   //     },
   //   ],
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

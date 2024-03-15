@@ -1,57 +1,97 @@
-import { Button } from "./components/ui/button";
-import  Info  from "./components/info.jsx";
+import { Box, Button, ButtonGroup, Divider, Heading, Stack, StackDivider } from "@chakra-ui/react";
+import { Card, Text, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+
+import Info from "./components/info.jsx";
+import { Image } from "@chakra-ui/react";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-4 md:px-8 xl:px-10 py-24">
-      <h1 className="text-4xl font-bold text-white/60 mb-8">
-      Amo Colombia
-      </h1>
-      <h2 className="text-2xl font-semibold text-white/40 mb-8">
-      Colombia es un país de América ubicado en la región noroccidental de América del Sur. Limita al este con Venezuela y Brasil, al sur con Perú y Ecuador, y al noroeste con Panamá; en cuanto a límites marítimos, limita con Panamá, Costa Rica, Nicaragua, Honduras, Jamaica, Haití, República Dominicana y Venezuela en el mar Caribe, y con Panamá, Costa Rica y Ecuador en el océano Pacífico. Su capital es Bogotá.
+    <main className="flex min-h-screen flex-col items-center justify-center px-4 py-24 md:px-8 xl:px-10">
+      <h1 className="mb-8 text-4xl font-bold text-white/60">Amo Colombia</h1>
+      <h2 className="mb-8 text-2xl font-semibold text-white/40">
+        Colombia es un país de América ubicado en la región noroccidental de
+        América del Sur. Limita al este con Venezuela y Brasil, al sur con Perú
+        y Ecuador, y al noroeste con Panamá; en cuanto a límites marítimos,
+        limita con Panamá, Costa Rica, Nicaragua, Honduras, Jamaica, Haití,
+        República Dominicana y Venezuela en el mar Caribe, y con Panamá, Costa
+        Rica y Ecuador en el océano Pacífico. Su capital es Bogotá.
       </h2>
-      <div className="grid xl:grid-cols-3 lg:grid-cols-2 w-full gap-10 max-w-[1400px]">
+      <div className="grid w-full max-w-[1400px] gap-10 lg:grid-cols-2 xl:grid-cols-3">
+        <Card title="General">
+          <Info />
+        </Card>
+        <Card>
+  <CardBody>
+    <Text>View a summary of all your customers over the last month.</Text>
+  </CardBody>
+</Card>
+<Card>
+  <CardHeader>
+    <Heading size='md'>Client Report</Heading>
+  </CardHeader>
 
-      <GridItem title="General">
-          <Info/>
-        </GridItem>
-        <GridItem title="Departments">
-        </GridItem>
-        <GridItem title="Region">
-        </GridItem>
-        <GridItem title="Tourists">
-        </GridItem>
-        <GridItem title="Presidents">
-        </GridItem>
-        <GridItem title="Natural Area">
-        </GridItem>
-        <GridItem title="Category Natural Area">
-        </GridItem>
-        <GridItem title="Map">
-        </GridItem>
-        <GridItem title="Invasive Specie">
-        </GridItem>
-        <GridItem title="Native Community">
-        </GridItem>
-        <GridItem title="Indigenous Reservation">
-        </GridItem>
-        <GridItem title="Airport">
-        </GridItem>
-        <GridItem title="Constitution Article">
-        </GridItem>
-
-
+  <CardBody>
+    <Stack divider={<StackDivider />} spacing='4'>
+      <Box>
+        <Heading size='xs' textTransform='uppercase'>
+          Summary
+        </Heading>
+        <Text pt='2' fontSize='sm'>
+          View a summary of all your clients over the last month.
+        </Text>
+      </Box>
+      <Box>
+        <Heading size='xs' textTransform='uppercase'>
+          Overview
+        </Heading>
+        <Text pt='2' fontSize='sm'>
+          Check out the overview of your clients.
+        </Text>
+      </Box>
+      <Box>
+        <Heading size='xs' textTransform='uppercase'>
+          Analysis
+        </Heading>
+        <Text pt='2' fontSize='sm'>
+          See a detailed analysis of all your business clients.
+        </Text>
+      </Box>
+    </Stack>
+  </CardBody>
+</Card>
+<Card maxW='sm'>
+  <CardBody>
+    <Image
+      src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+      alt='Green double couch with wooden legs'
+      borderRadius='lg'
+    />
+    <Stack mt='6' spacing='3'>
+      <Heading size='md'>Living room Sofa</Heading>
+      <Text>
+        This sofa is perfect for modern tropical spaces, baroque inspired
+        spaces, earthy toned spaces and for people who love a chic design with a
+        sprinkle of vintage design.
+      </Text>
+      <Text color='blue.600' fontSize='2xl'>
+        $450
+      </Text>
+    </Stack>
+  </CardBody>
+  <Divider />
+  <CardFooter>
+    <ButtonGroup spacing='2'>
+      <Button variant='solid' colorScheme='blue'>
+        Buy now
+      </Button>
+      <Button variant='ghost' colorScheme='blue'>
+        Add to cart
+      </Button>
+    </ButtonGroup>
+  </CardFooter>
+</Card>
 
       </div>
     </main>
-  );
-}
-
-function GridItem({ title, children }) {
-  return (
-    <div className="flex flex-col items-center justify-center p-4 border border-slate-900 bg-slate-900/50 rounded-xl h-[400px]">
-      <h3 className="text-2xl font-semibold text-white mb-4">{title}</h3>
-      {children}
-    </div>
   );
 }
