@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 
-export const Nav = () => {
+export const Header = () => {
   const links = [
     {
       title: "Home",
