@@ -1,6 +1,14 @@
 <div id="top"></div>
 
-# amoCol
+# Amocol
+
+### Uncover Colombia's rich tapestry
+
+Explore Colombia comprehensively with [**amoCol**](https://amocol.jpdiaz.dev), a web application designed for in-depth learning _in Spanish_. Delve into national topics, departmental details, and cultural insights, all in one user-friendly platform.
+
+**Amocol** is a comprehensive web app that offers in-depth exploration of departments, regions, cities, presidents, and more. Responsive design ensures seamless access across all devices.
+
+Read this document in [Español](/readme_es.md)
 
 <div align="center">
 
@@ -23,14 +31,19 @@
 
 ### Built With 🔑
 
-Welcome to the [amoCol](https://amocol.jpdiaz.dev), collection.
+This project was built using the following technologies:
 
 ![Nextjs](https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=Next.js&logoColor=white)
 ![Tailwind-CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)
+![Chakra-UI](https://img.shields.io/badge/Chakra%20UI-319795?style=for-the-badge&logo=Chakra-UI&logoColor=white)
+![Backend](https://img.shields.io/badge/api-colombia-339933?style=for-the-badge&logoColor=white)
+
+- **Frontend**: Next.js, Tailwind CSS, Chakra UI
+- **Backend**: API-Colombia
 
 ## Get started 🛠️
 
-To get started with [amocol](https://amocol.jpdiaz.dev), simply clone the repository and follow the setup instructions. You'll be up and running in no time!
+To get started with [amoCol](https://amocol.jpdiaz.dev), simply clone the repository and follow the setup instructions. You'll be up and running in no time!
 
 ### Setup 📋
 
@@ -64,6 +77,8 @@ I hope you enjoy using the amocol repo!
 ## Acknowledgments 📚
 
 Resources list that I find helpful and would like to give credit to.
+
+- Special thanks to [**API-Colombia**](https://api-colombia.com/) for providing the data used in this project.
 
 [![Next.js](https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=Next.js&logoColor=white)](https://nextjs.org/)
 [![Tailwind-CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com/)
