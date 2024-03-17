@@ -20,7 +20,7 @@ export const Footer = () => {
   ];
 
   return (
-    <div className="mt-2 w-full py-4">
+    <div className="mt-2 w-full bg-slate-950/90 py-4 font-semibold">
       <div>
         <ul className="flex items-center justify-center gap-4">
           {socials.map((social, index) => (

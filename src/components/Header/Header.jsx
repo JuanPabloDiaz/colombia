@@ -11,58 +11,58 @@ export const Header = () => {
       title: "General",
       href: "/general",
     },
-    // {
-    //   title: "Departments",
-    //   href: "/",
-    // },
-    // {
-    //   title: "Region",
-    //   href: "",
-    // },
-    // {
-    //   title: "Tourists",
-    //   href: "",
-    // },
-    // {
-    //   title: "Presidents",
-    //   href: "",
-    // },
-    // {
-    //   title: "Natural Area",
-    //   href: "",
-    // },
-    // {
-    //   title: "Category Natural Area",
-    //   href: "",
-    // },
-    // {
-    //   title: "Map",
-    //   href: "",
-    // },
+    {
+      title: "Prueba",
+      href: "/prueba",
+    },
+    {
+      title: "Departamentos",
+      href: "/departamentos",
+    },
+    {
+      title: "Regiones",
+      href: "/regiones",
+    },
+    {
+      title: "Turismo",
+      href: "/turismo",
+    },
+    {
+      title: "Presidentes",
+      href: "/presidentes",
+    },
+    {
+      title: "Naturaleza",
+      href: "/naturaleza",
+    },
+    {
+      title: "Categorías Naturaleza",
+      href: "/categorias-naturaleza",
+    },
+    {
+      title: "Mapas",
+      href: "/mapas",
+    },
     {
       title: "Especies Invasoras",
-      href: "invasive-specie",
+      href: "especies-invasoras",
     },
-    // {
-    //   title: "Native Community",
-    //   href: "",
-    // },
-    // {
-    //   title: "Indigenous Reservation",
-    //   href: "",
-    // },
-    // {
-    //   title: "Airport",
-    //   href: "",
-    // },
-    // {
-    //   title: "Constitution Article",
-    //   href: "",
-    // },
+    {
+      title: "Comunidades Indígenas",
+      href: "/comunidades-indigenas",
+    },
+    {
+      title: "Aeropuertos",
+      href: "/aeropuertos",
+    },
+    {
+      title: "Constitution",
+      href: "/constitution",
+    },
   ];
 
   return (
-    <div className="mt-2 w-full bg-slate-800 py-4">
+    <div className="mt-2 w-full bg-slate-800/80 py-4 font-semibold">
       <div>
         <ul className="flex items-center justify-around">
           {links.map((link, index) => (
