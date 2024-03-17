@@ -6,6 +6,7 @@ import { DataProvider } from "@/context";
 
 import { Providers } from "@/context/providers";
 import { cn } from "@/lib/utils";
+import Sidebar from "@/components/sidebar/sidebar";
 
 export const metadata = {
   title: "Amo Colombia",
@@ -24,9 +25,12 @@ export default function RootLayout({ children }) {
       <DataProvider>
         {/* <body className="flex min-h-screen flex-col bg-slate-950 text-white"> */}
         <body className="appBackground flex min-h-screen flex-col text-white">
-          <Header />
-          <main className={cn("flex-grow", fontSans.variable)}>
-            <Providers>{children}</Providers>
+          {/* <Header /> */}
+          <Sidebar />
+          <main className={cn("flex-grow pl-[300px] ", fontSans.variable)}>
+            <Providers>
+              <div className="px-4 md:px-8 xl:px-10">{children}</div>
+            </Providers>
           </main>
           <Footer />
         </body>

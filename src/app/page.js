@@ -5,7 +5,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center justify-center px-4 py-24 md:px-8 xl:px-10">
+      <main className="flex min-h-screen flex-col items-center justify-center">
         <section className="h-screen w-full bg-slate-950/90">
           <title>{`${pageTitle} • AmoCol`}</title>
           <h1 className="mb-8 text-4xl font-bold text-white/60">{pageTitle}</h1>
