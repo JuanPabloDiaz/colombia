@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 
 export const AppContext = createContext();
 
+const API_COL_BASE_URL = "https://api-colombia.com/api/v1";
+
 export const DataProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,7 +19,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("https://api-colombia.com/api/v1/Country/Colombia")
+    fetch(`${API_COL_BASE_URL}/Country/Colombia`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("General Data: ", json);
@@ -37,7 +39,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("https://api-colombia.com/api/v1/Department")
+    fetch(`${API_COL_BASE_URL}/Department`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Departament Data: ", json);
@@ -57,7 +59,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("https://api-colombia.com/api/v1/Region")
+    fetch(`${API_COL_BASE_URL}/Region`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Region Data: ", json);
@@ -70,6 +72,14 @@ export const DataProvider = ({ children }) => {
       });
   }, []);
 
+  // *****************       REGION ID      *****************
+
+  // ADD REGION ID FUNCTION --> findOneRegion
+
+  // TO SELECT ONE REGION
+
+  // fetch(`${API_COL_BASE_URL}/Region/${id}/departments`)
+
   // *****************       TOURISTIC ATTRACTION        *****************
 
   const [touristicAttractionData, setTouristicAttractionData] = useState([]);
@@ -77,7 +87,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("https://api-colombia.com/api/v1/TouristicAttraction")
+    fetch(`${API_COL_BASE_URL}/TouristicAttraction`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Touristic Attraction Data: ", json);
@@ -97,7 +107,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("https://api-colombia.com/api/v1/President")
+    fetch(`${API_COL_BASE_URL}/President`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("President Data: ", json);
@@ -110,6 +120,34 @@ export const DataProvider = ({ children }) => {
       });
   }, []);
 
+  // *****************       PRESIDENT ID      *****************
+
+  // ADD PRESIDENT ID FUNCTION --> findOnePresident
+
+  // TO SELECT ONE PRESIDENT
+
+  // fetch(`${API_COL_BASE_URL}/President/${id}`)
+
+  const [presidentId, setPresidentId] = useState([]);
+
+  useEffect(() => {
+    const findOnePresident = (id) => {
+      setIsLoading(true);
+
+      fetch(`${API_COL_BASE_URL}/President/${id}`)
+        .then((response) => response.json())
+        .then((json) => {
+          // console.log("President ID: ", json);
+          setPresidentId(json);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching President ID: ", error);
+          setIsLoading(false);
+        });
+    };
+  }, []);
+
   // *****************       NATURAL AREA        *****************
 
   const [naturalAreaData, setNaturalAreaData] = useState([]);
@@ -117,7 +155,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("https://api-colombia.com/api/v1/NaturalArea")
+    fetch(`${API_COL_BASE_URL}/NaturalArea`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Natural Area Data: ", json);
@@ -137,7 +175,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("https://api-colombia.com/api/v1/CategoryNaturalArea")
+    fetch(`${API_COL_BASE_URL}/CategoryNaturalArea`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Category Natural Area Data: ", json);
@@ -157,7 +195,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("https://api-colombia.com/api/v1/Map")
+    fetch(`${API_COL_BASE_URL}/Map`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Map Data: ", json);
@@ -170,6 +208,14 @@ export const DataProvider = ({ children }) => {
       });
   }, []);
 
+  // *****************       MAP ID      *****************
+
+  // ADD MAP ID FUNCTION --> findOneMap
+
+  // TO SELECT ONE MAP
+
+  // fetch(`${API_COL_BASE_URL}/Map/${id}`)
+
   // *****************       INVASIVE SPECIE        *****************
 
   const [invasiveSpecieData, setInvasiveSpecieData] = useState([]);
@@ -177,7 +223,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("https://api-colombia.com/api/v1/InvasiveSpecie")
+    fetch(`${API_COL_BASE_URL}/InvasiveSpecie`)
       .then((response) => response.json())
       .then((json) => {
         console.log("Invasive Specie Data: ", json);
@@ -197,7 +243,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("https://api-colombia.com/api/v1/NativeCommunity")
+    fetch(`${API_COL_BASE_URL}/NativeCommunity`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Native Community Data: ", json);
@@ -217,7 +263,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("https://api-colombia.com/api/v1/Airport")
+    fetch(`${API_COL_BASE_URL}/Airport`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Airport Data: ", json);
@@ -237,7 +283,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("https://api-colombia.com/api/v1/ConstitutionArticle")
+    fetch(`${API_COL_BASE_URL}/ConstitutionArticle`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Constitution Article Data: ", json);
