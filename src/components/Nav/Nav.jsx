@@ -26,11 +26,6 @@ export const Nav = ({ ul_className }) => {
       icon: <Home />,
     },
     {
-      title: "General",
-      href: "/general",
-      icon: <Community />,
-    },
-    {
       title: "Prueba",
       href: "/prueba",
       icon: <Landmark />,
