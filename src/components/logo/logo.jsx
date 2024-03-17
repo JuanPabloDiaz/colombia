@@ -23,7 +23,7 @@ export function Logo() {
             alt={`${generalData.name} Col Logo`}
             width={100}
             height={100}
-            // height="auto"
+            className="rounded-xl shadow-md shadow-gray-600"
           />
         )}
       </div>
@@ -31,7 +31,7 @@ export function Logo() {
         variant="span"
         className="self-center whitespace-nowrap pl-2 text-xl font-semibold"
       >
-        {"AMO COLOMBIA"}
+        {"AMO COL"}
       </Typography>
     </Link>
   );
