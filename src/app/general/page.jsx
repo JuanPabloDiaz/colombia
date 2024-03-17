@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useContext } from "react";
-import { AppContext } from "../../context";
+import { AppContext } from "@/context";
 import Image from "next/image";
 
 export default function Col() {

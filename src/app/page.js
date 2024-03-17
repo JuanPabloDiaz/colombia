@@ -1,4 +1,4 @@
-import Info from "../components/info.jsx";
+import Info from "@/components/info.jsx";
 
 export default function Home() {
   return (

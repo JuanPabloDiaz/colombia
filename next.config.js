@@ -3,13 +3,12 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "flagcdn.com",
         protocol: "https",
-      },
-      {
         hostname: "apicolombiastorage.blob.core.windows.net",
-        protocol: "https",
       },
+      { protocol: "https", hostname: "flagcdn.com" },
+      { protocol: "https", hostname: "es.wikipedia.org" },
+      { protocol: "https", hostname: "upload.wikimedia.org" },
     ],
   },
 };

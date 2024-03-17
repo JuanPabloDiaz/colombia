@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useContext } from "react";
-import { AppContext } from "../../context";
+import { AppContext } from "@/";
 import Image from "next/image";
-import CardDivider from "../../components/Chakra/Card/CardDivider";
-import CardDetail from "../../components/Chakra/Card/CardDetail";
+import CardDivider from "@/components/Chakra/Card/CardDivider";
+import CardDetail from "@/components/Chakra/Card/CardDetail";
 
 export default function Prueba() {
   return (
