@@ -4,7 +4,6 @@ import React, { useContext, isLoading, useEffect } from "react";
 import { AppContext } from "@/context";
 import Image from "next/image";
 
-import CardList from "@/components/cardList";
 import CardDivider from "@/components/Chakra/Card/CardDivider";
 import CardDetail from "@/components/Chakra/Card/CardDetail";
 
@@ -26,7 +25,6 @@ export default function EspeciesInvasoras() {
         <h1>Invasive Specie</h1>
       </div>
       <CardDetail />
-      {/* <CardList cards="invasiveSpecieData" /> */}
       <div>
         {invasiveSpecieData.map((specie, index) => (
           <Image
