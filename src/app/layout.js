@@ -7,6 +7,7 @@ import { DataProvider } from "@/context";
 
 import { Providers } from "@/context/providers";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata = {
   title: "Amo Colombia",
@@ -38,6 +39,7 @@ export default function RootLayout({ children }) {
                 {children}
               </div>
             </Providers>
+            <Toaster />
             <Footer />
           </main>
         </body>

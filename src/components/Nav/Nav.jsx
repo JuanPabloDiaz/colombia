@@ -17,9 +17,11 @@ import {
   RadioTower,
 } from "lucide-react";
 
-import { Airport, Community, Indigena, Invasive } from "../icons";
+import { useToast } from "@/components/ui/use-toast";
 
 export const Nav = ({ ul_className }) => {
+  const { toast } = useToast();
+
   const links = [
     {
       title: "Inicio",
@@ -68,7 +70,7 @@ export const Nav = ({ ul_className }) => {
     },
     {
       title: "Especies Invasoras",
-      href: "especies-invasoras",
+      href: "/especies-invasoras",
       icon: <Cannabis />,
     },
     {
@@ -103,16 +105,52 @@ export const Nav = ({ ul_className }) => {
   });
 
   return (
-    //  flex items-center justify-around
+    // <ul className={ul_className}>
+    //   {links.map((link, index) => (
+    //     <Link href={link.href || "/"} key={index}>
+    //       <li className="flex items-center">
+    //         <span className="w-20 px-4">{link.icon}</span>
+    //         {link.title}
+    //       </li>
+    //     </Link>
+    //   ))}
+    // </ul>
+
     <ul className={ul_className}>
-      {links.map((link, index) => (
-        <Link href={link.href || "/"} key={index}>
-          <li className="flex items-center">
-            <span className="w-20 px-4">{link.icon}</span>
-            {link.title}
-          </li>
-        </Link>
-      ))}
+      {links.map((link, index) => {
+        // Specify the routes you want to allow navigation to
+        const allowedRoutes = ["/", "/prueba", "/especies-invasoras"];
+
+        const isAllowedRoute = allowedRoutes.includes(link.href);
+
+        const handleClick = (e) => {
+          if (!isAllowedRoute) {
+            e.preventDefault();
+            toast({
+              title: "Proximamente...",
+              description:
+                "Esta página está en construcción. Por favor, vuelve más tarde.",
+              status: "info",
+              duration: 3000,
+            });
+          }
+        };
+
+        return (
+          <Link href={link.href || "/"} key={index}>
+            <li
+              className="flex items-center"
+              style={{
+                color: isAllowedRoute ? "white" : "gray",
+              }}
+              onClick={handleClick}
+            >
+              <span className="w-20 px-4">{link.icon}</span>
+              {link.title}
+            </li>
+          </Link>
+        );
+      })}
     </ul>
   );
 };

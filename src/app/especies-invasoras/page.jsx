@@ -2,9 +2,7 @@
 
 import React, { useContext, isLoading, useEffect } from "react";
 import { AppContext } from "@/context";
-import Image from "next/image";
 
-import CardDivider from "@/components/ChakraCard/CardDivider";
 import CardDetail from "@/components/ChakraCard/CardDetail";
 
 import { metadata } from "@/components/metadata";
