@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Typography } from "@/components/ui/typography";
 import LoadingLogo from "../Loading/LoadingLogo";
 
-export function Logo() {
+export function Logusss() {
   const { generalData, isLoading } = useContext(AppContext);
 
   if (isLoading) {
