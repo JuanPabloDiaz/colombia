@@ -8,6 +8,7 @@ import CardDivider from "@/components/ChakraCard/CardDivider";
 import CardDetail from "@/components/ChakraCard/CardDetail";
 
 import { metadata } from "@/components/metadata";
+import LoadingCard from "@/components/Loading/LoadingCard";
 
 export default function EspeciesInvasoras() {
   const pageTitle = metadata.espInv.title;
@@ -15,7 +16,7 @@ export default function EspeciesInvasoras() {
   const { invasiveSpecieData, isLoading } = useContext(AppContext);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingCard />;
   }
 
   return (
@@ -26,20 +27,20 @@ export default function EspeciesInvasoras() {
           {pageTitle}
         </h1>
       </div>
-      <CardDetail />
-      <div>
+      <div className="grid grid-cols-4 gap-4">
         {invasiveSpecieData.map((specie, index) => (
-          <Image
+          <CardDetail
             key={index}
-            src={specie.urlImage}
-            alt={`Especies Invasoras ${index + 1}`}
-            width={320}
-            height={213}
+            title={specie.name}
+            description={specie.impact}
+            imageUrl={specie.urlImage}
+            alt={specie.scientificName}
+            nombreCientifico={specie.scientificName}
+            buttonOne="Ver más"
+            // buttonTwo="Comprar"
           />
         ))}
       </div>
-      {/* <CardDivider />
-       */}
     </>
   );
 }
