@@ -10,7 +10,9 @@ export default function Constitution() {
   return (
     <>
       <title>{`${pageTitle} • AmoCol`}</title>
-      <h1>{pageTitle}</h1>
+      <h1 className="mx-auto mb-8 w-fit rounded-xl bg-slate-950/90 p-4 text-4xl font-bold text-white/60">
+        {pageTitle}
+      </h1>
     </>
   );
 }

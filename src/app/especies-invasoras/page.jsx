@@ -4,8 +4,8 @@ import React, { useContext, isLoading, useEffect } from "react";
 import { AppContext } from "@/context";
 import Image from "next/image";
 
-import CardDivider from "@/components/Chakra/Card/CardDivider";
-import CardDetail from "@/components/Chakra/Card/CardDetail";
+import CardDivider from "@/components/Card/CardDivider";
+import CardDetail from "@/components/Card/CardDetail";
 
 import { metadata } from "@/components/metadata";
 
@@ -22,7 +22,9 @@ export default function EspeciesInvasoras() {
     <>
       <title>{`${pageTitle} • AmoCol`}</title>
       <div>
-        <h1>Invasive Specie</h1>
+        <h1 className="mx-auto mb-8 w-fit rounded-xl bg-slate-950/90 p-4 text-4xl font-bold text-white/60">
+          {pageTitle}
+        </h1>
       </div>
       <CardDetail />
       <div>
@@ -30,7 +32,7 @@ export default function EspeciesInvasoras() {
           <Image
             key={index}
             src={specie.urlImage}
-            alt={`Invasive Specie ${index + 1}`}
+            alt={`Especies Invasoras ${index + 1}`}
             width={320}
             height={213}
           />

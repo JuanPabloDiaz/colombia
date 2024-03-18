@@ -20,8 +20,8 @@ export const Footer = () => {
   ];
 
   return (
-    <div className="mt-2 w-full bg-slate-950/90 py-4 font-semibold">
-      <div>
+    <main className="w-full bg-slate-950/90 py-4 font-semibold">
+      <section>
         <ul className="flex items-center justify-center gap-4">
           {socials.map((social, index) => (
             <Link href={social.href} key={index}>
@@ -29,8 +29,8 @@ export const Footer = () => {
             </Link>
           ))}
         </ul>
-      </div>
-      <div className="mt-4 flex items-center justify-around gap-4">
+      </section>
+      <section className="mt-4 flex items-center justify-around gap-4">
         <p className="text-center">
           © {new Date().getFullYear()}
           <a
@@ -64,7 +64,7 @@ export const Footer = () => {
             API Colombia
           </a>
         </p>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
