@@ -11,7 +11,7 @@ export const Loading = () => {
           <Skeleton className="relative m-2 h-[250px] w-[250px] rounded-xl bg-slate-300/30 p-1">
             <div className="flex h-full items-center justify-center">
               <EosIconsLoading className="mr-2 h-8 w-8" />
-              <p>Loading Graph...</p>
+              <p>Loading...</p>
             </div>
           </Skeleton>
         </div>

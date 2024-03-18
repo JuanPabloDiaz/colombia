@@ -1,76 +1,12 @@
-import Link from "next/link";
+// Header.jsx
 import React from "react";
+import { Nav } from "@/components/Nav";
 
 export const Header = () => {
-  const links = [
-    {
-      title: "Inicio",
-      href: "/",
-    },
-    {
-      title: "General",
-      href: "/general",
-    },
-    // {
-    //   title: "Departments",
-    //   href: "/",
-    // },
-    // {
-    //   title: "Region",
-    //   href: "",
-    // },
-    // {
-    //   title: "Tourists",
-    //   href: "",
-    // },
-    // {
-    //   title: "Presidents",
-    //   href: "",
-    // },
-    // {
-    //   title: "Natural Area",
-    //   href: "",
-    // },
-    // {
-    //   title: "Category Natural Area",
-    //   href: "",
-    // },
-    // {
-    //   title: "Map",
-    //   href: "",
-    // },
-    {
-      title: "Especies Invasoras",
-      href: "invasive-specie",
-    },
-    // {
-    //   title: "Native Community",
-    //   href: "",
-    // },
-    // {
-    //   title: "Indigenous Reservation",
-    //   href: "",
-    // },
-    // {
-    //   title: "Airport",
-    //   href: "",
-    // },
-    // {
-    //   title: "Constitution Article",
-    //   href: "",
-    // },
-  ];
-
   return (
-    <div className="mt-2 w-full bg-slate-800 py-4">
+    <div className="mt-2 w-full bg-slate-800/80 py-4 font-semibold">
       <div>
-        <ul className="flex items-center justify-around">
-          {links.map((link, index) => (
-            <Link href={link.href} key={index}>
-              <li>{link.title}</li>
-            </Link>
-          ))}
-        </ul>
+        <Nav ul_className="flex items-center justify-around" />
       </div>
     </div>
   );

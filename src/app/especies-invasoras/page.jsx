@@ -1,14 +1,17 @@
 "use client";
 
-import React, { useContext, isLoading } from "react";
+import React, { useContext, isLoading, useEffect } from "react";
 import { AppContext } from "@/context";
 import Image from "next/image";
 
-import CardList from "@/components/cardList";
 import CardDivider from "@/components/Chakra/Card/CardDivider";
 import CardDetail from "@/components/Chakra/Card/CardDetail";
 
-export default function InvasiveSpecie() {
+import { metadata } from "@/components/metadata";
+
+export default function EspeciesInvasoras() {
+  const pageTitle = metadata.espInv.title;
+
   const { invasiveSpecieData, isLoading } = useContext(AppContext);
 
   if (isLoading) {
@@ -17,11 +20,11 @@ export default function InvasiveSpecie() {
 
   return (
     <>
+      <title>{`${pageTitle} • AmoCol`}</title>
       <div>
         <h1>Invasive Specie</h1>
       </div>
       <CardDetail />
-      {/* <CardList cards="invasiveSpecieData" /> */}
       <div>
         {invasiveSpecieData.map((specie, index) => (
           <Image

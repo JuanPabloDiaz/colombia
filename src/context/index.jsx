@@ -22,7 +22,7 @@ export const DataProvider = ({ children }) => {
     fetch(`${API_COL_BASE_URL}/Country/Colombia`)
       .then((response) => response.json())
       .then((json) => {
-        // console.log("General Data: ", json);
+        console.log("General Data: ", json);
         setGeneralData(json);
         setIsLoading(false);
       })
@@ -226,7 +226,7 @@ export const DataProvider = ({ children }) => {
     fetch(`${API_COL_BASE_URL}/InvasiveSpecie`)
       .then((response) => response.json())
       .then((json) => {
-        console.log("Invasive Specie Data: ", json);
+        // console.log("Invasive Specie Data: ", json);
         setInvasiveSpecieData(json);
         setIsLoading(false);
       })
