@@ -1,12 +1,12 @@
 import { Inter as FontSans } from "next/font/google";
 import "@/styles/globals.css";
-import { Footer } from "@/components/Footer";
+import { Sidebar } from "@/components/Sidebar";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { DataProvider } from "@/context";
 
 import { Providers } from "@/context/providers";
 import { cn } from "@/lib/utils";
-import Sidebar from "@/components/sidebar/sidebar";
 
 export const metadata = {
   title: "Amo Colombia",

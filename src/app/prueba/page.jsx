@@ -2,9 +2,9 @@
 
 import React, { useContext } from "react";
 import { AppContext } from "@/context";
-import CardDivider from "@/components/Card/CardDivider";
-import CardDetail from "@/components/Card/CardDetail";
-import Card from "@/components/Card/Card";
+import CardDivider from "@/components/ChakraCard/CardDivider";
+import CardDetail from "@/components/ChakraCard/CardDetail";
+import Card from "@/components/ChakraCard/Card";
 
 import { metadata } from "@/components/metadata";
 

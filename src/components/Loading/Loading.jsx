@@ -3,7 +3,7 @@ import React from "react";
 import { EosIconsLoading } from "../icons";
 import { Skeleton } from "../ui/skeleton";
 
-export const Loading = () => {
+export default function Loading() {
   return (
     <div className="flex items-center justify-center rounded px-4 py-2 font-bold text-white">
       <>
@@ -18,4 +18,4 @@ export const Loading = () => {
       </>
     </div>
   );
-};
+}

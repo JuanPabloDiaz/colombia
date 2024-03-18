@@ -3,10 +3,10 @@
 import React, { useContext } from "react";
 import { AppContext } from "@/context";
 import Image from "next/image";
-import CardDivider from "@/components/Card/CardDivider";
-import CardDetail from "@/components/Card/CardDetail";
-import Card from "@/components/Card/Card";
-import CardHorizontal from "@/components/Card/CardHorizontal";
+import CardDivider from "@/components/ChakraCard/CardDivider";
+import CardDetail from "@/components/ChakraCard/CardDetail";
+import Card from "@/components/ChakraCard/Card";
+import CardHorizontal from "@/components/ChakraCard/CardHorizontal";
 
 import { metadata } from "@/components/metadata";
 import Head from "next/head";

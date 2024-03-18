@@ -2,7 +2,7 @@ import React from "react";
 
 import { Skeleton } from "../ui/skeleton";
 
-export const LoadingCard = () => {
+export default function LoadingLogo() {
   return (
     <main className="flex items-center justify-center space-x-4">
       <Skeleton className="h-12 w-12 rounded-xl" />
@@ -12,4 +12,4 @@ export const LoadingCard = () => {
       </div>
     </main>
   );
-};
+}
