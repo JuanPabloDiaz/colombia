@@ -9,7 +9,6 @@ import Card from "@/components/ChakraCard/Card";
 import CardHorizontal from "@/components/ChakraCard/CardHorizontal";
 
 import { metadata } from "@/components/metadata";
-import Head from "next/head";
 import {
   CircleDollarSign,
   LandPlot,
@@ -33,9 +32,7 @@ export default function Home() {
   ];
   return (
     <>
-      <Head>
-        <title>{`${pageTitle} • AmoCol`}</title>
-      </Head>
+      <title>{`${pageTitle} • Juan Diaz`}</title>
       <main className="flex flex-col items-center justify-center">
         <section className="h-full w-full">
           <h1 className="mx-auto mb-8 w-fit rounded-xl bg-slate-950/90 p-4 text-4xl font-bold text-white/60">
@@ -130,28 +127,6 @@ export default function Home() {
                 icon={<CircleDollarSign />}
               />
             </div>
-            {/* <CardHorizontal
-              title={generalData.name}
-              text="South America"
-              imageUrl="https://flagcdn.com/w320/co.png"
-              imageAlt="Colombian Flag"
-              buttonText="Learn More"
-            /> */}
-            {/* <CardDivider
-              mainHeading="Heading"
-              boxTitleOne="Title One"
-              boxTextOne="Text"
-              boxTitleTwo="Title Two"
-              boxTextTwo="Text Two"
-            /> */}
-            {/* <CardDetail /> */}
-            {/* <CardHorizontal
-              title="South America"
-              text="South America"
-              imageUrl="https://flagcdn.com/w320/co.png"
-              imageAlt="Colombian Flag"
-              buttonText="Learn More"
-            /> */}
           </div>
         </section>
       </main>
