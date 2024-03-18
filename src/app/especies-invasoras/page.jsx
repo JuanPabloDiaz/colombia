@@ -22,25 +22,29 @@ export default function EspeciesInvasoras() {
   return (
     <>
       <title>{`${pageTitle} • AmoCol`}</title>
-      <div>
-        <h1 className="mx-auto mb-8 w-fit rounded-xl bg-slate-950/90 p-4 text-4xl font-bold text-white/60">
-          {pageTitle}
-        </h1>
-      </div>
-      <div className="grid grid-cols-4 gap-4">
-        {invasiveSpecieData.map((specie, index) => (
-          <CardDetail
-            key={index}
-            title={specie.name}
-            description={specie.impact}
-            imageUrl={specie.urlImage}
-            alt={specie.scientificName}
-            nombreCientifico={specie.scientificName}
-            buttonOne="Ver más"
-            // buttonTwo="Comprar"
-          />
-        ))}
-      </div>
+      <main>
+        <div>
+          <h1 className="mx-auto mb-8 w-fit rounded-xl bg-slate-950/90 p-4 text-4xl font-bold text-white/60">
+            {pageTitle}
+          </h1>
+        </div>
+        <section className="flex items-center justify-center">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {invasiveSpecieData.map((specie, index) => (
+              <CardDetail
+                key={index}
+                title={specie.name}
+                description={specie.impact}
+                imageUrl={specie.urlImage}
+                alt={specie.scientificName}
+                nombreCientifico={specie.scientificName}
+                buttonOne="Ver más"
+                // buttonTwo="Comprar"
+              />
+            ))}
+          </div>
+        </section>
+      </main>
     </>
   );
 }

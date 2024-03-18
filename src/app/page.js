@@ -41,7 +41,7 @@ export default function Home() {
           <div className="w-full max-w-[1400px] gap-10 lg:grid-cols-2 xl:grid-cols-3">
             <section>
               <article
-                className="mb-10 grid w-full items-center gap-6 md:mb-0"
+                className="mb-10 flex flex-col md:mb-0 md:grid md:w-full md:items-center md:gap-6"
                 style={{ gridTemplateColumns: "65% 35%" }}
               >
                 <CardDivider

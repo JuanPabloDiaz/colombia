@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           <Sidebar />
           <main
             className={cn(
-              "flex flex-grow flex-col pl-[300px]",
+              "flex flex-grow flex-col md:pl-[300px]",
               fontSans.variable,
             )}
           >
