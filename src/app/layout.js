@@ -23,13 +23,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <DataProvider>
-        {/* <body className="flex min-h-screen flex-col bg-slate-950 text-white"> */}
-        <body className="appBackground flex min-h-screen flex-col text-white">
+        {/* <body className="appBackground flex min-h-screen flex-col text-white"> */}
+        <body className="appBackground flex h-screen w-screen flex-col overflow-y-auto overflow-x-hidden text-white">
           {/* <Header /> */}
           <Sidebar />
           <main className={cn("flex-grow pl-[300px] ", fontSans.variable)}>
             <Providers>
-              <div className="px-4 md:px-8 xl:px-10">{children}</div>
+              <div className="px-4 pt-2 md:px-8 xl:px-10">{children}</div>
             </Providers>
           </main>
           <Footer />

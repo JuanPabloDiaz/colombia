@@ -4,28 +4,44 @@ import {
   Card as ChakraCard,
   Text,
   CardBody,
+  Flex,
 } from "@chakra-ui/react";
 
 export default function MyCard({
   title,
   text,
-  className,
+  classNameText,
+  classNameCard,
   icon,
   IconClassName,
 }) {
   return (
     <>
-      <ChakraCard className={`w-full ${className}`}>
+      <ChakraCard
+        className={`w-full ${classNameCard}`}
+        sx={{
+          backgroundColor: "rgba(2, 6, 23, 0.75)",
+        }}
+        color="white.500"
+      >
         <CardBody>
-          <Box className={`w-full ${IconClassName}`}>{icon}</Box>
-          <Box>
-            <Heading size="xs" textTransform="uppercase">
-              {title}
-            </Heading>
-            <Text pt="2" fontSize="sm">
-              {text}
-            </Text>
-          </Box>
+          <Flex w="full">
+            <Box
+              w="25%"
+              mr="5%"
+              className={`flex items-center justify-center ${IconClassName}`}
+            >
+              {icon}
+            </Box>
+            <Box w="75%">
+              <Heading size="xs" textTransform="uppercase">
+                {title}
+              </Heading>
+              <Text pt="2" fontSize="sm" className={classNameText}>
+                {text}
+              </Text>
+            </Box>
+          </Flex>
         </CardBody>
       </ChakraCard>
     </>

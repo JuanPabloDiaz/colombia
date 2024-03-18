@@ -25,64 +25,64 @@ export const Nav = ({ ul_className }) => {
       href: "/",
       icon: <Home />,
     },
-    {
-      title: "Prueba",
-      href: "/prueba",
-      icon: <Landmark />,
-    },
+    // {
+    //   title: "Prueba",
+    //   href: "/prueba",
+    //   icon: <Landmark />,
+    // },
     {
       title: "Departamentos",
-      href: "/departamentos",
+      // href: "/departamentos",
       icon: <ShieldPlus />,
     },
     {
       title: "Regiones",
-      href: "/regiones",
+      // href: "/regiones",
       icon: <LandPlot />,
     },
     {
       title: "Turismo",
-      href: "/turismo",
+      // href: "/turismo",
       icon: <FerrisWheel />,
     },
     {
       title: "Presidentes",
-      href: "/presidentes",
+      // href: "/presidentes",
       icon: <Scale />,
     },
     {
       title: "Naturaleza",
-      href: "/naturaleza",
+      // href: "/naturaleza",
       icon: <Trees />,
     },
     {
       title: "Categorías Naturaleza",
-      href: "/categorias-naturaleza",
+      // href: "/categorias-naturaleza",
       icon: <TreePine />,
     },
     {
       title: "Mapas",
-      href: "/mapas",
+      // href: "/mapas",
       icon: <MapPin />,
     },
     {
       title: "Especies Invasoras",
-      href: "especies-invasoras",
+      // href: "especies-invasoras",
       icon: <Cannabis />,
     },
     {
       title: "Comunidades Indígenas",
-      href: "/comunidades-indigenas",
+      // href: "/comunidades-indigenas",
       icon: <Tent />,
     },
     {
       title: "Aeropuertos",
-      href: "/aeropuertos",
+      // href: "/aeropuertos",
       icon: <Plane />,
     },
     {
       title: "Constitution",
-      href: "/constitution",
+      // href: "/constitution",
       icon: <Landmark />,
     },
   ];
@@ -91,7 +91,7 @@ export const Nav = ({ ul_className }) => {
     // flex items-center justify-around
     <ul className={ul_className}>
       {links.map((link, index) => (
-        <Link href={link.href} key={index}>
+        <Link href={link.href || "/"} key={index}>
           <li className="flex items-center">
             <span className="w-20 px-4">{link.icon}</span>
             {link.title}
