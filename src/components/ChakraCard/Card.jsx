@@ -27,13 +27,13 @@ export default function MyCard({
         <CardBody>
           <Flex w="full">
             <Box
-              w="25%"
-              mr="5%"
+              w={["100%", "25%"]} // 100% on mobile, 25% on larger screens
+              mr={["0", "5%"]} // No margin on mobile, 5% margin on larger screens
               className={`flex items-center justify-center ${IconClassName}`}
             >
               {icon}
             </Box>
-            <Box w="75%">
+            <Box w={["100%", "75%"]}>
               <Heading size="xs" textTransform="uppercase">
                 {title}
               </Heading>

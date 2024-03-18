@@ -3,13 +3,12 @@
 import React, { useContext } from "react";
 import { AppContext } from "@/context";
 import Image from "next/image";
-import CardDivider from "@/components/Chakra/Card/CardDivider";
-import CardDetail from "@/components/Chakra/Card/CardDetail";
-import Card from "@/components/Chakra/Card/Card";
-import CardHorizontal from "@/components/Chakra/Card/CardHorizontal";
+import CardDivider from "@/components/ChakraCard/CardDivider";
+import CardDetail from "@/components/ChakraCard/CardDetail";
+import Card from "@/components/ChakraCard/Card";
+import CardHorizontal from "@/components/ChakraCard/CardHorizontal";
 
 import { metadata } from "@/components/metadata";
-import Head from "next/head";
 import {
   CircleDollarSign,
   LandPlot,
@@ -33,9 +32,7 @@ export default function Home() {
   ];
   return (
     <>
-      <Head>
-        <title>{`${pageTitle} • AmoCol`}</title>
-      </Head>
+      <title>{`${pageTitle} • Juan Diaz`}</title>
       <main className="flex flex-col items-center justify-center">
         <section className="h-full w-full">
           <h1 className="mx-auto mb-8 w-fit rounded-xl bg-slate-950/90 p-4 text-4xl font-bold text-white/60">
@@ -44,7 +41,7 @@ export default function Home() {
           <div className="w-full max-w-[1400px] gap-10 lg:grid-cols-2 xl:grid-cols-3">
             <section>
               <article
-                className="mb-10 grid w-full items-center gap-6 md:mb-0"
+                className="mb-10 flex flex-col md:mb-0 md:grid md:w-full md:items-center md:gap-6"
                 style={{ gridTemplateColumns: "65% 35%" }}
               >
                 <CardDivider
@@ -61,7 +58,7 @@ export default function Home() {
                       <Box>Loading...</Box>
                     )
                   }
-                  classnameBoxTextTwo="flex justify-between w-full mt-2 font-bold text-yellow-500 p-4 rounded-lg items-center"
+                  classnameBoxText="flex justify-between w-full font-bold text-black p-2 mt-2 rounded-lg items-center"
                   boxTitleThree="Ethnic groups"
                   boxTextThree={
                     ethnicGroups ? (
@@ -72,7 +69,6 @@ export default function Home() {
                       <Box>Loading...</Box>
                     )
                   }
-                  classnameBoxTextThree="flex justify-between w-full mt-2 font-bold text-yellow-500 p-4 rounded-lg items-center"
                 />
 
                 <div className="flex items-center justify-center">
@@ -131,28 +127,6 @@ export default function Home() {
                 icon={<CircleDollarSign />}
               />
             </div>
-            {/* <CardHorizontal
-              title={generalData.name}
-              text="South America"
-              imageUrl="https://flagcdn.com/w320/co.png"
-              imageAlt="Colombian Flag"
-              buttonText="Learn More"
-            /> */}
-            {/* <CardDivider
-              mainHeading="Heading"
-              boxTitleOne="Title One"
-              boxTextOne="Text"
-              boxTitleTwo="Title Two"
-              boxTextTwo="Text Two"
-            /> */}
-            {/* <CardDetail /> */}
-            {/* <CardHorizontal
-              title="South America"
-              text="South America"
-              imageUrl="https://flagcdn.com/w320/co.png"
-              imageAlt="Colombian Flag"
-              buttonText="Learn More"
-            /> */}
           </div>
         </section>
       </main>

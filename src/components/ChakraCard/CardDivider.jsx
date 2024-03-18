@@ -17,10 +17,9 @@ export default function CardDivider({
   boxTextOne,
   boxTitleTwo,
   boxTextTwo,
-  classnameBoxTextTwo,
   boxTitleThree,
   boxTextThree,
-  classnameBoxTextThree,
+  classnameBoxText,
 }) {
   return (
     <>
@@ -51,10 +50,12 @@ export default function CardDivider({
                 <Text
                   pt="2"
                   fontSize="sm"
-                  className={classnameBoxTextTwo}
+                  className={classnameBoxText}
                   sx={{
-                    backgroundColor: "rgba(151, 152, 160, 0.913)",
+                    // backgroundColor: "rgba(151, 152, 160, 0.913)",
+                    backgroundColor: "rgb(180, 181, 187, 0.913)",
                   }}
+                  // #0B1B2D text
                 >
                   {boxTextTwo}
                 </Text>
@@ -66,9 +67,9 @@ export default function CardDivider({
                 <Text
                   pt="2"
                   fontSize="sm"
-                  className={classnameBoxTextThree}
+                  className={classnameBoxText}
                   sx={{
-                    backgroundColor: "rgba(151, 152, 160, 0.913)",
+                    backgroundColor: "rgb(180, 181, 187, 0.913)",
                   }}
                 >
                   {boxTextThree}

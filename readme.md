@@ -1,6 +1,6 @@
 <div id="top"></div>
 
-# [Amocol](https://amo-col.vercel.app)
+# [AmoCol](https://amo-col.vercel.app)
 
 ### Uncover Colombia's rich tapestry
 
@@ -78,10 +78,16 @@ I hope you enjoy using the amocol repo!
 
 Resources list that I find helpful and would like to give credit to.
 
-- Special thanks to [**API-Colombia**](https://api-colombia.com/) for providing the data used in this project.
+- The invaluable data used in this project was graciously provided by [**API-Colombia**](https://api-colombia.com/) and [**Miguel Teheran**](https://mteheran.dev/). We extend our sincere gratitude for their contribution.
 
 [![Next.js](https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=Next.js&logoColor=white)](https://nextjs.org/)
 [![Tailwind-CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com/)
 [![Vercel](https://img.shields.io/badge/Vercel-000?style=for-the-badge&logo=Vercel&logoColor=white)](https://vercel.com/)
+
+Other Cool Projects using API-Colombia:
+
+✔️ [Especies Invasoras](https://especiesinvasoras.api-colombia.com/) is a portal in react.js to find INVASIVE SPECIE in Colombia. ⚡️ [GitHub Repo](https://github.com/Mteheran/invasivespecie-colombia)
+
+✔️ [Colombia-info](https://colombia-info.vercel.app) is an OS project to display information about the wonderful country that is Colombia. ⚡️ [GitHub Repo](
 
 <p align="right">(<a href="#top">👆 Top 👆</a>)</p>

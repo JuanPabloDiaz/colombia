@@ -5,8 +5,9 @@ import { AppContext } from "@/context";
 
 import { metadata } from "@/components/metadata";
 
-export default function Departamentos() {
-  const pageTitle = metadata.dep.title;
+export default function Radio() {
+  const pageTitle = metadata.fm.title;
+  const { radioData, isLoading } = useContext(AppContext);
   return (
     <>
       <title>{`${pageTitle} • AmoCol`}</title>

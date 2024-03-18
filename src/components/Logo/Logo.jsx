@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Typography } from "@/components/ui/typography";
-import { LoadingLogo } from "../LoadingLogo";
+import LoadingLogo from "../Loading/LoadingLogo";
 
 export function Logo() {
   const { generalData, isLoading } = useContext(AppContext);

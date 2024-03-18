@@ -29,7 +29,7 @@ export const metadata = {
     title: "Mapas",
   },
   espInv: {
-    title: "Especies Invasivas",
+    title: "Especies Invasoras",
   },
   ind: {
     title: "Comunidades Indígenas",
@@ -39,5 +39,8 @@ export const metadata = {
   },
   ley: {
     title: "Constitution",
+  },
+  fm: {
+    title: "Radio",
   },
 };

@@ -22,7 +22,7 @@ export const DataProvider = ({ children }) => {
     fetch(`${API_COL_BASE_URL}/Country/Colombia`)
       .then((response) => response.json())
       .then((json) => {
-        console.log("General Data: ", json);
+        // console.log("General Data: ", json);
         setGeneralData(json);
         setIsLoading(false);
       })
@@ -296,6 +296,26 @@ export const DataProvider = ({ children }) => {
       });
   }, []);
 
+  // *****************       RADIO        *****************
+
+  const [radioData, setRadioData] = useState([]);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    fetch(`${API_COL_BASE_URL}/radio`)
+      .then((response) => response.json())
+      .then((json) => {
+        // console.log("Radio Data: ", json);
+        setRadioData(json);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching Radio data: ", error);
+        setIsLoading(false);
+      });
+  }, []);
+
   return (
     <AppContext.Provider
       value={{
@@ -324,6 +344,8 @@ export const DataProvider = ({ children }) => {
         setAirportData,
         constitutionArticleData,
         setConstitutionArticleData,
+        radioData,
+        setRadioData,
       }}
     >
       {children}

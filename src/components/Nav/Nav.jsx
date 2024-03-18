@@ -14,90 +14,143 @@ import {
   Plane,
   ShieldPlus,
   Cannabis,
+  RadioTower,
 } from "lucide-react";
 
-import { Airport, Community, Indigena, Invasive } from "../icons";
+import { useToast } from "@/components/ui/use-toast";
 
 export const Nav = ({ ul_className }) => {
+  const { toast } = useToast();
+
   const links = [
     {
       title: "Inicio",
       href: "/",
       icon: <Home />,
     },
-    // {
-    //   title: "Prueba",
-    //   href: "/prueba",
-    //   icon: <Landmark />,
-    // },
+    {
+      title: "Prueba",
+      href: "/prueba",
+      icon: <Landmark />,
+    },
     {
       title: "Departamentos",
-      // href: "/departamentos",
+      href: "/departamentos",
       icon: <ShieldPlus />,
     },
     {
       title: "Regiones",
-      // href: "/regiones",
+      href: "/regiones",
       icon: <LandPlot />,
     },
     {
       title: "Turismo",
-      // href: "/turismo",
+      href: "/turismo",
       icon: <FerrisWheel />,
     },
     {
       title: "Presidentes",
-      // href: "/presidentes",
+      href: "/presidentes",
       icon: <Scale />,
     },
     {
       title: "Naturaleza",
-      // href: "/naturaleza",
+      href: "/naturaleza",
       icon: <Trees />,
     },
     {
       title: "Categorías Naturaleza",
-      // href: "/categorias-naturaleza",
+      href: "/categorias-naturaleza",
       icon: <TreePine />,
     },
     {
       title: "Mapas",
-      // href: "/mapas",
+      href: "/mapas",
       icon: <MapPin />,
     },
     {
       title: "Especies Invasoras",
-      // href: "especies-invasoras",
+      href: "/especies-invasoras",
       icon: <Cannabis />,
     },
     {
       title: "Comunidades Indígenas",
-      // href: "/comunidades-indigenas",
+      href: "/comunidades-indigenas",
       icon: <Tent />,
     },
     {
       title: "Aeropuertos",
-      // href: "/aeropuertos",
+      href: "/aeropuertos",
       icon: <Plane />,
     },
     {
       title: "Constitution",
-      // href: "/constitution",
+      href: "/constitution",
       icon: <Landmark />,
+    },
+    {
+      title: "Radio",
+      href: "/radio",
+      icon: <RadioTower />,
     },
   ];
 
+  // Sort links alphabetically and move "Inicio" to the top
+  links.sort((a, b) => {
+    if (a.title === "Inicio") return -1;
+    if (b.title === "Inicio") return 1;
+    if (a.title === "Prueba" && b.title !== "Inicio") return -1; // removed after testing
+    if (b.title === "Prueba" && a.title !== "Inicio") return 1; // removed after testing
+    return a.title.localeCompare(b.title);
+  });
+
   return (
-    // flex items-center justify-around
+    // <ul className={ul_className}>
+    //   {links.map((link, index) => (
+    //     <Link href={link.href || "/"} key={index}>
+    //       <li className="flex items-center">
+    //         <span className="w-20 px-4">{link.icon}</span>
+    //         {link.title}
+    //       </li>
+    //     </Link>
+    //   ))}
+    // </ul>
+
     <ul className={ul_className}>
-      {links.map((link, index) => (
-        <Link href={link.href || "/"} key={index}>
-          <li className="flex items-center">
-            <span className="w-20 px-4">{link.icon}</span>
-            {link.title}
-          </li>
-        </Link>
-      ))}
+      {links.map((link, index) => {
+        // Specify the routes you want to allow navigation to
+        const allowedRoutes = ["/", "/prueba", "/especies-invasoras"];
+
+        const isAllowedRoute = allowedRoutes.includes(link.href);
+
+        const handleClick = (e) => {
+          if (!isAllowedRoute) {
+            e.preventDefault();
+            toast({
+              title: "Proximamente...",
+              description:
+                "Esta página está en construcción. Por favor, vuelve más tarde.",
+              status: "info",
+              duration: 3000,
+            });
+          }
+        };
+
+        return (
+          <Link href={link.href || "/"} key={index}>
+            <li
+              className="flex items-center"
+              style={{
+                color: isAllowedRoute ? "white" : "gray",
+              }}
+              onClick={handleClick}
+            >
+              <span className="w-20 px-4">{link.icon}</span>
+              {link.title}
+            </li>
+          </Link>
+        );
+      })}
     </ul>
   );
 };
