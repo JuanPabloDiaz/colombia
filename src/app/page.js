@@ -61,7 +61,7 @@ export default function Home() {
                       <Box>Loading...</Box>
                     )
                   }
-                  classnameBoxTextTwo="flex justify-between w-full mt-2 font-bold text-yellow-500 p-4 rounded-lg items-center"
+                  classnameBoxText="flex justify-between w-full font-bold text-black p-2 mt-2 rounded-lg items-center"
                   boxTitleThree="Ethnic groups"
                   boxTextThree={
                     ethnicGroups ? (
@@ -72,7 +72,6 @@ export default function Home() {
                       <Box>Loading...</Box>
                     )
                   }
-                  classnameBoxTextThree="flex justify-between w-full mt-2 font-bold text-yellow-500 p-4 rounded-lg items-center"
                 />
 
                 <div className="flex items-center justify-center">
