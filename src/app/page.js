@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <>
       <title>{`${pageTitle} • Juan Diaz`}</title>
-      <main className="flex flex-col items-center justify-center">
+      <main className=" shadow-xl shadow-green-200">
         <section className="h-full w-full">
           <h1 className="mx-auto mb-8 w-fit rounded-xl bg-slate-950/90 p-4 text-4xl font-bold text-white/60">
             {pageTitle}
@@ -47,14 +47,13 @@ export default function Home() {
                   subtitle="Description"
                   description={generalData.description}
                 />
-
                 <div className="flex items-center justify-center">
                   {generalData.flags && (
                     <Image
                       src={generalData.flags[0]}
                       alt={generalData.name}
-                      width={800}
-                      height={500}
+                      width={400}
+                      height={400}
                       sizes="100vw"
                       className="rounded-lg"
                     />
@@ -62,7 +61,8 @@ export default function Home() {
                 </div>
               </article>
             </section>
-            <section className="grid grid-cols-4 gap-4 pt-6">
+
+            <section className="grid grid-cols-1 gap-2 pt-6 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
               <Card
                 title="Capital"
                 text={generalData.stateCapital}
@@ -96,7 +96,7 @@ export default function Home() {
                 icon={<CircleDollarSign />}
               />
             </section>
-            <section className="grid grid-cols-3 gap-4 pt-6">
+            <section className="grid grid-cols-1 gap-2 pt-4 md:grid-cols-2 md:gap-4 lg:grid-cols-3">
               <CardArray
                 title="Languages"
                 text={generalData.languages}

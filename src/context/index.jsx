@@ -129,7 +129,7 @@ export const DataProvider = ({ children }) => {
     fetch(`${API_COL_BASE_URL}/President`)
       .then((response) => response.json())
       .then((json) => {
-        console.log("President Data: ", json);
+        // console.log("President Data: ", json);
         setPresidentData(json);
         // setIsLoading(false);
       })
