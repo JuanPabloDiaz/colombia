@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <>
       <title>{`${pageTitle} • Juan Diaz`}</title>
-      <main className=" shadow-xl shadow-green-200">
+      <main className="">
         <section className="h-full w-full">
           <h1 className="mx-auto mb-8 w-fit rounded-xl bg-slate-950/90 p-4 text-4xl font-bold text-white/60">
             {pageTitle}

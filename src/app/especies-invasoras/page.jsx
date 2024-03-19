@@ -32,13 +32,13 @@ export default function EspeciesInvasoras() {
               <CardDetail
                 key={index}
                 title={specie.name}
+                subtitle={specie.scientificName}
                 description={specie.impact}
                 imageUrl={specie.urlImage}
                 alt={specie.scientificName}
                 imageWidth={320}
                 imageHeight={213}
                 imageStyle="cover"
-                nombreCientifico={specie.scientificName}
                 buttonOne="Ver más"
                 // buttonTwo="Comprar"
               />

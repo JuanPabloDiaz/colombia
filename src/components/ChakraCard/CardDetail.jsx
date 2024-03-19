@@ -10,12 +10,13 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
+  Badge,
 } from "@chakra-ui/react";
 
 export default function CardDetail({
   title,
   description,
-  nombreCientifico,
+  subtitle,
   buttonOne,
   buttonTwo,
   imageUrl,
@@ -23,6 +24,8 @@ export default function CardDetail({
   imageWidth,
   imageHeight,
   imageStyle,
+  badgeColor,
+  badgeText,
 }) {
   // const twoWords = (str) => {
   //   let words = str.split(" ");
@@ -43,7 +46,13 @@ export default function CardDetail({
 
   return (
     <>
-      <Card maxW="sm">
+      <Card
+        // maxW="sm"
+        sx={{
+          backgroundColor: "rgba(2, 6, 23, 0.7)",
+        }}
+        color="white.500"
+      >
         <CardBody>
           <Image
             src={imageUrl}
@@ -55,16 +64,19 @@ export default function CardDetail({
           />
           <Stack mt="6" spacing="3">
             <Heading size="md">{title}</Heading>
-            <Text className="line-clamp-3">{description}</Text>
-            <Text color="blue.600" fontSize="2xl">
-              {twoWords(nombreCientifico)}
+            <Text color="green.600" fontSize="sm">
+              {twoWords(subtitle)}
             </Text>
+            <Text className="line-clamp-3">{description}</Text>
           </Stack>
         </CardBody>
         <Divider />
+        <Stack direction="row">
+          <Badge colorScheme={badgeColor}>{badgeText}</Badge>
+        </Stack>
         <CardFooter>
           <ButtonGroup spacing="2">
-            <Button variant="solid" colorScheme="blue">
+            <Button variant="solid" colorScheme="gray">
               {buttonOne}
             </Button>
             <Button variant="ghost" colorScheme="blue">

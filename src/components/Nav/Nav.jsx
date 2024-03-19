@@ -119,7 +119,12 @@ export const Nav = ({ ul_className }) => {
     <ul className={ul_className}>
       {links.map((link, index) => {
         // Specify the routes you want to allow navigation to
-        const allowedRoutes = ["/", "/prueba", "/especies-invasoras"];
+        const allowedRoutes = [
+          "/",
+          "/prueba",
+          "/presidentes",
+          "/especies-invasoras",
+        ];
 
         const isAllowedRoute = allowedRoutes.includes(link.href);
 

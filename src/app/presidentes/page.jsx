@@ -25,21 +25,29 @@ export default function Presidentes() {
           <section className="grid grid-cols-4 gap-4 pt-6">
             {presidentData
               ?.sort((a, b) => a.id - b.id)
-              .map((president) => (
-                <React.Fragment key={president.id}>
-                  {/* <p>{president.id}</p> */}
-                  <CardDetail
-                    title={president.name + " " + president.lastName}
-                    // description={president.description}
-                    imageUrl={president.image}
-                    alt={president.lastName}
-                    imageWidth={300}
-                    imageHeight={300}
-                    imageStyle="contain"
-                    buttonOne="Ver más"
-                  />
-                </React.Fragment>
-              ))}
+              .map((president) => {
+                const fullName = president.name + " " + president.lastName;
+                const yStart = (president.startPeriodDate ?? "N-A").split(
+                  "-",
+                )[0];
+                const yEnd = (president.endPeriodDate ?? "A-N").split("-")[0];
+                const date = `${yStart} - ${yEnd}`;
+                return (
+                  <React.Fragment key={president.id}>
+                    <CardDetail
+                      title={fullName}
+                      badgeText={date}
+                      description={president.description}
+                      imageUrl={president.image}
+                      alt={president.lastName}
+                      imageWidth={300}
+                      imageHeight={300}
+                      imageStyle="contain"
+                      buttonOne="Ver más"
+                    />
+                  </React.Fragment>
+                );
+              })}
           </section>
         </div>
       </section>
