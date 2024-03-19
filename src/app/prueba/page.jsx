@@ -5,7 +5,7 @@ import { AppContext } from "@/context";
 
 import { metadata } from "@/components/metadata";
 import CardHorizontal from "@/components/ChakraCard/CardHorizontal";
-import CardDivider from "@/components/ChakraCard/CardDivider";
+import CardInfo from "@/components/ChakraCard/CardInfo";
 
 export default function Prueba() {
   const pageTitle = metadata.test.title;
@@ -32,13 +32,7 @@ export default function Prueba() {
           imageAlt="Colombian Flag"
           buttonText="Learn More"
         />
-        <CardDivider
-          mainHeading="Heading"
-          boxTitleOne="Title One"
-          boxTextOne="Text"
-          boxTitleTwo="Title Two"
-          boxTextTwo="Text Two"
-        />
+        <CardInfo title="Heading" subtitle="Title One" desciption="Text" />
       </main>
     </>
   );

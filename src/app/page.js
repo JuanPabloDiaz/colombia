@@ -3,10 +3,9 @@
 import React, { useContext } from "react";
 import { AppContext } from "@/context";
 import Image from "next/image";
-import CardDivider from "@/components/ChakraCard/CardDivider";
-import CardDetail from "@/components/ChakraCard/CardDetail";
+import CardInfo from "@/components/ChakraCard/CardInfo";
 import Card from "@/components/ChakraCard/Card";
-import CardHorizontal from "@/components/ChakraCard/CardHorizontal";
+import CardArray from "@/components/ChakraCard/CardArray";
 
 import { metadata } from "@/components/metadata";
 import {
@@ -18,7 +17,6 @@ import {
   MapPin,
   UsersRound,
 } from "lucide-react";
-import { Box } from "@chakra-ui/react";
 
 export default function Home() {
   const pageTitle = metadata.home.title;
@@ -44,31 +42,10 @@ export default function Home() {
                 className="mb-10 flex flex-col md:mb-0 md:grid md:w-full md:items-center md:gap-6"
                 style={{ gridTemplateColumns: "65% 35%" }}
               >
-                <CardDivider
-                  mainHeading={generalData.name}
-                  boxTitleOne="Description"
-                  boxTextOne={generalData.description}
-                  boxTitleTwo="Bordering Countries"
-                  boxTextTwo={
-                    generalData.borders ? (
-                      generalData.borders.map((country, index) => (
-                        <Box key={index}>{country}</Box>
-                      ))
-                    ) : (
-                      <Box>Loading...</Box>
-                    )
-                  }
-                  classnameBoxText="flex justify-between w-full font-bold text-black p-2 mt-2 rounded-lg items-center"
-                  boxTitleThree="Ethnic groups"
-                  boxTextThree={
-                    ethnicGroups ? (
-                      ethnicGroups.map((ethnicGroup, index) => (
-                        <Box key={index}>{ethnicGroup}</Box>
-                      ))
-                    ) : (
-                      <Box>Loading...</Box>
-                    )
-                  }
+                <CardInfo
+                  title={generalData.name}
+                  subtitle="Description"
+                  description={generalData.description}
                 />
 
                 <div className="flex items-center justify-center">
@@ -85,7 +62,7 @@ export default function Home() {
                 </div>
               </article>
             </section>
-            <div className="grid grid-cols-4 gap-4 pt-6">
+            <section className="grid grid-cols-4 gap-4 pt-6">
               <Card
                 title="Capital"
                 text={generalData.stateCapital}
@@ -114,19 +91,29 @@ export default function Home() {
                 icon={<Map />}
               />
               <Card
-                title="Languages"
-                text={generalData.languages?.map((language, index) => (
-                  <Box key={index}>{language}</Box>
-                ))}
-                classNameText={"flex gap-8"}
-                icon={<Languages />}
-              />
-              <Card
                 title="Currency"
                 text={`Colombian Peso • ${generalData.currencyCode}`}
                 icon={<CircleDollarSign />}
               />
-            </div>
+            </section>
+            <section className="grid grid-cols-3 gap-4 pt-6">
+              <CardArray
+                title="Languages"
+                text={generalData.languages}
+                classNameText={"flex gap-8"}
+                icon={<Languages />}
+              />
+              <CardArray
+                title="Bordering Countries"
+                text={generalData.borders}
+                classNameText={"flex gap-8"}
+              />
+              <CardArray
+                title="Ethnic Groups"
+                text={ethnicGroups}
+                classNameText={"flex gap-8"}
+              />
+            </section>
           </div>
         </section>
       </main>
