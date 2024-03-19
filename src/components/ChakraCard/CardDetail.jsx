@@ -20,8 +20,19 @@ export default function CardDetail({
   buttonTwo,
   imageUrl,
   alt,
+  imageWidth,
+  imageHeight,
+  imageStyle,
 }) {
-  const twoWords = (str) => {
+  // const twoWords = (str) => {
+  //   let words = str.split(" ");
+  //   if (words.length > 2) {
+  //     return words.slice(0, 2).join(" ") + "...";
+  //   } else {
+  //     return words.join(" ");
+  //   }
+  // };
+  const twoWords = (str = "") => {
     let words = str.split(" ");
     if (words.length > 2) {
       return words.slice(0, 2).join(" ") + "...";
@@ -38,8 +49,9 @@ export default function CardDetail({
             src={imageUrl}
             alt={alt}
             borderRadius="lg"
-            width={320}
-            height={213}
+            width={imageWidth}
+            height={imageHeight}
+            objectFit={imageStyle}
           />
           <Stack mt="6" spacing="3">
             <Heading size="md">{title}</Heading>
