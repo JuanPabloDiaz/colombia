@@ -23,20 +23,23 @@ export default function Presidentes() {
         </h1>
         <div className="w-full max-w-[1400px] gap-10 lg:grid-cols-2 xl:grid-cols-3">
           <section className="grid grid-cols-4 gap-4 pt-6">
-            {presidentData?.map((president) => (
-              <React.Fragment key={president.id}>
-                <CardDetail
-                  title={president.name + " " + president.lastName}
-                  // description={president.description}
-                  imageUrl={president.image}
-                  alt={president.lastName}
-                  imageWidth={300}
-                  imageHeight={300}
-                  imageStyle="contain"
-                  buttonOne="Ver más"
-                />
-              </React.Fragment>
-            ))}
+            {presidentData
+              ?.sort((a, b) => a.id - b.id)
+              .map((president) => (
+                <React.Fragment key={president.id}>
+                  {/* <p>{president.id}</p> */}
+                  <CardDetail
+                    title={president.name + " " + president.lastName}
+                    // description={president.description}
+                    imageUrl={president.image}
+                    alt={president.lastName}
+                    imageWidth={300}
+                    imageHeight={300}
+                    imageStyle="contain"
+                    buttonOne="Ver más"
+                  />
+                </React.Fragment>
+              ))}
           </section>
         </div>
       </section>
