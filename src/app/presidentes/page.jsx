@@ -7,6 +7,7 @@ import Card from "@/components/ChakraCard/Card";
 import CardDetail from "@/components/ChakraCard/CardDetail";
 
 import { metadata } from "@/components/metadata";
+import ImageChecker from "@/components/ImageChecker/ImageChecker";
 
 export default function Presidentes() {
   const pageTitle = metadata.pre.title;
@@ -33,17 +34,23 @@ export default function Presidentes() {
                 const date = `${yStart} - ${yEnd}`;
                 return (
                   <React.Fragment key={president.id}>
-                    <CardDetail
-                      title={fullName}
-                      badgeText={date}
-                      description={president.description}
+                    <ImageChecker
                       imageUrl={president.image}
-                      alt={president.lastName}
-                      imageWidth={300}
-                      imageHeight={300}
-                      imageStyle="contain"
-                      buttonOne="Ver más"
-                    />
+                      imageId={president.id}
+                      imageName={president.name}
+                    >
+                      <CardDetail
+                        title={fullName}
+                        badgeText={date}
+                        description={president.description}
+                        imageUrl={president.image}
+                        alt={president.lastName}
+                        imageWidth={300}
+                        imageHeight={300}
+                        imageStyle="contain"
+                        buttonOne="Ver más"
+                      />
+                    </ImageChecker>
                   </React.Fragment>
                 );
               })}

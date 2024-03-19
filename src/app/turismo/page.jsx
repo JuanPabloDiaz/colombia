@@ -6,6 +6,8 @@ import { AppContext } from "@/context";
 import { metadata } from "@/components/metadata";
 import CardDetail from "@/components/ChakraCard/CardDetail";
 
+import ImageChecker from "@/components/ImageChecker/ImageChecker";
+
 export default function Turismo() {
   const pageTitle = metadata.tur.title;
 
@@ -20,21 +22,30 @@ export default function Turismo() {
         </h1>
         <section className="flex items-center justify-center">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {touristicAttractionData.map((tour, index) => (
-              <CardDetail
-                key={index}
-                title={tour.name}
-                // subtitle={tour.scientificName}
-                // description={tour.impact}
-                imageUrl={tour.images}
-                // alt={tour.scientificName}
-                imageWidth={320}
-                imageHeight={213}
-                imageStyle="cover"
-                buttonOne="Ver más"
-                // buttonTwo="Comprar"
-              />
-            ))}
+            {touristicAttractionData
+              .sort((a, b) => a.id - b.id)
+              .map((tour, index) => (
+                <ImageChecker
+                  imageUrl={tour.images}
+                  imageId={tour.id}
+                  imageName={tour.name}
+                  key={index}
+                >
+                  <CardDetail
+                    key={index}
+                    title={tour.name}
+                    // subtitle={tour.scientificName}
+                    // description={tour.impact}
+                    imageUrl={tour.images}
+                    // alt={tour.scientificName}
+                    imageWidth={320}
+                    imageHeight={213}
+                    imageStyle="cover"
+                    buttonOne="Ver más"
+                    // buttonTwo="Comprar"
+                  />
+                </ImageChecker>
+              ))}
           </div>
         </section>
       </main>
