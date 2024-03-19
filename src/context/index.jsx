@@ -8,7 +8,9 @@ export const AppContext = createContext();
 const API_COL_BASE_URL = "https://api-colombia.com/api/v1";
 
 export const DataProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, // setIsLoading] = useState(false);
+  const [activeApiCalls, setActiveApiCalls] = useState(0);
+  const isLoading = activeApiCalls > 0;
 
   //       Get Information From Colombia API
 
@@ -17,18 +19,22 @@ export const DataProvider = ({ children }) => {
   const [generalData, setGeneralData] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
+    setActiveApiCalls((prev) => prev + 1);
 
     fetch(`${API_COL_BASE_URL}/Country/Colombia`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("General Data: ", json);
         setGeneralData(json);
-        setIsLoading(false);
+        // setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching General data: ", error);
-        setIsLoading(false);
+        // setIsLoading(false);
+      })
+      .finally(() => {
+        setActiveApiCalls((prev) => prev - 1);
       });
   }, []);
 
@@ -37,18 +43,22 @@ export const DataProvider = ({ children }) => {
   const [departamentData, setDepartamentData] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
+    setActiveApiCalls((prev) => prev + 1);
 
     fetch(`${API_COL_BASE_URL}/Department`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Departament Data: ", json);
         setDepartamentData(json);
-        setIsLoading(false);
+        // setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching Departament data: ", error);
-        setIsLoading(false);
+        // setIsLoading(false);
+      })
+      .finally(() => {
+        setActiveApiCalls((prev) => prev - 1);
       });
   }, []);
 
@@ -57,18 +67,22 @@ export const DataProvider = ({ children }) => {
   const [regionData, setRegionData] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
+    setActiveApiCalls((prev) => prev + 1);
 
     fetch(`${API_COL_BASE_URL}/Region`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Region Data: ", json);
         setRegionData(json);
-        setIsLoading(false);
+        // setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching Region data: ", error);
-        setIsLoading(false);
+        // setIsLoading(false);
+      })
+      .finally(() => {
+        setActiveApiCalls((prev) => prev - 1);
       });
   }, []);
 
@@ -85,18 +99,22 @@ export const DataProvider = ({ children }) => {
   const [touristicAttractionData, setTouristicAttractionData] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
+    setActiveApiCalls((prev) => prev + 1);
 
     fetch(`${API_COL_BASE_URL}/TouristicAttraction`)
       .then((response) => response.json())
       .then((json) => {
-        // console.log("Touristic Attraction Data: ", json);
+        console.log("Touristic Attraction Data: ", json);
         setTouristicAttractionData(json);
-        setIsLoading(false);
+        // setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching Touristic Attraction data: ", error);
-        setIsLoading(false);
+        // setIsLoading(false);
+      })
+      .finally(() => {
+        setActiveApiCalls((prev) => prev - 1);
       });
   }, []);
 
@@ -105,18 +123,22 @@ export const DataProvider = ({ children }) => {
   const [presidentData, setPresidentData] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
+    setActiveApiCalls((prev) => prev + 1);
 
     fetch(`${API_COL_BASE_URL}/President`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("President Data: ", json);
         setPresidentData(json);
-        setIsLoading(false);
+        // setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching President data: ", error);
-        setIsLoading(false);
+        // setIsLoading(false);
+      })
+      .finally(() => {
+        setActiveApiCalls((prev) => prev - 1);
       });
   }, []);
 
@@ -132,18 +154,22 @@ export const DataProvider = ({ children }) => {
 
   useEffect(() => {
     const findOnePresident = (id) => {
-      setIsLoading(true);
+      // setIsLoading(true);
+      setActiveApiCalls((prev) => prev + 1);
 
       fetch(`${API_COL_BASE_URL}/President/${id}`)
         .then((response) => response.json())
         .then((json) => {
           // console.log("President ID: ", json);
           setPresidentId(json);
-          setIsLoading(false);
+          // setIsLoading(false);
         })
         .catch((error) => {
           console.error("Error fetching President ID: ", error);
-          setIsLoading(false);
+          // setIsLoading(false);
+        })
+        .finally(() => {
+          setActiveApiCalls((prev) => prev - 1);
         });
     };
   }, []);
@@ -153,18 +179,22 @@ export const DataProvider = ({ children }) => {
   const [naturalAreaData, setNaturalAreaData] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
+    setActiveApiCalls((prev) => prev + 1);
 
     fetch(`${API_COL_BASE_URL}/NaturalArea`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Natural Area Data: ", json);
         setNaturalAreaData(json);
-        setIsLoading(false);
+        // setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching Natural Area data: ", error);
-        setIsLoading(false);
+        // setIsLoading(false);
+      })
+      .finally(() => {
+        setActiveApiCalls((prev) => prev - 1);
       });
   }, []);
 
@@ -173,18 +203,22 @@ export const DataProvider = ({ children }) => {
   const [categoryNaturalAreaData, setCategoryNaturalAreaData] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
+    setActiveApiCalls((prev) => prev + 1);
 
     fetch(`${API_COL_BASE_URL}/CategoryNaturalArea`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Category Natural Area Data: ", json);
         setCategoryNaturalAreaData(json);
-        setIsLoading(false);
+        // setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching Category Natural Area data: ", error);
-        setIsLoading(false);
+        // setIsLoading(false);
+      })
+      .finally(() => {
+        setActiveApiCalls((prev) => prev - 1);
       });
   }, []);
 
@@ -193,18 +227,22 @@ export const DataProvider = ({ children }) => {
   const [mapData, setMapData] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
+    setActiveApiCalls((prev) => prev + 1);
 
     fetch(`${API_COL_BASE_URL}/Map`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Map Data: ", json);
         setMapData(json);
-        setIsLoading(false);
+        // setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching Map data: ", error);
-        setIsLoading(false);
+        // setIsLoading(false);
+      })
+      .finally(() => {
+        setActiveApiCalls((prev) => prev - 1);
       });
   }, []);
 
@@ -221,18 +259,22 @@ export const DataProvider = ({ children }) => {
   const [invasiveSpecieData, setInvasiveSpecieData] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
+    setActiveApiCalls((prev) => prev + 1);
 
     fetch(`${API_COL_BASE_URL}/InvasiveSpecie`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Invasive Specie Data: ", json);
         setInvasiveSpecieData(json);
-        setIsLoading(false);
+        // setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching Invasive Specie data: ", error);
-        setIsLoading(false);
+        // setIsLoading(false);
+      })
+      .finally(() => {
+        setActiveApiCalls((prev) => prev - 1);
       });
   }, []);
 
@@ -241,18 +283,22 @@ export const DataProvider = ({ children }) => {
   const [nativeCommunityData, setNativeCommunityData] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
+    setActiveApiCalls((prev) => prev + 1);
 
     fetch(`${API_COL_BASE_URL}/NativeCommunity`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Native Community Data: ", json);
         setNativeCommunityData(json);
-        setIsLoading(false);
+        // setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching Native Community data: ", error);
-        setIsLoading(false);
+        // setIsLoading(false);
+      })
+      .finally(() => {
+        setActiveApiCalls((prev) => prev - 1);
       });
   }, []);
 
@@ -261,18 +307,22 @@ export const DataProvider = ({ children }) => {
   const [airportData, setAirportData] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
+    setActiveApiCalls((prev) => prev + 1);
 
     fetch(`${API_COL_BASE_URL}/Airport`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Airport Data: ", json);
         setAirportData(json);
-        setIsLoading(false);
+        // setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching Airport data: ", error);
-        setIsLoading(false);
+        // setIsLoading(false);
+      })
+      .finally(() => {
+        setActiveApiCalls((prev) => prev - 1);
       });
   }, []);
 
@@ -281,18 +331,22 @@ export const DataProvider = ({ children }) => {
   const [constitutionArticleData, setConstitutionArticleData] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
+    setActiveApiCalls((prev) => prev + 1);
 
     fetch(`${API_COL_BASE_URL}/ConstitutionArticle`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Constitution Article Data: ", json);
         setConstitutionArticleData(json);
-        setIsLoading(false);
+        // setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching Constitution Article data: ", error);
-        setIsLoading(false);
+        // setIsLoading(false);
+      })
+      .finally(() => {
+        setActiveApiCalls((prev) => prev - 1);
       });
   }, []);
 
@@ -301,18 +355,22 @@ export const DataProvider = ({ children }) => {
   const [radioData, setRadioData] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
+    setActiveApiCalls((prev) => prev + 1);
 
     fetch(`${API_COL_BASE_URL}/radio`)
       .then((response) => response.json())
       .then((json) => {
         // console.log("Radio Data: ", json);
         setRadioData(json);
-        setIsLoading(false);
+        // setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching Radio data: ", error);
-        setIsLoading(false);
+        // setIsLoading(false);
+      })
+      .finally(() => {
+        setActiveApiCalls((prev) => prev - 1);
       });
   }, []);
 
