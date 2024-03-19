@@ -123,6 +123,7 @@ export const Nav = ({ ul_className }) => {
           "/",
           "/prueba",
           "/presidentes",
+          "/turismo",
           "/especies-invasoras",
         ];
 
