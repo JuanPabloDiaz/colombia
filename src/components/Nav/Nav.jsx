@@ -19,7 +19,7 @@ import {
 
 import { useToast } from "@/components/ui/use-toast";
 
-export const Nav = ({ ul_className }) => {
+export const Nav = ({ setOpen, ul_className }) => {
   const { toast } = useToast();
 
   const links = [
@@ -143,10 +143,15 @@ export const Nav = ({ ul_className }) => {
               duration: 3000,
             });
           }
+          setOpen && setOpen(false); // Close the mobile menu
         };
 
         return (
-          <Link href={link.href || "/"} key={index}>
+          <Link
+            href={link.href || "/"}
+            key={index}
+            className="w-full cursor-pointer rounded-lg py-2 transition duration-300 ease-in-out hover:bg-gray-600"
+          >
             <li
               className="flex items-center"
               style={{
