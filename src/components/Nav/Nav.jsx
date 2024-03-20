@@ -28,11 +28,11 @@ export const Nav = ({ ul_className }) => {
       href: "/",
       icon: <Home />,
     },
-    {
-      title: "Prueba",
-      href: "/prueba",
-      icon: <Landmark />,
-    },
+    // {
+    //   title: "Prueba",
+    //   href: "/prueba",
+    //   icon: <Landmark />,
+    // },
     {
       title: "Departamentos",
       href: "/departamentos",
@@ -124,7 +124,10 @@ export const Nav = ({ ul_className }) => {
           "/prueba",
           "/presidentes",
           "/turismo",
+          "/mapas",
+          // "/radio",
           "/especies-invasoras",
+          // "/comunidades-indigenas",
         ];
 
         const isAllowedRoute = allowedRoutes.includes(link.href);

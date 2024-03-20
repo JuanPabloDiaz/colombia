@@ -2,6 +2,7 @@ import { Inter as FontSans } from "next/font/google";
 import "@/styles/globals.css";
 import { Sidebar } from "@/components/Sidebar";
 // import { Header } from "@/components/Header";
+import { HeaderMobile } from "@/components/HeaderMobile";
 import { Footer } from "@/components/Footer";
 import { DataProvider } from "@/context";
 
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
           {/* <body className="appBackground flex h-screen min-h-screen w-screen flex-col overflow-y-auto overflow-x-hidden text-white"> */}
           {/* <Header /> */}
           <Sidebar />
+          <HeaderMobile />
           <main
             className={cn(
               "flex flex-grow flex-col md:pl-[300px]",
