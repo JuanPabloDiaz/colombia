@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-import { Logo } from "@/components/logo";
+import { Logo } from "@/components/Logo";
 import { Nav } from "@/components/Nav";
 import {
   Drawer,
