@@ -18,7 +18,7 @@ export const HeaderMobile = () => {
 
   return (
     <header className="mb-2 flex justify-between bg-slate-950/90 p-4 md:hidden">
-      <Logo />
+      <Logo width={50} height={50} />
       <Drawer direction="right" open={open} onOpenChange={setOpen}>
         <DrawerTrigger>
           <Menu />
@@ -29,7 +29,7 @@ export const HeaderMobile = () => {
               <X className="absolute right-3 top-9" />
             </DrawerClose>
             <DrawerTitle>
-              <Logo />
+              <Logo width={50} height={50} />
             </DrawerTitle>
           </DrawerHeader>
           <Nav
