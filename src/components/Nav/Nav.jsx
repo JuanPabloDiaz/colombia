@@ -125,9 +125,9 @@ export const Nav = ({ ul_className }) => {
           "/presidentes",
           "/turismo",
           "/mapas",
-          "/radio",
+          // "/radio",
           "/especies-invasoras",
-          "/comunidades-indigenas",
+          // "/comunidades-indigenas",
         ];
 
         const isAllowedRoute = allowedRoutes.includes(link.href);
