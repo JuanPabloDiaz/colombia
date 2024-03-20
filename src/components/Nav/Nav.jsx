@@ -28,11 +28,11 @@ export const Nav = ({ ul_className }) => {
       href: "/",
       icon: <Home />,
     },
-    {
-      title: "Prueba",
-      href: "/prueba",
-      icon: <Landmark />,
-    },
+    // {
+    //   title: "Prueba",
+    //   href: "/prueba",
+    //   icon: <Landmark />,
+    // },
     {
       title: "Departamentos",
       href: "/departamentos",
