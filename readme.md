@@ -88,6 +88,12 @@ Other Cool Projects using API-Colombia:
 
 ✔️ [Especies Invasoras](https://especiesinvasoras.api-colombia.com/) is a portal in react.js to find INVASIVE SPECIE in Colombia. ⚡️ [GitHub Repo](https://github.com/Mteheran/invasivespecie-colombia)
 
-✔️ [Colombia-info](https://colombia-info.vercel.app) is an OS project to display information about the wonderful country that is Colombia. ⚡️ [GitHub Repo](
+✔️ [Colombia-info](https://colombia-info.vercel.app) is an OS project to display information about the wonderful country that is Colombia. ⚡️ [GitHub Repo](https://github.com/DavidCast27/colombia-info)
+
+✔️ [Buscador-ApiColombia]()
+⚡️ [GitHub Repo](https://github.com/Rinaplata/Buscador-ApiColombia)
+
+✔️ [DashboardJuridica](https://dashboard-juridica.vercel.app/)
+⚡️ [GitHub Repo](https://github.com/RodrigoA15/DashboardJuridica?tab=coc-ov-file)
 
 <p align="right">(<a href="#top">👆 Top 👆</a>)</p>
