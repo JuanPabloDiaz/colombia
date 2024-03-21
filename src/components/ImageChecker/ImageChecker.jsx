@@ -12,15 +12,23 @@ const ImageChecker = ({ imageUrl, imageId, imageName, children }) => {
         }
       })
       .catch((error) => {
-        console.error(
-          `Fetch error for image with ID ${imageId} and name ${imageName}`,
-          error.message,
-        );
+        // console.error(
+        //   `Fetch error for image with ID ${imageId} and name ${imageName}`,
+        //   error.message,
+        // );
         setImageExists(false);
       });
   }, [imageUrl, imageId, imageName]);
 
-  return imageExists ? children : <ErrorComponent />;
+  return imageExists ? (
+    children
+  ) : (
+    <ErrorComponent
+      imageId={imageId}
+      imageName={imageName}
+      imageUrl={imageUrl}
+    />
+  );
 };
 
 export default ImageChecker;
