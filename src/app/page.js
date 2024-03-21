@@ -6,6 +6,8 @@ import Image from "next/image";
 import CardInfo from "@/components/ChakraCard/CardInfo";
 import Card from "@/components/ChakraCard/Card";
 import CardArray from "@/components/ChakraCard/CardArray";
+import LoadingCard from "@/components/Loading/LoadingCard";
+import LoadingCardInfo from "@/components/Loading/LoadingCardInfo";
 
 import { metadata } from "@/components/metadata";
 import {
@@ -21,7 +23,21 @@ import {
 export default function Home() {
   const pageTitle = metadata.home.title;
 
-  const { generalData } = useContext(AppContext);
+  const { generalData, isLoading } = useContext(AppContext);
+
+  if (isLoading) {
+    return (
+      <section className="flex flex-col items-center justify-center">
+        <LoadingCardInfo />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <LoadingCard key={index} />
+          ))}
+        </div>
+      </section>
+    );
+  }
+
   const ethnicGroups = [
     "87% Mestizo-White",
     "7% Afro-Col",
@@ -40,7 +56,7 @@ export default function Home() {
           <div className="w-full max-w-[1400px] gap-10 lg:grid-cols-2 xl:grid-cols-3">
             <section>
               <article
-                className="mb-10 flex flex-col md:mb-0 md:grid md:w-full md:items-center md:gap-6"
+                className="mb-10 flex flex-col-reverse md:mb-0 md:grid md:w-full md:items-center md:gap-6"
                 style={{ gridTemplateColumns: "65% 35%" }}
               >
                 <CardInfo

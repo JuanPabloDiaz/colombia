@@ -6,7 +6,7 @@ import { AppContext } from "@/context";
 import CardDetail from "@/components/ChakraCard/CardDetail";
 
 import { metadata } from "@/components/metadata";
-import LoadingCard from "@/components/Loading/LoadingCard";
+import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
 
 export default function EspeciesInvasoras() {
   const pageTitle = metadata.espInv.title;
@@ -14,7 +14,15 @@ export default function EspeciesInvasoras() {
   const { invasiveSpecieData, isLoading } = useContext(AppContext);
 
   if (isLoading) {
-    return <LoadingCard />;
+    return (
+      <section className="flex items-center justify-center">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <LoadingCardDetail key={index} />
+          ))}
+        </div>
+      </section>
+    );
   }
 
   return (
