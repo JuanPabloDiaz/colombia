@@ -55,7 +55,9 @@ export default function CardDetail({
       >
         <CardBody>
           <Image
-            src={imageUrl}
+            // src={imageUrl}
+            // src="/assets/images/avatar.png"
+            src={imageUrl ?? "/assets/images/avatar.png"}
             alt={alt}
             borderRadius="lg"
             width={imageWidth}

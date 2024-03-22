@@ -27,10 +27,8 @@ export default function CardInfo({
       </CardHeader>
       <CardContent>
         <Image
-          blurDataURL="/assets/default/avatar.png"
-          placeholder="blur"
-          src={imageUrl ?? "/assets/default/avatar.png"}
-          alt="Picture of the author"
+          src={imageUrl ?? "/assets/images/avatar.png"}
+          alt="alt img"
           width={350}
           height={200}
         />

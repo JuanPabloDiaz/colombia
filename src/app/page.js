@@ -44,6 +44,7 @@ export default function Home() {
     "4% Indigenous",
     "2% Other",
   ];
+
   return (
     <>
       <title>{`${pageTitle} • Juan Diaz`}</title>
@@ -67,11 +68,7 @@ export default function Home() {
                 <div className="flex items-center justify-center">
                   {generalData.flags && (
                     <Image
-                      blurDataURL="/assets/images/blurEscudo.png"
-                      placeholder="blur"
-                      src={
-                        generalData.flags[0] ?? "/assets/images/blurEscudo.png"
-                      }
+                      src={generalData.flags[0]}
                       alt={generalData.name}
                       width={400}
                       height={400}
