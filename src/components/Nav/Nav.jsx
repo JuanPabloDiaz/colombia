@@ -142,6 +142,8 @@ export const Nav = ({ setOpen, ul_className }) => {
                 "Esta página está en construcción. Por favor, vuelve más tarde.",
               status: "info",
               duration: 3000,
+              className:
+                "bg-slate-950/90 text-white border-none shadow-sm shadow-gray-600",
             });
           }
           setOpen && setOpen(false); // Close the mobile menu

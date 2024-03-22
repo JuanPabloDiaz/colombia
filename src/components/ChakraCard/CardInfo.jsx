@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 import React from "react";
 import {
@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 
 export default function CardInfo({ title, subtitle, description }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  // const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <>
@@ -34,17 +34,16 @@ export default function CardInfo({ title, subtitle, description }) {
               pt="4"
               pr="6"
               fontSize="lg"
-              className={`overflow-hidden transition-all duration-200 ${isExpanded ? "h-auto" : "h-40"}`}
-              style={{
-                lineHeight: "1.3rem",
-                textOverflow: "ellipsis",
-                // whiteSpace: "nowrap",
-              }}
+              // className={`overflow-hidden transition-all duration-200 ${isExpanded ? "h-auto" : "h-40"}`}
+              // style={{
+              //   lineHeight: "1.3rem",
+              //   textOverflow: "ellipsis",
+              //   // whiteSpace: "nowrap",
+              // }}
             >
               {description}
             </Text>
-
-            <Text onClick={() => setIsExpanded(!isExpanded)}>Read More</Text>
+            {/*             <Text onClick={() => setIsExpanded(!isExpanded)}>Read More</Text> */}
           </Box>
         </CardBody>
       </Card>

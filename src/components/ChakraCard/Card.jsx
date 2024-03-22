@@ -15,6 +15,12 @@ export default function MyCard({
   icon,
   IconClassName,
 }) {
+  // Format text if it's a number
+  const formattedText =
+    typeof text === "number"
+      ? new Intl.NumberFormat("de-DE").format(text)
+      : text;
+
   return (
     <>
       <ChakraCard
@@ -38,7 +44,7 @@ export default function MyCard({
                 {title}
               </Heading>
               <Text pt="2" fontSize="sm" className={classNameText}>
-                {text}
+                {formattedText}
               </Text>
             </Box>
           </Flex>
