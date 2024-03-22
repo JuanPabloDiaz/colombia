@@ -44,6 +44,7 @@ export default function Home() {
     "4% Indigenous",
     "2% Other",
   ];
+
   return (
     <>
       <title>{`${pageTitle} • Juan Diaz`}</title>

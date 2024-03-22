@@ -4,9 +4,7 @@ import React, { useContext } from "react";
 import { AppContext } from "@/context";
 
 import { metadata } from "@/components/metadata";
-import CardDetail from "@/components/ChakraCard/CardDetail";
-import CardHorizontal from "@/components/ChakraCard/CardHorizontal";
-import Card from "@/components/ChakraCard/Card";
+import CardBadge from "@/components/Card/CardBadge";
 
 export default function ComunidadesIndigenas() {
   const pageTitle = metadata.ind.title;
@@ -34,18 +32,12 @@ export default function ComunidadesIndigenas() {
               .sort((a, b) => a.id - b.id)
               .map((ind, index) => (
                 <>
-                  <Card
+                  <CardBadge
                     key={index}
                     title={ind.name}
-                    // subtitle={ind.scientificName}
-                    // description={ind.impact}
-                    // imageUrl={ind.images}
-                    // alt={ind.scientificName}
-                    // imageWidth={320}
-                    // imageHeight={213}
-                    // imageStyle="cover"
-                    // buttonOne="Ver más"
-                    // buttonTwo="Comprar"
+                    text={ind.description}
+                    badge={["Lengua: ", ind.languages]}
+                    className="h-64 overflow-hidden overflow-ellipsis"
                   />
                 </>
               ))}

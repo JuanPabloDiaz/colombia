@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 export const ToastUnderConstruction = () => {
   const { toast } = useToast();
 
+  // this component is not in use
   return (
     <Button
       onClick={() => {
