@@ -125,6 +125,7 @@ export const Nav = ({ setOpen, ul_className }) => {
           "/presidentes",
           "/turismo",
           "/mapas",
+          "/departamentos",
           // "/radio",
           "/especies-invasoras",
           // "/comunidades-indigenas",

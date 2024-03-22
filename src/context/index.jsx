@@ -49,7 +49,7 @@ export const DataProvider = ({ children }) => {
     fetch(`${API_COL_BASE_URL}/Department`)
       .then((response) => response.json())
       .then((json) => {
-        // console.log("Departament Data: ", json);
+        console.log("Departament Data: ", json);
         setDepartamentData(json);
         // setIsLoading(false);
       })
@@ -105,7 +105,7 @@ export const DataProvider = ({ children }) => {
     fetch(`${API_COL_BASE_URL}/TouristicAttraction`)
       .then((response) => response.json())
       .then((json) => {
-        console.log("Touristic Attraction Data: ", json);
+        // console.log("Touristic Attraction Data: ", json);
         setTouristicAttractionData(json);
         // setIsLoading(false);
       })
