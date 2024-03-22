@@ -12,18 +12,17 @@ import {
 import Image from "next/image";
 
 export default function CardInfo({
-  cardTitle,
-  cardDescription,
-  cardContent,
+  title,
+  description,
   buttonOne,
   buttonTwo,
   imageUrl,
 }) {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[350px] border-none bg-slate-950/90 text-white/80">
       <CardHeader>
-        <CardTitle>{cardTitle}</CardTitle>
-        <CardDescription>{cardDescription}</CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
         <Image

@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/accordion";
 
 export default function CardAccordion({
-  cardTitle,
+  title,
   cardDescription,
   cardContent,
   buttonOne,
@@ -27,7 +27,7 @@ export default function CardAccordion({
   return (
     <Card className="w-[350px] border-none bg-black/80 text-white">
       <CardHeader>
-        <CardTitle>{cardTitle}</CardTitle>
+        <CardTitle>{title}</CardTitle>
         <CardDescription></CardDescription>
       </CardHeader>
       <CardContent>

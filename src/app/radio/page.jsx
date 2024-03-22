@@ -52,7 +52,7 @@ export default function Radio() {
                   /> */}
                   {/* <CardAccordion
                     key={index}
-                    cardTitle={fm.name}
+                    title={fm.name}
                     cardDescription={fm.city.description}
                     cardContent={fm.city.name}
                     buttonOne={fm.url}

@@ -3,11 +3,12 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/ui/typography";
 
-export default function CardShad({ title, text, className, icon }) {
+export default function CardBadge({ title, text, className, badge }) {
   return (
     <Card
       className={cn(
@@ -16,11 +17,11 @@ export default function CardShad({ title, text, className, icon }) {
       )}
     >
       <CardHeader>
-        <CardDescription>{title}</CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{badge}</CardDescription>
       </CardHeader>
       <CardContent className="flex items-center justify-between">
         <Typography variant="h4">{text}</Typography>
-        <div className="w-8 pl-2">{icon}</div>
       </CardContent>
     </Card>
   );
