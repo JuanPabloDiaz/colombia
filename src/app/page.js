@@ -67,7 +67,11 @@ export default function Home() {
                 <div className="flex items-center justify-center">
                   {generalData.flags && (
                     <Image
-                      src={generalData.flags[0]}
+                      blurDataURL="/assets/images/blurEscudo.png"
+                      placeholder="blur"
+                      src={
+                        generalData.flags[0] ?? "/assets/images/blurEscudo.png"
+                      }
                       alt={generalData.name}
                       width={400}
                       height={400}

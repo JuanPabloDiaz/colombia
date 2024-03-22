@@ -6,7 +6,10 @@ import { AppContext } from "@/context";
 import { metadata } from "@/components/metadata";
 import CardDetail from "@/components/ChakraCard/CardDetail";
 import CardHorizontal from "@/components/ChakraCard/CardHorizontal";
-import Card from "@/components/ChakraCard/Card";
+// import Card from "@/components/ChakraCard/Card";
+import Card from "@/components/Card/Card";
+import CardInfo from "@/components/Card/CardInfo";
+import CardAccordion from "@/components/Card/CardAccordion";
 
 export default function Radio() {
   const pageTitle = metadata.fm.title;
@@ -36,19 +39,28 @@ export default function Radio() {
                   <Card
                     key={index}
                     title={fm.name}
-                    // subtitle={fm.scientificName}
-                    // description={fm.impact}
-                    // imageUrl={fm.images}
-                    // alt={fm.scientificName}
-                    // imageWidth={320}
-                    // imageHeight={213}
-                    // imageStyle="cover"
-                    // buttonOne="Ver más"
-                    // buttonTwo="Comprar"
+                    text={fm.url}
+                    className="w-[250px] border-none bg-black/90 text-white"
                   />
-                  <a href={fm.url} target="_blank" rel="noopener noreferrer">
+                  {/* <CardInfo
+                    key={index}
+                    cardTitle={fm.name}
+                    cardDescription={fm.city.description}
+                    cardContent={"cardContent"}
+                    buttonOne={"buttonOne"}
+                    buttonTwo={"buttonTwo"}
+                  /> */}
+                  {/* <CardAccordion
+                    key={index}
+                    cardTitle={fm.name}
+                    cardDescription={fm.city.description}
+                    cardContent={fm.city.name}
+                    buttonOne={fm.url}
+                    buttonTwo={"buttonTwo"}
+                  /> */}
+                  {/* <a href={fm.url} target="_blank" rel="noopener noreferrer">
                     {fm.name}
-                  </a>
+                  </a> */}
                 </>
               ))}
           </div>
