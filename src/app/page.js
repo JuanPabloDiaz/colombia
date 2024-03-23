@@ -65,7 +65,7 @@ export default function Home() {
                   subtitle="Description"
                   description={generalData.description}
                 />
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center p-4 md:p-0">
                   {generalData.flags && (
                     <Image
                       src={generalData.flags[0]}

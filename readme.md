@@ -4,7 +4,7 @@
 
 ### Uncover Colombia's rich tapestry
 
-Explore Colombia comprehensively with [**amoCol**](https://amocol.jpdiaz.dev), a web application designed for in-depth learning _in Spanish_. Delve into national topics, departmental details, and cultural insights, all in one user-friendly platform.
+Explore Colombia comprehensively with [**amoCol**](https://colombia.jpdiaz.dev), a web application designed for in-depth learning _in Spanish_. Delve into national topics, departmental details, and cultural insights, all in one user-friendly platform.
 
 **Amocol** is a comprehensive web app that offers in-depth exploration of departments, regions, cities, presidents, and more. Responsive design ensures seamless access across all devices.
 
@@ -12,7 +12,7 @@ Read this document in [Español](/readme_es.md)
 
 <div align="center">
 
-[![](https://img.shields.io/badge/View%20Demo-000?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://amocol.jpdiaz.dev/)
+[![](https://img.shields.io/badge/View%20Demo-000?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://colombia.jpdiaz.dev/)
 [![repo](https://img.shields.io/badge/View%20Code-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://stackblitz.com/github.com/JuanPabloDiaz/amocol)
 
 </div>
@@ -35,15 +35,18 @@ This project was built using the following technologies:
 
 ![Nextjs](https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=Next.js&logoColor=white)
 ![Tailwind-CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)
+![Shadcn-UI](https://img.shields.io/badge/shadcn/ui-000000.svg?style=for-the-badge&logo=shadcn/ui&logoColor=white)
 ![Chakra-UI](https://img.shields.io/badge/Chakra%20UI-319795?style=for-the-badge&logo=Chakra-UI&logoColor=white)
 ![Backend](https://img.shields.io/badge/api-colombia-339933?style=for-the-badge&logoColor=white)
+
+#### Stack
 
 - **Frontend**: Next.js, Tailwind CSS, Chakra UI
 - **Backend**: API-Colombia
 
 ## Get started 🛠️
 
-To get started with [amoCol](https://amocol.jpdiaz.dev), simply clone the repository and follow the setup instructions. You'll be up and running in no time!
+To get started with [amoCol](https://colombia.jpdiaz.dev), simply clone the repository and follow the setup instructions. You'll be up and running in no time!
 
 ### Setup 📋
 
@@ -68,7 +71,7 @@ I welcome contributions to the repo! Feel free to fork the repository and submit
 
 ## License 📜
 
-[amocol](https://amocol.jpdiaz.dev) is licensed under the MIT License.
+[amocol](https://colombia.jpdiaz.dev) is licensed under the MIT License.
 
 I hope you enjoy using the amocol repo!
 
