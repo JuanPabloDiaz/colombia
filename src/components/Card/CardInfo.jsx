@@ -17,9 +17,15 @@ export default function CardInfo({
   buttonOne,
   buttonTwo,
   imageUrl,
+  className,
 }) {
   return (
-    <Card className="w-[350px] border-none bg-slate-950/90 text-white/80">
+    <Card
+      className={cn(
+        "w-[350px] border-none bg-slate-950/90 text-white/80",
+        className,
+      )}
+    >
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>

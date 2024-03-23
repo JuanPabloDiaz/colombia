@@ -17,14 +17,14 @@ export const HeaderMobile = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="mb-2 flex justify-between bg-slate-950/90 p-4 md:hidden">
+    <header className="fixed z-50 mb-2 flex w-full justify-between bg-slate-950/90 p-4 shadow-sm shadow-gray-600 md:hidden">
       <Logo width={50} height={50} />
       <Drawer direction="right" open={open} onOpenChange={setOpen}>
         <DrawerTrigger>
-          <Menu />
+          <Menu className="rounded-full hover:bg-gray-400/90 hover:text-black" />
         </DrawerTrigger>
-        <DrawerContent className="h-full bg-slate-950/90">
-          <DrawerHeader className="mb-10 ">
+        <DrawerContent className="h-full border-none bg-slate-950/80">
+          <DrawerHeader className="mb-10">
             <DrawerClose>
               <X className="absolute right-3 top-9" />
             </DrawerClose>
@@ -34,7 +34,7 @@ export const HeaderMobile = () => {
           </DrawerHeader>
           <Nav
             setOpen={setOpen}
-            ul_className="flex flex-col justify-evenly items-center h-full text-xl font-semibold "
+            ul_className="flex flex-col justify-around items-center h-full text-xl font-semibold"
           />
         </DrawerContent>
       </Drawer>

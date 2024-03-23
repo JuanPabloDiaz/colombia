@@ -19,13 +19,16 @@ import {
 
 export default function CardAccordion({
   title,
-  cardDescription,
-  cardContent,
+  description,
+  content,
   buttonOne,
   buttonTwo,
+  className,
 }) {
   return (
-    <Card className="w-[350px] border-none bg-black/80 text-white">
+    <Card
+      className={cn("w-[350px] border-none bg-black/80 text-white", className)}
+    >
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription></CardDescription>
@@ -33,8 +36,8 @@ export default function CardAccordion({
       <CardContent>
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
-            <AccordionTrigger>{cardContent}</AccordionTrigger>
-            <AccordionContent>{cardDescription}</AccordionContent>
+            <AccordionTrigger>{content}</AccordionTrigger>
+            <AccordionContent>{description}</AccordionContent>
           </AccordionItem>
         </Accordion>
       </CardContent>

@@ -5,22 +5,18 @@ import { AppContext } from "@/context";
 
 import { metadata } from "@/components/metadata";
 import CardDetail from "@/components/ChakraCard/CardDetail";
-import CardHorizontal from "@/components/ChakraCard/CardHorizontal";
 // import Card from "@/components/ChakraCard/Card";
 import Card from "@/components/Card/Card";
 import CardInfo from "@/components/Card/CardInfo";
 import CardAccordion from "@/components/Card/CardAccordion";
+import LoadingCard from "@/components/Loading/LoadingCard";
 
 export default function Radio() {
   const pageTitle = metadata.fm.title;
   const { radioData, isLoading } = useContext(AppContext);
 
   if (isLoading) {
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <h1 className="text-4xl font-bold">Loading...</h1>
-      </div>
-    );
+    return <LoadingCard />;
   }
 
   return (
@@ -44,17 +40,17 @@ export default function Radio() {
                   />
                   {/* <CardInfo
                     key={index}
-                    cardTitle={fm.name}
-                    cardDescription={fm.city.description}
-                    cardContent={"cardContent"}
+                    title={fm.name}
+                    description={fm.city.description}
+                    content={"content"}
                     buttonOne={"buttonOne"}
                     buttonTwo={"buttonTwo"}
                   /> */}
                   {/* <CardAccordion
                     key={index}
                     title={fm.name}
-                    cardDescription={fm.city.description}
-                    cardContent={fm.city.name}
+                    description={fm.city.description}
+                    content={fm.city.name}
                     buttonOne={fm.url}
                     buttonTwo={"buttonTwo"}
                   /> */}
