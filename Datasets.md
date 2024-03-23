@@ -11,9 +11,15 @@
 
 ## Mapas de Colombia
 
-[Colombia en Mapas](https://www.colombiaenmapas.gov.co/#)
+- [Colombia en Mapas](https://www.colombiaenmapas.gov.co/#)
+- [Simple Maps](https://simplemaps.com/country/co/)
 
-[wiki](<https://es.wikipedia.org/wiki/Anexo:Municipios_de_Colombia#/media/Archivo:Mapa_de_Colombia_(+municipios).svg>)
+- [Image wiki](<https://es.wikipedia.org/wiki/Anexo:Municipios_de_Colombia#/media/Archivo:Mapa_de_Colombia_(+municipios).svg>)
+
+## Geojson y Topojson
+
+- [colombia.geo.json](https://gist.github.com/john-guerra/43c7656821069d00dcbc#file-colombia-geo-json)
+- [Departamentos y Municipos en Colombia en Formato Geojson y Topojson.](https://github.com/caticoa3/colombia_mapa/tree/master)
 
 ## Other resources
 
