@@ -5,6 +5,7 @@ import { AppContext } from "@/context";
 
 import { metadata } from "@/components/metadata";
 import CardDetail from "@/components/ChakraCard/CardDetail";
+import LoadingCard from "@/components/Loading/LoadingCard";
 
 export default function Mapas() {
   const pageTitle = metadata.map.title;
@@ -14,7 +15,7 @@ export default function Mapas() {
   if (isLoading) {
     return (
       <>
-        <h2>Loading...</h2>
+        <LoadingCard />
       </>
     );
   }

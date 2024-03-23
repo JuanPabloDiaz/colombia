@@ -4,12 +4,11 @@ import React, { useContext } from "react";
 import { AppContext } from "@/context";
 
 import { metadata } from "@/components/metadata";
-import CardHorizontal from "@/components/ChakraCard/CardHorizontal";
 import CardInfo from "@/components/ChakraCard/CardInfo";
 
 export default function Prueba() {
   const pageTitle = metadata.test.title;
-  const { generalData } = useContext(AppContext);
+  const { generalData, isloading } = useContext(AppContext);
 
   return (
     <>
@@ -18,20 +17,6 @@ export default function Prueba() {
         {pageTitle}
       </h1>
       <main>
-        <CardHorizontal
-          title="South America"
-          text="South America"
-          imageUrl="https://flagcdn.com/w320/co.png"
-          imageAlt="Colombian Flag"
-          buttonText="Learn More"
-        />
-        <CardHorizontal
-          title={generalData.name}
-          text="South America"
-          imageUrl="https://flagcdn.com/w320/co.png"
-          imageAlt="Colombian Flag"
-          buttonText="Learn More"
-        />
         <CardInfo title="Heading" subtitle="Title One" desciption="Text" />
       </main>
     </>

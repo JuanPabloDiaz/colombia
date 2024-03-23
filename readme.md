@@ -93,6 +93,8 @@ Other Cool Projects using API-Colombia:
 
 ✔️ [Colombia-info](https://colombia-info.vercel.app) is an OS project to display information about the wonderful country that is Colombia. ⚡️ [GitHub Repo](https://github.com/DavidCast27/colombia-info)
 
+✔️ [Colombian Map - Landing page](https://colombia-rosy.vercel.app/) ⚡️ [GitHub Repo](https://github.com/Orloxx23/7-Landings/tree/main/DIA3)
+
 ✔️ [Buscador-ApiColombia]()
 ⚡️ [GitHub Repo](https://github.com/Rinaplata/Buscador-ApiColombia)
 

@@ -5,6 +5,7 @@ import { AppContext } from "@/context";
 
 import { metadata } from "@/components/metadata";
 import CardBadge from "@/components/Card/CardBadge";
+import LoadingCard from "@/components/Loading/LoadingCard";
 
 export default function ComunidadesIndigenas() {
   const pageTitle = metadata.ind.title;
@@ -12,11 +13,7 @@ export default function ComunidadesIndigenas() {
   const { nativeCommunityData, isLoading } = useContext(AppContext);
 
   if (isLoading) {
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <h1 className="text-4xl font-bold">Loading...</h1>
-      </div>
-    );
+    return <LoadingCard />;
   }
 
   return (
