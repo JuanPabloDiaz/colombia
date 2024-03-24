@@ -63,7 +63,7 @@ To get started with [amoCol](https://colombia.jpdiaz.dev), simply clone the repo
 
 ## Contribution 🤝
 
-I welcome contributions to the repo! Feel free to fork the repository and submit pull requests with your improvements.
+Everyone is welcome to collaborate with this project, before contributing please read the [contribution guide](https://github.com/JuanPabloDiaz/AmoCol/blob/main/CONTRIBUTING.md).
 
 ### Contributors
 
