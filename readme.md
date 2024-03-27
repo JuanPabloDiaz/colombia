@@ -98,8 +98,4 @@ Other Cool Projects using API-Colombia:
 ✔️ [DashboardJuridica](https://dashboard-juridica.vercel.app/)
 ⚡️ [GitHub Repo](https://github.com/RodrigoA15/DashboardJuridica?tab=coc-ov-file)
 
-<div style="float: right">
-<a href="#top">
-<img src="https://raw.githubusercontent.com/JuanPabloDiaz/devKit/main/backtotop.jpg" width="100">
-</a>
-</div>
+<p align="right"><a href="#top"><img src="https://raw.githubusercontent.com/JuanPabloDiaz/devKit/main/backtotop.jpg" width="100"></a></p>
