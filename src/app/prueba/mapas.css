@@ -1,0 +1,32 @@
+.mapaColombia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 50px; */
+  background-color: gray;
+}
+
+.mapaColombia svg {
+  width: 100vh;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.347);
+}
+
+.mapaColombia svg path {
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 1;
+}
+
+.mapaColombia svg path:hover {
+  fill: #f00;
+}
+
+.mapaColombia svg text {
+  font-size: 10px;
+  fill: #000;
+}
+
+.mapaColombia svg text:hover {
+  fill: #f00;
+}
