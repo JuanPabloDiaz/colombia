@@ -1,6 +1,6 @@
 <div id="top"></div>
 
-# [AmoCol](https://amo-col.vercel.app)
+# AmoCol
 
 ### Uncover Colombia's rich tapestry
 
@@ -19,17 +19,23 @@ Read this document in [Español](/readme_es.md)
 
 ### Desktop View 🖥️
 
+<a href="https://colombia.jpdiaz.dev">
 <img src="./src/assets/images/desktop.png" width="" />
+</a>
 
 ### iPad view 📱
 
+<a href="https://colombia.jpdiaz.dev">
 <img src="./src/assets/images/ipad.png" width="300" />
+</a>
 
 ### Mobile view 📱
 
+<a href="https://colombia.jpdiaz.dev">
 <img src="./src/assets/images/phone.png" width="250" />
+</a>
 
-### Built With 🔑
+## Tech stack 🥞
 
 This project was built using the following technologies:
 
@@ -38,11 +44,6 @@ This project was built using the following technologies:
 ![Shadcn-UI](https://img.shields.io/badge/shadcn/ui-000000.svg?style=for-the-badge&logo=shadcn/ui&logoColor=white)
 ![Chakra-UI](https://img.shields.io/badge/Chakra%20UI-319795?style=for-the-badge&logo=Chakra-UI&logoColor=white)
 ![Backend](https://img.shields.io/badge/api-colombia-339933?style=for-the-badge&logoColor=white)
-
-#### Stack
-
-- **Frontend**: Next.js, Tailwind CSS, Chakra UI
-- **Backend**: API-Colombia
 
 ## Get started 🛠️
 
@@ -63,19 +64,15 @@ To get started with [amoCol](https://colombia.jpdiaz.dev), simply clone the repo
 
 ## Contribution 🤝
 
-Everyone is welcome to collaborate with this project, before contributing please read the [contribution guide](https://github.com/JuanPabloDiaz/AmoCol/blob/main/CONTRIBUTING.md).
+Everyone is welcome to collaborate with this project, before contributing please read the [contribution guide](CONTRIBUTING.md).
 
 ### Contributors
 
-<a href="https://github.com/JuanPabloDiaz/amocol/graphs/contributors"><img src="https://contrib.rocks/image?repo=JuanPabloDiaz/amocol" /></a><!-- Made with [contrib.rocks](https://contrib.rocks). -->
+<a href="https://github.com/JuanPabloDiaz/amoCol/graphs/contributors"><img src="https://contrib.rocks/image?repo=JuanPabloDiaz/amoCol" /></a>
 
 ## License 📜
 
-[amocol](https://colombia.jpdiaz.dev) is licensed under the MIT License.
-
-I hope you enjoy using the amocol repo!
-
-<!-- ACKNOWLEDGMENTS -->
+[amoCol](https://colombia.jpdiaz.dev) is licensed under the MIT License.
 
 ## Acknowledgments 📚
 
@@ -101,4 +98,8 @@ Other Cool Projects using API-Colombia:
 ✔️ [DashboardJuridica](https://dashboard-juridica.vercel.app/)
 ⚡️ [GitHub Repo](https://github.com/RodrigoA15/DashboardJuridica?tab=coc-ov-file)
 
-<p align="right">(<a href="#top">👆 Top 👆</a>)</p>
+<div style="float: right">
+<a href="#top">
+<img src="https://raw.githubusercontent.com/JuanPabloDiaz/devKit/main/backtotop.jpg" width="100">
+</a>
+</div>
