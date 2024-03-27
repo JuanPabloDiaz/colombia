@@ -1,6 +1,4 @@
-<div id="arriba"></div>
-
-#Amocol
+# Amocol
 
 ### Descubre el rico tapiz de Colombia
 
@@ -19,27 +17,39 @@ Lea este documento en [English](/readme.md)
 
 ### Vista de escritorio 🖥️
 
-<img src="./src/assets/images/desktop.png" ancho="" />
+<a href="https://colombia.jpdiaz.dev">
+<img src="./src/assets/images/desktop.png" />
+</a>
 
 ### Vista de iPad 📱
 
-<img src="./src/assets/images/ipad.png" ancho="300" />
+<a href="https://colombia.jpdiaz.dev">
+<img src="./src/assets/images/ipad.png" width="300" />
+</a>
 
 ### Vista móvil 📱
 
-<img src="./src/assets/images/phone.png" ancho="250" />
+<a href="https://colombia.jpdiaz.dev">
+<img src="./src/assets/images/phone.png" width="250" />
+</a>
 
-### Construido con 🔑
+### Stack de Tecnología 🥞
 
 Este proyecto fue construido utilizando las siguientes tecnologías:
 
 ![Nextjs](https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=Next.js&logoColor=white)
 ![Tailwind-CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)
+![Shadcn-UI](https://img.shields.io/badge/shadcn/ui-000000.svg?style=for-the-badge&logo=shadcn/ui&logoColor=white)
 ![Chakra-UI](https://img.shields.io/badge/Chakra%20UI-319795?style=for-the-badge&logo=Chakra-UI&logoColor=white)
 ![Backend](https://img.shields.io/badge/api-colombia-339933?style=for-the-badge&logoColor=white)
 
-- **Frontend**: Next.js, Tailwind CSS, interfaz de usuario de Chakra
-- **Backend**: API-Colombia
+## Aporte 🤝
+
+Todos son bienvenidos a colaborar con este proyecto. Antes de contribuir, lea la [contribution guide](CONTRIBUTING.md).
+
+### Colaboradores
+
+<a href="https://github.com/JuanPabloDiaz/amocol/graphs/contributors"><img src="https://contrib.rocks/image?repo=JuanPabloDiaz/amocol" /></a>
 
 ## Empiece 🛠️
 
@@ -58,21 +68,9 @@ Para comenzar con [amoCol](https://amocol.jpdiaz.dev), simplemente clone el repo
    ```
 4. Abra [http://localhost:3000/](http://localhost:3000/) con su navegador para ver el resultado.
 
-##Aporte 🤝
-
-¡Agradezco las contribuciones al repositorio! No dudes en bifurcar el repositorio y enviar solicitudes de extracción con tus mejoras.
-
-### Colaboradores
-
-<a href="https://github.com/JuanPabloDiaz/amocol/graphs/contributors"><img src="https://contrib.rocks/image?repo=JuanPabloDiaz/amocol" /></a>
-
 ## Licencia 📜
 
-[amocol](https://amocol.jpdiaz.dev) tiene la licencia MIT.
-
-¡Espero que disfrutes usando el repositorio de amocol!
-
-<!-- AGRADECIMIENTOS -->
+[amoCol](https://amocol.jpdiaz.dev) tiene la licencia MIT.
 
 ## Agradecimientos 📚
 
@@ -84,4 +82,18 @@ Lista de recursos que encuentro útiles y a los que me gustaría dar crédito.
 [![Tailwind-CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com/)
 [![Vercel](https://img.shields.io/badge/Vercel-000?style=for-the-badge&logo=Vercel&logoColor=white)](https://vercel.com/)
 
-<p align="right">(<a href="#top">👆 Arriba 👆</a>)</p>
+### Proyectos geniales usando API-Colombia:
+
+✔️ [Especies Invasoras](https://especiesinvasoras.api-colombia.com/) es un portal en react.js para encontrar ESPECIES INVASORAS en Colombia. ⚡️ [Repositorio de GitHub](https://github.com/Mteheran/invasivespecie-colombia)
+
+✔️ [Colombia-info](https://colombia-info.vercel.app) es un proyecto de SO para mostrar información sobre el maravilloso país que es Colombia. ⚡️ [Repositorio de GitHub](https://github.com/DavidCast27/colombia-info)
+
+✔️ [Mapa de Colombia - Página de inicio](https://colombia-rosy.vercel.app/) ⚡️ [GitHub Repo](https://github.com/Orloxx23/7-Landings/tree/main/DIA3)
+
+✔️ [Buscador-ApiColombia]()
+⚡️ [Repo GitHub](https://github.com/Rinaplata/Buscador-ApiColombia)
+
+✔️ [DashboardJuridica](https://dashboard-juridica.vercel.app/)
+⚡️ [Repositorio de GitHub](https://github.com/RodrigoA15/DashboardJuridica?tab=coc-ov-file)
+
+<p align="right"><a href="#"><img src="https://raw.githubusercontent.com/JuanPabloDiaz/devKit/main/backtotop.jpg" width="100"></a></p>
