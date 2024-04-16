@@ -9,6 +9,7 @@ import { DataProvider } from "@/context";
 import { Providers } from "@/context/providers";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
+import Script from "next/script";
 
 export const metadata = {
   title: "Amo Colombia",
@@ -25,6 +26,22 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <DataProvider>
+        <head>
+          <Script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-Y1L3GV2LXM"
+          ></Script>
+          <Script id="google-analytics">
+            {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-Y1L3GV2LXM');
+            `}
+          </Script>
+        </head>
+
         <body className="appBackground flex min-h-screen flex-col text-white">
           {/* <body className="appBackground flex h-screen min-h-screen w-screen flex-col overflow-y-auto overflow-x-hidden text-white"> */}
           {/* <Header /> */}

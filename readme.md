@@ -15,6 +15,9 @@ Read this document in [Español](/readme_es.md)
 
 </div>
 
+<a href="https://colombia.jpdiaz.dev"><img src="https://raw.githubusercontent.com/JuanPabloDiaz/amoCol/main/public/assets/mapas/colombia_simplemaps.svg" width="300"></a>
+
+<!--
 ### Desktop View 🖥️
 
 <a href="https://colombia.jpdiaz.dev">
@@ -31,7 +34,7 @@ Read this document in [Español](/readme_es.md)
 
 <a href="https://colombia.jpdiaz.dev">
 <img src="./src/assets/images/phone.png" width="250" />
-</a>
+</a> -->
 
 ## Tech Stack 🥞
 
@@ -96,4 +99,4 @@ Resources list that I find helpful and would like to give credit to.
 ✔️ [DashboardJuridica](https://dashboard-juridica.vercel.app/)
 ⚡️ [GitHub Repo](https://github.com/RodrigoA15/DashboardJuridica?tab=coc-ov-file)
 
-<p align="right"><a href="#"><img src="https://raw.githubusercontent.com/JuanPabloDiaz/devKit/main/backtotop.jpg" width="100"></a></p>
+<p align="right"><a href="#amoCol"><img src="https://raw.githubusercontent.com/JuanPabloDiaz/freeForGeeks/main/backtotop.jpg" width="100"></a></p>

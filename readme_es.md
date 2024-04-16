@@ -96,4 +96,4 @@ Lista de recursos que encuentro útiles y a los que me gustaría dar crédito.
 ✔️ [DashboardJuridica](https://dashboard-juridica.vercel.app/)
 ⚡️ [Repositorio de GitHub](https://github.com/RodrigoA15/DashboardJuridica?tab=coc-ov-file)
 
-<p align="right"><a href="#"><img src="https://raw.githubusercontent.com/JuanPabloDiaz/devKit/main/backtotop.jpg" width="100"></a></p>
+<p align="right"><a href="#amoCol"><img src="https://raw.githubusercontent.com/JuanPabloDiaz/freeForGeeks/main/backtotop.jpg" width="100"></a></p>
