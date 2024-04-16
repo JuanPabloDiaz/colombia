@@ -19,7 +19,7 @@ export function Logo({ width, height }) {
         variant="span"
         className="self-center whitespace-nowrap pl-2 text-xl font-semibold"
       >
-        {"AMO COL"}
+        {"COLOMBIA 360"}
       </Typography>
     </Link>
   );

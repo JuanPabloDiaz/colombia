@@ -1,0 +1,22 @@
+.mapaColombia svg {
+  width: 100vh;
+  height: auto;
+  background-color: #020617c9;
+}
+
+.mapaColombia svg path {
+  fill: rgb(199, 196, 196); /* #9c92ac; */
+  stroke: #000; /* darkblue */
+  stroke-width: 1;
+  outline: none;
+}
+
+.mapaColombia svg path:hover {
+  fill: gray;
+  cursor: pointer;
+}
+
+/* .mapaColombia svg text {
+  font-size: 10px;
+  fill: #000;
+} */
