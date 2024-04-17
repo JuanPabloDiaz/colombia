@@ -12,7 +12,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Script from "next/script";
 
 export const metadata = {
-  title: "Amo Colombia",
+  title: "Colombia 360",
   description:
     "Personal project to express my love for Colombia and share some information about it.",
 };

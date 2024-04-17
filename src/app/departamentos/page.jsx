@@ -3,7 +3,6 @@
 import React, { useContext, isLoading, useEffect } from "react";
 import { AppContext } from "@/context";
 
-import CardDetail from "@/components/ChakraCard/CardDetail";
 import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
 
 import { metadata } from "@/components/metadata";
@@ -102,14 +101,6 @@ export default function Departamentos() {
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
-
-              {/* <CardDetail
-                key={index}
-                title={departament.name}
-                subtitle={departament.subtitle}
-                description={departament.description}
-                image={departament.imageurl}
-              /> */}
             </>
           ))}
         </div>

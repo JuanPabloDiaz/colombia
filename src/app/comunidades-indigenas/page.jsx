@@ -33,7 +33,7 @@ export default function ComunidadesIndigenas() {
                     key={index}
                     title={ind.name}
                     text={ind.description}
-                    badge={["Lengua: ", ind.languages]}
+                    badge={["Dialecto(s): ", ind.languages]}
                     className="h-64 overflow-hidden overflow-ellipsis"
                   />
                 </>

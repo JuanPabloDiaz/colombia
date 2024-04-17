@@ -361,7 +361,7 @@ export const DataProvider = ({ children }) => {
     fetch(`${API_COL_BASE_URL}/radio`)
       .then((response) => response.json())
       .then((json) => {
-        console.log("Radio Data: ", json);
+        // console.log("Radio Data: ", json);
         setRadioData(json);
         // setIsLoading(false);
       })

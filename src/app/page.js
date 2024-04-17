@@ -61,7 +61,9 @@ export default function Home() {
                 style={{ gridTemplateColumns: "65% 35%" }}
               >
                 <CardInfo
-                  title={generalData.name}
+                  title={
+                    generalData.name + ", el riesgo es que te quieras quedar!"
+                  }
                   subtitle="Description"
                   description={generalData.description}
                 />
@@ -89,12 +91,12 @@ export default function Home() {
                 icon={<Landmark />}
               />
               <Card
-                title="Population"
+                title="población"
                 text={generalData.population}
                 icon={<UsersRound />}
               />
               <Card
-                title="Surface"
+                title="Superficie"
                 text={generalData.surface}
                 icon={<MapPin />}
               />
@@ -109,25 +111,25 @@ export default function Home() {
                 icon={<Map />}
               />
               <Card
-                title="Currency"
+                title="Moneda"
                 text={`Colombian Peso • ${generalData.currencyCode}`}
                 icon={<CircleDollarSign />}
               />
             </section>
             <section className="grid grid-cols-1 gap-2 pt-4 md:grid-cols-2 md:gap-4 lg:grid-cols-3">
               <CardArray
-                title="Languages"
+                title="Idiomas"
                 text={generalData.languages}
                 classNameText={"flex gap-8"}
                 icon={<Languages />}
               />
               <CardArray
-                title="Bordering Countries"
+                title="Países Vecinos"
                 text={generalData.borders}
                 classNameText={"flex gap-8"}
               />
               <CardArray
-                title="Ethnic Groups"
+                title="Grupos Étnicos"
                 text={ethnicGroups}
                 classNameText={"flex gap-8"}
               />
