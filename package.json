@@ -1,5 +1,5 @@
 {
-  "name": "amocol",
+  "name": "colombia",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,40 +9,35 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/next-js": "^2.2.0",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.0",
+    "@emotion/styled": "^11.11.5",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-scroll-area": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.5",
+    "@tabler/icons-react": "^2.45.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "cmdk": "^1.0.0",
-    "framer-motion": "^11.0.14",
-    "lucide-react": "^0.354.0",
-    "next": "14.0.3",
+    "framer-motion": "^11.1.3",
+    "lucide-react": "^0.368.0",
+    "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-simple-maps": "^3.0.0",
-    "tailwind": "^4.0.0",
-    "tailwind-merge": "^2.2.1",
+    "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.0"
   },
   "devDependencies": {
-    "@types/node": "20.11.25",
-    "@types/react": "18.2.64",
-    "autoprefixer": "^10.4.18",
+    "autoprefixer": "^10.0.1",
     "eslint": "^8",
-    "eslint-config-next": "14.0.3",
-    "postcss": "^8.4.35",
+    "eslint-config-next": "14.0.4",
+    "postcss": "^8",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.12",
-    "tailwindcss": "^3.4.1",
-    "typescript": "5.4.2"
+    "tailwindcss": "^3.4.3"
   }
 }

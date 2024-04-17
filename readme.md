@@ -1,21 +1,21 @@
-# AmoCol
+# Colombia 360
 
 ### Uncover Colombia's rich tapestry
 
-Explore Colombia comprehensively with [**amoCol**](https://colombia.jpdiaz.dev), a web application designed for in-depth learning _in Spanish_. Delve into national topics, departmental details, and cultural insights, all in one user-friendly platform.
+Explore Colombia comprehensively with [**Colombia 360**](https://colombia.jpdiaz.dev), a web application designed for in-depth learning _in Spanish_. Delve into national topics, departmental details, and cultural insights, all in one user-friendly platform.
 
-**Amocol** is a comprehensive web app that offers in-depth exploration of departments, regions, cities, presidents, and more. Responsive design ensures seamless access across all devices.
+**Colombia 360** is a comprehensive web app that offers in-depth exploration of departments, regions, cities, presidents, and more. Responsive design ensures seamless access across all devices.
 
 Read this document in [Español](/readme_es.md)
 
 <div align="center">
 
 [![](https://img.shields.io/badge/View%20Demo-000?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://colombia.jpdiaz.dev/)
-[![repo](https://img.shields.io/badge/View%20Code-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://stackblitz.com/github.com/JuanPabloDiaz/amocol)
+[![repo](https://img.shields.io/badge/View%20Code-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://stackblitz.com/github.com/JuanPabloDiaz/colombia)
 
 </div>
 
-<a href="https://colombia.jpdiaz.dev"><img src="https://raw.githubusercontent.com/JuanPabloDiaz/amoCol/main/public/assets/mapas/colombia_simplemaps.svg" width="300"></a>
+<a href="https://colombia.jpdiaz.dev"><img src="https://raw.githubusercontent.com/JuanPabloDiaz/colombia/main/public/assets/mapas/colombia_simplemaps.svg" width="300"></a>
 
 <!--
 ### Desktop View 🖥️
@@ -52,11 +52,11 @@ Everyone is welcome to collaborate with this project, before contributing please
 
 ### Contributors
 
-<a href="https://github.com/JuanPabloDiaz/amoCol/graphs/contributors"><img src="https://contrib.rocks/image?repo=JuanPabloDiaz/amoCol" /></a>
+<a href="https://github.com/JuanPabloDiaz/colombia/graphs/contributors"><img src="https://contrib.rocks/image?repo=JuanPabloDiaz/colombia" /></a>
 
 ## Get started 🛠️
 
-To get started with [amoCol](https://colombia.jpdiaz.dev), simply clone the repository and follow the setup instructions. You'll be up and running in no time!
+To get started with [colombia](https://colombia.jpdiaz.dev), simply clone the repository and follow the setup instructions. You'll be up and running in no time!
 
 ### Setup 📋
 
@@ -73,7 +73,7 @@ To get started with [amoCol](https://colombia.jpdiaz.dev), simply clone the repo
 
 ## License 📜
 
-[amoCol](https://colombia.jpdiaz.dev) is licensed under the MIT License.
+[Colombia 360](https://colombia.jpdiaz.dev) is licensed under the MIT License.
 
 ## Acknowledgments 📚
 
@@ -99,4 +99,4 @@ Resources list that I find helpful and would like to give credit to.
 ✔️ [DashboardJuridica](https://dashboard-juridica.vercel.app/)
 ⚡️ [GitHub Repo](https://github.com/RodrigoA15/DashboardJuridica?tab=coc-ov-file)
 
-<p align="right"><a href="#amoCol"><img src="https://raw.githubusercontent.com/JuanPabloDiaz/freeForGeeks/main/backtotop.jpg" width="100"></a></p>
+<p align="right"><a href="#colombia"><img src="https://raw.githubusercontent.com/JuanPabloDiaz/freeForGeeks/main/backtotop.jpg" width="100"></a></p>

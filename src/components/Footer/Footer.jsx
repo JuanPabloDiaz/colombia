@@ -42,7 +42,7 @@ export const Footer = () => {
         </p>
         <p className="text-center">
           <a
-            href="https://github.com/JuanPabloDiaz/amoCol?tab=MIT-1-ov-file"
+            href="https://github.com/JuanPabloDiaz/colombia?tab=MIT-1-ov-file"
             className="px-2 text-white/70 hover:underline"
           >
             licencia MIT
@@ -50,7 +50,7 @@ export const Footer = () => {
         </p>
         <p className="text-center">
           <a
-            href="https://github.com/JuanPabloDiaz/amoCol"
+            href="https://github.com/JuanPabloDiaz/colombia"
             className="px-2 text-white/70 hover:underline"
           >
             Repo
