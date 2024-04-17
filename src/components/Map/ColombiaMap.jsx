@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+// import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 
 // import mapaColombia from "@/components/mapa_colombia.js";
 import colombiaGeoJSON from "/public/assets/mapas/colombia.geo.json";
@@ -14,7 +14,12 @@ export function ColombiaMap() {
     document.body.appendChild(script);
   }, []);
   return (
-    <ComposableMap
+    <>
+      <p>
+        I am not going to use react-simple-maps. It has 5 HIGH risk
+        vulnerabilities
+      </p>
+      {/* <ComposableMap
       height={750}
       projection="geoMercator"
       projectionConfig={{
@@ -29,6 +34,7 @@ export function ColombiaMap() {
           ))
         }
       </Geographies>
-    </ComposableMap>
+    </ComposableMap> */}
+    </>
   );
 }

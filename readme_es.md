@@ -1,17 +1,17 @@
-# Amocol
+# Colombia 360
 
 ### Descubre el rico tapiz de Colombia
 
-Explora Colombia de manera integral con [**amoCol**](https://amocol.jpdiaz.dev), una aplicación web diseñada para un aprendizaje profundo _en español_. Profundice en temas nacionales, detalles departamentales y conocimientos culturales, todo en una plataforma fácil de usar.
+Explora Colombia de manera integral con [**Colombia 360**](https://colombia.jpdiaz.dev), una aplicación web diseñada para un aprendizaje profundo _en español_. Profundice en temas nacionales, detalles departamentales y conocimientos culturales, todo en una plataforma fácil de usar.
 
-**Amocol** es una aplicación web integral que ofrece una exploración en profundidad de departamentos, regiones, ciudades, presidentes y más. El diseño responsivo garantiza un acceso perfecto en todos los dispositivos.
+**Colombia 360** es una aplicación web integral que ofrece una exploración en profundidad de departamentos, regiones, ciudades, presidentes y más. El diseño responsivo garantiza un acceso perfecto en todos los dispositivos.
 
 Lea este documento en [English](/readme.md)
 
 <div align="centro">
 
-[![](https://img.shields.io/badge/View%20Demo-000?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://amocol.jpdiaz.dev/)
-[![repo](https://img.shields.io/badge/View%20Code-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://stackblitz.com/github.com/JuanPabloDiaz/amocol)
+[![](https://img.shields.io/badge/View%20Demo-000?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://colombia.jpdiaz.dev/)
+[![repo](https://img.shields.io/badge/View%20Code-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://stackblitz.com/github.com/JuanPabloDiaz/colombia)
 
 </div>
 
@@ -49,11 +49,11 @@ Todos son bienvenidos a colaborar con este proyecto. Antes de contribuir, lea la
 
 ### Colaboradores
 
-<a href="https://github.com/JuanPabloDiaz/amocol/graphs/contributors"><img src="https://contrib.rocks/image?repo=JuanPabloDiaz/amocol" /></a>
+<a href="https://github.com/JuanPabloDiaz/colombia/graphs/contributors"><img src="https://contrib.rocks/image?repo=JuanPabloDiaz/colombia" /></a>
 
 ## Empiece 🛠️
 
-Para comenzar con [amoCol](https://amocol.jpdiaz.dev), simplemente clone el repositorio y siga las instrucciones de configuración. ¡Estarás listo y funcionando en poco tiempo!
+Para comenzar con [colombia](https://colombia.jpdiaz.dev), simplemente clone el repositorio y siga las instrucciones de configuración. ¡Estarás listo y funcionando en poco tiempo!
 
 ### Configuración 📋
 
@@ -70,7 +70,7 @@ Para comenzar con [amoCol](https://amocol.jpdiaz.dev), simplemente clone el repo
 
 ## Licencia 📜
 
-[amoCol](https://amocol.jpdiaz.dev) tiene la licencia MIT.
+[Colombia 360](https://colombia.jpdiaz.dev) tiene la licencia MIT.
 
 ## Agradecimientos 📚
 
@@ -96,4 +96,4 @@ Lista de recursos que encuentro útiles y a los que me gustaría dar crédito.
 ✔️ [DashboardJuridica](https://dashboard-juridica.vercel.app/)
 ⚡️ [Repositorio de GitHub](https://github.com/RodrigoA15/DashboardJuridica?tab=coc-ov-file)
 
-<p align="right"><a href="#amoCol"><img src="https://raw.githubusercontent.com/JuanPabloDiaz/freeForGeeks/main/backtotop.jpg" width="100"></a></p>
+<p align="right"><a href="#colombia"><img src="https://raw.githubusercontent.com/JuanPabloDiaz/freeForGeeks/main/backtotop.jpg" width="100"></a></p>

@@ -1,18 +1,18 @@
-# AmoCol Contributing Guidelines
+# Colombia 360 Contributing Guidelines
 
 ## Getting Started
 
-1. [Fork](https://github.com/JuanPabloDiaz/amoCol/fork) the repository on GitHub.
+1. [Fork](https://github.com/JuanPabloDiaz/colombia/fork) the repository on GitHub.
 2. Clone the forked repository to your local machine.
 
    ```sh
-   git clone https://github.com/<your_github_username>/amoCol.git
+   git clone https://github.com/<your_github_username>/colombia.git
    ```
 
 3. Get into the root directory
 
    ```sh
-   cd amoCol
+   cd colombia
    ```
 
 4. Install all the dependencies
