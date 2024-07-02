@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "npx prettier --write \"**/*.{js,jsx}\"",
+    "lighthouse": "npx unlighthouse --site https://colombia.jpdiaz.dev"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",

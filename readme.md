@@ -71,6 +71,16 @@ To get started with [colombia](https://colombia.jpdiaz.dev), simply clone the re
    ```
 4. Open [http://localhost:3000/](http://localhost:3000/) with your browser to see the result.
 
+## Usefull Commands 🧰
+
+- Run before Deploy: `$ npm run build`
+- Check for Next.js errors: `$ npm run lint`
+- Run and fix Next.js errors: `$ npm run lint:fix`
+- Check for general eslint errors: `$ npm run eslint`
+- Run and fix general eslint errors: `$ npm run eslint:fix`
+- Run Prettier: `$ npm run format`
+- Run Lighthouse in local: `$ npm run lighthouse`
+
 ## License 📜
 
 [Colombia 360](https://colombia.jpdiaz.dev) is licensed under the MIT License.
