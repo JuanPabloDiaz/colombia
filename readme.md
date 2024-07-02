@@ -76,8 +76,6 @@ To get started with [colombia](https://colombia.jpdiaz.dev), simply clone the re
 - Run before Deploy: `$ npm run build`
 - Check for Next.js errors: `$ npm run lint`
 - Run and fix Next.js errors: `$ npm run lint:fix`
-- Check for general eslint errors: `$ npm run eslint`
-- Run and fix general eslint errors: `$ npm run eslint:fix`
 - Run Prettier: `$ npm run format`
 - Run Lighthouse in local: `$ npm run lighthouse`
 
