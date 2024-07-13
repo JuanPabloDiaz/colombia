@@ -8,14 +8,17 @@ export const Footer = () => {
     {
       href: "https://github.com/juanpablodiaz",
       icon: <Github className="h-4 w-4" />,
+      ariaLabel: "Github profile for Juan Diaz",
     },
     {
       href: "https://www.linkedin.com/in/1diazdev/",
       icon: <Linkedin className="h-4 w-4" />,
+      ariaLabel: "Linkedin profile for Juan Diaz",
     },
     {
       href: "https://twitter.com/1diazdev",
       icon: <Twitter className="h-4 w-4" />,
+      ariaLabel: "Twitter profile for Juan Diaz",
     },
   ];
 
@@ -24,7 +27,7 @@ export const Footer = () => {
       <section>
         <ul className="flex items-center justify-center gap-4">
           {socials.map((social, index) => (
-            <Link href={social.href} key={index}>
+            <Link href={social.href} key={index} aria-label={social.ariaLabel}>
               <li>{social.icon}</li>
             </Link>
           ))}
