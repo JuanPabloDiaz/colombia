@@ -46,6 +46,10 @@ This project was built using the following technologies:
 ![Chakra-UI](https://img.shields.io/badge/Chakra%20UI-319795?style=for-the-badge&logo=Chakra-UI&logoColor=white)
 ![Backend](https://img.shields.io/badge/api-colombia-339933?style=for-the-badge&logoColor=white)
 
+### Lighthouse Score 🚀
+
+<img src="./public/assets/images/lighthouse.jpg"/>
+
 ## Contribution 🤝
 
 Everyone is welcome to collaborate with this project, before contributing please read the [contribution guide](CONTRIBUTING.md).
