@@ -25,13 +25,13 @@ export const Footer = () => {
   return (
     <main className="w-full bg-slate-950/90 py-4 font-semibold">
       <section>
-        <ul className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-4">
           {socials.map((social, index) => (
             <Link href={social.href} key={index} aria-label={social.ariaLabel}>
-              <li>{social.icon}</li>
+              <div>{social.icon}</div>
             </Link>
           ))}
-        </ul>
+        </div>
       </section>
       <section className="mt-4 flex items-center justify-around gap-4">
         <p className="text-center">
