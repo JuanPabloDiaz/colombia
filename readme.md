@@ -71,7 +71,7 @@ To get started with [colombia](https://colombia.jpdiaz.dev), simply clone the re
    ```
 4. Open [http://localhost:3000/](http://localhost:3000/) with your browser to see the result.
 
-## Usefull Commands 🧰
+## Useful Commands 🧰
 
 - Run before Deploy: `$ npm run build`
 - Check for Next.js errors: `$ npm run lint`
