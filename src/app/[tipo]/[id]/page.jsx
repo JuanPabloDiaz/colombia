@@ -22,6 +22,7 @@ export default function EntityDetailPage({ params }) {
     touristicAttractionData,
     mapData,
     invasiveSpecieData,
+    departamentData,
     // ...agrega aquí otros arrays del contexto si tienes más tipos
   } = useContext(AppContext);
 
@@ -34,8 +35,13 @@ export default function EntityDetailPage({ params }) {
     // ...agrega más si tienes otros tipos
   };
 
-  const list = dataMap[tipo] || [];
-  const entity = list.find(item => String(item.id) === String(id));
+  let entity;
+  if (tipo === "departamentos") {
+    entity = departamentData.find(dep => String(dep.id) === String(id));
+  } else {
+    const list = dataMap[tipo] || [];
+    entity = list.find(item => String(item.id) === String(id));
+  }
 
   if (!entity) {
     return <div className="flex flex-col items-center justify-center min-h-[40vh] text-center">
@@ -44,6 +50,39 @@ export default function EntityDetailPage({ params }) {
     </div>;
   }
 
+  // Si es departamento, muestra layout especial con datos relacionados
+  if (tipo === "departamentos") {
+    return (
+      <main className="min-h-[80vh] flex flex-col items-center py-8">
+        <BackButton tipo={tipo} />
+        <div className="w-full max-w-3xl bg-slate-900/90 rounded-3xl shadow-xl p-8 text-white mt-4">
+          <h1 className="text-3xl font-bold mb-4 text-primary-400">{entity.name}</h1>
+          <p className="text-base leading-relaxed mb-4 text-white/80">{entity.description}</p>
+          <div className="flex flex-wrap gap-4 text-sm mb-6">
+            <div><span className="font-semibold text-white/70">Superficie:</span> {entity.surface?.toLocaleString()} km²</div>
+            <div><span className="font-semibold text-white/70">Población:</span> {entity.population?.toLocaleString()}</div>
+            <div><span className="font-semibold text-white/70">Municipios:</span> {entity.municipalities}</div>
+            <div><span className="font-semibold text-white/70">Prefijo:</span> {entity.phonePrefix}</div>
+            <div><span className="font-semibold text-white/70">Región:</span> {entity.regionId}</div>
+          </div>
+          {entity.cityCapital && (
+            <div className="mt-3 bg-slate-900/80 rounded-lg p-3 mb-6">
+              <div className="font-bold text-white/80">Capital: {entity.cityCapital.name}</div>
+              <div className="text-white/70 text-sm">{entity.cityCapital.description}</div>
+              <div className="flex flex-wrap gap-4 mt-2 text-xs">
+                <div><span className="font-semibold">Superficie:</span> {entity.cityCapital.surface?.toLocaleString()} km²</div>
+                <div><span className="font-semibold">Población:</span> {entity.cityCapital.population?.toLocaleString()}</div>
+                <div><span className="font-semibold">Código Postal:</span> {entity.cityCapital.postalCode}</div>
+              </div>
+            </div>
+          )}
+          {/* Puedes agregar más secciones para mapas, especies invasoras, áreas naturales, etc. */}
+        </div>
+      </main>
+    );
+  }
+
+  // Layout normal para otros tipos
   return (
     <main className="min-h-[80vh] flex flex-col items-center py-8">
       <BackButton tipo={tipo} />
@@ -51,7 +90,11 @@ export default function EntityDetailPage({ params }) {
         <div className="flex flex-wrap gap-8">
           <div className="flex-none w-80 flex items-start justify-center">
             <img
-              src={entity.image || entity.images || entity.urlImage || '/assets/images/fallback-place.jpg'}
+              src={
+                tipo === 'mapas'
+                  ? entity.urlImages || '/assets/images/fallback-place.jpg'
+                  : entity.image || entity.images || entity.urlImage || '/assets/images/fallback-place.jpg'
+              }
               alt={entity.name}
               width={320}
               height={320}
