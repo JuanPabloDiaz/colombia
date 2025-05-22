@@ -15,6 +15,18 @@ function BackButton({ tipo }) {
   );
 }
 
+function formatMandatoDate(dateStr) {
+  if (!dateStr) return '';
+  const date = new Date(dateStr);
+  const opts = { day: 'numeric', month: 'short', year: 'numeric' };
+  // Intl.DateTimeFormat devuelve "feb." o "jul.", quitamos el punto y ponemos mayúscula inicial
+  let formatted = new Intl.DateTimeFormat('es-CO', opts).format(date);
+  formatted = formatted.replace(/\b(\w{3})\./, (m, p1) => p1.charAt(0).toUpperCase() + p1.slice(1));
+  // Si Intl pone el mes en minúscula y sin punto, igual capitalizamos
+  formatted = formatted.replace(/ (\w{3}) /, (m, p1) => ' ' + p1.charAt(0).toUpperCase() + p1.slice(1) + ' ');
+  return formatted.replace('.', '');
+}
+
 export default function EntityDetailPage({ params }) {
   const { tipo, id } = params;
   const {
@@ -77,6 +89,123 @@ export default function EntityDetailPage({ params }) {
             </div>
           )}
           {/* Puedes agregar más secciones para mapas, especies invasoras, áreas naturales, etc. */}
+        </div>
+      </main>
+    );
+  }
+
+  // Layout especial para presidentes
+  if (tipo === "presidentes") {
+    return (
+      <main className="min-h-[80vh] flex flex-col items-center py-8">
+        <BackButton tipo={tipo} />
+        <div className="w-full max-w-3xl bg-slate-900/90 rounded-3xl shadow-xl p-8 text-white mt-4">
+          <div className="flex flex-wrap gap-8">
+            <div className="flex-none w-72 flex items-start justify-center">
+              <img
+                src={entity.image || '/assets/images/fallback-person.jpg'}
+                alt={entity.name + (entity.lastName ? ' ' + entity.lastName : '')}
+                width={288}
+                height={320}
+                className="rounded-xl object-cover shadow-lg"
+              />
+            </div>
+            <div className="flex-1 min-w-[250px]">
+              <h1 className="text-3xl font-bold mb-2 text-primary-400">
+                {entity.name} {entity.lastName}
+              </h1>
+              {(entity.startPeriodDate || entity.endPeriodDate) && (
+                <div className="mb-2 text-white/80 text-base">
+                  <span className="font-semibold text-white/70">Mandato:</span>{' '}
+                  {entity.startPeriodDate && (
+                    <span>{formatMandatoDate(entity.startPeriodDate)} </span>
+                  )}
+                  {entity.endPeriodDate && (
+                    <span>- {formatMandatoDate(entity.endPeriodDate)}</span>
+                  )}
+                </div>
+              )}
+              {entity.politicalParty && (
+                <div className="mb-2 text-white/80 text-base">
+                  <span className="font-semibold text-white/70">Partido político:</span> {entity.politicalParty}
+                </div>
+              )}
+              {entity.city && (
+                <div className="mb-2 text-white/80 text-base">
+                  <span className="font-semibold text-white/70">Ciudad:</span> {entity.city.name}
+                </div>
+              )}
+              <p className="text-base leading-relaxed mb-2 text-white/90 whitespace-pre-line">
+                {entity.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  // Layout especial para turismo
+  if (tipo === "turismo") {
+    return (
+      <main className="min-h-[80vh] flex flex-col items-center py-8">
+        <BackButton tipo={tipo} />
+        <div className="w-full max-w-2xl bg-slate-900/90 rounded-3xl shadow-xl p-0 text-white mt-4 overflow-hidden">
+          {/* Imagen principal */}
+          <div className="w-full aspect-[4/3] bg-black flex items-center justify-center">
+            <img
+              src={entity.images && entity.images.length > 0 ? entity.images[0] : '/assets/images/fallback-place.jpg'}
+              alt={entity.name}
+              className="object-cover w-full h-full max-h-[360px]"
+            />
+          </div>
+          <div className="p-6 flex flex-col gap-2">
+            <h1 className="text-3xl font-extrabold mb-1 text-primary-400 leading-tight">{entity.name}</h1>
+            {entity.city && (
+              <>
+                <div className="mb-1 text-lg text-primary-200 font-medium flex items-center gap-2">
+                  <svg className="w-5 h-5 text-primary-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                  {entity.city.name}
+                </div>
+                {entity.city.population && (
+                  <div className="mb-1 text-base text-white/80">
+                    <span className="font-semibold text-white/70">Población:</span> {entity.city.population.toLocaleString()}
+                  </div>
+                )}
+              </>
+            )}
+            <p className="text-base leading-relaxed mb-3 text-white/90 whitespace-pre-line">
+              {entity.description}
+            </p>
+            {/* Galería si hay más de una imagen */}
+            {entity.images && entity.images.length > 1 && (
+              <div className="flex gap-2 overflow-x-auto pb-2 pt-2">
+                {entity.images.slice(1).map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={img}
+                    alt={`Imagen secundaria ${idx+1}`}
+                    width={120}
+                    height={90}
+                    className="rounded shadow object-cover flex-shrink-0"
+                  />
+                ))}
+              </div>
+            )}
+            {/* Botón Google Maps centrado al final */}
+            {(entity.latitude && entity.longitude) && (
+              <div className="w-full flex justify-center mt-6">
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${entity.latitude},${entity.longitude}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-6 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition-colors text-base font-medium text-center"
+                >
+                  Ver en Google Maps
+                </a>
+              </div>
+            )}
+          </div>
         </div>
       </main>
     );
