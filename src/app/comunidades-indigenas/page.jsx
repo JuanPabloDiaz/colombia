@@ -19,24 +19,22 @@ export default function ComunidadesIndigenas() {
   return (
     <>
       <title>{`${pageTitle} • Colombia 360`}</title>
-      <main>
-        <h1 className="mx-auto mb-8 w-fit rounded-xl bg-slate-950/90 p-4 text-4xl font-bold text-white/60">
+      <main className="min-h-screen pb-16">
+        <h1 className="mx-auto mb-10 w-fit rounded-xl bg-slate-950/90 p-6 text-4xl font-extrabold text-white/80 shadow-md tracking-tight">
           {pageTitle}
         </h1>
-        <section className="flex items-center justify-center">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <section className="flex items-center justify-center px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 w-full max-w-7xl">
             {nativeCommunityData
               .sort((a, b) => a.id - b.id)
-              .map((ind, index) => (
-                <>
-                  <CardBadge
-                    key={index}
-                    title={ind.name}
-                    text={ind.description}
-                    badge={["Lengua: ", ind.languages]}
-                    className="h-64 overflow-hidden overflow-ellipsis"
-                  />
-                </>
+              .map((ind) => (
+                <CardBadge
+                  key={ind.id}
+                  title={ind.name}
+                  text={ind.description}
+                  badge={["Lengua(s):", ind.languages]}
+                  className="min-h-72"
+                />
               ))}
           </div>
         </section>

@@ -6,7 +6,7 @@ import { AppContext } from "@/context";
 import { metadata } from "@/components/metadata";
 import CardDetail from "@/components/ChakraCard/CardDetail";
 // import Card from "@/components/ChakraCard/Card";
-import Card from "@/components/Card/Card";
+import RadioCard from "@/components/Card/RadioCard";
 import CardInfo from "@/components/Card/CardInfo";
 import CardAccordion from "@/components/Card/CardAccordion";
 import LoadingCard from "@/components/Loading/LoadingCard";
@@ -30,34 +30,8 @@ export default function Radio() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             {radioData
               .sort((a, b) => a.id - b.id)
-              .map((fm, index) => (
-                <>
-                  <Card
-                    key={index}
-                    title={fm.name}
-                    text={fm.url}
-                    className="w-[250px] border-none bg-black/90 text-white"
-                  />
-                  {/* <CardInfo
-                    key={index}
-                    title={fm.name}
-                    description={fm.city.description}
-                    content={"content"}
-                    buttonOne={"buttonOne"}
-                    buttonTwo={"buttonTwo"}
-                  /> */}
-                  {/* <CardAccordion
-                    key={index}
-                    title={fm.name}
-                    description={fm.city.description}
-                    content={fm.city.name}
-                    buttonOne={fm.url}
-                    buttonTwo={"buttonTwo"}
-                  /> */}
-                  {/* <a href={fm.url} target="_blank" rel="noopener noreferrer">
-                    {fm.name}
-                  </a> */}
-                </>
+              .map((fm) => (
+                <RadioCard key={fm.id} fm={fm} />
               ))}
           </div>
         </section>

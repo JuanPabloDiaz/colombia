@@ -3,7 +3,7 @@
 import React, { useContext, isLoading, useEffect } from "react";
 import { AppContext } from "@/context";
 
-import CardDetail from "@/components/ChakraCard/CardDetail";
+import DepartamentoCard from "@/components/Card/DepartamentoCard";
 import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
 
 import { metadata } from "@/components/metadata";
@@ -35,82 +35,14 @@ export default function Departamentos() {
   return (
     <>
       <title>{`${pageTitle} • Colombia 360`}</title>
-      <h1 className="mx-auto mb-8 w-fit rounded-xl bg-slate-950/90 p-4 text-4xl font-bold text-white/60">
+      <h1 className="mx-auto mb-10 w-fit rounded-xl bg-slate-950/90 p-6 text-4xl font-extrabold text-white/80 shadow-md tracking-tight">
         {pageTitle}
       </h1>
 
-      <section className="flex items-center justify-center">
-        {/* <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4"> */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-6">
-          {departamentData.map((departament, index) => (
-            <>
-              <Accordion
-                type="single"
-                collapsible
-                className="bg-slate-950/90"
-                key={index}
-              >
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>{departament.name}</AccordionTrigger>
-                  <AccordionContent>
-                    <div>
-                      <p>
-                        <span className="font-bold text-red-800">Id: </span>
-                        {departament.id}
-                      </p>
-                      <p>
-                        <span className="font-bold text-red-800">Nombre: </span>
-                        {departament.name}
-                      </p>
-                      <p>
-                        <span className="font-bold text-red-800">
-                          Descripcion:{" "}
-                        </span>
-                        {departament.description}
-                      </p>
-                      <p>
-                        <span className="font-bold text-red-800">
-                          Superficie:{" "}
-                        </span>
-                        {departament.surface}
-                      </p>
-                      <p>
-                        <span className="font-bold text-red-800">
-                          Población:{" "}
-                        </span>
-                        {departament.population}
-                      </p>
-                      <p>
-                        <span className="font-bold text-red-800">
-                          Municipios:{" "}
-                        </span>
-                        {departament.municipalities}
-                      </p>
-                      <p>
-                        <span className="font-bold text-red-800">
-                          cityCapitalId:{" "}
-                        </span>
-                        {departament.cityCapitalId}
-                      </p>
-                      <p>
-                        <span className="font-bold text-red-800">
-                          Region ID:{" "}
-                        </span>
-                        {departament.regionId}
-                      </p>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-
-              {/* <CardDetail
-                key={index}
-                title={departament.name}
-                subtitle={departament.subtitle}
-                description={departament.description}
-                image={departament.imageurl}
-              /> */}
-            </>
+      <section className="flex items-center justify-center px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 w-full max-w-7xl">
+          {departamentData.map((departament) => (
+            <DepartamentoCard key={departament.id} departamento={departament} />
           ))}
         </div>
       </section>
