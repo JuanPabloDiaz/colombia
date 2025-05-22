@@ -4,11 +4,10 @@ import React, { useContext, useState, useMemo } from "react";
 import { AppContext } from "@/context";
 import Pagination from "@/components/ui/Pagination";
 import PageSizeSelector from "@/components/ui/PageSizeSelector";
-
 import { metadata } from "@/components/metadata";
 import CardDetail from "@/components/ChakraCard/CardDetail";
 import LoadingCard from "@/components/Loading/LoadingCard";
-import PageSection from "@/components/PageSection";
+import EntityPageLayout from "@/components/ui/EntityPageLayout";
 
 export default function Mapas() {
   const pageTitle = metadata.map.title;
@@ -39,33 +38,37 @@ export default function Mapas() {
   return (
     <>
       <title>{`${pageTitle} • Colombia 360`}</title>
-      <main>
-        <PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />
-        <PageSection title={pageTitle} isLoading={isLoading} gridCols="md:grid-cols-2 lg:grid-cols-4">
-          {paginatedData.map((mapa, index) => (
-            <CardDetail
-              key={mapa.id || index}
-              title={mapa.name}
-              description={mapa.description}
-              imageUrl={mapa.urlImages}
-              imageWidth={320}
-              imageHeight={213}
-              imageStyle="cover"
-              viewMoreHref={`/mapas/${mapa.id}`}
-              titleWordsCount={10}
-            />
-          ))}
-        </PageSection>
-        {totalPages > 1 && (
-          <div className="flex justify-center mt-8 mb-8">
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
-            />
-          </div>
-        )}
-      </main>
+      <EntityPageLayout
+        title={pageTitle}
+        isLoading={isLoading}
+        gridCols="md:grid-cols-2 lg:grid-cols-4"
+        pageSizeSelector={<PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />}
+        pagination={
+          totalPages > 1 && (
+            <div className="flex justify-center mt-8 mb-8">
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
+            </div>
+          )
+        }
+      >
+        {paginatedData.map((mapa, index) => (
+          <CardDetail
+            key={mapa.id || index}
+            title={mapa.name}
+            description={mapa.description}
+            imageUrl={mapa.urlImages}
+            imageWidth={320}
+            imageHeight={213}
+            imageStyle="cover"
+            viewMoreHref={`/mapas/${mapa.id}`}
+            titleWordsCount={10}
+          />
+        ))}
+      </EntityPageLayout>
     </>
   );
 }

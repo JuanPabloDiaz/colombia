@@ -80,11 +80,6 @@ export default function Presidentes() {
               />
             );
           })}
-        {totalPages > 1 && (
-          <div className="flex justify-center mt-8 mb-8">
-            
-          </div>
-        )}
       </EntityPageLayout>
     </>
   );
