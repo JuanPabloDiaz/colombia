@@ -11,7 +11,7 @@ import PageSection from "@/components/PageSection";
 export default function Mapas() {
   const pageTitle = metadata.map.title;
 
-  const { mapData, isLoading } = useContext(AppContext);
+  const { mapData, isLoading } = useContext(AppContext);  
 
   if (isLoading) {
     return (
@@ -33,7 +33,7 @@ export default function Mapas() {
                 key={index}
                 title={mapa.name}
                 description={mapa.description}
-                imageUrl={mapa.images}
+                imageUrl={mapa.urlImages} 
                 imageWidth={320}
                 imageHeight={213}
                 imageStyle="cover"

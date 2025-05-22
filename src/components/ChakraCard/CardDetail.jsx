@@ -28,6 +28,7 @@ export default function CardDetail({
   badgeText,
   imageFailed,
   titleWordsCount,
+  fallbackAvatar,
 }) {
   const cropWords = (str = "", count = 2) => {
     let words = str.split(" ");
@@ -39,24 +40,11 @@ export default function CardDetail({
   };
 
 
-  let fallbackImage = "/assets/images/avatar.png";
-  if (typeof alt === 'string' && (alt.toLowerCase().includes('turismo') || alt.toLowerCase().includes('lugar'))) {
-    fallbackImage = "/assets/images/fallback-place.jpg";
-  }
-  if (typeof title === 'string' && (title.toLowerCase().includes('turismo') || title.toLowerCase().includes('lugar'))) {
-    fallbackImage = "/assets/images/fallback-place.jpg";
-  }
-  if (typeof badgeText === 'string' && badgeText.toLowerCase().includes('turismo')) {
-    fallbackImage = "/assets/images/fallback-place.jpg";
-  }
-  if (typeof badgeText === 'string' && badgeText.toLowerCase().includes('presidente')) {
-    fallbackImage = "/assets/images/avatar.png";
-  }
-  if (typeof alt === 'string' && alt.toLowerCase().includes('presidente')) {
-    fallbackImage = "/assets/images/avatar.png";
-  }
-  // Permitir override explícito por prop en el futuro
-  const showFallback = imageFailed || !imageUrl || imageUrl === '';
+let fallbackImage = "/assets/images/fallbackImage.jpg";
+if (fallbackAvatar) {
+  fallbackImage = "/assets/images/avatar.png";
+}
+const showFallback = imageFailed || !imageUrl || imageUrl === '';
 
   return (
     <Card

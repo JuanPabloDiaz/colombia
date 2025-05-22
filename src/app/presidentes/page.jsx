@@ -41,6 +41,7 @@ export default function Presidentes() {
                       badgeText={date}
                       description={president.description}
                       imageUrl={president.image}
+                      fallbackAvatar={true}
                       alt={president.lastName}
                       imageWidth={300}
                       imageHeight={300}
