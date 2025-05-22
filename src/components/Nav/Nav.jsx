@@ -38,11 +38,11 @@ export const Nav = ({ setOpen, ul_className }) => {
       href: "/departamentos",
       icon: <ShieldPlus />,
     },
-    {
-      title: "Regiones",
-      href: "/regiones",
-      icon: <LandPlot />,
-    },
+    // {
+    //   title: "Regiones",
+    //   href: "/regiones",
+    //   icon: <LandPlot />,
+    // },
     {
       title: "Turismo",
       href: "/turismo",
@@ -53,16 +53,16 @@ export const Nav = ({ setOpen, ul_className }) => {
       href: "/presidentes",
       icon: <Scale />,
     },
-    {
-      title: "Naturaleza",
-      href: "/naturaleza",
-      icon: <Trees />,
-    },
-    {
-      title: "Categorías Naturaleza",
-      href: "/categorias-naturaleza",
-      icon: <TreePine />,
-    },
+    // {
+    //   title: "Naturaleza",
+    //   href: "/naturaleza",
+    //   icon: <Trees />,
+    // },
+    // {
+    //   title: "Categorías Naturaleza",
+    //   href: "/categorias-naturaleza",
+    //   icon: <TreePine />,
+    // },
     {
       title: "Mapas",
       href: "/mapas",
@@ -78,16 +78,16 @@ export const Nav = ({ setOpen, ul_className }) => {
       href: "/comunidades-indigenas",
       icon: <Tent />,
     },
-    {
-      title: "Aeropuertos",
-      href: "/aeropuertos",
-      icon: <Plane />,
-    },
-    {
-      title: "Constitution",
-      href: "/constitution",
-      icon: <Landmark />,
-    },
+    // {
+    //   title: "Aeropuertos",
+    //   href: "/aeropuertos",
+    //   icon: <Plane />,
+    // },
+    // {
+    //   title: "Constitution",
+    //   href: "/constitution",
+    //   icon: <Landmark />,
+    // },
     {
       title: "Radio",
       href: "/radio",

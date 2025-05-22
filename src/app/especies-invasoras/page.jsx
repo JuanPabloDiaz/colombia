@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, useState, useMemo } from "react";
 import { AppContext } from "@/context";
+import PageSizeSelector from "@/components/ui/PageSizeSelector";
 
 import CardDetail from "@/components/ChakraCard/CardDetail";
-import PageSection from "@/components/PageSection";
+import EntityPageLayout from "@/components/ui/EntityPageLayout";
 
 import { metadata } from "@/components/metadata";
 import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
@@ -13,16 +14,20 @@ import Pagination from "@/components/ui/Pagination"; // Import the Pagination co
 export default function EspeciesInvasoras() {
   const pageTitle = metadata.espInv.title;
 
-  const {
-    invasiveSpecieData, // This is the paginated slice
-    isLoading,
-    invasiveSpecieCurrentPage,
-    invasiveSpecieTotalPages,
-    goToInvasiveSpeciePage,
-  } = useContext(AppContext);
+  const { allInvasiveSpecieData, isLoading } = useContext(AppContext);
+  const [pageSize, setPageSize] = useState(4);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const sortedData = useMemo(() => (allInvasiveSpecieData ? [...allInvasiveSpecieData].sort((a, b) => a.id - b.id) : []), [allInvasiveSpecieData]);
+  const totalPages = useMemo(() => Math.ceil(sortedData.length / pageSize) || 1, [sortedData, pageSize]);
+  const paginatedData = useMemo(() => {
+    const start = (currentPage - 1) * pageSize;
+    return sortedData.slice(start, start + pageSize);
+  }, [sortedData, currentPage, pageSize]);
+  React.useEffect(() => { setCurrentPage(1); }, [pageSize, sortedData]);
 
   // Show loading state only if data hasn't been loaded yet for the first time
-  if (isLoading && (!invasiveSpecieData || invasiveSpecieData.length === 0)) {
+  if (isLoading && (!allInvasiveSpecieData || allInvasiveSpecieData.length === 0)) {
     return (
       <section className="flex items-center justify-center">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -38,36 +43,39 @@ export default function EspeciesInvasoras() {
   return (
     <>
       <title>{`${pageTitle} • Colombia 360`}</title>
-      <main>
-        <PageSection title={pageTitle} isLoading={isLoading && (!invasiveSpecieData || invasiveSpecieData.length === 0)} gridCols="md:grid-cols-2 lg:grid-cols-4">
-          {(Array.isArray(invasiveSpecieData) ? invasiveSpecieData : [])
-            .sort((a, b) => a.id - b.id) // Existing sort maintained
-            .map((species) => ( // Changed key from index to species.id
-              <CardDetail
-                key={species.id || species.name} // Use item.id or item.name for key
-                title={species.name}
-                subtitle={species.scientificName}
-                description={species.impact}
-                imageUrl={species.urlImage}
-                alt={species.scientificName}
-                imageWidth={320}
-                imageHeight={213}
-                imageStyle="cover"
-                viewMoreHref={`/especies-invasoras/${species.id}`}
-                titleWordsCount={4}
+      <EntityPageLayout
+        title={pageTitle}
+        isLoading={isLoading && (!allInvasiveSpecieData || allInvasiveSpecieData.length === 0)}
+        gridCols="md:grid-cols-2 lg:grid-cols-4"
+        pageSizeSelector={<PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />}
+        pagination={
+          totalPages > 1 && (
+            <div className="flex justify-center mt-8 mb-8">
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
               />
-            ))}
-        </PageSection>
-        {!isLoading && invasiveSpecieTotalPages > 1 && (
-          <div className="flex justify-center mt-8 mb-8">
-            <Pagination
-              currentPage={invasiveSpecieCurrentPage}
-              totalPages={invasiveSpecieTotalPages}
-              onPageChange={goToInvasiveSpeciePage}
+            </div>
+          )
+        }
+      >
+        {paginatedData.map((species) => (
+            <CardDetail
+              key={species.id || species.name}
+              title={species.name}
+              subtitle={species.category}
+              description={species.description}
+              imageUrl={species.urlImage}
+              alt={species.name}
+              imageWidth={320}
+              imageHeight={213}
+              imageStyle="cover"
+              viewMoreHref={`/especies-invasoras/${species.id}`}
+              titleWordsCount={6}
             />
-          </div>
-        )}
-      </main>
+          ))}
+      </EntityPageLayout>
     </>
   );
 }

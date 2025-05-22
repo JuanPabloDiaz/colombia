@@ -66,47 +66,55 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   };
 
   return (
-    <nav aria-label="Pagination" className="flex justify-center mt-8">
-      <ul className="inline-flex items-center -space-x-px rounded-md shadow-sm gap-2">
+    <nav aria-label="Paginación" className="flex justify-center mt-8">
+      <ul className="inline-flex items-center rounded-2xl shadow-lg gap-2 border border-slate-700 bg-slate-900/80 px-4 py-2">
         <li>
           <Button
             onClick={handlePrevious}
             disabled={currentPage === 1}
-            variant="outline"
-            className="px-3 py-2"
+            className={cn(
+              "px-5 py-2 rounded-xl font-bold text-base shadow-md border border-primary/80 transition",
+              currentPage === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-primary/80 hover:text-white"
+            )}
+            variant="default"
           >
-            Previous
+            Anterior
           </Button>
         </li>
 
         {getPageNumbers().map((pageNumber, index) => (
           <li key={index}>
             {pageNumber === '...' ? (
-              <span className="px-3 py-2 text-gray-500 dark:text-gray-400">...</span>
+              <span className="px-5 py-2 text-gray-500 dark:text-gray-400 font-bold">...</span>
             ) : (
               <Button
                 onClick={() => onPageChange(pageNumber)}
-                variant={currentPage === pageNumber ? 'default' : 'outline'}
                 className={cn(
-                  "px-3 py-2",
-                  { "bg-primary text-primary-foreground": currentPage === pageNumber },
-                  { "hover:bg-accent hover:text-accent-foreground": currentPage !== pageNumber }
+                  "px-5 py-2 rounded-xl font-bold text-base transition",
+                  currentPage === pageNumber
+                    ? "bg-primary text-primary-foreground shadow-md border border-primary/80 scale-105 z-10"
+                    : "hover:bg-primary/80 hover:text-white border border-slate-700 bg-slate-800 text-white"
                 )}
+                variant="default"
+                aria-current={currentPage === pageNumber ? 'page' : undefined}
               >
                 {pageNumber}
               </Button>
             )}
           </li>
-        ))}
+        ))} 
 
         <li>
           <Button
             onClick={handleNext}
             disabled={currentPage === totalPages}
-            variant="outline"
-            className="px-3 py-2"
+            className={cn(
+              "px-5 py-2 rounded-xl font-bold text-base shadow-md border border-primary/80 transition",
+              currentPage === totalPages ? "opacity-50 cursor-not-allowed" : "hover:bg-primary/80 hover:text-white"
+            )}
+            variant="default"
           >
-            Next
+            Siguiente
           </Button>
         </li>
       </ul>
