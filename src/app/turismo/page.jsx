@@ -37,12 +37,13 @@ export default function Turismo() {
                     // subtitle={tour.scientificName}
                     // description={tour.impact}
                     imageUrl={tour.images}
-                    // alt={tour.scientificName}
+                    alt="turismo"
                     imageWidth={320}
                     imageHeight={213}
                     imageStyle="cover"
                     buttonOne="Ver más"
                     // buttonTwo="Comprar"
+                    titleWordsCount={3}
                   />
                 </ImageChecker>
               ))}

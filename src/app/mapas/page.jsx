@@ -44,6 +44,7 @@ export default function Mapas() {
                   imageStyle="cover"
                   buttonOne="Ver más"
                   // buttonTwo="Comprar"
+                  titleWordsCount={10}
                 />
               ))}
           </div>

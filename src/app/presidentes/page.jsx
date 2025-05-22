@@ -49,6 +49,7 @@ export default function Presidentes() {
                         imageHeight={300}
                         imageStyle="contain"
                         buttonOne="Ver más"
+                        titleWordsCount={3}
                       />
                     </ImageChecker>
                   </React.Fragment>

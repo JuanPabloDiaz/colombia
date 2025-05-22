@@ -47,6 +47,7 @@ export default function EspeciesInvasoras() {
                 imageStyle="cover"
                 buttonOne="Ver más"
                 // buttonTwo="Comprar"
+                titleWordsCount={4}
               />
             ))}
           </div>

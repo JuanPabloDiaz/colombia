@@ -26,26 +26,36 @@ export default function CardDetail({
   imageStyle,
   badgeColor,
   badgeText,
-  imageFailed
+  imageFailed,
+  titleWordsCount,
 }) {
-  // const twoWords = (str) => {
-  //   let words = str.split(" ");
-  //   if (words.length > 2) {
-  //     return words.slice(0, 2).join(" ") + "...";
-  //   } else {
-  //     return words.join(" ");
-  //   }
-  // };
-  const twoWords = (str = "") => {
+  const cropWords = (str = "", count = 2) => {
     let words = str.split(" ");
-    if (words.length > 2) {
-      return words.slice(0, 2).join(" ") + "...";
+    if (words.length > count) {
+      return words.slice(0, count).join(" ") + "...";
     } else {
       return words.join(" ");
     }
   };
 
-  const fallbackImage = "/assets/images/avatar.png";
+
+  let fallbackImage = "/assets/images/avatar.png";
+  if (typeof alt === 'string' && (alt.toLowerCase().includes('turismo') || alt.toLowerCase().includes('lugar'))) {
+    fallbackImage = "/assets/images/fallback-place.jpg";
+  }
+  if (typeof title === 'string' && (title.toLowerCase().includes('turismo') || title.toLowerCase().includes('lugar'))) {
+    fallbackImage = "/assets/images/fallback-place.jpg";
+  }
+  if (typeof badgeText === 'string' && badgeText.toLowerCase().includes('turismo')) {
+    fallbackImage = "/assets/images/fallback-place.jpg";
+  }
+  if (typeof badgeText === 'string' && badgeText.toLowerCase().includes('presidente')) {
+    fallbackImage = "/assets/images/avatar.png";
+  }
+  if (typeof alt === 'string' && alt.toLowerCase().includes('presidente')) {
+    fallbackImage = "/assets/images/avatar.png";
+  }
+  // Permitir override explícito por prop en el futuro
   const showFallback = imageFailed || !imageUrl || imageUrl === '';
 
   return (
@@ -87,11 +97,19 @@ export default function CardDetail({
             height={240}
             objectFit="cover"
             borderRadius="1rem"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%', borderRadius: '1rem' }}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center 15%',
+              borderRadius: '1rem',
+              opacity: showFallback ? 0.65 : 1,
+              transition: 'opacity 0.2s',
+            }}
           />
         </div>
         <Stack mt="6" spacing="3" align="center">
-          <Heading size="md" textAlign="center">{twoWords(title)}</Heading>
+          <Heading size="md" textAlign="center">{cropWords(title, titleWordsCount ?? 2)}</Heading>
           {badgeText && (
             <Badge colorScheme={badgeColor || "purple"} fontSize="0.9em">
               {badgeText}
