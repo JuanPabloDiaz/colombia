@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useContext, isLoading, useEffect } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "@/context";
 
 import CardDetail from "@/components/ChakraCard/CardDetail";
+import PageSection from "@/components/PageSection";
 
 import { metadata } from "@/components/metadata";
 import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
@@ -29,19 +30,17 @@ export default function EspeciesInvasoras() {
     <>
       <title>{`${pageTitle} • Colombia 360`}</title>
       <main>
-        <h1 className="mx-auto mb-8 w-fit rounded-xl bg-slate-950/90 p-4 text-4xl font-bold text-white/60">
-          {pageTitle}
-        </h1>
-        <section className="flex items-center justify-center">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {invasiveSpecieData.map((specie, index) => (
+        <PageSection title={pageTitle} isLoading={isLoading} gridCols="md:grid-cols-2 lg:grid-cols-4">
+          {invasiveSpecieData
+            .sort((a, b) => a.id - b.id)
+            .map((species, index) => (
               <CardDetail
                 key={index}
-                title={specie.name}
-                subtitle={specie.scientificName}
-                description={specie.impact}
-                imageUrl={specie.urlImage}
-                alt={specie.scientificName}
+                title={species.name}
+                subtitle={species.scientificName}
+                description={species.impact}
+                imageUrl={species.urlImage}
+                alt={species.scientificName}
                 imageWidth={320}
                 imageHeight={213}
                 imageStyle="cover"
@@ -50,8 +49,7 @@ export default function EspeciesInvasoras() {
                 titleWordsCount={4}
               />
             ))}
-          </div>
-        </section>
+        </PageSection>
       </main>
     </>
   );
