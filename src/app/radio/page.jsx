@@ -5,28 +5,55 @@ import { AppContext } from "@/context";
 
 import { metadata } from "@/components/metadata";
 import RadioCard from "@/components/Card/RadioCard";
-import LoadingCard from "@/components/Loading/LoadingCard";
+// import LoadingCard from "@/components/Loading/LoadingCard"; // Original loading component
+import LoadingCardDetail from "@/components/Loading/LoadingCardDetail"; // Using LoadingCardDetail for consistency
 import PageSection from "@/components/PageSection";
+import Pagination from "@/components/ui/Pagination"; // Import the Pagination component
 
 export default function Radio() {
   const pageTitle = metadata.fm.title;
-  const { radioData, isLoading } = useContext(AppContext);
+  const {
+    radioData, // This is the paginated slice
+    isLoading,
+    radioCurrentPage,
+    radioTotalPages,
+    goToRadioPage,
+  } = useContext(AppContext);
 
-  if (isLoading) {
-    return <LoadingCard />;
+  // Show loading state only if data hasn't been loaded yet for the first time
+  if (isLoading && (!radioData || radioData.length === 0)) {
+    return (
+      // Assuming LoadingCardDetail is preferred for consistency, using 12 items for skeleton
+      <section className="flex items-center justify-center">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {Array.from({ length: 12 }).map((_, index) => (
+            <LoadingCardDetail key={index} />
+          ))}
+        </div>
+      </section>
+    );
   }
 
   return (
     <>
       <title>{`${pageTitle} • Colombia 360`}</title>
       <main>
-        <PageSection title={pageTitle} isLoading={isLoading} gridCols="md:grid-cols-2 lg:grid-cols-4">
-          {radioData
-              .sort((a, b) => a.id - b.id)
-              .map((fm) => (
-                <RadioCard key={fm.id} fm={fm} />
-              ))}
+        <PageSection title={pageTitle} isLoading={isLoading && (!radioData || radioData.length === 0)} gridCols="md:grid-cols-2 lg:grid-cols-4">
+          {(Array.isArray(radioData) ? radioData : [])
+            .sort((a, b) => a.id - b.id) // Existing sort maintained
+            .map((fm) => (
+              <RadioCard key={fm.id || fm.name} fm={fm} /> // Use item.id or item.name for key
+            ))}
         </PageSection>
+        {!isLoading && radioTotalPages > 1 && (
+          <div className="flex justify-center mt-8 mb-8">
+            <Pagination
+              currentPage={radioCurrentPage}
+              totalPages={radioTotalPages}
+              onPageChange={goToRadioPage}
+            />
+          </div>
+        )}
       </main>
     </>
   );
