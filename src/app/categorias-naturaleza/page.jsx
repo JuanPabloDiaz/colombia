@@ -29,7 +29,7 @@ export default function CategoriasNaturaleza() {
     <>
       <title>{`${pageTitle} • Colombia 360`}</title>
       <PageSection title={pageTitle} isLoading={isLoading} gridCols="md:grid-cols-2 lg:grid-cols-4">
-        {categoryData
+        {(Array.isArray(categoryData) ? categoryData : [])
           .sort((a, b) => a.id - b.id)
           .map((category, index) => (
             <DepartamentoCard
