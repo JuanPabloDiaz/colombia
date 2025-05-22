@@ -46,7 +46,7 @@ export default function CardDetail({
   };
 
   const fallbackImage = "/assets/images/avatar.png";
-  const showFallback = imageFailed;
+  const showFallback = imageFailed || !imageUrl || imageUrl === '';
 
   return (
     <Card
@@ -68,32 +68,27 @@ export default function CardDetail({
       justifyContent="space-between"
     >
       <CardBody p={4}>
-        <div style={{ position: 'relative', width: '100%', display: 'flex', justifyContent: 'center' }}>
+        <div style={{
+          position: 'relative',
+          width: 240,
+          height: 240,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          overflow: 'hidden',
+          borderRadius: '1rem',
+          background: '#222',
+          margin: '0 auto',
+        }}>
           <Image
             src={showFallback ? fallbackImage : imageUrl}
             alt={alt || title || "Presidente de Colombia"}
-            width={imageWidth || 300}
-            height={imageHeight || 300}
-            objectFit={imageStyle || "cover"}
-            borderRadius="lg"
-            mx="auto"
-            style={{ aspectRatio: '1/1', width: '100%', maxWidth: 240, minHeight: 180, background: '#222' }}
+            width={240}
+            height={240}
+            objectFit="cover"
+            borderRadius="1rem"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%', borderRadius: '1rem' }}
           />
-          {showFallback && (
-            <Badge
-              colorScheme="red"
-              position="absolute"
-              top={2}
-              right={2}
-              zIndex={2}
-              fontSize="0.8em"
-              px={2}
-              borderRadius="md"
-              bg="rgba(220,38,38,0.8)"
-            >
-              Imagen no disponible
-            </Badge>
-          )}
         </div>
         <Stack mt="6" spacing="3" align="center">
           <Heading size="md" textAlign="center">{twoWords(title)}</Heading>
