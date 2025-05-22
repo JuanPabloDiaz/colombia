@@ -1,16 +1,31 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, useState, useMemo } from "react";
 import { AppContext } from "@/context";
-
+import Pagination from "@/components/ui/Pagination";
+import PageSizeSelector from "@/components/ui/PageSizeSelector";
 import { metadata } from "@/components/metadata";
 import CardDetail from "@/components/ChakraCard/CardDetail";
 import LoadingCard from "@/components/Loading/LoadingCard";
+import EntityPageLayout from "@/components/ui/EntityPageLayout";
 
 export default function Mapas() {
   const pageTitle = metadata.map.title;
 
   const { mapData, isLoading } = useContext(AppContext);
+  const [pageSize, setPageSize] = useState(4);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Ordena y calcula los datos paginados
+  const sortedData = useMemo(() => (mapData ? [...mapData].sort((a, b) => a.id - b.id) : []), [mapData]);
+  const totalPages = useMemo(() => Math.ceil(sortedData.length / pageSize) || 1, [sortedData, pageSize]);
+  const paginatedData = useMemo(() => {
+    const start = (currentPage - 1) * pageSize;
+    return sortedData.slice(start, start + pageSize);
+  }, [sortedData, currentPage, pageSize]);
+
+  // Reset page if pageSize or data changes
+  React.useEffect(() => { setCurrentPage(1); }, [pageSize, sortedData]);
 
   if (isLoading) {
     return (
@@ -23,32 +38,37 @@ export default function Mapas() {
   return (
     <>
       <title>{`${pageTitle} • Colombia 360`}</title>
-      <main>
-        <h1 className="mx-auto mb-8 w-fit rounded-xl bg-slate-950/90 p-4 text-4xl font-bold text-white/60">
-          {pageTitle}
-        </h1>
-        <section className="flex items-center justify-center">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {mapData
-              // .sort((a, b) => a.id - b.id)
-              .map((mapa, index) => (
-                <CardDetail
-                  key={index}
-                  title={mapa.name}
-                  // subtitle={tour.scientificName}
-                  description={mapa.description}
-                  imageUrl={mapa.urlImages}
-                  // alt={tour.scientificName}
-                  imageWidth={300}
-                  imageHeight={350}
-                  imageStyle="cover"
-                  buttonOne="Ver más"
-                  // buttonTwo="Comprar"
-                />
-              ))}
-          </div>
-        </section>
-      </main>
+      <EntityPageLayout
+        title={pageTitle}
+        isLoading={isLoading}
+        gridCols="md:grid-cols-2 lg:grid-cols-4"
+        pageSizeSelector={<PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />}
+        pagination={
+          totalPages > 1 && (
+            <div className="flex justify-center mt-8 mb-8">
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
+            </div>
+          )
+        }
+      >
+        {paginatedData.map((mapa, index) => (
+          <CardDetail
+            key={mapa.id || index}
+            title={mapa.name}
+            description={mapa.description}
+            imageUrl={mapa.urlImages}
+            imageWidth={320}
+            imageHeight={213}
+            imageStyle="cover"
+            viewMoreHref={`/mapas/${mapa.id}`}
+            titleWordsCount={10}
+          />
+        ))}
+      </EntityPageLayout>
     </>
   );
 }

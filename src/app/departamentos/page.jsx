@@ -1,110 +1,64 @@
 "use client";
 
-import React, { useContext, isLoading, useEffect } from "react";
+import React, { useContext, useState, useMemo } from "react";
 import { AppContext } from "@/context";
-
-import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
-
+import PageSizeSelector from "@/components/ui/PageSizeSelector";
+import Link from "next/link";
+import Pagination from "@/components/ui/Pagination";
+import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import { metadata } from "@/components/metadata";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
+const pageTitle = metadata.dep.title;
 export default function Departamentos() {
-  const pageTitle = metadata.dep.title;
+  const { allDepartamentData, isLoading } = useContext(AppContext);
+  const [pageSize, setPageSize] = useState(4);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const { departamentData, isLoading } = useContext(AppContext);
+  const sortedData = useMemo(() => (allDepartamentData ? [...allDepartamentData].sort((a, b) => a.id - b.id) : []), [allDepartamentData]);
+  const totalPages = useMemo(() => Math.ceil(sortedData.length / pageSize) || 1, [sortedData, pageSize]);
+  const paginatedData = useMemo(() => {
+    const start = (currentPage - 1) * pageSize;
+    return sortedData.slice(start, start + pageSize);
+  }, [sortedData, currentPage, pageSize]);
+  React.useEffect(() => { setCurrentPage(1); }, [pageSize, sortedData]);
 
-  if (isLoading) {
-    return (
-      <section className="flex items-center justify-center">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {Array.from({ length: 12 }).map((_, index) => (
-            <LoadingCardDetail key={index} />
-          ))}
-        </div>
-      </section>
-    );
-  }
-
+  // Show loading state only if data hasn't been loaded yet for the first time
   return (
     <>
       <title>{`${pageTitle} • Colombia 360`}</title>
-      <h1 className="mx-auto mb-8 w-fit rounded-xl bg-slate-950/90 p-4 text-4xl font-bold text-white/60">
-        {pageTitle}
-      </h1>
-
-      <section className="flex items-center justify-center">
-        {/* <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4"> */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-6">
-          {departamentData.map((departament, index) => (
-            <>
-              <Accordion
-                type="single"
-                collapsible
-                className="bg-slate-950/90"
-                key={index}
-              >
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>{departament.name}</AccordionTrigger>
-                  <AccordionContent>
-                    <div>
-                      <p>
-                        <span className="font-bold text-red-800">Id: </span>
-                        {departament.id}
-                      </p>
-                      <p>
-                        <span className="font-bold text-red-800">Nombre: </span>
-                        {departament.name}
-                      </p>
-                      <p>
-                        <span className="font-bold text-red-800">
-                          Descripcion:{" "}
-                        </span>
-                        {departament.description}
-                      </p>
-                      <p>
-                        <span className="font-bold text-red-800">
-                          Superficie:{" "}
-                        </span>
-                        {departament.surface}
-                      </p>
-                      <p>
-                        <span className="font-bold text-red-800">
-                          Población:{" "}
-                        </span>
-                        {departament.population}
-                      </p>
-                      <p>
-                        <span className="font-bold text-red-800">
-                          Municipios:{" "}
-                        </span>
-                        {departament.municipalities}
-                      </p>
-                      <p>
-                        <span className="font-bold text-red-800">
-                          cityCapitalId:{" "}
-                        </span>
-                        {departament.cityCapitalId}
-                      </p>
-                      <p>
-                        <span className="font-bold text-red-800">
-                          Region ID:{" "}
-                        </span>
-                        {departament.regionId}
-                      </p>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            </>
-          ))}
-        </div>
-      </section>
+      <EntityPageLayout
+        title={pageTitle}
+        isLoading={isLoading && (!allDepartamentData || allDepartamentData.length === 0)}
+        gridCols="md:grid-cols-2 lg:grid-cols-4"
+        pageSizeSelector={<PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />}
+        pagination={
+          totalPages > 1 && (
+            <div className="flex justify-center mt-8 mb-8">
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
+            </div>
+          )
+        }
+      >
+        {paginatedData.map((departament) => (
+          <div key={departament.id || departament.name} className="rounded-xl bg-slate-950/90 text-white/90 shadow-xl flex flex-col gap-3 p-6 min-h-60">
+            <h2 className="text-2xl font-bold mb-1 text-primary-400">{departament.name}</h2>
+            <p className="text-base leading-relaxed mb-2 text-white/80 line-clamp-3">{departament.description}</p>
+            <div className="flex flex-wrap gap-4 text-sm mb-4">
+              <div><span className="font-semibold text-white/70">Superficie:</span> {departament.surface?.toLocaleString()} km²</div>
+              <div><span className="font-semibold text-white/70">Población:</span> {departament.population?.toLocaleString()}</div>
+              <div><span className="font-semibold text-white/70">Municipios:</span> {departament.municipalities}</div>
+            </div>
+            <Link href={`/departamentos/${departament.id}`} passHref legacyBehavior>
+              <a className="inline-block mt-auto px-5 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition-colors text-base font-medium text-center">Ver más</a>
+            </Link>
+          </div>
+        ))}
+      </EntityPageLayout>
     </>
   );
 }

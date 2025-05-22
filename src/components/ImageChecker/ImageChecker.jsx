@@ -1,33 +1,23 @@
 import React, { useEffect, useState } from "react";
-import ErrorComponent from "@/components/ErrorComponent/ErrorComponent";
 
 const ImageChecker = ({ imageUrl, imageId, imageName, children }) => {
-  const [imageExists, setImageExists] = useState(false);
+  const [imageExists, setImageExists] = useState(true);
 
   useEffect(() => {
+    let isMounted = true;
     fetch(imageUrl)
       .then((res) => {
-        if (res.ok) {
-          setImageExists(true);
-        }
+        if (isMounted) setImageExists(res.ok);
       })
-      .catch((error) => {
-        // console.error(
-        //   `Fetch error for image with ID ${imageId} and name ${imageName}`,
-        //   error.message,
-        // );
-        setImageExists(false);
+      .catch(() => {
+        if (isMounted) setImageExists(false);
       });
-  }, [imageUrl, imageId, imageName]);
+    return () => { isMounted = false; };
+  }, [imageUrl]);
 
-  return imageExists ? (
-    children
-  ) : (
-    <ErrorComponent
-      imageId={imageId}
-      imageName={imageName}
-      imageUrl={imageUrl}
-    />
+  // Clone children and inject imageFailed prop
+  return React.Children.map(children, child =>
+    React.cloneElement(child, { imageFailed: !imageExists })
   );
 };
 

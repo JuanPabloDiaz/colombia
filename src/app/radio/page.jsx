@@ -4,63 +4,56 @@ import React, { useContext } from "react";
 import { AppContext } from "@/context";
 
 import { metadata } from "@/components/metadata";
-import CardDetail from "@/components/ChakraCard/CardDetail";
-// import Card from "@/components/ChakraCard/Card";
-import Card from "@/components/Card/Card";
-import CardInfo from "@/components/Card/CardInfo";
-import CardAccordion from "@/components/Card/CardAccordion";
-import LoadingCard from "@/components/Loading/LoadingCard";
+import RadioCard from "@/components/Card/RadioCard";
+// import LoadingCard from "@/components/Loading/LoadingCard"; // Original loading component
+import LoadingCardDetail from "@/components/Loading/LoadingCardDetail"; // Using LoadingCardDetail for consistency
+import PageSection from "@/components/PageSection";
+import Pagination from "@/components/ui/Pagination"; // Import the Pagination component
 
 export default function Radio() {
   const pageTitle = metadata.fm.title;
-  const { radioData, isLoading } = useContext(AppContext);
+  const {
+    radioData, // This is the paginated slice
+    isLoading,
+    radioCurrentPage,
+    radioTotalPages,
+    goToRadioPage,
+  } = useContext(AppContext);
 
-  if (isLoading) {
-    return <LoadingCard />;
+  // Show loading state only if data hasn't been loaded yet for the first time
+  if (isLoading && (!radioData || radioData.length === 0)) {
+    return (
+      // Assuming LoadingCardDetail is preferred for consistency, using 12 items for skeleton
+      <section className="flex items-center justify-center">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {Array.from({ length: 12 }).map((_, index) => (
+            <LoadingCardDetail key={index} />
+          ))}
+        </div>
+      </section>
+    );
   }
 
   return (
     <>
       <title>{`${pageTitle} • Colombia 360`}</title>
       <main>
-        <h1 className="mx-auto mb-8 w-fit rounded-xl bg-slate-950/90 p-4 text-4xl font-bold text-white/60">
-          {pageTitle}
-        </h1>
-        <section className="flex items-center justify-center">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {radioData
-              .sort((a, b) => a.id - b.id)
-              .map((fm, index) => (
-                <>
-                  <Card
-                    key={index}
-                    title={fm.name}
-                    text={fm.url}
-                    className="w-[250px] border-none bg-black/90 text-white"
-                  />
-                  {/* <CardInfo
-                    key={index}
-                    title={fm.name}
-                    description={fm.city.description}
-                    content={"content"}
-                    buttonOne={"buttonOne"}
-                    buttonTwo={"buttonTwo"}
-                  /> */}
-                  {/* <CardAccordion
-                    key={index}
-                    title={fm.name}
-                    description={fm.city.description}
-                    content={fm.city.name}
-                    buttonOne={fm.url}
-                    buttonTwo={"buttonTwo"}
-                  /> */}
-                  {/* <a href={fm.url} target="_blank" rel="noopener noreferrer">
-                    {fm.name}
-                  </a> */}
-                </>
-              ))}
+        <PageSection title={pageTitle} isLoading={isLoading && (!radioData || radioData.length === 0)} gridCols="md:grid-cols-2 lg:grid-cols-4">
+          {(Array.isArray(radioData) ? radioData : [])
+            .sort((a, b) => a.id - b.id) // Existing sort maintained
+            .map((fm) => (
+              <RadioCard key={fm.id || fm.name} fm={fm} /> // Use item.id or item.name for key
+            ))}
+        </PageSection>
+        {!isLoading && radioTotalPages > 1 && (
+          <div className="flex justify-center mt-8 mb-8">
+            <Pagination
+              currentPage={radioCurrentPage}
+              totalPages={radioTotalPages}
+              onPageChange={goToRadioPage}
+            />
           </div>
-        </section>
+        )}
       </main>
     </>
   );
