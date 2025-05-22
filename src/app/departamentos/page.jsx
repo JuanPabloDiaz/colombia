@@ -1,31 +1,18 @@
 "use client";
 
-import React, { useContext, isLoading, useEffect } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "@/context";
-
-import DepartamentoCard from "@/components/Card/DepartamentoCard";
-import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
-
-import { metadata } from "@/components/metadata";
-
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import Link from "next/link";
 
 export default function Departamentos() {
-  const pageTitle = metadata.dep.title;
-
   const { departamentData, isLoading } = useContext(AppContext);
 
   if (isLoading) {
     return (
-      <section className="flex items-center justify-center">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <section className="flex items-center justify-center min-h-[60vh]">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 w-full max-w-7xl">
           {Array.from({ length: 12 }).map((_, index) => (
-            <LoadingCardDetail key={index} />
+            <div key={index} className="rounded-xl bg-slate-950/90 text-white/90 shadow-xl flex flex-col gap-3 p-6 min-h-60 animate-pulse"></div>
           ))}
         </div>
       </section>
@@ -33,19 +20,24 @@ export default function Departamentos() {
   }
 
   return (
-    <>
-      <title>{`${pageTitle} • Colombia 360`}</title>
-      <h1 className="mx-auto mb-10 w-fit rounded-xl bg-slate-950/90 p-6 text-4xl font-extrabold text-white/80 shadow-md tracking-tight">
-        {pageTitle}
-      </h1>
-
-      <section className="flex items-center justify-center px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 w-full max-w-7xl">
-          {departamentData.map((departament) => (
-            <DepartamentoCard key={departament.id} departamento={departament} />
-          ))}
-        </div>
-      </section>
-    </>
+    <main className="py-8 min-h-[80vh]">
+      <h1 className="text-3xl font-bold mb-8 text-center text-primary-400">Departamentos de Colombia</h1>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 w-full max-w-7xl mx-auto">
+        {departamentData.sort((a, b) => a.id - b.id).map((departament) => (
+          <div key={departament.id} className="rounded-xl bg-slate-950/90 text-white/90 shadow-xl flex flex-col gap-3 p-6 min-h-60">
+            <h2 className="text-2xl font-bold mb-1 text-primary-400">{departament.name}</h2>
+            <p className="text-base leading-relaxed mb-2 text-white/80 line-clamp-3">{departament.description}</p>
+            <div className="flex flex-wrap gap-4 text-sm mb-4">
+              <div><span className="font-semibold text-white/70">Superficie:</span> {departament.surface?.toLocaleString()} km²</div>
+              <div><span className="font-semibold text-white/70">Población:</span> {departament.population?.toLocaleString()}</div>
+              <div><span className="font-semibold text-white/70">Municipios:</span> {departament.municipalities}</div>
+            </div>
+            <Link href={`/departamentos/${departament.id}`} passHref legacyBehavior>
+              <a className="inline-block mt-auto px-5 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition-colors text-base font-medium text-center">Ver más</a>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </main>
   );
 }

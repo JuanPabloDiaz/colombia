@@ -13,12 +13,15 @@ import {
   Badge,
 } from "@chakra-ui/react";
 
+import Link from "next/link";
+
 export default function CardDetail({
   title,
   description,
   subtitle,
   buttonOne,
   buttonTwo,
+  viewMoreHref,
   imageUrl,
   alt,
   imageWidth,
@@ -28,6 +31,7 @@ export default function CardDetail({
   badgeText,
   imageFailed,
   titleWordsCount,
+  fallbackAvatar,
 }) {
   const cropWords = (str = "", count = 2) => {
     let words = str.split(" ");
@@ -39,24 +43,11 @@ export default function CardDetail({
   };
 
 
-  let fallbackImage = "/assets/images/avatar.png";
-  if (typeof alt === 'string' && (alt.toLowerCase().includes('turismo') || alt.toLowerCase().includes('lugar'))) {
-    fallbackImage = "/assets/images/fallback-place.jpg";
-  }
-  if (typeof title === 'string' && (title.toLowerCase().includes('turismo') || title.toLowerCase().includes('lugar'))) {
-    fallbackImage = "/assets/images/fallback-place.jpg";
-  }
-  if (typeof badgeText === 'string' && badgeText.toLowerCase().includes('turismo')) {
-    fallbackImage = "/assets/images/fallback-place.jpg";
-  }
-  if (typeof badgeText === 'string' && badgeText.toLowerCase().includes('presidente')) {
-    fallbackImage = "/assets/images/avatar.png";
-  }
-  if (typeof alt === 'string' && alt.toLowerCase().includes('presidente')) {
-    fallbackImage = "/assets/images/avatar.png";
-  }
-  // Permitir override explícito por prop en el futuro
-  const showFallback = imageFailed || !imageUrl || imageUrl === '';
+let fallbackImage = "/assets/images/fallbackImage.jpg";
+if (fallbackAvatar) {
+  fallbackImage = "/assets/images/avatar.png";
+}
+const showFallback = imageFailed || !imageUrl || imageUrl === '';
 
   return (
     <Card
@@ -123,7 +114,15 @@ export default function CardDetail({
       <Divider my={2} borderColor="whiteAlpha.300" />
       <CardFooter>
         <ButtonGroup spacing="2" width="100%" justifyContent="center">
-          {buttonOne && <Button colorScheme="teal" variant="outline" size="sm">{buttonOne}</Button>}
+          {/* Botón Ver más que redirige si hay viewMoreHref */}
+          {viewMoreHref && (
+            <Link href={viewMoreHref} passHref legacyBehavior>
+              <Button as="a" colorScheme="teal" variant="outline" size="sm">
+                Ver más
+              </Button>
+            </Link>
+          )}
+          {/* Botón secundario opcional */}
           {buttonTwo && <Button colorScheme="teal" variant="outline" size="sm">{buttonTwo}</Button>}
         </ButtonGroup>
       </CardFooter>
