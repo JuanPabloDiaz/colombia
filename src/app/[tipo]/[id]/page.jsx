@@ -211,6 +211,103 @@ export default function EntityDetailPage({ params }) {
     );
   }
 
+  // Layout especial para especies invasoras
+  if (tipo === "especies-invasoras") {
+    // Badge de riesgo
+    const riskColors = {
+      1: "bg-yellow-400 text-yellow-900",
+      2: "bg-orange-500 text-white",
+      3: "bg-red-600 text-white"
+    };
+    return (
+      <main className="min-h-[80vh] flex flex-col items-center py-8">
+        <BackButton tipo={tipo} />
+        <div className="w-full max-w-2xl bg-slate-900/90 rounded-3xl shadow-xl text-white mt-4 overflow-hidden">
+          {/* Imagen principal */}
+          <div className="w-full aspect-[4/3] bg-black flex items-center justify-center">
+            <img
+              src={entity.urlImage || '/assets/images/fallback-species.jpg'}
+              alt={entity.name}
+              className="object-contain w-full h-full max-h-[360px]"
+            />
+          </div>
+          <div className="p-6 flex flex-col gap-3">
+            <h1 className="text-3xl font-extrabold text-primary-400 leading-tight mb-1">{entity.name}</h1>
+            {entity.scientificName && (
+              <div className="italic text-lg text-primary-200 mb-1">{entity.scientificName}</div>
+            )}
+            {entity.commonNames && (
+              <div className="text-base text-white/80 mb-2">
+                <span className="font-semibold text-white/70">Nombres comunes:</span> {entity.commonNames}
+              </div>
+            )}
+            {entity.riskLevel && (
+              <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-2 ${riskColors[entity.riskLevel] || 'bg-gray-500 text-white'}`}>
+                Nivel de riesgo: {entity.riskLevel}
+              </span>
+            )}
+            {/* Impacto */}
+            {entity.impact && (
+              <section className="mt-4 mb-2">
+                <h2 className="text-xl font-semibold text-primary-300 mb-1">Impacto</h2>
+                <p className="text-base text-white/90 whitespace-pre-line">{entity.impact}</p>
+              </section>
+            )}
+            {/* Manejo */}
+            {entity.manage && (
+              <section className="mt-2">
+                <h2 className="text-xl font-semibold text-primary-300 mb-1">Manejo</h2>
+                <p className="text-base text-white/90 whitespace-pre-line">{entity.manage}</p>
+              </section>
+            )}
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  // Layout especial para mapas
+  if (tipo === "mapas") {
+    // Extraer dominio fuente
+    let sourceDomain = null;
+    if (entity.urlSource) {
+      try {
+        sourceDomain = new URL(entity.urlSource).hostname.replace('www.', '');
+      } catch {}
+    }
+    // Estado local para modal de imagen
+    const [modalImg, setModalImg] = React.useState(null);
+    return (
+      <main className="min-h-[80vh] flex flex-col items-center py-8">
+        <BackButton tipo={tipo} />
+        <div className="w-full max-w-5xl bg-slate-900/90 rounded-3xl shadow-xl text-white mt-4 overflow-hidden flex flex-col md:flex-row">
+          {/* Columna de imágenes */}
+          <div className="md:w-1/2 w-full bg-black flex flex-col items-center justify-center p-4 gap-4 overflow-y-auto max-h-[600px] md:max-h-none">
+            {entity.urlImages && entity.urlImages.length > 0 ? (
+              entity.urlImages.map((img, idx) => (
+                <img
+                  key={idx}
+                  src={img}
+                  alt={entity.name + ' mapa ' + (idx+1)}
+                  className="rounded-xl object-contain shadow-lg w-auto max-h-[520px] min-h-[320px] mx-auto mb-2"
+                  style={{ background: 'transparent' }}
+                />
+              ))
+            ) : (
+              <div className="w-full h-48 flex items-center justify-center bg-slate-800 rounded-xl text-white/60">Sin imagen</div>
+            )}
+          </div>
+          {/* Columna de contenido */}
+          <div className="md:w-1/2 w-full flex flex-col justify-center p-8 gap-4">
+            <h1 className="text-3xl font-extrabold text-primary-400 leading-tight mb-2 text-left md:text-4xl">{entity.name}</h1>
+            <p className="text-base leading-relaxed text-white/90 whitespace-pre-line mb-2">{entity.description}</p>
+
+          </div>
+        </div>
+      </main>
+    );
+  }
+
   // Layout normal para otros tipos
   return (
     <main className="min-h-[80vh] flex flex-col items-center py-8">
