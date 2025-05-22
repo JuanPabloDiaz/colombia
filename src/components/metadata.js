@@ -1,6 +1,6 @@
 export const metadata = {
   home: {
-    title: "Amo Colombia",
+    title: "Colombia 360",
     description:
       "Personal project to express my love for Colombia and share some information about it.",
   },

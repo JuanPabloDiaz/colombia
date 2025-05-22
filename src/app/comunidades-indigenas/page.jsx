@@ -6,10 +6,9 @@ import PageSizeSelector from "@/components/ui/PageSizeSelector";
 
 import { metadata } from "@/components/metadata";
 import CardBadge from "@/components/Card/CardBadge";
-import LoadingCard from "@/components/Loading/LoadingCard"; // This was used before, will adapt to LoadingCardDetail for consistency if needed or keep if it's different
-import LoadingCardDetail from "@/components/Loading/LoadingCardDetail"; // Assuming this is preferred for consistency
+import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
-import Pagination from "@/components/ui/Pagination"; // Import the Pagination component
+import Pagination from "@/components/ui/Pagination";
 
 export default function ComunidadesIndigenas() {
   const pageTitle = metadata.ind.title;
@@ -27,7 +26,7 @@ export default function ComunidadesIndigenas() {
   React.useEffect(() => { setCurrentPage(1); }, [pageSize, sortedData]);
 
   // Show loading state only if data hasn't been loaded yet for the first time
-  if (isLoading && (!nativeCommunityData || nativeCommunityData.length === 0)) {
+  if (isLoading && (!allNativeCommunityData || allNativeCommunityData.length === 0)) {
     return (
       // Using LoadingCardDetail for consistency with other pages, assuming 12 items for loading skeleton
       <section className="flex items-center justify-center">
@@ -45,7 +44,7 @@ export default function ComunidadesIndigenas() {
       <title>{`${pageTitle} • Colombia 360`}</title>
       <EntityPageLayout
         title={pageTitle}
-        isLoading={isLoading && (!nativeCommunityData || nativeCommunityData.length === 0)}
+        isLoading={isLoading && (!allNativeCommunityData || allNativeCommunityData.length === 0)}
         gridCols="md:grid-cols-2 lg:grid-cols-4"
         pageSizeSelector={<PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />}
         pagination={

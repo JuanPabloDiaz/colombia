@@ -8,27 +8,30 @@ export const Footer = () => {
     {
       href: "https://github.com/juanpablodiaz",
       icon: <Github className="h-4 w-4" />,
+      ariaLabel: "Github profile for Juan Diaz",
     },
     {
       href: "https://www.linkedin.com/in/1diazdev/",
       icon: <Linkedin className="h-4 w-4" />,
+      ariaLabel: "Linkedin profile for Juan Diaz",
     },
     {
       href: "https://twitter.com/1diazdev",
       icon: <Twitter className="h-4 w-4" />,
+      ariaLabel: "Twitter profile for Juan Diaz",
     },
   ];
 
   return (
     <main className="w-full bg-slate-950/90 py-4 font-semibold">
       <section>
-        <ul className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-4">
           {socials.map((social, index) => (
-            <Link href={social.href} key={index}>
-              <li>{social.icon}</li>
+            <Link href={social.href} key={index} aria-label={social.ariaLabel}>
+              <div>{social.icon}</div>
             </Link>
           ))}
-        </ul>
+        </div>
       </section>
       <section className="mt-4 flex items-center justify-around gap-4">
         <p className="text-center">

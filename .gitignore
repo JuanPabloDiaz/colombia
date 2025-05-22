@@ -43,3 +43,6 @@ next-env.d.ts
 
 # random stuff
 TO-DO-PLAIN.MD
+
+# lighthouse CI
+/.unlighthouse/

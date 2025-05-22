@@ -116,7 +116,7 @@ export const Nav = ({ setOpen, ul_className }) => {
     //   ))}
     // </ul>
 
-    <ul className={ul_className}>
+    <nav className={ul_className}>
       {links.map((link, index) => {
         // Specify the routes you want to allow navigation to
         const allowedRoutes = [
@@ -153,9 +153,10 @@ export const Nav = ({ setOpen, ul_className }) => {
           <Link
             href={link.href || "/"}
             key={index}
+            aria-label={link.title}
             className="w-full cursor-pointer rounded-lg py-2 transition duration-300 ease-in-out hover:bg-gray-600"
           >
-            <li
+            <div
               className="flex items-center"
               style={{
                 color: isAllowedRoute ? "white" : "gray",
@@ -164,10 +165,10 @@ export const Nav = ({ setOpen, ul_className }) => {
             >
               <span className="w-20 px-4">{link.icon}</span>
               {link.title}
-            </li>
+            </div>
           </Link>
         );
       })}
-    </ul>
+    </nav>
   );
 };
