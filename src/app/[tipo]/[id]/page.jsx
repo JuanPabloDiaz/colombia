@@ -29,6 +29,8 @@ function formatMandatoDate(dateStr) {
 
 export default function EntityDetailPage({ params }) {
   const { tipo, id } = params;
+  const [modalImg, setModalImg] = React.useState(null);
+
   const {
     presidentData,
     touristicAttractionData,
@@ -275,8 +277,6 @@ export default function EntityDetailPage({ params }) {
         sourceDomain = new URL(entity.urlSource).hostname.replace('www.', '');
       } catch {}
     }
-    // Estado local para modal de imagen
-    const [modalImg, setModalImg] = React.useState(null);
     return (
       <main className="min-h-[80vh] flex flex-col items-center py-8">
         <BackButton tipo={tipo} />
