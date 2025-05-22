@@ -37,7 +37,7 @@ export default function Mapas() {
                 imageWidth={320}
                 imageHeight={213}
                 imageStyle="cover"
-                buttonOne="Ver más"
+                viewMoreHref={`/mapas/${mapa.id}`}
                 // buttonTwo="Comprar"
                 titleWordsCount={10}
               />

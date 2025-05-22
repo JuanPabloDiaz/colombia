@@ -46,7 +46,7 @@ export default function Presidentes() {
                       imageWidth={300}
                       imageHeight={300}
                       imageStyle="contain"
-                      buttonOne="Ver más"
+                      viewMoreHref={`/presidentes/${president.id}`}
                       titleWordsCount={3}
                     />
                   </ImageChecker>

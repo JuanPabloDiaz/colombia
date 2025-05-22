@@ -38,7 +38,7 @@ export default function Turismo() {
                   imageWidth={320}
                   imageHeight={213}
                   imageStyle="cover"
-                  buttonOne="Ver más"
+                  viewMoreHref={`/turismo/${tour.id}`}
                   // buttonTwo="Comprar"
                   titleWordsCount={3}
                 />

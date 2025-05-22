@@ -1,46 +1,91 @@
-import React from "react";
-import CardDetail from "@/components/ChakraCard/CardDetail";
+"use client";
+import React, { useContext } from "react";
+import { AppContext } from "@/context";
+import Link from "next/link";
 
-// Simulated fetchers for each entity type (replace with your real fetch logic)
-const fetchEntity = async (tipo, id) => {
-  // Replace this with your real data fetching logic
-  switch (tipo) {
-    case "presidentes":
-      // Fetch or import presidentes data here
-      return { name: "Simón Bolívar", lastName: "Bolívar", description: "Primer presidente de Colombia.", image: "/assets/images/avatar.png", startPeriodDate: "1819", endPeriodDate: "1830" };
-    case "turismo":
-      return { name: "Cascada del Fin del Mundo", description: "Hermoso lugar en Putumayo.", images: "/assets/images/fallback-place.jpg" };
-    case "especies-invasoras":
-      return { name: "Rana Toro", description: "Especie invasora peligrosa.", images: "/assets/images/fallback-place.jpg" };
-    // ...otros tipos
-    default:
-      return null;
-  }
-};
+function BackButton({ tipo }) {
+  return (
+    <Link href={`/${tipo}`} passHref legacyBehavior>
+      <a
+        className="inline-block mb-4 px-6 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition-colors text-base font-medium"
+      >
+        ← Volver
+      </a>
+    </Link>
+  );
+}
 
-export default async function EntityDetailPage({ params }) {
+export default function EntityDetailPage({ params }) {
   const { tipo, id } = params;
-  const entity = await fetchEntity(tipo, id);
+  const {
+    presidentData,
+    touristicAttractionData,
+    mapData,
+    invasiveSpecieData,
+    // ...agrega aquí otros arrays del contexto si tienes más tipos
+  } = useContext(AppContext);
+
+  // Selecciona el array adecuado según el tipo
+  const dataMap = {
+    presidentes: presidentData,
+    turismo: touristicAttractionData,
+    mapas: mapData,
+    "especies-invasoras": invasiveSpecieData,
+    // ...agrega más si tienes otros tipos
+  };
+
+  const list = dataMap[tipo] || [];
+  const entity = list.find(item => String(item.id) === String(id));
 
   if (!entity) {
-    return <div className="text-red-500 text-center mt-8">No se encontró información para este elemento.</div>;
+    return <div className="flex flex-col items-center justify-center min-h-[40vh] text-center">
+      <span className="text-lg text-red-400 font-semibold mb-4">No se encontró información para este elemento.</span>
+      <BackButton tipo={tipo} />
+    </div>;
   }
 
-  // Puedes personalizar qué props pasas a CardDetail según el tipo
   return (
-    <div className="flex justify-center mt-10">
-      <CardDetail
-        title={entity.name + (entity.lastName ? ` ${entity.lastName}` : "")}
-        description={entity.description}
-        imageUrl={entity.image || entity.images}
-        badgeText={entity.startPeriodDate && entity.endPeriodDate ? `${entity.startPeriodDate} - ${entity.endPeriodDate}` : undefined}
-        imageWidth={320}
-        imageHeight={320}
-        imageStyle="cover"
-        buttonOne={"Volver"}
-        // Puedes agregar más props según el tipo
-      />
-    </div>
+    <main className="min-h-[80vh] flex flex-col items-center py-8">
+      <BackButton tipo={tipo} />
+      <div className="w-full max-w-3xl bg-slate-900/90 rounded-3xl shadow-xl p-8 text-white mt-4">
+        <div className="flex flex-wrap gap-8">
+          <div className="flex-none w-80 flex items-start justify-center">
+            <img
+              src={entity.image || entity.images || entity.urlImage || '/assets/images/fallback-place.jpg'}
+              alt={entity.name}
+              width={320}
+              height={320}
+              className="rounded-xl object-cover shadow-lg"
+            />
+          </div>
+          <div className="flex-1 min-w-[350px]">
+            <h1 className="text-3xl font-bold mb-2">{entity.name}{entity.lastName ? ` ${entity.lastName}` : ''}</h1>
+            {entity.startPeriodDate && entity.endPeriodDate && (
+              <span className="inline-block bg-purple-600 text-white rounded-lg px-4 py-1 font-semibold mb-4 text-base">
+                {entity.startPeriodDate} - {entity.endPeriodDate}
+              </span>
+            )}
+            {entity.scientificName && (
+              <p className="italic text-slate-300 mb-2">{entity.scientificName}</p>
+            )}
+            <p className="text-base leading-relaxed mb-6">{entity.description || entity.impact}</p>
+            <p className="text-base leading-relaxed mb-6">{entity.description}</p>
+            {/* Otros campos relevantes */}
+            {entity.languages && (
+              <div className="mb-4">
+                <strong>Lenguas:</strong> {Array.isArray(entity.languages) ? entity.languages.join(', ') : entity.languages}
+              </div>
+            )}
+            {entity.region && (
+              <div style={{ marginBottom: '1rem' }}>
+                <strong>Región:</strong> {entity.region}
+              </div>
+            )}
+            {/* Puedes agregar más campos dinámicamente según el tipo */}
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }
 

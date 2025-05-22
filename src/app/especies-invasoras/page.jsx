@@ -44,7 +44,7 @@ export default function EspeciesInvasoras() {
                 imageWidth={320}
                 imageHeight={213}
                 imageStyle="cover"
-                buttonOne="Ver más"
+                viewMoreHref={`/especies-invasoras/${species.id}`}
                 // buttonTwo="Comprar"
                 titleWordsCount={4}
               />

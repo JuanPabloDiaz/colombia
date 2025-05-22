@@ -13,12 +13,15 @@ import {
   Badge,
 } from "@chakra-ui/react";
 
+import Link from "next/link";
+
 export default function CardDetail({
   title,
   description,
   subtitle,
   buttonOne,
   buttonTwo,
+  viewMoreHref,
   imageUrl,
   alt,
   imageWidth,
@@ -111,7 +114,15 @@ const showFallback = imageFailed || !imageUrl || imageUrl === '';
       <Divider my={2} borderColor="whiteAlpha.300" />
       <CardFooter>
         <ButtonGroup spacing="2" width="100%" justifyContent="center">
-          {buttonOne && <Button colorScheme="teal" variant="outline" size="sm">{buttonOne}</Button>}
+          {/* Botón Ver más que redirige si hay viewMoreHref */}
+          {viewMoreHref && (
+            <Link href={viewMoreHref} passHref legacyBehavior>
+              <Button as="a" colorScheme="teal" variant="outline" size="sm">
+                Ver más
+              </Button>
+            </Link>
+          )}
+          {/* Botón secundario opcional */}
           {buttonTwo && <Button colorScheme="teal" variant="outline" size="sm">{buttonTwo}</Button>}
         </ButtonGroup>
       </CardFooter>
