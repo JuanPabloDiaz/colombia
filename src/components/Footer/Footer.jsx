@@ -22,6 +22,9 @@ export const Footer = () => {
     },
   ];
 
+  const startYear = 2023;
+  const currentYear = new Date().getFullYear();
+
   return (
     <main className="w-full bg-slate-950/95 py-3 font-medium md:py-4 md:font-semibold">
       <section>

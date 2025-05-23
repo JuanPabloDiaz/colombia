@@ -23,15 +23,6 @@ const ImageChecker = ({ imageUrl, imageId, imageName, children }) => {
       if (isMounted) setImageExists(false);
     };
     
-    // También hacer una verificación con fetch para URLs que podrían devolver un 404
-    fetch(imageUrl)
-      .then((res) => {
-        if (isMounted && !res.ok) setImageExists(false);
-      })
-      .catch(() => {
-        if (isMounted) setImageExists(false);
-      });
-    
     // Establecer la fuente de la imagen para iniciar la carga
     img.src = imageUrl;
     
