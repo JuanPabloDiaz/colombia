@@ -46,4 +46,9 @@ export const metadata = {
   fm: {
     title: "Radio",
   },
+  traditionalFairAndFestival: {
+    title: "Ferias y Festivales",
+    description: "Descubre las ferias y festivales tradicionales de Colombia.",
+    path: "/ferias-y-festivales",
+  },
 };
