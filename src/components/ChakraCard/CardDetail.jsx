@@ -73,7 +73,7 @@ export default function CardDetail({
             position: "relative",
             width: "100%",
             maxWidth: 240,
-            height: ["180px", "240px"],
+            height: 240,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -83,23 +83,31 @@ export default function CardDetail({
             margin: "0 auto",
           }}
         >
-          <Image
-            src={showFallback ? fallbackImage : imageUrl}
-            alt={alt || title || "Imagen"}
-            width={["100%", 240]}
-            height={["180px", 240]}
-            objectFit="cover"
-            borderRadius="0.75rem"
+          <div
             style={{
+              position: "relative",
               width: "100%",
               height: "100%",
-              objectFit: "cover",
-              objectPosition: "center 15%",
+              overflow: "hidden",
               borderRadius: "0.75rem",
-              opacity: showFallback ? 0.65 : 1,
-              transition: "opacity 0.2s",
             }}
-          />
+          >
+            <Image
+              src={showFallback ? fallbackImage : imageUrl}
+              alt={alt || title || "Imagen"}
+              width={240}
+              height={240}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center 15%",
+                borderRadius: "0.75rem",
+                opacity: showFallback ? 0.65 : 1,
+                transition: "opacity 0.2s",
+              }}
+            />
+          </div>
         </div>
         <Stack mt={[3, 6]} spacing={[2, 3]} align="center">
           <Heading size={["sm", "md"]} textAlign="center" lineHeight={["1.3", "1.5"]}>

@@ -54,15 +54,16 @@ export default function Home() {
                 />
                 <div className="flex items-center justify-center p-2 md:p-0">
                   {generalData.flags && (
-                    <Image
-                      src={generalData.flags[0]}
-                      alt={generalData.name}
-                      width={400}
-                      height={400}
-                      sizes="(max-width: 768px) 80vw, 400px"
-                      className="rounded-lg max-w-[250px] md:max-w-full"
-                      priority
-                    />
+                    <div className="relative h-[250px] w-[250px] overflow-hidden rounded-lg md:h-[400px] md:w-[400px]">
+                      <Image
+                        src={generalData.flags[0]}
+                        alt={generalData.name}
+                        width={400}
+                        height={400}
+                        className="h-full w-full object-cover"
+                        priority
+                      />
+                    </div>
                   )}
                 </div>
               </article>
