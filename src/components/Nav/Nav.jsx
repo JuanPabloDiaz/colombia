@@ -80,7 +80,7 @@ export const Nav = ({ setOpen, ul_className }) => {
       icon: <Tent />,
     },
     {
-      title: "Platos Tipicos",
+      title: "Platos Típicos",
       href: "/platos-tipicos",
       icon: <CookingPot />,
     },
