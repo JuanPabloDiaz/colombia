@@ -295,6 +295,87 @@ export const DataProvider = ({ children }) => {
   const typicalDishEndIndex = typicalDishStartIndex + ITEMS_PER_PAGE;
   const paginatedTypicalDishData = allTypicalDishData.slice(typicalDishStartIndex, typicalDishEndIndex);
 
+  // *****************       TRADITIONAL FAIR AND FESTIVAL        *****************
+  const [allTraditionalFairAndFestivalData, setAllTraditionalFairAndFestivalData] = useState([]);
+  const [traditionalFairAndFestivalCurrentPage, setTraditionalFairAndFestivalCurrentPage] = useState(1);
+  const [traditionalFairAndFestivalDetail, setTraditionalFairAndFestivalDetail] = useState(null);
+  const [traditionalFairAndFestivalCityInfo, setTraditionalFairAndFestivalCityInfo] = useState(null);
+
+  useEffect(() => {
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(`${API_COL_BASE_URL}/TraditionalFairAndFestival`)
+      .then((response) => response.json())
+      .then((json) => setAllTraditionalFairAndFestivalData(json))
+      .catch((error) => console.error("Error fetching Traditional Fair and Festival data: ", error))
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  }, []);
+
+  const traditionalFairAndFestivalTotalPages = Math.ceil(allTraditionalFairAndFestivalData.length / ITEMS_PER_PAGE);
+  const goToTraditionalFairAndFestivalPage = (page) => {
+    if (page >= 1 && page <= traditionalFairAndFestivalTotalPages) {
+      setTraditionalFairAndFestivalCurrentPage(page);
+    }
+  };
+  const traditionalFairAndFestivalStartIndex = (traditionalFairAndFestivalCurrentPage - 1) * ITEMS_PER_PAGE;
+  const traditionalFairAndFestivalEndIndex = traditionalFairAndFestivalStartIndex + ITEMS_PER_PAGE;
+  const paginatedTraditionalFairAndFestivalData = allTraditionalFairAndFestivalData.slice(traditionalFairAndFestivalStartIndex, traditionalFairAndFestivalEndIndex);
+
+  const fetchTraditionalFairAndFestivalById = (id) => {
+    setTraditionalFairAndFestivalDetail(null); // Reset before fetching
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(`${API_COL_BASE_URL}/TraditionalFairAndFestival/${id}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => setTraditionalFairAndFestivalDetail(json))
+      .catch((error) => {
+        setTraditionalFairAndFestivalDetail(null); // Ensure null on error
+        console.error(`Error fetching Traditional Fair and Festival by ID (${id}): `, error);
+      })
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
+  const fetchTraditionalFairAndFestivalCityDetails = (fairId) => {
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(`${API_COL_BASE_URL}/TraditionalFairAndFestival/${fairId}/city`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => setTraditionalFairAndFestivalCityInfo(json))
+      .catch((error) => console.error(`Error fetching City Details for Traditional Fair and Festival (${fairId}): `, error))
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
+  const searchTraditionalFairAndFestivalByName = (name) => {
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(`${API_COL_BASE_URL}/TraditionalFairAndFestival/name/${name}`)
+      .then((response) => response.json())
+      .then((json) => {
+        setAllTraditionalFairAndFestivalData(json);
+        setTraditionalFairAndFestivalCurrentPage(1); 
+      })
+      .catch((error) => console.error(`Error searching Traditional Fair and Festival by Name (${name}): `, error))
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
+  const searchTraditionalFairAndFestivalByKeyword = (keyword) => {
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(`${API_COL_BASE_URL}/TraditionalFairAndFestival/search/${keyword}`)
+      .then((response) => response.json())
+      .then((json) => {
+        setAllTraditionalFairAndFestivalData(json);
+        setTraditionalFairAndFestivalCurrentPage(1); 
+      })
+      .catch((error) => console.error(`Error searching Traditional Fair and Festival by Keyword (${keyword}): `, error))
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -320,11 +401,11 @@ export const DataProvider = ({ children }) => {
         goToTouristicAttractionPage,
         // President
         allPresidentData,
-        presidentData: paginatedPresidentData, // This is for the list of presidents
-        presidentAdminCurrentPage, // Renamed to avoid conflict
-        presidentAdminTotalPages,  // Renamed to avoid conflict
-        goToPresidentAdminPage,    // Renamed to avoid conflict
-        presidentId, // This is for fetching a single president by ID
+        presidentData: paginatedPresidentData,
+        presidentAdminCurrentPage, 
+        presidentAdminTotalPages, 
+        goToPresidentAdminPage,    
+        presidentId, 
         // Natural Area
         allNaturalAreaData,
         naturalAreaData: paginatedNaturalAreaData,
@@ -371,6 +452,18 @@ export const DataProvider = ({ children }) => {
         typicalDishCurrentPage,
         typicalDishTotalPages,
         goToTypicalDishPage,
+        // Traditional Fair and Festival
+        allTraditionalFairAndFestivalData,
+        traditionalFairAndFestivalData: paginatedTraditionalFairAndFestivalData,
+        traditionalFairAndFestivalCurrentPage,
+        traditionalFairAndFestivalTotalPages,
+        goToTraditionalFairAndFestivalPage,
+        traditionalFairAndFestivalDetail,
+        fetchTraditionalFairAndFestivalById,
+        traditionalFairAndFestivalCityInfo,
+        fetchTraditionalFairAndFestivalCityDetails,
+        searchTraditionalFairAndFestivalByName,
+        searchTraditionalFairAndFestivalByKeyword,
       }}
     >
       {children}

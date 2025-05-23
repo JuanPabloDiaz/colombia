@@ -6,8 +6,7 @@ import Image from "next/image";
 import CardInfo from "@/components/ChakraCard/CardInfo";
 import Card from "@/components/ChakraCard/Card";
 import CardArray from "@/components/ChakraCard/CardArray";
-import LoadingCard from "@/components/Loading/LoadingCard";
-import LoadingCardInfo from "@/components/Loading/LoadingCardInfo";
+import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 
 import { metadata } from "@/components/metadata";
 import {
@@ -28,12 +27,7 @@ export default function Home() {
   if (isLoading) {
     return (
       <section className="flex flex-col items-center justify-center">
-        <LoadingCardInfo />
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {Array.from({ length: 8 }).map((_, index) => (
-            <LoadingCard key={index} />
-          ))}
-        </div>
+        <LoadingSpinner size={64} />
       </section>
     );
   }

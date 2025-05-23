@@ -6,7 +6,7 @@ import Pagination from "@/components/ui/Pagination";
 import PageSizeSelector from "@/components/ui/PageSizeSelector";
 import { metadata } from "@/components/metadata";
 import CardDetail from "@/components/ChakraCard/CardDetail";
-import LoadingCard from "@/components/Loading/LoadingCard";
+import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import Head from "next/head";
 
@@ -31,7 +31,7 @@ export default function Mapas() {
   if (isLoading) {
     return (
       <>
-        <LoadingCard />
+        <LoadingSpinner size={56} key={"loading"}/>
       </>
     );
   }

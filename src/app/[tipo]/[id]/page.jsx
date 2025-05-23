@@ -2,6 +2,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "@/context";
 import Link from "next/link";
+import { formatDate } from "@/lib/utils";
 
 function BackButton({ tipo }) {
   return (
@@ -39,6 +40,10 @@ export default function EntityDetailPage({ params }) {
     departamentData,
     allAirportData,
     typicalDishData,
+    traditionalFairAndFestivalData,
+    fetchTraditionalFairAndFestivalById,
+    traditionalFairAndFestivalDetail,
+    isLoading,
   } = useContext(AppContext);
 
   // Selecciona el array adecuado según el tipo
@@ -49,7 +54,36 @@ export default function EntityDetailPage({ params }) {
     "especies-invasoras": invasiveSpecieData,
     aeropuertos: allAirportData,
     "platos-tipicos": typicalDishData,
-  };
+    "ferias-y-festivales": traditionalFairAndFestivalData,
+  };   
+
+  // --- LÓGICA ROBUSTA PARA FERIAS Y FESTIVALES ---
+  const [localEntity, setLocalEntity] = React.useState(null);
+  const [triedFetch, setTriedFetch] = React.useState(false);
+
+  React.useEffect(() => {
+    if (tipo !== "ferias-y-festivales") return;
+    const list = traditionalFairAndFestivalData || [];
+    const found = list.find(item => String(item.id) === String(id));
+    if (found) {
+      setLocalEntity(found);
+    } else if (!triedFetch) {
+      fetchTraditionalFairAndFestivalById(id);
+      setTriedFetch(true);
+    }
+  }, [tipo, id, traditionalFairAndFestivalData, fetchTraditionalFairAndFestivalById, triedFetch]);
+
+  React.useEffect(() => {
+    if (
+      tipo === "ferias-y-festivales" &&
+      traditionalFairAndFestivalDetail &&
+      String(traditionalFairAndFestivalDetail.id) === String(id)
+    ) {
+      setLocalEntity(traditionalFairAndFestivalDetail);
+    }
+  }, [traditionalFairAndFestivalDetail, tipo, id]);
+
+  // --- FIN LÓGICA ROBUSTA ---
 
   let entity;
   if (tipo === "departamentos") {
@@ -376,6 +410,33 @@ export default function EntityDetailPage({ params }) {
           </div>
         </div>
       </main>
+    );
+  }
+
+  // Layout para Ferias & Fiestas
+
+  if (tipo === "ferias-y-festivales") {
+    return (
+      <main className="min-h-[80vh] flex flex-col items-center py-8">
+      <BackButton tipo={tipo} />
+      <div className="w-full max-w-2xl bg-slate-900/90 rounded-3xl shadow-xl p-8 text-white mt-4 flex flex-col items-center">
+       
+          <h1 className="text-4xl font-extrabold mb-4 text-primary-400 text-center">{entity.name}</h1>
+          <div className="mb-6 w-full flex flex-col items-center">
+            <span className="font-semibold text-primary-300">Descripción:</span>
+            <span className="ml-2 text-white/80 text-center">{entity.description}</span>
+            <span className="font-semibold text-primary-300">Categoría:</span>
+            <span className="ml-2 text-white/80 text-center">{entity.category}</span>
+          </div>
+          {entity.startDate && entity.endDate && (
+            <div className="mt-6 p-4 bg-slate-800/80 rounded-xl shadow-inner w-full">
+              <h2 className="text-xl font-bold text-primary-300 mb-1 text-center">Inicio: {entity.startDate}</h2>
+              <h2 className="text-xl font-bold text-primary-300 mb-1 text-center">Fin: {entity.endDate}</h2>
+              <p><strong>Municipio:</strong> {entity.municipality || "No especificado"}</p>
+              <p><strong>Región:</strong> {entity.region || "No especificada"}</p></div>
+          )}
+        </div>
+    </main>
     );
   }
 

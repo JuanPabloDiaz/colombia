@@ -78,4 +78,9 @@ export const metadata = {
     description: "Lista de radio de Colombia.",
     keywords: "radio, colombia, historia, política",    
   },
+  traditionalFairAndFestival: {
+    title: "Ferias y Festivales",
+    description: "Descubre las ferias y festivales tradicionales de Colombia.",
+    path: "/ferias-y-festivales",
+  },
 };

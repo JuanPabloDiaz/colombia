@@ -13,6 +13,7 @@ import {
   Trees,
   LandPlot,
   Plane,
+  PartyPopper,
   ShieldPlus,
   Cannabis,
   RadioTower,
@@ -44,6 +45,11 @@ export const Nav = ({ setOpen, ul_className }) => {
     //   href: "/regiones",
     //   icon: <LandPlot />,
     // },
+    {
+      title: "Ferias y Festivales",
+      href: "/ferias-y-festivales",
+      icon: <PartyPopper />,
+    },
     {
       title: "Turismo",
       href: "/turismo",
@@ -137,6 +143,7 @@ export const Nav = ({ setOpen, ul_className }) => {
           "/comunidades-indigenas",
           "/aeropuertos",
           "/platos-tipicos",
+          "/ferias-y-festivales",
         ];
 
         const isAllowedRoute = allowedRoutes.includes(link.href);
