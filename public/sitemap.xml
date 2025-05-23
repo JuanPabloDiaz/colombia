@@ -1,12 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Página principal -->
   <url>
     <loc>https://colombia.jpdiaz.dev/</loc>
-    <lastmod>2024-02-01</lastmod>
+    <lastmod>2025-05-23</lastmod>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  
+  <!-- Páginas principales de categorías -->
+  <url>
+    <loc>https://colombia.jpdiaz.dev/aeropuertos</loc>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://colombia.jpdiaz.dev/departamentos</loc>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://colombia.jpdiaz.dev/especies-invasoras</loc>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://colombia.jpdiaz.dev/ferias-y-festivales</loc>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://colombia.jpdiaz.dev/mapas</loc>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://colombia.jpdiaz.dev/naturaleza</loc>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://colombia.jpdiaz.dev/categorias-naturaleza</loc>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://colombia.jpdiaz.dev/platos-tipicos</loc>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://colombia.jpdiaz.dev/presidentes</loc>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://colombia.jpdiaz.dev/radio</loc>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://colombia.jpdiaz.dev/regiones</loc>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://colombia.jpdiaz.dev/turismo</loc>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://colombia.jpdiaz.dev/comunidades-indigenas</loc>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://colombia.jpdiaz.dev/constitution</loc>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  
+  <!-- Referencia a API externa -->
+  <url>
     <loc>https://www.api-colombia.com/aeropuertos</loc>
-    <lastmod>2024-03-15</lastmod>
-    <priority>0.80</priority>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
   </url>
 </urlset>
