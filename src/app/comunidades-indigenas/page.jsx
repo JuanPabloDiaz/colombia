@@ -6,7 +6,7 @@ import PageSizeSelector from "@/components/ui/PageSizeSelector";
 
 import { metadata } from "@/components/metadata";
 import CardBadge from "@/components/Card/CardBadge";
-import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
+import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import Pagination from "@/components/ui/Pagination";
 import Head from "next/head";
@@ -29,11 +29,10 @@ export default function ComunidadesIndigenas() {
   // Show loading state only if data hasn't been loaded yet for the first time
   if (isLoading && (!allNativeCommunityData || allNativeCommunityData.length === 0)) {
     return (
-      // Using LoadingCardDetail for consistency with other pages, assuming 12 items for loading skeleton
       <section className="flex items-center justify-center">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {Array.from({ length: 12 }).map((_, index) => (
-            <LoadingCardDetail key={index} />
+            <LoadingSpinner size={56} key={index}/>
           ))}
         </div>
       </section>

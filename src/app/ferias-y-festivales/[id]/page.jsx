@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import Head from "next/head";
 import Image from "next/image";
 import { AppContext } from "@/context";
-import LoadingSpinner from "@/components/Loading/LoadingSpinner"; // Assuming a spinner component exists
+import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 
 export default function FeriaYFestivalDetailPage() {
   const { id } = useParams();
@@ -76,7 +76,7 @@ export default function FeriaYFestivalDetailPage() {
           <article className="max-w-3xl mx-auto bg-white shadow-xl rounded-lg overflow-hidden">
             <div className="relative w-full h-64 md:h-96"> {/* Image container */}
               <Image
-                src={traditionalFairAndFestivalDetail.image || traditionalFairAndFestivalDetail.imageUrl || "https://via.placeholder.com/800x400?text=Imagen+no+disponible"}
+                src={traditionalFairAndFestivalDetail.imageUrl || traditionalFairAndFestivalDetail.image}
                 alt={`Imagen de ${traditionalFairAndFestivalDetail.name}`}
                 layout="fill"
                 objectFit="cover" // Changed to cover for better image display

@@ -331,7 +331,7 @@ export const DataProvider = ({ children }) => {
 
   const fetchTraditionalFairAndFestivalCityDetails = (fairId) => {
     setActiveApiCalls((prev) => prev + 1);
-    fetch(`${API_COL_BASE_URL}/TraditionalFairAndFestival/${fairId}/city`) 
+    fetch(`${API_COL_BASE_URL}/TraditionalFairAndFestival/${fairId}/city`)
       .then((response) => response.json())
       .then((json) => setTraditionalFairAndFestivalCityInfo(json))
       .catch((error) => console.error(`Error fetching City Details for Traditional Fair and Festival (${fairId}): `, error))
@@ -387,11 +387,11 @@ export const DataProvider = ({ children }) => {
         goToTouristicAttractionPage,
         // President
         allPresidentData,
-        presidentData: paginatedPresidentData, // This is for the list of presidents
-        presidentAdminCurrentPage, // Renamed to avoid conflict
-        presidentAdminTotalPages,  // Renamed to avoid conflict
-        goToPresidentAdminPage,    // Renamed to avoid conflict
-        presidentId, // This is for fetching a single president by ID
+        presidentData: paginatedPresidentData,
+        presidentAdminCurrentPage, 
+        presidentAdminTotalPages, 
+        goToPresidentAdminPage,    
+        presidentId, 
         // Natural Area
         allNaturalAreaData,
         naturalAreaData: paginatedNaturalAreaData,

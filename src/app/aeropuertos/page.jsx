@@ -5,7 +5,7 @@ import { AppContext } from "@/context";
 
 import { metadata } from "@/components/metadata";
 import PageSection from "@/components/PageSection";
-import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
+import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import DepartamentoCard from "@/components/Card/DepartamentoCard";
 import Pagination from "@/components/ui/Pagination"; // Import the Pagination component
 import Head from "next/head";
@@ -21,14 +21,10 @@ export default function Aeropuertos() {
     goToAirportPage,
   } = useContext(AppContext);
 
-  if (isLoading && airportData.length === 0) { // Show loading state only if data hasn't been loaded yet for the first time
+  if (isLoading && airportData.length === 0) {
     return (
-      <section className="flex items-center justify-center">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {Array.from({ length: 12 }).map((_, index) => (
-            <LoadingCardDetail key={index} />
-          ))}
-        </div>
+      <section className="flex items-center justify-center min-h-[40vh]">
+        <LoadingSpinner size={64} key={"loading"}/>
       </section>
     );
   }

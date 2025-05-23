@@ -5,8 +5,7 @@ import { AppContext } from "@/context";
 
 import { metadata } from "@/components/metadata";
 import RadioCard from "@/components/Card/RadioCard";
-// import LoadingCard from "@/components/Loading/LoadingCard"; // Original loading component
-import LoadingCardDetail from "@/components/Loading/LoadingCardDetail"; // Using LoadingCardDetail for consistency
+import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import PageSection from "@/components/PageSection";
 import Pagination from "@/components/ui/Pagination"; // Import the Pagination component
 import Head from "next/head";
@@ -24,11 +23,10 @@ export default function Radio() {
   // Show loading state only if data hasn't been loaded yet for the first time
   if (isLoading && (!radioData || radioData.length === 0)) {
     return (
-      // Assuming LoadingCardDetail is preferred for consistency, using 12 items for skeleton
       <section className="flex items-center justify-center">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {Array.from({ length: 12 }).map((_, index) => (
-            <LoadingCardDetail key={index} />
+            <LoadingSpinner size={56} key={index}/>
           ))}
         </div>
       </section>

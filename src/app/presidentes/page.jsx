@@ -7,7 +7,7 @@ import PageSizeSelector from "@/components/ui/PageSizeSelector";
 import CardDetail from "@/components/ChakraCard/CardDetail";
 import { metadata } from "@/components/metadata";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
-import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
+import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import Pagination from "@/components/ui/Pagination";
 import Head from "next/head";
 
@@ -32,7 +32,7 @@ export default function Presidentes() {
       <section className="flex items-center justify-center">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {Array.from({ length: 6 }).map((_, index) => (
-            <LoadingCardDetail key={index} />
+            <LoadingSpinner size={56} key={index}/>
           ))}
         </div>
       </section>

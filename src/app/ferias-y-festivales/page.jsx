@@ -5,7 +5,7 @@ import Head from "next/head";
 import { AppContext } from "@/context";
 // import { metadata } from "@/components/metadata"; // Assuming this will be updated
 import PageSection from "@/components/PageSection";
-import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
+import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import CardDetail from "@/components/ChakraCard/CardDetail";
 import Pagination from "@/components/ui/Pagination";
 
@@ -37,7 +37,7 @@ export default function FeriasYFestivales() {
       <section className="flex items-center justify-center py-10">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {Array.from({ length: 12 }).map((_, index) => (
-            <LoadingCardDetail key={index} />
+            <LoadingSpinner size={56} key={index}/>
           ))}
         </div>
       </section>

@@ -6,7 +6,7 @@ import { AppContext } from "@/context";
 import { metadata } from "@/components/metadata";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import CardDetail from "@/components/ChakraCard/CardDetail"; // Using CardDetail as a placeholder
-import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
+import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import Pagination from "@/components/ui/Pagination";
 import Head from "next/head";
 
@@ -27,7 +27,7 @@ export default function Naturaleza() {
       <section className="flex items-center justify-center">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {Array.from({ length: 12 }).map((_, index) => ( // Default to 12 loading cards
-            <LoadingCardDetail key={index} />
+            <LoadingSpinner size={56} key={index}/>
           ))}
         </div>
       </section>

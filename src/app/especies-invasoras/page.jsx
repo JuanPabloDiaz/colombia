@@ -8,7 +8,7 @@ import CardDetail from "@/components/ChakraCard/CardDetail";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
 
 import { metadata } from "@/components/metadata";
-import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
+import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import Pagination from "@/components/ui/Pagination"; // Import the Pagination component
 import Head from "next/head";
 
@@ -34,7 +34,7 @@ export default function EspeciesInvasoras() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {/* Original loading skeleton had 8 items, preserving that */}
           {Array.from({ length: 8 }).map((_, index) => (
-            <LoadingCardDetail key={index} />
+            <LoadingSpinner size={56} key={index}/>
           ))}
         </div>
       </section>
