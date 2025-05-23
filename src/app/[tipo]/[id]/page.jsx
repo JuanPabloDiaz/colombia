@@ -38,7 +38,7 @@ export default function EntityDetailPage({ params }) {
     invasiveSpecieData,
     departamentData,
     allAirportData,
-    // ...agrega aquí otros arrays del contexto si tienes más tipos
+    typicalDishData,
   } = useContext(AppContext);
 
   // Selecciona el array adecuado según el tipo
@@ -48,16 +48,8 @@ export default function EntityDetailPage({ params }) {
     mapas: mapData,
     "especies-invasoras": invasiveSpecieData,
     aeropuertos: allAirportData,
-    // ...agrega más si tienes otros tipos
+    "platos-tipicos": typicalDishData,
   };
-
-  // Logs de depuración para aeropuertos
-  if (tipo === "aeropuertos") {
-    console.log("[DEBUG] IDs disponibles en aeropuertos:", (dataMap[tipo] || []).map(a => a.id));
-    console.log("[DEBUG] ID buscado:", id);
-  }
-
-
 
   let entity;
   if (tipo === "departamentos") {
@@ -348,6 +340,39 @@ export default function EntityDetailPage({ params }) {
             <h1 className="text-3xl font-extrabold text-primary-400 leading-tight mb-2 text-left md:text-4xl">{entity.name}</h1>
             <p className="text-base leading-relaxed text-white/90 whitespace-pre-line mb-2">{entity.description}</p>
 
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  // Layout especial para platos tipicos
+  if (tipo === "platos-tipicos") {
+    return (
+      <main className="min-h-[80vh] flex flex-col items-center py-8">
+        <BackButton tipo={tipo} />
+        <div className="w-full max-w-2xl bg-slate-900/90 rounded-3xl shadow-xl p-8 text-white mt-4 flex flex-col items-center">
+          <div className="w-full flex flex-col items-center">
+            <img
+              src={entity.imageUrl || '/assets/images/fallback-place.jpg'}
+              alt={entity.name}
+              width={540}
+              height={400}
+              className="rounded-3xl object-cover shadow-2xl border-4 border-primary-400 mb-6 max-w-full"
+              style={{ maxHeight: 400, objectFit: 'cover' }}
+            />
+            <h1 className="text-4xl font-extrabold mb-4 text-primary-400 text-center">{entity.name}</h1>
+            <p className="text-lg leading-relaxed mb-6 text-white/90 whitespace-pre-line text-center">{entity.description}</p>
+            <div className="mb-6 w-full flex flex-col items-center">
+              <span className="font-semibold text-primary-300">Ingredientes:</span>
+              <span className="ml-2 text-white/80 text-center">{entity.ingredients}</span>
+            </div>
+            {entity.department && (
+              <div className="mt-6 p-4 bg-slate-800/80 rounded-xl shadow-inner w-full">
+                <h2 className="text-2xl font-bold text-primary-300 mb-1 text-center">Origen: {entity.department.name}</h2>
+                <p className="text-white/70 mb-2 text-center">{entity.department.description}</p>
+              </div>
+            )}
           </div>
         </div>
       </main>

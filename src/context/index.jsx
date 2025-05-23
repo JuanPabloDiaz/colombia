@@ -274,6 +274,26 @@ export const DataProvider = ({ children }) => {
   const radioEndIndex = radioStartIndex + ITEMS_PER_PAGE;
   const paginatedRadioData = allRadioData.slice(radioStartIndex, radioEndIndex);
 
+  // *****************       TYPICAL DISH        *****************
+  const [allTypicalDishData, setAllTypicalDishData] = useState([]);
+  const [typicalDishCurrentPage, setTypicalDishCurrentPage] = useState(1);
+  useEffect(() => {
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(`${API_COL_BASE_URL}/TypicalDish`)
+      .then((response) => response.json())
+      .then((json) => setAllTypicalDishData(json))
+      .catch((error) => console.error("Error fetching Typical Dish data: ", error))
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  }, []);
+  const typicalDishTotalPages = Math.ceil(allTypicalDishData.length / ITEMS_PER_PAGE);
+  const goToTypicalDishPage = (page) => {
+    if (page >= 1 && page <= typicalDishTotalPages) {
+      setTypicalDishCurrentPage(page);
+    }
+  };
+  const typicalDishStartIndex = (typicalDishCurrentPage - 1) * ITEMS_PER_PAGE;
+  const typicalDishEndIndex = typicalDishStartIndex + ITEMS_PER_PAGE;
+  const paginatedTypicalDishData = allTypicalDishData.slice(typicalDishStartIndex, typicalDishEndIndex);
 
   return (
     <AppContext.Provider
@@ -345,6 +365,12 @@ export const DataProvider = ({ children }) => {
         radioCurrentPage,
         radioTotalPages,
         goToRadioPage,
+        // Typical Dish
+        allTypicalDishData,
+        typicalDishData: paginatedTypicalDishData,
+        typicalDishCurrentPage,
+        typicalDishTotalPages,
+        goToTypicalDishPage,
       }}
     >
       {children}

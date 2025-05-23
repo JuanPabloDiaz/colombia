@@ -22,6 +22,9 @@ export const metadata = {
     description: "Lista de turismo de Colombia.",
     keywords: "turismo, colombia, geografía, ubicación",    
   },
+  plato: {
+    title: "Platos Típicos",
+  },
   pre: {
     title: "Presidentes",
     description: "Lista de presidentes de Colombia.",

@@ -8,6 +8,7 @@ import { metadata } from "@/components/metadata";
 import CardDetail from "@/components/ChakraCard/CardDetail";
 import LoadingCard from "@/components/Loading/LoadingCard";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
+import Head from "next/head";
 
 export default function Mapas() {
   const pageTitle = metadata.map.title;
@@ -37,7 +38,9 @@ export default function Mapas() {
 
   return (
     <>
-      <title>{`${pageTitle} • Colombia 360`}</title>
+      <Head>
+        <title>{`${pageTitle} • Colombia 360`}</title>
+      </Head>
       <EntityPageLayout
         title={pageTitle}
         isLoading={isLoading}

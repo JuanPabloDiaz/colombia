@@ -8,6 +8,7 @@ import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import CardDetail from "@/components/ChakraCard/CardDetail"; // Using CardDetail as a placeholder
 import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
 import Pagination from "@/components/ui/Pagination";
+import Head from "next/head";
 
 export default function Naturaleza() {
   const pageTitle = metadata.nat.title;
@@ -35,7 +36,9 @@ export default function Naturaleza() {
 
   return (
     <>
-      <title>{`${pageTitle} • Colombia 360`}</title>
+      <Head>
+        <title>{`${pageTitle} • Colombia 360`}</title>
+      </Head>
       <EntityPageLayout
         title={pageTitle}
         isLoading={isLoading && (!naturalAreaData || naturalAreaData.length === 0)}

@@ -9,6 +9,7 @@ import RadioCard from "@/components/Card/RadioCard";
 import LoadingCardDetail from "@/components/Loading/LoadingCardDetail"; // Using LoadingCardDetail for consistency
 import PageSection from "@/components/PageSection";
 import Pagination from "@/components/ui/Pagination"; // Import the Pagination component
+import Head from "next/head";
 
 export default function Radio() {
   const pageTitle = metadata.fm.title;
@@ -36,7 +37,9 @@ export default function Radio() {
 
   return (
     <>
-      <title>{`${pageTitle} • Colombia 360`}</title>
+      <Head>
+        <title>{`${pageTitle} • Colombia 360`}</title>
+      </Head>
       <main>
         <PageSection title={pageTitle} isLoading={isLoading && (!radioData || radioData.length === 0)} gridCols="md:grid-cols-2 lg:grid-cols-4">
           {(Array.isArray(radioData) ? radioData : [])
