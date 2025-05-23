@@ -31,10 +31,14 @@ export const DataProvider = ({ children }) => {
     fetch(`${API_COL_BASE_URL}/Department`)
       .then((response) => response.json())
       .then((json) => setAllDepartamentData(json))
-      .catch((error) => console.error("Error fetching Departament data: ", error))
+      .catch((error) =>
+        console.error("Error fetching Departament data: ", error),
+      )
       .finally(() => setActiveApiCalls((prev) => prev - 1));
   }, []);
-  const departmentTotalPages = Math.ceil(allDepartamentData.length / ITEMS_PER_PAGE);
+  const departmentTotalPages = Math.ceil(
+    allDepartamentData.length / ITEMS_PER_PAGE,
+  );
   const goToDepartmentPage = (page) => {
     if (page >= 1 && page <= departmentTotalPages) {
       setDepartmentCurrentPage(page);
@@ -42,7 +46,10 @@ export const DataProvider = ({ children }) => {
   };
   const departmentStartIndex = (departmentCurrentPage - 1) * ITEMS_PER_PAGE;
   const departmentEndIndex = departmentStartIndex + ITEMS_PER_PAGE;
-  const paginatedDepartmentData = allDepartamentData.slice(departmentStartIndex, departmentEndIndex);
+  const paginatedDepartmentData = allDepartamentData.slice(
+    departmentStartIndex,
+    departmentEndIndex,
+  );
 
   // *****************       REGION        *****************
   const [allRegionData, setAllRegionData] = useState([]);
@@ -63,28 +70,43 @@ export const DataProvider = ({ children }) => {
   };
   const regionStartIndex = (regionCurrentPage - 1) * ITEMS_PER_PAGE;
   const regionEndIndex = regionStartIndex + ITEMS_PER_PAGE;
-  const paginatedRegionData = allRegionData.slice(regionStartIndex, regionEndIndex);
+  const paginatedRegionData = allRegionData.slice(
+    regionStartIndex,
+    regionEndIndex,
+  );
 
   // *****************       TOURISTIC ATTRACTION        *****************
-  const [allTouristicAttractionData, setAllTouristicAttractionData] = useState([]);
-  const [touristicAttractionCurrentPage, setTouristicAttractionCurrentPage] = useState(1);
+  const [allTouristicAttractionData, setAllTouristicAttractionData] = useState(
+    [],
+  );
+  const [touristicAttractionCurrentPage, setTouristicAttractionCurrentPage] =
+    useState(1);
   useEffect(() => {
     setActiveApiCalls((prev) => prev + 1);
     fetch(`${API_COL_BASE_URL}/TouristicAttraction`)
       .then((response) => response.json())
       .then((json) => setAllTouristicAttractionData(json))
-      .catch((error) => console.error("Error fetching Touristic Attraction data: ", error))
+      .catch((error) =>
+        console.error("Error fetching Touristic Attraction data: ", error),
+      )
       .finally(() => setActiveApiCalls((prev) => prev - 1));
   }, []);
-  const touristicAttractionTotalPages = Math.ceil(allTouristicAttractionData.length / ITEMS_PER_PAGE);
+  const touristicAttractionTotalPages = Math.ceil(
+    allTouristicAttractionData.length / ITEMS_PER_PAGE,
+  );
   const goToTouristicAttractionPage = (page) => {
     if (page >= 1 && page <= touristicAttractionTotalPages) {
       setTouristicAttractionCurrentPage(page);
     }
   };
-  const touristicAttractionStartIndex = (touristicAttractionCurrentPage - 1) * ITEMS_PER_PAGE;
-  const touristicAttractionEndIndex = touristicAttractionStartIndex + ITEMS_PER_PAGE;
-  const paginatedTouristicAttractionData = allTouristicAttractionData.slice(touristicAttractionStartIndex, touristicAttractionEndIndex);
+  const touristicAttractionStartIndex =
+    (touristicAttractionCurrentPage - 1) * ITEMS_PER_PAGE;
+  const touristicAttractionEndIndex =
+    touristicAttractionStartIndex + ITEMS_PER_PAGE;
+  const paginatedTouristicAttractionData = allTouristicAttractionData.slice(
+    touristicAttractionStartIndex,
+    touristicAttractionEndIndex,
+  );
 
   // *****************       PRESIDENT        *****************
   const [allPresidentData, setAllPresidentData] = useState([]);
@@ -97,16 +119,21 @@ export const DataProvider = ({ children }) => {
       .catch((error) => console.error("Error fetching President data: ", error))
       .finally(() => setActiveApiCalls((prev) => prev - 1));
   }, []);
-  const presidentAdminTotalPages = Math.ceil(allPresidentData.length / ITEMS_PER_PAGE);
+  const presidentAdminTotalPages = Math.ceil(
+    allPresidentData.length / ITEMS_PER_PAGE,
+  );
   const goToPresidentAdminPage = (page) => {
     if (page >= 1 && page <= presidentAdminTotalPages) {
       setPresidentAdminCurrentPage(page);
     }
   };
-  const presidentAdminStartIndex = (presidentAdminCurrentPage - 1) * ITEMS_PER_PAGE;
+  const presidentAdminStartIndex =
+    (presidentAdminCurrentPage - 1) * ITEMS_PER_PAGE;
   const presidentAdminEndIndex = presidentAdminStartIndex + ITEMS_PER_PAGE;
-  const paginatedPresidentData = allPresidentData.slice(presidentAdminStartIndex, presidentAdminEndIndex);
-
+  const paginatedPresidentData = allPresidentData.slice(
+    presidentAdminStartIndex,
+    presidentAdminEndIndex,
+  );
 
   // *****************       PRESIDENT ID      *****************
   const [presidentId, setPresidentId] = useState([]);
@@ -131,10 +158,14 @@ export const DataProvider = ({ children }) => {
     fetch(`${API_COL_BASE_URL}/NaturalArea`)
       .then((response) => response.json())
       .then((json) => setAllNaturalAreaData(json))
-      .catch((error) => console.error("Error fetching Natural Area data: ", error))
+      .catch((error) =>
+        console.error("Error fetching Natural Area data: ", error),
+      )
       .finally(() => setActiveApiCalls((prev) => prev - 1));
   }, []);
-  const naturalAreaTotalPages = Math.ceil(allNaturalAreaData.length / ITEMS_PER_PAGE);
+  const naturalAreaTotalPages = Math.ceil(
+    allNaturalAreaData.length / ITEMS_PER_PAGE,
+  );
   const goToNaturalAreaPage = (page) => {
     if (page >= 1 && page <= naturalAreaTotalPages) {
       setNaturalAreaCurrentPage(page);
@@ -142,28 +173,43 @@ export const DataProvider = ({ children }) => {
   };
   const naturalAreaStartIndex = (naturalAreaCurrentPage - 1) * ITEMS_PER_PAGE;
   const naturalAreaEndIndex = naturalAreaStartIndex + ITEMS_PER_PAGE;
-  const paginatedNaturalAreaData = allNaturalAreaData.slice(naturalAreaStartIndex, naturalAreaEndIndex);
+  const paginatedNaturalAreaData = allNaturalAreaData.slice(
+    naturalAreaStartIndex,
+    naturalAreaEndIndex,
+  );
 
   // *****************       CATEGORY NATURAL AREA        *****************
-  const [allCategoryNaturalAreaData, setAllCategoryNaturalAreaData] = useState([]);
-  const [categoryNaturalAreaCurrentPage, setCategoryNaturalAreaCurrentPage] = useState(1);
+  const [allCategoryNaturalAreaData, setAllCategoryNaturalAreaData] = useState(
+    [],
+  );
+  const [categoryNaturalAreaCurrentPage, setCategoryNaturalAreaCurrentPage] =
+    useState(1);
   useEffect(() => {
     setActiveApiCalls((prev) => prev + 1);
     fetch(`${API_COL_BASE_URL}/CategoryNaturalArea`)
       .then((response) => response.json())
       .then((json) => setAllCategoryNaturalAreaData(json))
-      .catch((error) => console.error("Error fetching Category Natural Area data: ", error))
+      .catch((error) =>
+        console.error("Error fetching Category Natural Area data: ", error),
+      )
       .finally(() => setActiveApiCalls((prev) => prev - 1));
   }, []);
-  const categoryNaturalAreaTotalPages = Math.ceil(allCategoryNaturalAreaData.length / ITEMS_PER_PAGE);
+  const categoryNaturalAreaTotalPages = Math.ceil(
+    allCategoryNaturalAreaData.length / ITEMS_PER_PAGE,
+  );
   const goToCategoryNaturalAreaPage = (page) => {
     if (page >= 1 && page <= categoryNaturalAreaTotalPages) {
       setCategoryNaturalAreaCurrentPage(page);
     }
   };
-  const categoryNaturalAreaStartIndex = (categoryNaturalAreaCurrentPage - 1) * ITEMS_PER_PAGE;
-  const categoryNaturalAreaEndIndex = categoryNaturalAreaStartIndex + ITEMS_PER_PAGE;
-  const paginatedCategoryNaturalAreaData = allCategoryNaturalAreaData.slice(categoryNaturalAreaStartIndex, categoryNaturalAreaEndIndex);
+  const categoryNaturalAreaStartIndex =
+    (categoryNaturalAreaCurrentPage - 1) * ITEMS_PER_PAGE;
+  const categoryNaturalAreaEndIndex =
+    categoryNaturalAreaStartIndex + ITEMS_PER_PAGE;
+  const paginatedCategoryNaturalAreaData = allCategoryNaturalAreaData.slice(
+    categoryNaturalAreaStartIndex,
+    categoryNaturalAreaEndIndex,
+  );
 
   // *****************       MAP       *****************
   const [mapData, setMapData] = useState([]);
@@ -184,39 +230,56 @@ export const DataProvider = ({ children }) => {
     fetch(`${API_COL_BASE_URL}/InvasiveSpecie`)
       .then((response) => response.json())
       .then((json) => setAllInvasiveSpecieData(json))
-      .catch((error) => console.error("Error fetching Invasive Specie data: ", error))
+      .catch((error) =>
+        console.error("Error fetching Invasive Specie data: ", error),
+      )
       .finally(() => setActiveApiCalls((prev) => prev - 1));
   }, []);
-  const invasiveSpecieTotalPages = Math.ceil(allInvasiveSpecieData.length / ITEMS_PER_PAGE);
+  const invasiveSpecieTotalPages = Math.ceil(
+    allInvasiveSpecieData.length / ITEMS_PER_PAGE,
+  );
   const goToInvasiveSpeciePage = (page) => {
     if (page >= 1 && page <= invasiveSpecieTotalPages) {
       setInvasiveSpecieCurrentPage(page);
     }
   };
-  const invasiveSpecieStartIndex = (invasiveSpecieCurrentPage - 1) * ITEMS_PER_PAGE;
+  const invasiveSpecieStartIndex =
+    (invasiveSpecieCurrentPage - 1) * ITEMS_PER_PAGE;
   const invasiveSpecieEndIndex = invasiveSpecieStartIndex + ITEMS_PER_PAGE;
-  const paginatedInvasiveSpecieData = allInvasiveSpecieData.slice(invasiveSpecieStartIndex, invasiveSpecieEndIndex);
+  const paginatedInvasiveSpecieData = allInvasiveSpecieData.slice(
+    invasiveSpecieStartIndex,
+    invasiveSpecieEndIndex,
+  );
 
   // *****************       NATIVE COMMUNITY        *****************
   const [allNativeCommunityData, setAllNativeCommunityData] = useState([]);
-  const [nativeCommunityCurrentPage, setNativeCommunityCurrentPage] = useState(1);
+  const [nativeCommunityCurrentPage, setNativeCommunityCurrentPage] =
+    useState(1);
   useEffect(() => {
     setActiveApiCalls((prev) => prev + 1);
     fetch(`${API_COL_BASE_URL}/NativeCommunity`)
       .then((response) => response.json())
       .then((json) => setAllNativeCommunityData(json))
-      .catch((error) => console.error("Error fetching Native Community data: ", error))
+      .catch((error) =>
+        console.error("Error fetching Native Community data: ", error),
+      )
       .finally(() => setActiveApiCalls((prev) => prev - 1));
   }, []);
-  const nativeCommunityTotalPages = Math.ceil(allNativeCommunityData.length / ITEMS_PER_PAGE);
+  const nativeCommunityTotalPages = Math.ceil(
+    allNativeCommunityData.length / ITEMS_PER_PAGE,
+  );
   const goToNativeCommunityPage = (page) => {
     if (page >= 1 && page <= nativeCommunityTotalPages) {
       setNativeCommunityCurrentPage(page);
     }
   };
-  const nativeCommunityStartIndex = (nativeCommunityCurrentPage - 1) * ITEMS_PER_PAGE;
+  const nativeCommunityStartIndex =
+    (nativeCommunityCurrentPage - 1) * ITEMS_PER_PAGE;
   const nativeCommunityEndIndex = nativeCommunityStartIndex + ITEMS_PER_PAGE;
-  const paginatedNativeCommunityData = allNativeCommunityData.slice(nativeCommunityStartIndex, nativeCommunityEndIndex);
+  const paginatedNativeCommunityData = allNativeCommunityData.slice(
+    nativeCommunityStartIndex,
+    nativeCommunityEndIndex,
+  );
 
   // *****************       AIRPORT        *****************
   const [allAirportData, setAllAirportData] = useState([]);
@@ -237,7 +300,10 @@ export const DataProvider = ({ children }) => {
   };
   const airportStartIndex = (airportCurrentPage - 1) * ITEMS_PER_PAGE;
   const airportEndIndex = airportStartIndex + ITEMS_PER_PAGE;
-  const paginatedAirportData = allAirportData.slice(airportStartIndex, airportEndIndex);
+  const paginatedAirportData = allAirportData.slice(
+    airportStartIndex,
+    airportEndIndex,
+  );
 
   // *****************       CONSTITUTION ARTICLE        *****************
   const [constitutionArticleData, setConstitutionArticleData] = useState([]);
@@ -246,7 +312,9 @@ export const DataProvider = ({ children }) => {
     fetch(`${API_COL_BASE_URL}/ConstitutionArticle`)
       .then((response) => response.json())
       .then((json) => setConstitutionArticleData(json))
-      .catch((error) => console.error("Error fetching Constitution Article data: ", error))
+      .catch((error) =>
+        console.error("Error fetching Constitution Article data: ", error),
+      )
       .finally(() => setActiveApiCalls((prev) => prev - 1));
   }, []);
 
@@ -282,10 +350,14 @@ export const DataProvider = ({ children }) => {
     fetch(`${API_COL_BASE_URL}/TypicalDish`)
       .then((response) => response.json())
       .then((json) => setAllTypicalDishData(json))
-      .catch((error) => console.error("Error fetching Typical Dish data: ", error))
+      .catch((error) =>
+        console.error("Error fetching Typical Dish data: ", error),
+      )
       .finally(() => setActiveApiCalls((prev) => prev - 1));
   }, []);
-  const typicalDishTotalPages = Math.ceil(allTypicalDishData.length / ITEMS_PER_PAGE);
+  const typicalDishTotalPages = Math.ceil(
+    allTypicalDishData.length / ITEMS_PER_PAGE,
+  );
   const goToTypicalDishPage = (page) => {
     if (page >= 1 && page <= typicalDishTotalPages) {
       setTypicalDishCurrentPage(page);
@@ -293,32 +365,60 @@ export const DataProvider = ({ children }) => {
   };
   const typicalDishStartIndex = (typicalDishCurrentPage - 1) * ITEMS_PER_PAGE;
   const typicalDishEndIndex = typicalDishStartIndex + ITEMS_PER_PAGE;
-  const paginatedTypicalDishData = allTypicalDishData.slice(typicalDishStartIndex, typicalDishEndIndex);
+  const paginatedTypicalDishData = allTypicalDishData.slice(
+    typicalDishStartIndex,
+    typicalDishEndIndex,
+  );
 
   // *****************       TRADITIONAL FAIR AND FESTIVAL        *****************
-  const [allTraditionalFairAndFestivalData, setAllTraditionalFairAndFestivalData] = useState([]);
-  const [traditionalFairAndFestivalCurrentPage, setTraditionalFairAndFestivalCurrentPage] = useState(1);
-  const [traditionalFairAndFestivalDetail, setTraditionalFairAndFestivalDetail] = useState(null);
-  const [traditionalFairAndFestivalCityInfo, setTraditionalFairAndFestivalCityInfo] = useState(null);
+  const [
+    allTraditionalFairAndFestivalData,
+    setAllTraditionalFairAndFestivalData,
+  ] = useState([]);
+  const [
+    traditionalFairAndFestivalCurrentPage,
+    setTraditionalFairAndFestivalCurrentPage,
+  ] = useState(1);
+  const [
+    traditionalFairAndFestivalDetail,
+    setTraditionalFairAndFestivalDetail,
+  ] = useState(null);
+  const [
+    traditionalFairAndFestivalCityInfo,
+    setTraditionalFairAndFestivalCityInfo,
+  ] = useState(null);
 
   useEffect(() => {
     setActiveApiCalls((prev) => prev + 1);
     fetch(`${API_COL_BASE_URL}/TraditionalFairAndFestival`)
       .then((response) => response.json())
       .then((json) => setAllTraditionalFairAndFestivalData(json))
-      .catch((error) => console.error("Error fetching Traditional Fair and Festival data: ", error))
+      .catch((error) =>
+        console.error(
+          "Error fetching Traditional Fair and Festival data: ",
+          error,
+        ),
+      )
       .finally(() => setActiveApiCalls((prev) => prev - 1));
   }, []);
 
-  const traditionalFairAndFestivalTotalPages = Math.ceil(allTraditionalFairAndFestivalData.length / ITEMS_PER_PAGE);
+  const traditionalFairAndFestivalTotalPages = Math.ceil(
+    allTraditionalFairAndFestivalData.length / ITEMS_PER_PAGE,
+  );
   const goToTraditionalFairAndFestivalPage = (page) => {
     if (page >= 1 && page <= traditionalFairAndFestivalTotalPages) {
       setTraditionalFairAndFestivalCurrentPage(page);
     }
   };
-  const traditionalFairAndFestivalStartIndex = (traditionalFairAndFestivalCurrentPage - 1) * ITEMS_PER_PAGE;
-  const traditionalFairAndFestivalEndIndex = traditionalFairAndFestivalStartIndex + ITEMS_PER_PAGE;
-  const paginatedTraditionalFairAndFestivalData = allTraditionalFairAndFestivalData.slice(traditionalFairAndFestivalStartIndex, traditionalFairAndFestivalEndIndex);
+  const traditionalFairAndFestivalStartIndex =
+    (traditionalFairAndFestivalCurrentPage - 1) * ITEMS_PER_PAGE;
+  const traditionalFairAndFestivalEndIndex =
+    traditionalFairAndFestivalStartIndex + ITEMS_PER_PAGE;
+  const paginatedTraditionalFairAndFestivalData =
+    allTraditionalFairAndFestivalData.slice(
+      traditionalFairAndFestivalStartIndex,
+      traditionalFairAndFestivalEndIndex,
+    );
 
   const fetchTraditionalFairAndFestivalById = (id) => {
     setTraditionalFairAndFestivalDetail(null); // Reset before fetching
@@ -333,7 +433,10 @@ export const DataProvider = ({ children }) => {
       .then((json) => setTraditionalFairAndFestivalDetail(json))
       .catch((error) => {
         setTraditionalFairAndFestivalDetail(null); // Ensure null on error
-        console.error(`Error fetching Traditional Fair and Festival by ID (${id}): `, error);
+        console.error(
+          `Error fetching Traditional Fair and Festival by ID (${id}): `,
+          error,
+        );
       })
       .finally(() => setActiveApiCalls((prev) => prev - 1));
   };
@@ -348,7 +451,12 @@ export const DataProvider = ({ children }) => {
         return response.json();
       })
       .then((json) => setTraditionalFairAndFestivalCityInfo(json))
-      .catch((error) => console.error(`Error fetching City Details for Traditional Fair and Festival (${fairId}): `, error))
+      .catch((error) =>
+        console.error(
+          `Error fetching City Details for Traditional Fair and Festival (${fairId}): `,
+          error,
+        ),
+      )
       .finally(() => setActiveApiCalls((prev) => prev - 1));
   };
 
@@ -358,9 +466,14 @@ export const DataProvider = ({ children }) => {
       .then((response) => response.json())
       .then((json) => {
         setAllTraditionalFairAndFestivalData(json);
-        setTraditionalFairAndFestivalCurrentPage(1); 
+        setTraditionalFairAndFestivalCurrentPage(1);
       })
-      .catch((error) => console.error(`Error searching Traditional Fair and Festival by Name (${name}): `, error))
+      .catch((error) =>
+        console.error(
+          `Error searching Traditional Fair and Festival by Name (${name}): `,
+          error,
+        ),
+      )
       .finally(() => setActiveApiCalls((prev) => prev - 1));
   };
 
@@ -370,9 +483,14 @@ export const DataProvider = ({ children }) => {
       .then((response) => response.json())
       .then((json) => {
         setAllTraditionalFairAndFestivalData(json);
-        setTraditionalFairAndFestivalCurrentPage(1); 
+        setTraditionalFairAndFestivalCurrentPage(1);
       })
-      .catch((error) => console.error(`Error searching Traditional Fair and Festival by Keyword (${keyword}): `, error))
+      .catch((error) =>
+        console.error(
+          `Error searching Traditional Fair and Festival by Keyword (${keyword}): `,
+          error,
+        ),
+      )
       .finally(() => setActiveApiCalls((prev) => prev - 1));
   };
 
@@ -402,10 +520,10 @@ export const DataProvider = ({ children }) => {
         // President
         allPresidentData,
         presidentData: paginatedPresidentData,
-        presidentAdminCurrentPage, 
-        presidentAdminTotalPages, 
-        goToPresidentAdminPage,    
-        presidentId, 
+        presidentAdminCurrentPage,
+        presidentAdminTotalPages,
+        goToPresidentAdminPage,
+        presidentId,
         // Natural Area
         allNaturalAreaData,
         naturalAreaData: paginatedNaturalAreaData,

@@ -26,9 +26,14 @@ export default function Naturaleza() {
     return (
       <section className="flex items-center justify-center">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {Array.from({ length: 12 }).map((_, index) => ( // Default to 12 loading cards
-            <LoadingSpinner size={56} key={index}/>
-          ))}
+          {Array.from({ length: 12 }).map(
+            (
+              _,
+              index, // Default to 12 loading cards
+            ) => (
+              <LoadingSpinner size={56} key={index} />
+            ),
+          )}
         </div>
       </section>
     );
@@ -41,11 +46,14 @@ export default function Naturaleza() {
       </Head>
       <EntityPageLayout
         title={pageTitle}
-        isLoading={isLoading && (!naturalAreaData || naturalAreaData.length === 0)}
+        isLoading={
+          isLoading && (!naturalAreaData || naturalAreaData.length === 0)
+        }
         gridCols="md:grid-cols-2 lg:grid-cols-4"
         pagination={
-          !isLoading && naturalAreaTotalPages > 1 && (
-            <div className="flex justify-center mt-8 mb-8">
+          !isLoading &&
+          naturalAreaTotalPages > 1 && (
+            <div className="mb-8 mt-8 flex justify-center">
               <Pagination
                 currentPage={naturalAreaCurrentPage}
                 totalPages={naturalAreaTotalPages}

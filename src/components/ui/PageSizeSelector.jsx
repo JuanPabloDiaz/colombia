@@ -1,4 +1,3 @@
-
 import React from "react";
 
 /**
@@ -8,18 +7,27 @@ import React from "react";
  * @param {number[]} options - Opciones disponibles (por defecto [6,12,24])
  * @param {string} className - Clases personalizadas
  */
-export default function PageSizeSelector({ pageSize, setPageSize, options = [4,8,12], className = "" }) {
+export default function PageSizeSelector({
+  pageSize,
+  setPageSize,
+  options = [4, 8, 12],
+  className = "",
+}) {
   return (
-    <div className={`flex items-center justify-end gap-2 mb-4 ${className}`}>
-      <label htmlFor="page-size" className="text-white/70 text-sm">Items por página:</label>
+    <div className={`mb-4 flex items-center justify-end gap-2 ${className}`}>
+      <label htmlFor="page-size" className="text-sm text-white/70">
+        Items por página:
+      </label>
       <select
         id="page-size"
-        className="rounded bg-slate-800 text-white px-2 py-1"
+        className="rounded bg-slate-800 px-2 py-1 text-white"
         value={pageSize}
-        onChange={e => setPageSize(Number(e.target.value))}
+        onChange={(e) => setPageSize(Number(e.target.value))}
       >
-        {options.map(opt => (
-          <option key={opt} value={opt}>{opt}</option>
+        {options.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
         ))}
       </select>
     </div>

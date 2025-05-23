@@ -12,12 +12,14 @@ const ImageChecker = ({ imageUrl, imageId, imageName, children }) => {
       .catch(() => {
         if (isMounted) setImageExists(false);
       });
-    return () => { isMounted = false; };
+    return () => {
+      isMounted = false;
+    };
   }, [imageUrl]);
 
   // Clone children and inject imageFailed prop
-  return React.Children.map(children, child =>
-    React.cloneElement(child, { imageFailed: !imageExists })
+  return React.Children.map(children, (child) =>
+    React.cloneElement(child, { imageFailed: !imageExists }),
   );
 };
 
