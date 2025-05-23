@@ -37,8 +37,8 @@ export default function EntityDetailPage({ params }) {
     mapData,
     invasiveSpecieData,
     departamentData,
-    typicalDishData, // <-- agrega esto
-    // ...agrega aquí otros arrays del contexto si tienes más tipos
+    allAirportData,
+    typicalDishData,
   } = useContext(AppContext);
 
   // Selecciona el array adecuado según el tipo
@@ -47,9 +47,9 @@ export default function EntityDetailPage({ params }) {
     turismo: touristicAttractionData,
     mapas: mapData,
     "especies-invasoras": invasiveSpecieData,
+    aeropuertos: allAirportData,
     "platos-tipicos": typicalDishData,
   };
-
 
   let entity;
   if (tipo === "departamentos") {
@@ -142,6 +142,42 @@ export default function EntityDetailPage({ params }) {
               <p className="text-base leading-relaxed mb-2 text-white/90 whitespace-pre-line">
                 {entity.description}
               </p>
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  // Layout especial para Aeropuerto
+  if (tipo === "aeropuertos") {
+    return (
+      <main className="min-h-[80vh] flex flex-col items-center py-8">
+        <BackButton tipo={tipo} />
+        <div className="w-full max-w-2xl bg-slate-900/90 rounded-3xl shadow-xl p-0 text-white mt-4 overflow-hidden">
+          <div className="p-6 flex flex-col gap-2">
+            <h1 className="text-3xl font-extrabold mb-1 text-primary-400 leading-tight">{entity.name}</h1>
+            {entity.city && (
+              <>
+                <div className="mb-1 text-lg text-primary-200 font-medium flex items-center gap-2">
+                  <svg className="w-5 h-5 text-primary-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                  {entity.city.name}
+                </div>
+                {entity.city.population && (
+                  <div className="mb-1 text-base text-white/80">
+                    <span className="font-semibold text-white/70">Población:</span> {entity.city.population.toLocaleString()}
+                  </div>
+                )}
+              </>
+            )}
+            <p className="text-base leading-relaxed mb-3 text-white/90 whitespace-pre-line">
+              {entity.description}
+            </p>
+            <div className="flex flex-wrap gap-4 text-sm mb-6">
+              <div><span className="font-semibold text-white/70">Ciudad:</span> {entity.city?.name || "Ciudad no disponible"}</div>
+              <div><span className="font-semibold text-white/70">Tipo:</span> {entity.type || "Tipo no disponible"}</div>
+              <div><span className="font-semibold text-white/70">IATA:</span> {entity.iataCode || "IATA no disponible"}</div>
+              <div><span className="font-semibold text-white/70">OACI:</span> {entity.oaciCode || "OACI no disponible"}</div>
             </div>
           </div>
         </div>

@@ -4,4 +4,9 @@
     <loc>https://colombia.jpdiaz.dev/</loc>
     <lastmod>2024-02-01</lastmod>
   </url>
+  <url>
+    <loc>https://www.api-colombia.com/aeropuertos</loc>
+    <lastmod>2024-03-15</lastmod>
+    <priority>0.80</priority>
+  </url>
 </urlset>

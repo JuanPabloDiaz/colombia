@@ -80,15 +80,15 @@ export const Nav = ({ setOpen, ul_className }) => {
       icon: <Tent />,
     },
     {
+      title: "Aeropuertos",
+      href: "/aeropuertos",
+      icon: <Plane />,
+    },
+    {
       title: "Platos Típicos",
       href: "/platos-tipicos",
       icon: <CookingPot />,
     },
-    // {
-    //   title: "Aeropuertos",
-    //   href: "/aeropuertos",
-    //   icon: <Plane />,
-    // },
     // {
     //   title: "Constitution",
     //   href: "/constitution",
@@ -135,6 +135,7 @@ export const Nav = ({ setOpen, ul_className }) => {
           "/radio",
           "/especies-invasoras",
           "/comunidades-indigenas",
+          "/aeropuertos",
           "/platos-tipicos",
         ];
 
