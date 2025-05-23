@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import { usePathname } from "next/navigation";
 
 import {
   Home,
@@ -22,6 +23,7 @@ import {
 import { useToast } from "@/components/ui/use-toast";
 
 export const Nav = ({ setOpen, ul_className }) => {
+  const pathname = usePathname();
   const { toast } = useToast();
 
   const links = [
@@ -117,17 +119,6 @@ export const Nav = ({ setOpen, ul_className }) => {
   });
 
   return (
-    // <ul className={ul_className}>
-    //   {links.map((link, index) => (
-    //     <Link href={link.href || "/"} key={index}>
-    //       <li className="flex items-center">
-    //         <span className="w-20 px-4">{link.icon}</span>
-    //         {link.title}
-    //       </li>
-    //     </Link>
-    //   ))}
-    // </ul>
-
     <nav className={ul_className}>
       {links.map((link, index) => {
         // Specify the routes you want to allow navigation to
@@ -147,6 +138,7 @@ export const Nav = ({ setOpen, ul_className }) => {
         ];
 
         const isAllowedRoute = allowedRoutes.includes(link.href);
+        const isActive = pathname === link.href;
 
         const handleClick = (e) => {
           if (!isAllowedRoute) {
@@ -169,12 +161,12 @@ export const Nav = ({ setOpen, ul_className }) => {
             href={link.href || "/"}
             key={index}
             aria-label={link.title}
-            className="w-full cursor-pointer rounded-lg py-2 transition duration-300 ease-in-out hover:bg-gray-600"
+            className={`w-full cursor-pointer rounded-lg py-2 transition duration-300 ease-in-out hover:bg-gray-600 ${isActive ? "bg-primary text-primary-foreground font-bold shadow" : ""}`}
           >
             <div
               className="flex items-center"
               style={{
-                color: isAllowedRoute ? "white" : "gray",
+                color: isAllowedRoute ? (isActive ? "var(--primary-foreground)" : "white") : "gray",
               }}
               onClick={handleClick}
             >

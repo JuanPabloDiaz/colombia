@@ -666,4 +666,4 @@ export default function EntityDetailPage({ params }) {
   );
 }
 
-export const dynamic = "force-dynamic"; // Next.js 13+ para rutas dinámicas
+export const dynamic = "force-dynamic";
