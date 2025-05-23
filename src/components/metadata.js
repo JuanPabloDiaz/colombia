@@ -35,7 +35,11 @@ export const metadata = {
     title: "Comunidades Indígenas",
   },
   air: {
-    title: "Aeropuertos",
+    title: "Aeropuertos de Colombia",
+    description: "Lista de aeropuertos de Colombia.",
+    keywords: "aeropuertos, colombia, aviación, transporte aéreo",
+    image: "/assets/images/fallbackImage.jpg", 
+    url: "/aeropuertos",
   },
   ley: {
     title: "Constitution",

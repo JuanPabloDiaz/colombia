@@ -78,11 +78,11 @@ export const Nav = ({ setOpen, ul_className }) => {
       href: "/comunidades-indigenas",
       icon: <Tent />,
     },
-    // {
-    //   title: "Aeropuertos",
-    //   href: "/aeropuertos",
-    //   icon: <Plane />,
-    // },
+    {
+      title: "Aeropuertos",
+      href: "/aeropuertos",
+      icon: <Plane />,
+    },
     // {
     //   title: "Constitution",
     //   href: "/constitution",
@@ -129,6 +129,7 @@ export const Nav = ({ setOpen, ul_className }) => {
           "/radio",
           "/especies-invasoras",
           "/comunidades-indigenas",
+          "/aeropuertos",
         ];
 
         const isAllowedRoute = allowedRoutes.includes(link.href);
