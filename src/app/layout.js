@@ -43,8 +43,6 @@ export default function RootLayout({ children }) {
         </head>
 
         <body className="appBackground flex min-h-screen flex-col text-white">
-          {/* <body className="appBackground flex h-screen min-h-screen w-screen flex-col overflow-y-auto overflow-x-hidden text-white"> */}
-          {/* <Header /> */}
           <Sidebar />
           <HeaderMobile />
           <main
@@ -54,8 +52,7 @@ export default function RootLayout({ children }) {
             )}
           >
             <Providers>
-              {/* <div className="flex-grow px-4 py-2 md:px-8 xl:px-10"> */}
-              <div className="container mb-2 mt-20 flex-grow pt-2 md:mt-0">
+              <div className="container mb-2 mt-16 flex-grow px-2 pt-2 md:mt-0 md:px-4">
                 {children}
               </div>
             </Providers>

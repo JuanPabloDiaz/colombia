@@ -21,25 +21,25 @@ export default function EntityCard({ entity, type = "aeropuerto", linkBase, extr
   const entityLink = linkBase || `/${type}s/${entity.id}`;
 
   return (
-    <div className="flex min-h-60 flex-col gap-3 rounded-xl bg-slate-950/90 p-6 text-white/90 shadow-xl">
-      <h2 className="text-primary-400 mb-1 text-2xl font-bold">{entity.name}</h2>
+    <div className="flex min-h-48 md:min-h-60 flex-col gap-2 md:gap-3 rounded-xl bg-slate-950/90 p-4 md:p-6 text-white/90 shadow-md md:shadow-xl">
+      <h2 className="text-primary-400 mb-1 text-xl md:text-2xl font-bold line-clamp-2">{entity.name}</h2>
       {entity.description && (
-        <p className="mb-2 line-clamp-3 text-base leading-relaxed text-white/80">
+        <p className="mb-1 md:mb-2 line-clamp-2 md:line-clamp-3 text-sm md:text-base leading-relaxed text-white/80">
           {entity.description}
         </p>
       )}
-      <div className="mb-4 flex flex-wrap gap-4 text-sm">
+      <div className="mb-2 md:mb-4 flex flex-wrap gap-2 md:gap-4 text-xs md:text-sm">
         {fields.map(({ label, value }) => (
-          <div key={label}>
+          <div key={label} className="w-full md:w-auto">
             <span className="font-semibold text-white/70">{label}:</span>{" "}
-            {value(entity)}
+            <span className="break-words">{value(entity)}</span>
           </div>
         ))}
         {/* Renderiza campos extra si se pasan por props */}
         {extraFields && extraFields(entity)}
       </div>
       <Link href={entityLink} passHref legacyBehavior>
-        <a className="mt-auto inline-block rounded-lg bg-gray-800 px-5 py-2 text-center text-base font-medium text-white shadow transition-colors hover:bg-gray-700">
+        <a className="mt-auto inline-block rounded-lg bg-gray-800 px-3 py-1.5 md:px-5 md:py-2 text-center text-sm md:text-base font-medium text-white shadow transition-colors hover:bg-gray-700 active:bg-gray-600">
           Ver más
         </a>
       </Link>

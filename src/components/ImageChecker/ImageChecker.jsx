@@ -4,16 +4,32 @@ const ImageChecker = ({ imageUrl, imageId, imageName, children }) => {
   const [imageExists, setImageExists] = useState(true);
 
   useEffect(() => {
+    // Si no hay URL de imagen, marcar como fallida inmediatamente
+    if (!imageUrl) {
+      setImageExists(false);
+      return;
+    }
+
     let isMounted = true;
-    fetch(imageUrl)
-      .then((res) => {
-        if (isMounted) setImageExists(res.ok);
-      })
-      .catch(() => {
-        if (isMounted) setImageExists(false);
-      });
+    
+    // Crear un objeto Image para verificar si la imagen carga correctamente
+    const img = new Image();
+    
+    img.onload = () => {
+      if (isMounted) setImageExists(true);
+    };
+    
+    img.onerror = () => {
+      if (isMounted) setImageExists(false);
+    };
+    
+    // Establecer la fuente de la imagen para iniciar la carga
+    img.src = imageUrl;
+    
     return () => {
       isMounted = false;
+      img.onload = null;
+      img.onerror = null;
     };
   }, [imageUrl]);
 
