@@ -42,12 +42,11 @@ export default function CardDetail({
     }
   };
 
-
-let fallbackImage = "/assets/images/fallbackImage.jpg";
-if (fallbackAvatar) {
-  fallbackImage = "/assets/images/avatar.png";
-}
-const showFallback = imageFailed || !imageUrl || imageUrl === '';
+  let fallbackImage = "/assets/images/fallbackImage.jpg";
+  if (fallbackAvatar) {
+    fallbackImage = "/assets/images/avatar.png";
+  }
+  const showFallback = imageFailed || !imageUrl || imageUrl === "";
 
   return (
     <Card
@@ -69,18 +68,20 @@ const showFallback = imageFailed || !imageUrl || imageUrl === '';
       justifyContent="space-between"
     >
       <CardBody p={4}>
-        <div style={{
-          position: 'relative',
-          width: 240,
-          height: 240,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          overflow: 'hidden',
-          borderRadius: '1rem',
-          background: '#222',
-          margin: '0 auto',
-        }}>
+        <div
+          style={{
+            position: "relative",
+            width: 240,
+            height: 240,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            overflow: "hidden",
+            borderRadius: "1rem",
+            background: "#222",
+            margin: "0 auto",
+          }}
+        >
           <Image
             src={showFallback ? fallbackImage : imageUrl}
             alt={alt || title || "Presidente de Colombia"}
@@ -89,24 +90,31 @@ const showFallback = imageFailed || !imageUrl || imageUrl === '';
             objectFit="cover"
             borderRadius="1rem"
             style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center 15%',
-              borderRadius: '1rem',
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center 15%",
+              borderRadius: "1rem",
               opacity: showFallback ? 0.65 : 1,
-              transition: 'opacity 0.2s',
+              transition: "opacity 0.2s",
             }}
           />
         </div>
         <Stack mt="6" spacing="3" align="center">
-          <Heading size="md" textAlign="center">{cropWords(title, titleWordsCount ?? 2)}</Heading>
+          <Heading size="md" textAlign="center">
+            {cropWords(title, titleWordsCount ?? 2)}
+          </Heading>
           {badgeText && (
             <Badge colorScheme={badgeColor || "purple"} fontSize="0.9em">
               {badgeText}
             </Badge>
           )}
-          <Text fontSize="sm" color="white.400" noOfLines={3} textAlign="center">
+          <Text
+            fontSize="sm"
+            color="white.400"
+            noOfLines={3}
+            textAlign="center"
+          >
             {description}
           </Text>
         </Stack>
@@ -123,7 +131,11 @@ const showFallback = imageFailed || !imageUrl || imageUrl === '';
             </Link>
           )}
           {/* Botón secundario opcional */}
-          {buttonTwo && <Button colorScheme="teal" variant="outline" size="sm">{buttonTwo}</Button>}
+          {buttonTwo && (
+            <Button colorScheme="teal" variant="outline" size="sm">
+              {buttonTwo}
+            </Button>
+          )}
         </ButtonGroup>
       </CardFooter>
     </Card>

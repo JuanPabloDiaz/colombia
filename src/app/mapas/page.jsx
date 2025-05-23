@@ -18,20 +18,28 @@ export default function Mapas() {
   const [currentPage, setCurrentPage] = useState(1);
 
   // Ordena y calcula los datos paginados
-  const sortedData = useMemo(() => (mapData ? [...mapData].sort((a, b) => a.id - b.id) : []), [mapData]);
-  const totalPages = useMemo(() => Math.ceil(sortedData.length / pageSize) || 1, [sortedData, pageSize]);
+  const sortedData = useMemo(
+    () => (mapData ? [...mapData].sort((a, b) => a.id - b.id) : []),
+    [mapData],
+  );
+  const totalPages = useMemo(
+    () => Math.ceil(sortedData.length / pageSize) || 1,
+    [sortedData, pageSize],
+  );
   const paginatedData = useMemo(() => {
     const start = (currentPage - 1) * pageSize;
     return sortedData.slice(start, start + pageSize);
   }, [sortedData, currentPage, pageSize]);
 
   // Reset page if pageSize or data changes
-  React.useEffect(() => { setCurrentPage(1); }, [pageSize, sortedData]);
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [pageSize, sortedData]);
 
   if (isLoading) {
     return (
       <>
-        <LoadingSpinner size={56} key={"loading"}/>
+        <LoadingSpinner size={56} key={"loading"} />
       </>
     );
   }
@@ -45,10 +53,12 @@ export default function Mapas() {
         title={pageTitle}
         isLoading={isLoading}
         gridCols="md:grid-cols-2 lg:grid-cols-4"
-        pageSizeSelector={<PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />}
+        pageSizeSelector={
+          <PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />
+        }
         pagination={
           totalPages > 1 && (
-            <div className="flex justify-center mt-8 mb-8">
+            <div className="mb-8 mt-8 flex justify-center">
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}

@@ -26,7 +26,7 @@ export default function Radio() {
       <section className="flex items-center justify-center">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {Array.from({ length: 12 }).map((_, index) => (
-            <LoadingSpinner size={56} key={index}/>
+            <LoadingSpinner size={56} key={index} />
           ))}
         </div>
       </section>
@@ -39,7 +39,11 @@ export default function Radio() {
         <title>{`${pageTitle} • Colombia 360`}</title>
       </Head>
       <main>
-        <PageSection title={pageTitle} isLoading={isLoading && (!radioData || radioData.length === 0)} gridCols="md:grid-cols-2 lg:grid-cols-4">
+        <PageSection
+          title={pageTitle}
+          isLoading={isLoading && (!radioData || radioData.length === 0)}
+          gridCols="md:grid-cols-2 lg:grid-cols-4"
+        >
           {(Array.isArray(radioData) ? radioData : [])
             .sort((a, b) => a.id - b.id) // Existing sort maintained
             .map((fm) => (
@@ -47,7 +51,7 @@ export default function Radio() {
             ))}
         </PageSection>
         {!isLoading && radioTotalPages > 1 && (
-          <div className="flex justify-center mt-8 mb-8">
+          <div className="mb-8 mt-8 flex justify-center">
             <Pagination
               currentPage={radioCurrentPage}
               totalPages={radioTotalPages}

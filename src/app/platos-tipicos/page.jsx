@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useContext, useState, useMemo, useEffect } from "react";
-import { AppContext } from "@/context"; 
+import { AppContext } from "@/context";
 import { metadata } from "@/components/metadata";
 import CardDetail from "@/components/ChakraCard/CardDetail";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import Pagination from "@/components/ui/Pagination";
-import PageSizeSelector from "@/components/ui/PageSizeSelector"; 
+import PageSizeSelector from "@/components/ui/PageSizeSelector";
 import Head from "next/head";
 
 export default function PlatosTipicosPage() {
@@ -16,20 +16,20 @@ export default function PlatosTipicosPage() {
   const [pageSize, setPageSize] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const {
-    isLoading,
-    allTypicalDishData 
-  } = useContext(AppContext);
+  const { isLoading, allTypicalDishData } = useContext(AppContext);
 
   // Ordena los datos por id para consistencia
   const sortedData = useMemo(
-    () => (allTypicalDishData ? [...allTypicalDishData].sort((a, b) => a.id - b.id) : []),
-    [allTypicalDishData]
+    () =>
+      allTypicalDishData
+        ? [...allTypicalDishData].sort((a, b) => a.id - b.id)
+        : [],
+    [allTypicalDishData],
   );
 
   const totalPages = useMemo(
     () => Math.ceil(sortedData.length / pageSize) || 1,
-    [sortedData, pageSize]
+    [sortedData, pageSize],
   );
 
   const paginatedData = useMemo(() => {
@@ -38,14 +38,16 @@ export default function PlatosTipicosPage() {
   }, [sortedData, currentPage, pageSize]);
 
   // Reset page if pageSize or data changes
-  useEffect(() => { setCurrentPage(1); }, [pageSize, sortedData]);
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [pageSize, sortedData]);
 
   if (isLoading && (!allTypicalDishData || allTypicalDishData.length === 0)) {
     return (
       <section className="flex items-center justify-center">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {Array.from({ length: 12 }).map((_, index) => (
-            <LoadingSpinner size={56} key={index}/>
+            <LoadingSpinner size={56} key={index} />
           ))}
         </div>
       </section>
@@ -60,10 +62,12 @@ export default function PlatosTipicosPage() {
       <PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />
       <EntityPageLayout
         title={pageTitle}
-        isLoading={isLoading && (!allTypicalDishData || allTypicalDishData.length === 0)}
+        isLoading={
+          isLoading && (!allTypicalDishData || allTypicalDishData.length === 0)
+        }
         pagination={
           totalPages > 1 && (
-            <div className="flex justify-center mt-8 mb-8">
+            <div className="mb-8 mt-8 flex justify-center">
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
@@ -73,24 +77,26 @@ export default function PlatosTipicosPage() {
           )
         }
       >
-        {paginatedData && paginatedData.length > 0 ? (
-          paginatedData.map((dish) => (
+        {paginatedData && paginatedData.length > 0
+          ? paginatedData.map((dish) => (
               <CardDetail
                 key={dish.id}
                 title={dish.name}
                 description={dish.description || "Descripción no disponible"}
                 imageUrl={dish.imageUrl}
                 alt={dish.name || "Imagen de plato típico"}
-                imageWidth={320} 
-                imageHeight={213} 
-                imageStyle="cover" 
-                viewMoreHref={`/platos-tipicos/${dish.id}`} 
-                titleWordsCount={3} 
+                imageWidth={320}
+                imageHeight={213}
+                imageStyle="cover"
+                viewMoreHref={`/platos-tipicos/${dish.id}`}
+                titleWordsCount={3}
               />
-          ))
-        ) : (
-          !isLoading && <p className="text-center col-span-full">No hay platos típicos para mostrar en este momento.</p>
-        )}
+            ))
+          : !isLoading && (
+              <p className="col-span-full text-center">
+                No hay platos típicos para mostrar en este momento.
+              </p>
+            )}
       </EntityPageLayout>
     </>
   );

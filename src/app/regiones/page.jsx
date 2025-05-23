@@ -5,7 +5,7 @@ import { AppContext } from "@/context";
 
 import { metadata } from "@/components/metadata";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
-import DepartamentoCard from "@/components/Card/DepartamentoCard"; 
+import DepartamentoCard from "@/components/Card/DepartamentoCard";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import Pagination from "@/components/ui/Pagination";
 import Head from "next/head";
@@ -26,9 +26,14 @@ export default function Regiones() {
     return (
       <section className="flex items-center justify-center">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {Array.from({ length: 6 }).map((_, index) => ( // Regions are fewer, so 6 loading cards
-            <LoadingSpinner size={56} key={index} />
-          ))}
+          {Array.from({ length: 6 }).map(
+            (
+              _,
+              index, // Regions are fewer, so 6 loading cards
+            ) => (
+              <LoadingSpinner size={56} key={index} />
+            ),
+          )}
         </div>
       </section>
     );
@@ -44,8 +49,9 @@ export default function Regiones() {
         isLoading={isLoading && (!regionData || regionData.length === 0)}
         gridCols="md:grid-cols-2 lg:grid-cols-3"
         pagination={
-          !isLoading && regionTotalPages > 1 && (
-            <div className="flex justify-center mt-8 mb-8">
+          !isLoading &&
+          regionTotalPages > 1 && (
+            <div className="mb-8 mt-8 flex justify-center">
               <Pagination
                 currentPage={regionCurrentPage}
                 totalPages={regionTotalPages}

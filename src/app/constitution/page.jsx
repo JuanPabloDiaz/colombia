@@ -13,8 +13,7 @@ export default function Constitution() {
       <Head>
         <title>{`${pageTitle} • Colombia 360`}</title>
       </Head>
-      <PageSection title={pageTitle}>
-      </PageSection>
+      <PageSection title={pageTitle}></PageSection>
     </>
   );
 }

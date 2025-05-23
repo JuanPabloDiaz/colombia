@@ -18,17 +18,17 @@ export default function Prueba() {
         <title>{`${pageTitle} • Colombia 360`}</title>
       </Head>
       <PageSection title={pageTitle}>
-      <section className="flex w-full items-center justify-center rounded-lg bg-slate-950/90">
-        <div
-          id="map"
-          className="mapaColombia flex w-1/2 items-center justify-start"
-        >
-          <ColombiaMap />
-        </div>
-        <div className=" h-vh w-1/2 bg-slate-50">
-          <p>Prueba</p>
-        </div>
-      </section>
+        <section className="flex w-full items-center justify-center rounded-lg bg-slate-950/90">
+          <div
+            id="map"
+            className="mapaColombia flex w-1/2 items-center justify-start"
+          >
+            <ColombiaMap />
+          </div>
+          <div className=" h-vh w-1/2 bg-slate-50">
+            <p>Prueba</p>
+          </div>
+        </section>
       </PageSection>
     </>
   );

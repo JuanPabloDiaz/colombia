@@ -19,23 +19,42 @@ export default function Turismo() {
   const [pageSize, setPageSize] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const sortedData = useMemo(() => (allTouristicAttractionData ? [...allTouristicAttractionData].sort((a, b) => a.id - b.id) : []), [allTouristicAttractionData]);
-  const totalPages = useMemo(() => Math.ceil(sortedData.length / pageSize) || 1, [sortedData, pageSize]);
+  const sortedData = useMemo(
+    () =>
+      allTouristicAttractionData
+        ? [...allTouristicAttractionData].sort((a, b) => a.id - b.id)
+        : [],
+    [allTouristicAttractionData],
+  );
+  const totalPages = useMemo(
+    () => Math.ceil(sortedData.length / pageSize) || 1,
+    [sortedData, pageSize],
+  );
   const paginatedData = useMemo(() => {
     const start = (currentPage - 1) * pageSize;
     const page = sortedData.slice(start, start + pageSize);
     return page;
   }, [sortedData, currentPage, pageSize]);
-  React.useEffect(() => { setCurrentPage(1); }, [pageSize, sortedData]);
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [pageSize, sortedData]);
 
   // Show loading state only if data hasn't been loaded yet for the first time
-  if (isLoading && (!allTouristicAttractionData || allTouristicAttractionData.length === 0)) {
+  if (
+    isLoading &&
+    (!allTouristicAttractionData || allTouristicAttractionData.length === 0)
+  ) {
     return (
       <section className="flex items-center justify-center">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {Array.from({ length: 12 }).map((_, index) => ( // Default to 12 loading cards
-            <LoadingSpinner size={56} key={index}/>
-          ))}
+          {Array.from({ length: 12 }).map(
+            (
+              _,
+              index, // Default to 12 loading cards
+            ) => (
+              <LoadingSpinner size={56} key={index} />
+            ),
+          )}
         </div>
       </section>
     );
@@ -48,12 +67,18 @@ export default function Turismo() {
       </Head>
       <EntityPageLayout
         title={pageTitle}
-        isLoading={isLoading && (!allTouristicAttractionData || allTouristicAttractionData.length === 0)}
+        isLoading={
+          isLoading &&
+          (!allTouristicAttractionData ||
+            allTouristicAttractionData.length === 0)
+        }
         gridCols="md:grid-cols-2 lg:grid-cols-4"
-        pageSizeSelector={<PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />}
+        pageSizeSelector={
+          <PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />
+        }
         pagination={
           totalPages > 1 && (
-            <div className="flex justify-center mt-8 mb-8">
+            <div className="mb-8 mt-8 flex justify-center">
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
@@ -73,7 +98,9 @@ export default function Turismo() {
             <CardDetail
               title={tour.name}
               description={tour.description || "Descripción no disponible"}
-              imageUrl={Array.isArray(tour.images) ? tour.images[0] : tour.images}
+              imageUrl={
+                Array.isArray(tour.images) ? tour.images[0] : tour.images
+              }
               alt={tour.name || "Imagen de turismo"}
               imageWidth={320}
               imageHeight={213}
