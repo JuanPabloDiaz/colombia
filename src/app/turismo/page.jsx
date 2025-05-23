@@ -10,7 +10,7 @@ import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import ImageChecker from "@/components/ImageChecker/ImageChecker";
 import Pagination from "@/components/ui/Pagination";
-import Head from "next/head";
+
 
 export default function Turismo() {
   const pageTitle = metadata.tur.title;
@@ -62,9 +62,7 @@ export default function Turismo() {
 
   return (
     <>
-      <Head>
-        <title>{`${pageTitle} • Colombia 360`}</title>
-      </Head>
+      
       <EntityPageLayout
         title={pageTitle}
         isLoading={

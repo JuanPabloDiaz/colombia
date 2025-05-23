@@ -6,7 +6,7 @@ import PageSizeSelector from "@/components/ui/PageSizeSelector";
 import Link from "next/link";
 import Pagination from "@/components/ui/Pagination";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
-import Head from "next/head";
+
 import { metadata } from "@/components/metadata";
 
 export default function FeriasYFestivales() {
@@ -107,9 +107,7 @@ export default function FeriasYFestivales() {
 
   return (
     <>
-      <Head>
-        <title>{`${pageTitle} • Colombia 360`}</title>
-      </Head>
+      
       <div className="mb-8 px-4">
         <div className="flex flex-col items-center justify-center gap-4 md:flex-row">
           <div className="flex w-full flex-col items-center md:w-1/2">

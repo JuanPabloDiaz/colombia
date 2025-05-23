@@ -8,7 +8,7 @@ import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import DepartamentoCard from "@/components/Card/DepartamentoCard";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import Pagination from "@/components/ui/Pagination";
-import Head from "next/head";
+
 
 export default function Regiones() {
   const pageTitle = metadata.reg.title;
@@ -41,9 +41,7 @@ export default function Regiones() {
 
   return (
     <>
-      <Head>
-        <title>{`${pageTitle} • Colombia 360`}</title>
-      </Head>
+      
       <EntityPageLayout
         title={pageTitle}
         isLoading={isLoading && (!regionData || regionData.length === 0)}

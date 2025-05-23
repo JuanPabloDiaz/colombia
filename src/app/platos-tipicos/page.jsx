@@ -8,7 +8,7 @@ import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import Pagination from "@/components/ui/Pagination";
 import PageSizeSelector from "@/components/ui/PageSizeSelector";
-import Head from "next/head";
+
 
 export default function PlatosTipicosPage() {
   const pageTitle = metadata.plato?.title;
@@ -56,9 +56,7 @@ export default function PlatosTipicosPage() {
 
   return (
     <>
-      <Head>
-        <title>{`${pageTitle} • Colombia 360`}</title>
-      </Head>
+      
       <PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />
       <EntityPageLayout
         title={pageTitle}

@@ -7,7 +7,7 @@ import Link from "next/link";
 import Pagination from "@/components/ui/Pagination";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import { metadata } from "@/components/metadata";
-import Head from "next/head";
+
 
 const pageTitle = metadata.dep.title;
 export default function Departamentos() {
@@ -37,9 +37,7 @@ export default function Departamentos() {
   // Show loading state only if data hasn't been loaded yet for the first time
   return (
     <>
-      <Head>
-        <title>{`${pageTitle} • Colombia 360`}</title>
-      </Head>
+      
       <EntityPageLayout
         title={pageTitle}
         isLoading={

@@ -10,7 +10,7 @@ import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import { metadata } from "@/components/metadata";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import Pagination from "@/components/ui/Pagination"; // Import the Pagination component
-import Head from "next/head";
+
 
 export default function EspeciesInvasoras() {
   const pageTitle = metadata.espInv.title;
@@ -57,9 +57,7 @@ export default function EspeciesInvasoras() {
 
   return (
     <>
-      <Head>
-        <title>{`${pageTitle} • Colombia 360`}</title>
-      </Head>
+      
       <EntityPageLayout
         title={pageTitle}
         isLoading={
