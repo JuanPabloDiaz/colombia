@@ -37,7 +37,7 @@ export const Footer = () => {
       </section>
       <section className="mt-3 flex flex-wrap items-center justify-center gap-2 px-2 text-xs md:mt-4 md:flex-row md:justify-around md:gap-4 md:text-sm">
         <p className="text-center">
-          © 2023 {new Date().getFullYear()}
+          © {startYear}{currentYear > startYear ? ` - ${currentYear}` : ""}
           <a
             href="https://jpdiaz.dev/"
             className="px-1 text-white/40 hover:underline md:px-2"
