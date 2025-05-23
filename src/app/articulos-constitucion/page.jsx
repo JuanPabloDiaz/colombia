@@ -1,8 +1,8 @@
-import RegionesClient from "./RegionesClient";
+import ArticulosConstitucionClient from "./ArticulosConstitucionClient";
 import { metadata as projectMetadata } from "@/components/metadata";
 
 export async function generateMetadata() {
-  const pageMeta = projectMetadata.reg;
+  const pageMeta = projectMetadata.articulosConstitucion;
   return {
     title: `${pageMeta.title} • Colombia 360`,
     description: pageMeta.description,
@@ -11,6 +11,6 @@ export async function generateMetadata() {
   };
 }
 
-export default function RegionesPage() {
-  return <RegionesClient />;
+export default function ArticulosConstitucionPage() {
+  return <ArticulosConstitucionClient />;
 }

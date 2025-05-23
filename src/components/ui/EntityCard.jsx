@@ -23,6 +23,42 @@ const ENTITY_FIELDS = {
       value: (e) => e.municipalities || "Municipios no disponibles",
     },
   ],
+  region: [
+    {
+      label: "Descripción",
+      value: (e) => e.description || "Descripción no disponible",
+    },
+    {
+      label: "Población",
+      value: (e) => e.population?.toLocaleString() || "Población no disponible",
+    },
+  ],
+  ciudad: [
+    {
+      label: "Departamento",
+      value: (e) => e.department?.name || "Departamento no disponible",
+    },
+    {
+      label: "Población",
+      value: (e) => e.population?.toLocaleString() || "Población no disponible",
+    },
+    {
+      label: "Superficie",
+      value: (e) => (e.surface ? `${e.surface} km²` : "Superficie no disponible"),
+    },
+  ],
+  "articulos-constitucion": [
+    {
+      label: "Artículo",
+      value: (e) => e.article || e.name || "Artículo no disponible",
+    },
+    { label: "Título", value: (e) => e.title || "Título no disponible" },
+    {
+      label: "Capítulo",
+      value: (e) =>
+        e.chapter?.number || e.chapterId || "Capítulo no disponible",
+    },
+  ],
   // Agrega más tipos aquí según lo necesites
 };
 

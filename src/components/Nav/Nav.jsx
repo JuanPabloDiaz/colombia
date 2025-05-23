@@ -18,6 +18,11 @@ import {
   ShieldPlus,
   Cannabis,
   RadioTower,
+  // New icons
+  LayoutGrid, // For Regiones
+  Building2, // For Ciudades
+  FileText, // For Artículos Constitución
+  CalendarDays, // For Días Festivos
 } from "lucide-react";
 
 import { useToast } from "@/components/ui/use-toast";
@@ -107,6 +112,27 @@ export const Nav = ({ setOpen, ul_className }) => {
       href: "/radio",
       icon: <RadioTower />,
     },
+    // New links
+    {
+      title: "Regiones",
+      href: "/regiones",
+      icon: <LayoutGrid />,
+    },
+    {
+      title: "Ciudades",
+      href: "/ciudades",
+      icon: <Building2 />,
+    },
+    {
+      title: "Artículos Constitución",
+      href: "/articulos-constitucion",
+      icon: <FileText />,
+    },
+    {
+      title: "Días Festivos",
+      href: "/festivos",
+      icon: <CalendarDays />,
+    },
   ];
 
   // Sort links alphabetically and move "Inicio" to the top
@@ -135,6 +161,11 @@ export const Nav = ({ setOpen, ul_className }) => {
           "/aeropuertos",
           "/platos-tipicos",
           "/ferias-y-festivales",
+          // New allowed routes
+          "/regiones",
+          "/ciudades",
+          "/articulos-constitucion",
+          "/festivos", // New allowed route for Días Festivos
         ];
 
         const isAllowedRoute = allowedRoutes.includes(link.href);

@@ -47,6 +47,19 @@ export default function EntityDetailPage({ params }) {
     traditionalFairAndFestivalData,
     fetchTraditionalFairAndFestivalById,
     traditionalFairAndFestivalDetail,
+    // New context variables for details
+    currentRegionDetail,
+    fetchRegionById,
+    currentRegionDepartments,
+    fetchRegionDepartments,
+    currentCityDetail,
+    fetchCityById,
+    currentConstitutionArticleDetail,
+    fetchConstitutionArticleById,
+    // Data lists for initial lookup (if applicable)
+    allRegionData,
+    allCityData,
+    allConstitutionArticlesData, // Using the full list for ID lookup
     isLoading,
   } = useContext(AppContext);
 
@@ -59,28 +72,61 @@ export default function EntityDetailPage({ params }) {
     aeropuertos: allAirportData,
     "platos-tipicos": typicalDishData,
     "ferias-y-festivales": traditionalFairAndFestivalData,
+    regiones: allRegionData,
+    ciudades: allCityData,
+    "articulos-constitucion": allConstitutionArticlesData,
   };
 
-  // --- LÓGICA ROBUSTA PARA FERIAS Y FESTIVALES ---
-  const [localEntity, setLocalEntity] = React.useState(null);
-  const [triedFetch, setTriedFetch] = React.useState(false);
+  // --- LÓGICA ROBUSTA PARA FERIAS Y FESTIVALES (EXISTING) ---
+  const [localEntity, setLocalEntity] = React.useState(null); // This might be reused or made specific
+  const [triedFetch, setTriedFetch] = React.useState(false); // This might be reused or made specific
 
   React.useEffect(() => {
-    if (tipo !== "ferias-y-festivales") return;
-    const list = traditionalFairAndFestivalData || [];
-    const found = list.find((item) => String(item.id) === String(id));
-    if (found) {
-      setLocalEntity(found);
-    } else if (!triedFetch) {
-      fetchTraditionalFairAndFestivalById(id);
-      setTriedFetch(true);
+    // Clear details when id or tipo changes to avoid showing stale data
+    if (tipo !== "regiones") fetchRegionById(null); // Clearer function or set detail to null
+    if (tipo !== "ciudades") fetchCityById(null);
+    if (tipo !== "articulos-constitucion") fetchConstitutionArticleById(null);
+
+    if (tipo === "ferias-y-festivales") {
+      const list = traditionalFairAndFestivalData || [];
+      const found = list.find((item) => String(item.id) === String(id));
+      if (found) {
+        setLocalEntity(found);
+      } else if (!triedFetch) {
+        fetchTraditionalFairAndFestivalById(id);
+        setTriedFetch(true);
+      }
+    } else if (tipo === "regiones") {
+      if (!currentRegionDetail || String(currentRegionDetail.id) !== String(id)) {
+        fetchRegionById(id);
+      }
+    } else if (tipo === "ciudades") {
+      if (!currentCityDetail || String(currentCityDetail.id) !== String(id)) {
+        fetchCityById(id);
+      }
+    } else if (tipo === "articulos-constitucion") {
+      if (!currentConstitutionArticleDetail || String(currentConstitutionArticleDetail.id) !== String(id)) {
+        fetchConstitutionArticleById(id);
+      }
+    } else {
+      // Fallback for other types using dataMap
+      const list = dataMap[tipo] || [];
+      const found = list.find((item) => String(item.id) === String(id));
+      setLocalEntity(found); // Assuming localEntity can be used for these other types
     }
   }, [
     tipo,
     id,
     traditionalFairAndFestivalData,
     fetchTraditionalFairAndFestivalById,
-    triedFetch,
+    triedFetch, // Keep for ferias-y-festivales
+    fetchRegionById,
+    fetchCityById,
+    fetchConstitutionArticleById,
+    currentRegionDetail,
+    currentCityDetail,
+    currentConstitutionArticleDetail,
+    // dataMap // dataMap itself doesn't need to be a dep if its constituent arrays are stable or handled by their own effects elsewhere
   ]);
 
   React.useEffect(() => {
@@ -92,27 +138,62 @@ export default function EntityDetailPage({ params }) {
       setLocalEntity(traditionalFairAndFestivalDetail);
     }
   }, [traditionalFairAndFestivalDetail, tipo, id]);
+  
+  // Effect for fetching region departments
+  React.useEffect(() => {
+    if (tipo === "regiones" && currentRegionDetail && String(currentRegionDetail.id) === String(id)) {
+      // Check if departments are already fetched for this region to avoid re-fetching
+      if (!currentRegionDepartments || currentRegionDepartments.length === 0 || (currentRegionDepartments[0]?.regionId && String(currentRegionDepartments[0].regionId) !== String(id))) {
+         fetchRegionDepartments(id);
+      }
+    }
+  }, [currentRegionDetail, tipo, id, fetchRegionDepartments, currentRegionDepartments]);
+
 
   // --- FIN LÓGICA ROBUSTA ---
 
+  // Generic entity finding for types not handled by specific detail states
+  // This part might need to be re-evaluated based on how new types are handled.
+  // For new types (regions, ciudades, articulos-constitucion), we will rely on their specific detail states.
   let entity;
   if (tipo === "departamentos") {
     entity = departamentData.find((dep) => String(dep.id) === String(id));
-  } else {
+  } else if (tipo !== "regiones" && tipo !== "ciudades" && tipo !== "articulos-constitucion" && tipo !== "ferias-y-festivales") {
     const list = dataMap[tipo] || [];
     entity = list.find((item) => String(item.id) === String(id));
+  } else if (tipo === "ferias-y-festivales") {
+    entity = localEntity; // Use the localEntity state for ferias-y-festivales
   }
 
-  if (!entity) {
+
+  // General Not Found (if not handled by specific type block)
+  // This will be refined as specific type blocks have their own loading/not found.
+  if (
+    tipo !== "regiones" &&
+    tipo !== "ciudades" &&
+    tipo !== "articulos-constitucion" &&
+    !entity // For types that rely on the generic 'entity'
+  ) {
+    // If still loading context data for these other types, don't show "not found" yet.
+    if (isLoading && (!dataMap[tipo] || dataMap[tipo].length === 0)) {
+      return (
+        <div className="flex min-h-[40vh] flex-col items-center justify-center text-center">
+          <span className="mb-4 text-lg font-semibold text-slate-300">Cargando datos...</span>
+          {/* Consider a spinner here */}
+          <BackButton tipo={tipo} />
+        </div>
+      );
+    }
     return (
       <div className="flex min-h-[40vh] flex-col items-center justify-center text-center">
         <span className="mb-4 text-lg font-semibold text-red-400">
-          No se encontró información para este elemento.
+          No se encontró información para este elemento ({tipo} / {id}).
         </span>
         <BackButton tipo={tipo} />
       </div>
     );
   }
+
 
   // Si es departamento, muestra layout especial con datos relacionados
   if (tipo === "departamentos") {
@@ -601,9 +682,230 @@ export default function EntityDetailPage({ params }) {
     );
   }
 
-  // Layout normal para otros tipos
+  // Layout para Regiones
+  if (tipo === "regiones") {
+    if (isLoading && !currentRegionDetail) {
+      return (
+        <main className="flex min-h-[80vh] flex-col items-center justify-center py-8">
+          <p className="text-xl text-slate-300">Cargando detalles de la región...</p>
+          <BackButton tipo={tipo} />
+        </main>
+      );
+    }
+    if (!currentRegionDetail) {
+      return (
+        <main className="flex min-h-[80vh] flex-col items-center justify-center py-8">
+          <p className="text-xl text-red-400">Región no encontrada.</p>
+          <BackButton tipo={tipo} />
+        </main>
+      );
+    }
+    return (
+      <main className="flex min-h-[80vh] flex-col items-center py-8">
+        <BackButton tipo={tipo} />
+        <div className="mt-4 w-full max-w-3xl rounded-3xl bg-slate-900/90 p-8 text-white shadow-xl">
+          <h1 className="text-primary-400 mb-4 text-3xl font-bold">
+            {currentRegionDetail.name}
+          </h1>
+          <p className="mb-4 text-base leading-relaxed text-white/80">
+            {currentRegionDetail.description}
+          </p>
+          <div className="mb-6 grid grid-cols-1 gap-4 text-sm md:grid-cols-2">
+            <div>
+              <span className="font-semibold text-white/70">Población:</span>{" "}
+              {currentRegionDetail.population?.toLocaleString() || "N/A"}
+            </div>
+            {/* Add other fields as available and relevant */}
+          </div>
+
+          {isLoading && !currentRegionDepartments && <p className="text-slate-300">Cargando departamentos...</p>}
+          {currentRegionDepartments && currentRegionDepartments.length > 0 && (
+            <section className="mt-8">
+              <h2 className="text-primary-300 mb-3 text-2xl font-semibold">
+                Departamentos en esta Región
+              </h2>
+              <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {currentRegionDepartments.map((dept) => (
+                  <li key={dept.id} className="rounded-lg bg-slate-800 p-3 shadow">
+                    <h3 className="font-semibold text-white">{dept.name}</h3>
+                    {/* You can add more department details here if needed */}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+          {currentRegionDepartments && currentRegionDepartments.length === 0 && !isLoading && (
+             <p className="mt-6 text-slate-400">No se encontraron departamentos para esta región.</p>
+          )}
+        </div>
+      </main>
+    );
+  }
+
+  // Layout para Ciudades
+  if (tipo === "ciudades") {
+    if (isLoading && !currentCityDetail) {
+      return (
+        <main className="flex min-h-[80vh] flex-col items-center justify-center py-8">
+          <p className="text-xl text-slate-300">Cargando detalles de la ciudad...</p>
+          <BackButton tipo={tipo} />
+        </main>
+      );
+    }
+    if (!currentCityDetail) {
+      return (
+        <main className="flex min-h-[80vh] flex-col items-center justify-center py-8">
+          <p className="text-xl text-red-400">Ciudad no encontrada.</p>
+          <BackButton tipo={tipo} />
+        </main>
+      );
+    }
+    return (
+      <main className="flex min-h-[80vh] flex-col items-center py-8">
+        <BackButton tipo={tipo} />
+        <div className="mt-4 w-full max-w-3xl rounded-3xl bg-slate-900/90 p-8 text-white shadow-xl">
+          <h1 className="text-primary-400 mb-4 text-3xl font-bold">
+            {currentCityDetail.name}
+          </h1>
+          <p className="mb-4 text-base leading-relaxed text-white/80">
+            {currentCityDetail.description}
+          </p>
+          <div className="mb-6 grid grid-cols-1 gap-4 text-sm md:grid-cols-2">
+            <div>
+              <span className="font-semibold text-white/70">Departamento:</span>{" "}
+              {currentCityDetail.department?.name || "N/A"}
+            </div>
+            <div>
+              <span className="font-semibold text-white/70">Población:</span>{" "}
+              {currentCityDetail.population?.toLocaleString() || "N/A"}
+            </div>
+            <div>
+              <span className="font-semibold text-white/70">Superficie:</span>{" "}
+              {currentCityDetail.surface ? `${currentCityDetail.surface.toLocaleString()} km²` : "N/A"}
+            </div>
+            <div>
+              <span className="font-semibold text-white/70">Código Postal:</span>{" "}
+              {currentCityDetail.postalCode || "N/A"}
+            </div>
+          </div>
+          {/* Add more city details as needed */}
+        </div>
+      </main>
+    );
+  }
+
+  // Layout para Articulos de la Constitución
+  if (tipo === "articulos-constitucion") {
+    if (isLoading && !currentConstitutionArticleDetail) {
+      return (
+        <main className="flex min-h-[80vh] flex-col items-center justify-center py-8">
+          <p className="text-xl text-slate-300">Cargando detalle del artículo...</p>
+          <BackButton tipo={tipo} />
+        </main>
+      );
+    }
+    if (!currentConstitutionArticleDetail) {
+      return (
+        <main className="flex min-h-[80vh] flex-col items-center justify-center py-8">
+          <p className="text-xl text-red-400">Artículo no encontrado.</p>
+          <BackButton tipo={tipo} />
+        </main>
+      );
+    }
+    return (
+      <main className="flex min-h-[80vh] flex-col items-center py-8">
+        <BackButton tipo={tipo} />
+        <div className="mt-4 w-full max-w-3xl rounded-3xl bg-slate-900/90 p-8 text-white shadow-xl">
+          <h1 className="text-primary-400 mb-2 text-2xl font-bold">
+            Artículo {currentConstitutionArticleDetail.article || currentConstitutionArticleDetail.name}
+          </h1>
+          <h2 className="text-primary-300 mb-4 text-xl">
+            {currentConstitutionArticleDetail.title}
+          </h2>
+          {currentConstitutionArticleDetail.chapter && (
+            <div className="mb-4 text-sm text-white/70">
+              <span className="font-semibold">Capítulo:</span> {currentConstitutionArticleDetail.chapter.number} - {currentConstitutionArticleDetail.chapter.description}
+            </div>
+          )}
+          <div className="prose prose-invert max-w-none whitespace-pre-line text-base leading-relaxed text-white/90">
+            {currentConstitutionArticleDetail.content}
+          </div>
+        </div>
+      </main>
+    );
+  }
+  
+  // Layout normal para otros tipos (EXISTING, ensure it's the last one or correctly placed)
+  if (entity) { // Only proceed if 'entity' is defined for these other types
+    return (
+      <main className="flex min-h-[80vh] flex-col items-center py-8">
+  // ... (rest of the existing default layout for 'entity')
+  // Ensure this block is correctly handling the 'entity' variable which is now
+  // only set for types NOT handled by the new specific detail states.
+  // The following is the original content of the default layout, adjusted slightly for context
+        <BackButton tipo={tipo} />
+        <div className="mt-4 w-full max-w-3xl rounded-3xl bg-slate-900/90 p-8 text-white shadow-xl">
+          <div className="flex flex-wrap gap-8">
+            <div className="flex w-80 flex-none items-start justify-center">
+              <img
+                src={
+                  tipo === "mapas" && Array.isArray(entity.urlImages) && entity.urlImages.length > 0 // Check if urlImages is an array for maps
+                    ? entity.urlImages[0] // Display first image for maps if array
+                    : entity.image ||
+                      (Array.isArray(entity.images) && entity.images.length > 0 ? entity.images[0] : null) || // Check if images is an array
+                      entity.urlImage ||
+                      "/assets/images/fallback-place.jpg"
+                }
+                alt={entity.name}
+                width={320}
+                height={320}
+                className="rounded-xl object-cover shadow-lg"
+              />
+            </div>
+            <div className="min-w-[350px] flex-1">
+              <h1 className="mb-2 text-3xl font-bold">
+                {entity.name}
+                {entity.lastName ? ` ${entity.lastName}` : ""}
+              </h1>
+              {entity.startPeriodDate && entity.endPeriodDate && (
+                <span className="mb-4 inline-block rounded-lg bg-purple-600 px-4 py-1 text-base font-semibold text-white">
+                  {formatDate(entity.startPeriodDate)} - {formatDate(entity.endPeriodDate)}
+                </span>
+              )}
+              {entity.scientificName && (
+                <p className="mb-2 italic text-slate-300">
+                  {entity.scientificName}
+                </p>
+              )}
+              <p className="mb-6 text-base leading-relaxed whitespace-pre-line">
+                {entity.description || entity.impact}
+              </p>
+              {/* Otros campos relevantes */}
+              {entity.languages && (
+                <div className="mb-4">
+                  <strong>Lenguas:</strong>{" "}
+                  {Array.isArray(entity.languages)
+                    ? entity.languages.join(", ")
+                    : entity.languages}
+                </div>
+              )}
+              {entity.region && (
+                <div style={{ marginBottom: "1rem" }}>
+                  <strong>Región:</strong> {entity.region}
+                </div>
+              )}
+              {/* Puedes agregar más campos dinámicamente según el tipo */}
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
+  // If no specific layout matched and generic entity also not found (e.g. after failed fetch for new types)
+  // This acts as a final fallback if none of the above conditions render anything.
   return (
-    <main className="flex min-h-[80vh] flex-col items-center py-8">
+    <main className="flex min-h-[80vh] flex-col items-center justify-center py-8">
+      <p className="text-xl text-red-400">No se pudo cargar el contenido para {tipo}/{id}.</p>
       <BackButton tipo={tipo} />
       <div className="mt-4 w-full max-w-3xl rounded-3xl bg-slate-900/90 p-8 text-white shadow-xl">
         <div className="flex flex-wrap gap-8">
