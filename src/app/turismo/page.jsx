@@ -5,6 +5,7 @@ export const generateMetadata = () => ({
   title: `${metadata.tur?.title} • Colombia 360`,
   description: metadata.tur?.description,
   keywords: metadata.tur?.keywords,
+  path: metadata.tur?.path,
 });
 
 export default function TurismoPage() {

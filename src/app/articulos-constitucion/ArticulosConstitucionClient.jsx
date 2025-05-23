@@ -27,14 +27,17 @@ export default function ArticulosConstitucionClient() {
 
   // Determine if a search is currently active and has results
   const isSearchActive = useMemo(
-    () => searchedConstitutionArticles && searchedConstitutionArticles.data?.length > 0,
+    () =>
+      searchedConstitutionArticles &&
+      searchedConstitutionArticles.data?.length > 0,
     [searchedConstitutionArticles],
   );
-  
+
   // Determine if a search has been attempted (even if no results)
   const searchAttempted = useMemo(
-    () => searchedConstitutionArticles && searchedConstitutionArticles.pagination, // Check if pagination object exists, indicating a search was made
-    [searchedConstitutionArticles]
+    () =>
+      searchedConstitutionArticles && searchedConstitutionArticles.pagination, // Check if pagination object exists, indicating a search was made
+    [searchedConstitutionArticles],
   );
 
   useEffect(() => {
@@ -44,21 +47,31 @@ export default function ArticulosConstitucionClient() {
     }
     // If search becomes active, reset local page to 1 or to search result's current page
     else if (isSearchActive) {
-        setLocalCurrentPage(searchedConstitutionArticles.pagination?.currentPage || 1);
+      setLocalCurrentPage(
+        searchedConstitutionArticles.pagination?.currentPage || 1,
+      );
     }
     // If search was attempted but no results, reset to page 1 for display purposes
     else if (searchAttempted && !isSearchActive) {
-        setLocalCurrentPage(1);
+      setLocalCurrentPage(1);
     }
-  }, [contextCurrentPage, searchedConstitutionArticles, isSearchActive, searchAttempted]);
-
+  }, [
+    contextCurrentPage,
+    searchedConstitutionArticles,
+    isSearchActive,
+    searchAttempted,
+  ]);
 
   const articlesToDisplay = useMemo(() => {
     if (isSearchActive) {
       return searchedConstitutionArticles.data;
     }
     return constitutionArticlesPagedData?.data || [];
-  }, [isSearchActive, searchedConstitutionArticles, constitutionArticlesPagedData]);
+  }, [
+    isSearchActive,
+    searchedConstitutionArticles,
+    constitutionArticlesPagedData,
+  ]);
 
   const totalPages = useMemo(() => {
     if (isSearchActive) {
@@ -105,7 +118,7 @@ export default function ArticulosConstitucionClient() {
       goToConstitutionArticlePage(newPage);
     }
   };
-  
+
   const isLoading = contextIsLoading || isSearching;
 
   return (
@@ -117,12 +130,12 @@ export default function ArticulosConstitucionClient() {
             placeholder="Buscar artículo..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="rounded-md border border-slate-600 bg-slate-700 px-3 py-2 text-white placeholder-slate-400 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 md:col-span-1"
+            className="focus:border-primary-500 focus:ring-primary-500 rounded-md border border-slate-600 bg-slate-700 px-3 py-2 text-white placeholder-slate-400 focus:outline-none focus:ring-1 md:col-span-1"
           />
           <select
             value={searchType}
             onChange={(e) => setSearchType(e.target.value)}
-            className="rounded-md border border-slate-600 bg-slate-700 px-3 py-2 text-white focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 md:col-span-1"
+            className="focus:border-primary-500 focus:ring-primary-500 rounded-md border border-slate-600 bg-slate-700 px-3 py-2 text-white focus:outline-none focus:ring-1 md:col-span-1"
           >
             <option value="keyword">Por Palabra Clave</option>
             <option value="chapter">Por Número de Capítulo</option>
@@ -131,7 +144,7 @@ export default function ArticulosConstitucionClient() {
             <button
               onClick={handleSearch}
               disabled={isLoading || !searchTerm.trim()}
-              className="flex-1 rounded-md bg-primary-600 px-4 py-2 text-white hover:bg-primary-700 disabled:opacity-50"
+              className="bg-primary-600 hover:bg-primary-700 flex-1 rounded-md px-4 py-2 text-white disabled:opacity-50"
             >
               {isLoading && searchType ? "Buscando..." : "Buscar"}
             </button>
@@ -149,7 +162,9 @@ export default function ArticulosConstitucionClient() {
       {isLoading && articlesToDisplay.length === 0 && <LoadingSpinner />}
       {!isLoading && articlesToDisplay.length === 0 && (
         <div className="mt-10 text-center text-xl text-white/70">
-          {searchAttempted ? "No se encontraron artículos con los criterios de búsqueda." : "No hay artículos para mostrar."}
+          {searchAttempted
+            ? "No se encontraron artículos con los criterios de búsqueda."
+            : "No hay artículos para mostrar."}
         </div>
       )}
 

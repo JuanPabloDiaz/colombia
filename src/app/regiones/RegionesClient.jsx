@@ -47,10 +47,9 @@ export default function RegionesClient() {
     }
     // If totalPages becomes 0 (e.g. data cleared), reset currentPage to 1
     else if (totalPages === 0 && currentPage !== 1) {
-        setCurrentPage(1);
+      setCurrentPage(1);
     }
   }, [pageSize, totalPages, currentPage]);
-
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
@@ -60,7 +59,7 @@ export default function RegionesClient() {
     setPageSize(newPageSize);
     setCurrentPage(1); // Reset to first page when page size changes
   };
-  
+
   const effectiveIsLoading = contextIsLoading || isLoading;
 
   return (
@@ -75,7 +74,9 @@ export default function RegionesClient() {
         />
       }
     >
-      {effectiveIsLoading && paginatedRegions.length === 0 && <LoadingSpinner />}
+      {effectiveIsLoading && paginatedRegions.length === 0 && (
+        <LoadingSpinner />
+      )}
       {!effectiveIsLoading && paginatedRegions.length === 0 && (
         <div className="mt-10 text-center text-xl text-white/70">
           No se encontraron regiones para mostrar.

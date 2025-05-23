@@ -7,7 +7,7 @@ export async function generateMetadata() {
     title: `${pageMeta.title} • Colombia 360`,
     description: pageMeta.description,
     keywords: pageMeta.keywords,
-    // path: pageMeta.path, // Optional: include if your layout/other components use it
+    path: pageMeta.path,
   };
 }
 

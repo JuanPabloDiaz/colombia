@@ -44,7 +44,8 @@ const ENTITY_FIELDS = {
     },
     {
       label: "Superficie",
-      value: (e) => (e.surface ? `${e.surface} km²` : "Superficie no disponible"),
+      value: (e) =>
+        e.surface ? `${e.surface} km²` : "Superficie no disponible",
     },
   ],
   "articulos-constitucion": [

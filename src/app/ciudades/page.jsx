@@ -2,12 +2,12 @@ import CiudadesClient from "./CiudadesClient";
 import { metadata as projectMetadata } from "@/components/metadata";
 
 export async function generateMetadata() {
-  const pageMeta = projectMetadata.ciudades;
+  const pageMeta = projectMetadata.ciu;
   return {
     title: `${pageMeta.title} • Colombia 360`,
     description: pageMeta.description,
     keywords: pageMeta.keywords,
-    // path: pageMeta.path, // Optional: include if your layout/other components use it
+    path: pageMeta.path,
   };
 }
 

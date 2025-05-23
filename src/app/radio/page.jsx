@@ -7,7 +7,7 @@ import { metadata } from "@/components/metadata";
 import RadioCard from "@/components/Card/RadioCard";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import PageSection from "@/components/PageSection";
-import Pagination from "@/components/ui/Pagination"; // Import the Pagination component
+import Pagination from "@/components/ui/Pagination";
 
 export default function Radio() {
   const pageTitle = metadata.fm.title;

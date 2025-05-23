@@ -13,45 +13,56 @@ export const metadata = {
     keywords: "departamentos, colombia, geografía, ubicación",
   },
   reg: {
-    title: "Regiones de Colombia",
-    description: "Explora las diversas regiones naturales y culturales de Colombia, cada una con sus características únicas.",
-    keywords: "regiones, colombia, geografía, cultura, Andes, Caribe, Pacífico, Amazonía, Orinoquía",
+    title: "Regiones",
+    description:
+      "Explora las diversas regiones naturales y culturales de Colombia, cada una con sus características únicas.",
+    keywords:
+      "regiones, colombia, geografía, cultura, Andes, Caribe, Pacífico, Amazonía, Orinoquía",
     path: "/regiones",
   },
-  ciudades: {
-    title: "Ciudades de Colombia",
-    description: "Descubre las principales ciudades de Colombia, desde sus capitales vibrantes hasta encantadores pueblos.",
-    keywords: "ciudades, colombia, municipios, capitales, urbanismo, turismo urbano",
+  ciu: {
+    title: "Ciudades",
+    description:
+      "Descubre las principales ciudades de Colombia, desde sus capitales vibrantes hasta encantadores pueblos.",
+    keywords:
+      "ciudades, colombia, municipios, capitales, urbanismo, turismo urbano",
     path: "/ciudades",
   },
-  articulosConstitucion: {
-    title: "Artículos de la Constitución de Colombia",
-    description: "Consulta y explora los artículos de la Constitución Política de Colombia.",
-    keywords: "constitución, colombia, artículos, leyes, derechos, deberes, política, gobierno",
+  ley: {
+    title: "Constitución",
+    description:
+      "Consulta y explora los artículos de la Constitución Política de Colombia.",
+    keywords:
+      "constitución, colombia, artículos, leyes, derechos, deberes, política, gobierno",
     path: "/articulos-constitucion",
   },
   tur: {
     title: "Turismo",
     description: "Lista de turismo de Colombia.",
     keywords: "turismo, colombia, geografía, ubicación",
+    path: "/turismo",
   },
-  plato: {
+  plaTip: {
     title: "Platos Típicos",
+    path: "/platos-tipicos",
   },
   pre: {
     title: "Presidentes",
     description: "Lista de presidentes de Colombia.",
     keywords: "presidentes, colombia, historia, política",
+    path: "/presidentes",
   },
   nat: {
     title: "Naturaleza",
     description: "Lista de naturaleza de Colombia.",
     keywords: "naturaleza, colombia, geografía, ubicación",
+    path: "/naturaleza",
   },
   catNat: {
     title: "Categorías Naturaleza",
     description: "Lista de categorías naturaleza de Colombia.",
     keywords: "categorías naturaleza, colombia, geografía, ubicación",
+    path: "/categorias-naturaleza",
   },
   map: {
     title: "Mapas",
@@ -81,23 +92,21 @@ export const metadata = {
     image: "/assets/images/fallbackImage.jpg",
     url: "/aeropuertos",
   },
-  ley: {
-    title: "Constitution",
-    description: "Lista de constituciones de Colombia.",
-    keywords: "constituciones, colombia, historia, política",
-  },
   fm: {
     title: "Radio",
     description: "Lista de radio de Colombia.",
     keywords: "radio, colombia, historia, política",
+    path: "/radio",
   },
-  festivos: {
-    title: "Días Festivos en Colombia",
-    description: "Consulta los días festivos (feriados) en Colombia por año y mes.",
-    keywords: "días festivos, feriados, colombia, calendario, festividades, holidays",
+  fes: {
+    title: "Días Festivos",
+    description:
+      "Consulta los días festivos (feriados) en Colombia por año y mes.",
+    keywords:
+      "días festivos, feriados, colombia, calendario, festividades, holidays",
     path: "/festivos",
   },
-  traditionalFairAndFestival: {
+  fairFest: {
     title: "Ferias y Festivales",
     description: "Descubre las ferias y festivales tradicionales de Colombia.",
     path: "/ferias-y-festivales",

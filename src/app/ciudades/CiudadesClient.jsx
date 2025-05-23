@@ -60,7 +60,7 @@ export default function CiudadesClient() {
     setPageSize(newPageSize);
     setCurrentPage(1); // Reset to first page when page size changes
   };
-  
+
   const isLoading = contextIsLoading || isSorting;
 
   return (
@@ -70,8 +70,8 @@ export default function CiudadesClient() {
       pageSizeSelector={
         <PageSizeSelector
           pageSize={pageSize}
-          setPageSize={handlePageSizeChange} 
-          itemType="Ciudades" 
+          setPageSize={handlePageSizeChange}
+          itemType="Ciudades"
         />
       }
     >
@@ -86,9 +86,9 @@ export default function CiudadesClient() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {paginatedCities.map((city) => (
             <EntityCard
-              key={city.id || city.name} 
+              key={city.id || city.name}
               entity={city}
-              type="ciudad" 
+              type="ciudad"
               linkBase="/ciudades" // EntityCard will append `/{entity.id}`
             />
           ))}

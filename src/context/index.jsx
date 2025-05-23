@@ -426,10 +426,8 @@ export const DataProvider = ({ children }) => {
   // *****************       CONSTITUTION ARTICLE        *****************
   const [allConstitutionArticlesData, setAllConstitutionArticlesData] =
     useState([]);
-  const [
-    constitutionArticlesPagedData,
-    setConstitutionArticlesPagedData,
-  ] = useState({ data: [], pagination: {} });
+  const [constitutionArticlesPagedData, setConstitutionArticlesPagedData] =
+    useState({ data: [], pagination: {} });
   const [
     currentConstitutionArticleDetail,
     setCurrentConstitutionArticleDetail,
@@ -440,10 +438,8 @@ export const DataProvider = ({ children }) => {
     useState(CONSTITUTION_ITEMS_PER_PAGE);
   const [constitutionArticleTotalItems, setConstitutionArticleTotalItems] =
     useState(0);
-  const [
-    searchedConstitutionArticles,
-    setSearchedConstitutionArticles,
-  ] = useState({ data: [], pagination: {} });
+  const [searchedConstitutionArticles, setSearchedConstitutionArticles] =
+    useState({ data: [], pagination: {} });
 
   const fetchAllConstitutionArticles = () => {
     setActiveApiCalls((prev) => prev + 1);

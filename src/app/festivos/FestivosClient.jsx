@@ -27,27 +27,36 @@ export default function FestivosClient() {
     if (currentQueryType === "year" && holidaysByYearData) {
       setDisplayedHolidays(holidaysByYearData);
       if (holidaysByYearData.length === 0 && !isLoading) {
-        setFeedbackMessage("No se encontraron festivos para el año especificado.");
+        setFeedbackMessage(
+          "No se encontraron festivos para el año especificado.",
+        );
       } else {
         setFeedbackMessage("");
       }
     } else if (currentQueryType === "yearMonth" && holidaysByYearMonthData) {
       setDisplayedHolidays(holidaysByYearMonthData);
       if (holidaysByYearMonthData.length === 0 && !isLoading) {
-        setFeedbackMessage("No se encontraron festivos para el año y mes especificados.");
+        setFeedbackMessage(
+          "No se encontraron festivos para el año y mes especificados.",
+        );
       } else {
         setFeedbackMessage("");
       }
     } else if (!isLoading && displayedHolidays.length > 0 && currentQueryType) {
-        // Data is displayed, clear feedback
-        setFeedbackMessage("");
+      // Data is displayed, clear feedback
+      setFeedbackMessage("");
     }
-  }, [holidaysByYearData, holidaysByYearMonthData, currentQueryType, isLoading]);
+  }, [
+    holidaysByYearData,
+    holidaysByYearMonthData,
+    currentQueryType,
+    isLoading,
+  ]);
 
   const handleSearch = () => {
     setFeedbackMessage(""); // Clear previous messages
     setDisplayedHolidays([]); // Clear previous results
-    
+
     const year = parseInt(yearInput, 10);
     const month = monthInput ? parseInt(monthInput, 10) : null;
 
@@ -57,7 +66,9 @@ export default function FestivosClient() {
     }
 
     if (month !== null && (isNaN(month) || month < 1 || month > 12)) {
-      setFeedbackMessage("Por favor, ingrese un mes válido (1-12) o déjelo vacío.");
+      setFeedbackMessage(
+        "Por favor, ingrese un mes válido (1-12) o déjelo vacío.",
+      );
       return;
     }
 
@@ -69,14 +80,14 @@ export default function FestivosClient() {
       fetchHolidaysByYear(year);
     }
   };
-  
+
   const formatDate = (dateString) => {
     if (!dateString) return "Fecha no disponible";
-    return new Date(dateString).toLocaleDateString('es-CO', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      timeZone: 'UTC' // Assuming dates from API are UTC or should be treated as such for consistency
+    return new Date(dateString).toLocaleDateString("es-CO", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      timeZone: "UTC", // Assuming dates from API are UTC or should be treated as such for consistency
     });
   };
 
@@ -86,26 +97,26 @@ export default function FestivosClient() {
         <h1 className="text-primary-400 mb-6 text-center text-3xl font-bold md:text-4xl">
           Consultar Días Festivos
         </h1>
-        
+
         <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
           <input
             type="number"
             value={yearInput}
             onChange={(e) => setYearInput(e.target.value)}
             placeholder="Año (YYYY)"
-            className="rounded-md border border-slate-600 bg-slate-700 px-3 py-2 text-white placeholder-slate-400 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+            className="focus:border-primary-500 focus:ring-primary-500 rounded-md border border-slate-600 bg-slate-700 px-3 py-2 text-white placeholder-slate-400 focus:outline-none focus:ring-1"
           />
           <input
             type="number"
             value={monthInput}
             onChange={(e) => setMonthInput(e.target.value)}
             placeholder="Mes (MM - opcional)"
-            className="rounded-md border border-slate-600 bg-slate-700 px-3 py-2 text-white placeholder-slate-400 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+            className="focus:border-primary-500 focus:ring-primary-500 rounded-md border border-slate-600 bg-slate-700 px-3 py-2 text-white placeholder-slate-400 focus:outline-none focus:ring-1"
           />
           <button
             onClick={handleSearch}
             disabled={isLoading}
-            className="rounded-md bg-primary-600 px-4 py-2 text-white hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-50 sm:col-span-3 md:col-span-1"
+            className="bg-primary-600 hover:bg-primary-700 rounded-md px-4 py-2 text-white disabled:cursor-not-allowed disabled:opacity-50 sm:col-span-3 md:col-span-1"
           >
             {isLoading ? "Buscando..." : "Buscar"}
           </button>
@@ -119,11 +130,15 @@ export default function FestivosClient() {
 
         {!isLoading && displayedHolidays.length > 0 && (
           <div className="mt-8">
-            <h2 className="text-primary-300 mb-4 text-2xl font-semibold">Resultados:</h2>
+            <h2 className="text-primary-300 mb-4 text-2xl font-semibold">
+              Resultados:
+            </h2>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
               {displayedHolidays.map((holiday, index) => (
                 <div key={index} className="rounded-lg bg-slate-800 p-4 shadow">
-                  <h3 className="text-lg font-semibold text-white">{holiday.name}</h3>
+                  <h3 className="text-lg font-semibold text-white">
+                    {holiday.name}
+                  </h3>
                   <p className="text-sm text-slate-300">
                     Fecha: {formatDate(holiday.date)}
                   </p>
@@ -133,11 +148,14 @@ export default function FestivosClient() {
             </div>
           </div>
         )}
-         {!isLoading && displayedHolidays.length === 0 && currentQueryType && !feedbackMessage && (
-          <p className="mt-8 text-center text-slate-300">
-            No se encontraron festivos para esta consulta.
-          </p>
-        )}
+        {!isLoading &&
+          displayedHolidays.length === 0 &&
+          currentQueryType &&
+          !feedbackMessage && (
+            <p className="mt-8 text-center text-slate-300">
+              No se encontraron festivos para esta consulta.
+            </p>
+          )}
       </section>
     </div>
   );
