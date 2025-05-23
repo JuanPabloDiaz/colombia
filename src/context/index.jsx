@@ -321,22 +321,32 @@ export const DataProvider = ({ children }) => {
   const paginatedTraditionalFairAndFestivalData = allTraditionalFairAndFestivalData.slice(traditionalFairAndFestivalStartIndex, traditionalFairAndFestivalEndIndex);
 
   const fetchTraditionalFairAndFestivalById = (id) => {
-    setActiveApiCalls((prev) => prev + 1);
-    fetch(`${API_COL_BASE_URL}/TraditionalFairAndFestival/${id}`)
-      .then((response) => response.json())
-      .then((json) => setTraditionalFairAndFestivalDetail(json))
-      .catch((error) => console.error(`Error fetching Traditional Fair and Festival by ID (${id}): `, error))
-      .finally(() => setActiveApiCalls((prev) => prev - 1));
-  };
+  setActiveApiCalls((prev) => prev + 1);
+  fetch(`${API_COL_BASE_URL}/TraditionalFairAndFestival/${id}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((json) => setTraditionalFairAndFestivalDetail(json))
+    .catch((error) => console.error(`Error fetching Traditional Fair and Festival by ID (${id}): `, error))
+    .finally(() => setActiveApiCalls((prev) => prev - 1));
+};
 
   const fetchTraditionalFairAndFestivalCityDetails = (fairId) => {
-    setActiveApiCalls((prev) => prev + 1);
-    fetch(`${API_COL_BASE_URL}/TraditionalFairAndFestival/${fairId}/city`)
-      .then((response) => response.json())
-      .then((json) => setTraditionalFairAndFestivalCityInfo(json))
-      .catch((error) => console.error(`Error fetching City Details for Traditional Fair and Festival (${fairId}): `, error))
-      .finally(() => setActiveApiCalls((prev) => prev - 1));
-  };
+  setActiveApiCalls((prev) => prev + 1);
+  fetch(`${API_COL_BASE_URL}/TraditionalFairAndFestival/${fairId}/city`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((json) => setTraditionalFairAndFestivalCityInfo(json))
+    .catch((error) => console.error(`Error fetching City Details for Traditional Fair and Festival (${fairId}): `, error))
+    .finally(() => setActiveApiCalls((prev) => prev - 1));
+};
 
   const searchTraditionalFairAndFestivalByName = (name) => {
     setActiveApiCalls((prev) => prev + 1);
