@@ -7,6 +7,6 @@ export const generateMetadata = () => ({
   keywords: metadata.dep.keywords,
 });
 
-export default function AeropuertosPage() {
+export default function DepartamentosPage() {
   return <DepartamentosClient />;
 }
