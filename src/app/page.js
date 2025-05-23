@@ -8,7 +8,6 @@ import Card from "@/components/ChakraCard/Card";
 import CardArray from "@/components/ChakraCard/CardArray";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 
-import { metadata } from "@/components/metadata";
 import {
   CircleDollarSign,
   LandPlot,
