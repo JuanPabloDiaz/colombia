@@ -25,8 +25,17 @@ export default function FeriasYFestivales() {
   // Sort and filter data
   const sortedData = useMemo(() => {
     const data = filteredData !== null ? filteredData : allTraditionalFairAndFestivalData;
-    return data ? [...data].sort((a, b) => (a.name && b.name ? a.name.localeCompare(b.name) : 0)) : [];
+    if (!data) return [];
+    // Si todos tienen id numérico, ordena por id
+    if (data.every(item => typeof item.id === "number")) {
+      return [...data].sort((a, b) => a.id - b.id);
+    }
+    // Si no, ordena por nombre
+    return [...data].sort((a, b) => (a.name && b.name ? a.name.localeCompare(b.name) : 0));
   }, [filteredData, allTraditionalFairAndFestivalData]);
+
+  // TEMPORAL: inspeccionar estructura de datos
+  console.log("allTraditionalFairAndFestivalData", allTraditionalFairAndFestivalData);
 
   const totalPages = useMemo(() => Math.ceil(sortedData.length / pageSize) || 1, [sortedData, pageSize]);
   const paginatedData = useMemo(() => {
@@ -103,7 +112,6 @@ export default function FeriasYFestivales() {
           </div>
         </div>
       </div>
-      {console.log("allTraditionalFairAndFestivalData", allTraditionalFairAndFestivalData)}
       <EntityPageLayout
         title={pageTitle}
         isLoading={isLoading && (!allTraditionalFairAndFestivalData || allTraditionalFairAndFestivalData.length === 0)}
@@ -145,7 +153,7 @@ export default function FeriasYFestivales() {
                   <span className="font-semibold text-white/70">Ciudad:</span> {item.city?.name || "No disponible"}
                 </div>
               </div>
-              {item.id ? (
+              {item.id && typeof item.id === "number" ? (
                 <Link href={`/ferias-y-festivales/${item.id}`} passHref legacyBehavior>
                   <a className="inline-block mt-auto px-5 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition-colors text-base font-medium text-center">
                     Ver más
