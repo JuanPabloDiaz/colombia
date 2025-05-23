@@ -9,7 +9,6 @@ import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import PageSection from "@/components/PageSection";
 import Pagination from "@/components/ui/Pagination"; // Import the Pagination component
 
-
 export default function Radio() {
   const pageTitle = metadata.fm.title;
   const {
@@ -35,7 +34,6 @@ export default function Radio() {
 
   return (
     <>
-      
       <main>
         <PageSection
           title={pageTitle}

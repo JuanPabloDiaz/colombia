@@ -22,7 +22,7 @@ export default function EntityPageLayout({
             {Array.from({ length: 8 }).map((_, index) => (
               <div
                 key={index}
-                className="flex min-h-40 md:min-h-60 animate-pulse flex-col gap-2 md:gap-3 rounded-xl bg-slate-950/90 p-4 md:p-6 text-white/90 shadow-md md:shadow-xl"
+                className="flex min-h-40 animate-pulse flex-col gap-2 rounded-xl bg-slate-950/90 p-4 text-white/90 shadow-md md:min-h-60 md:gap-3 md:p-6 md:shadow-xl"
               ></div>
             ))}
           </div>

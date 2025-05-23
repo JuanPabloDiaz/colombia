@@ -19,7 +19,8 @@ export default function PresidentesClient() {
 
   // Ordena y calcula los datos paginados
   const sortedData = useMemo(
-    () => (allPresidentData ? [...allPresidentData].sort((a, b) => a.id - b.id) : []),
+    () =>
+      allPresidentData ? [...allPresidentData].sort((a, b) => a.id - b.id) : [],
     [allPresidentData],
   );
   const totalPages = useMemo(
@@ -71,26 +72,26 @@ export default function PresidentesClient() {
             const yEnd = (president.endPeriodDate ?? "A-N").split("-")[0];
             return (
               <ImageChecker
-              key={president.id || fullName}
-              imageUrl={president.image}
-              imageId={president.id}
-              imageName={fullName}
-            >
-              <CardDetail
                 key={president.id || fullName}
-                title={fullName}
-                subtitle={`${yStart} - ${yEnd}`}
-                description={president.description}
                 imageUrl={president.image}
-                fallbackAvatar={true}
-                alt={fullName}
-                imageWidth={320}
-                imageHeight={213}
-                imageStyle="cover"
-                viewMoreHref={`/presidentes/${president.id}`}
-                titleWordsCount={3}
-              />
-            </ImageChecker>
+                imageId={president.id}
+                imageName={fullName}
+              >
+                <CardDetail
+                  key={president.id || fullName}
+                  title={fullName}
+                  subtitle={`${yStart} - ${yEnd}`}
+                  description={president.description}
+                  imageUrl={president.image}
+                  fallbackAvatar={true}
+                  alt={fullName}
+                  imageWidth={320}
+                  imageHeight={213}
+                  imageStyle="cover"
+                  viewMoreHref={`/presidentes/${president.id}`}
+                  titleWordsCount={3}
+                />
+              </ImageChecker>
             );
           })
         : !isLoading && (

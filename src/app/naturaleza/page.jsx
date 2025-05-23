@@ -9,7 +9,6 @@ import CardDetail from "@/components/ChakraCard/CardDetail"; // Using CardDetail
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import Pagination from "@/components/ui/Pagination";
 
-
 export default function Naturaleza() {
   const pageTitle = metadata.nat.title;
 
@@ -41,7 +40,6 @@ export default function Naturaleza() {
 
   return (
     <>
-      
       <EntityPageLayout
         title={pageTitle}
         isLoading={

@@ -10,7 +10,6 @@ import DepartamentoCard from "@/components/Card/DepartamentoCard";
 import Pagination from "@/components/ui/Pagination";
 import PageSizeSelector from "@/components/ui/PageSizeSelector";
 
-
 export default function CategoriasNaturaleza() {
   const pageTitle = metadata.catNat.title;
 
@@ -50,7 +49,6 @@ export default function CategoriasNaturaleza() {
 
   return (
     <>
-      
       <PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />
       <PageSection
         title={pageTitle}

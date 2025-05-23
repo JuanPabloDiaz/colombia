@@ -11,21 +11,21 @@ const ImageChecker = ({ imageUrl, imageId, imageName, children }) => {
     }
 
     let isMounted = true;
-    
+
     // Crear un objeto Image para verificar si la imagen carga correctamente
     const img = new Image();
-    
+
     img.onload = () => {
       if (isMounted) setImageExists(true);
     };
-    
+
     img.onerror = () => {
       if (isMounted) setImageExists(false);
     };
-    
+
     // Establecer la fuente de la imagen para iniciar la carga
     img.src = imageUrl;
-    
+
     return () => {
       isMounted = false;
       img.onload = null;

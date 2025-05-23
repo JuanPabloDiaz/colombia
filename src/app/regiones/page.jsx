@@ -9,7 +9,6 @@ import DepartamentoCard from "@/components/Card/DepartamentoCard";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import Pagination from "@/components/ui/Pagination";
 
-
 export default function Regiones() {
   const pageTitle = metadata.reg.title;
 
@@ -41,7 +40,6 @@ export default function Regiones() {
 
   return (
     <>
-      
       <EntityPageLayout
         title={pageTitle}
         isLoading={isLoading && (!regionData || regionData.length === 0)}

@@ -69,21 +69,21 @@ export default function MapasClient() {
               key={mapa.id || mapa.name}
               title={mapa.name}
               subtitle={mapa.category}
-          description={mapa.description}
-          imageUrl={mapa.urlImages}
-          alt={mapa.name}
-          imageWidth={320}
-          imageHeight={213}
-          imageStyle="cover"
-          viewMoreHref={`/mapas/${mapa.id}`}
-          titleWordsCount={6}
-        />
-        ))
+              description={mapa.description}
+              imageUrl={mapa.urlImages}
+              alt={mapa.name}
+              imageWidth={320}
+              imageHeight={213}
+              imageStyle="cover"
+              viewMoreHref={`/mapas/${mapa.id}`}
+              titleWordsCount={6}
+            />
+          ))
         : !isLoading && (
-          <p className="col-span-full text-center">
-            No hay mapas para mostrar en este momento.
-          </p>
-        )}
+            <p className="col-span-full text-center">
+              No hay mapas para mostrar en este momento.
+            </p>
+          )}
     </EntityPageLayout>
   );
 }

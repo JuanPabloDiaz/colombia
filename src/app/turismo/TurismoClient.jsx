@@ -19,7 +19,10 @@ export default function TurismoClient() {
 
   // Ordena y calcula los datos paginados
   const sortedData = useMemo(
-    () => (allTouristicAttractionData ? [...allTouristicAttractionData].sort((a, b) => a.id - b.id) : []),
+    () =>
+      allTouristicAttractionData
+        ? [...allTouristicAttractionData].sort((a, b) => a.id - b.id)
+        : [],
     [allTouristicAttractionData],
   );
   const totalPages = useMemo(
@@ -69,24 +72,24 @@ export default function TurismoClient() {
             const fullName = tour.name;
             return (
               <ImageChecker
-              key={tour.id || fullName}
-              imageUrl={tour.images}
-              imageId={tour.id}
-              imageName={fullName}
-            >
-              <CardDetail
                 key={tour.id || fullName}
-                title={fullName}
-                description={tour.description}
                 imageUrl={tour.images}
-                alt={fullName}
-                imageWidth={320}
-                imageHeight={213}
-                imageStyle="cover"
-                viewMoreHref={`/turismo/${tour.id}`}
-                titleWordsCount={3}
-              />
-            </ImageChecker>
+                imageId={tour.id}
+                imageName={fullName}
+              >
+                <CardDetail
+                  key={tour.id || fullName}
+                  title={fullName}
+                  description={tour.description}
+                  imageUrl={tour.images}
+                  alt={fullName}
+                  imageWidth={320}
+                  imageHeight={213}
+                  imageStyle="cover"
+                  viewMoreHref={`/turismo/${tour.id}`}
+                  titleWordsCount={3}
+                />
+              </ImageChecker>
             );
           })
         : !isLoading && (

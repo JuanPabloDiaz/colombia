@@ -10,5 +10,3 @@ export const generateMetadata = () => ({
 export default function PresidentesPage() {
   return <PresidentesClient />;
 }
-
-

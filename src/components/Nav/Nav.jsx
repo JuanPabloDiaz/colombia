@@ -161,16 +161,22 @@ export const Nav = ({ setOpen, ul_className }) => {
             href={link.href || "/"}
             key={index}
             aria-label={link.title}
-            className={`w-full cursor-pointer rounded-lg py-2 transition duration-300 ease-in-out hover:bg-gray-600 ${isActive ? "bg-primary text-primary-foreground font-bold shadow" : ""}`}
+            className={`w-full cursor-pointer rounded-lg py-2 transition duration-300 ease-in-out hover:bg-gray-600 ${isActive ? "bg-primary font-bold text-primary-foreground shadow" : ""}`}
           >
             <div
               className="flex items-center justify-center md:justify-start"
               style={{
-                color: isAllowedRoute ? (isActive ? "var(--primary-foreground)" : "white") : "gray",
+                color: isAllowedRoute
+                  ? isActive
+                    ? "var(--primary-foreground)"
+                    : "white"
+                  : "gray",
               }}
               onClick={handleClick}
             >
-              <span className="flex w-8 items-center justify-center md:w-16 md:px-2">{link.icon}</span>
+              <span className="flex w-8 items-center justify-center md:w-16 md:px-2">
+                {link.icon}
+              </span>
               <span className="ml-2 text-sm md:text-base">{link.title}</span>
             </div>
           </Link>

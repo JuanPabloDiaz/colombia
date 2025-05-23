@@ -132,51 +132,51 @@ export default function FeriasYFestivales() {
           searching={searching}
         />
         <article className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {/* md:grid-cols-2 lg:grid-cols-4 */}
-        {paginatedData.length === 0 ? (
-          <div className="col-span-full py-8 text-center text-gray-400">
-            No se encontraron ferias ni festivales.
-          </div>
-        ) : (
-          paginatedData.map((item) => (
-            <div
-              key={item.id || item.name}
-              className="flex min-h-60 flex-col gap-3 rounded-xl bg-slate-950/90 p-6 text-white/90 shadow-xl"
-            >
-              <h2 className="text-primary-400 mb-1 line-clamp-1 text-2xl font-bold">
-                {item.name || "Nombre no disponible"}
-              </h2>
-              <p className="mb-2 line-clamp-3 text-base leading-relaxed text-white/80">
-                {item.description || "Descripción no disponible."}
-              </p>
-              <div className="mb-4 flex flex-wrap gap-4 text-sm">
-                <div>
-                  <span className="font-semibold text-white/70">Mes:</span>{" "}
-                  {item.month || "No disponible"}
-                </div>
-                <div>
-                  <span className="font-semibold text-white/70">Ciudad:</span>{" "}
-                  {item.city?.name || "No disponible"}
-                </div>
-              </div>
-              {item.id && typeof item.id === "number" ? (
-                <Link
-                  href={`/ferias-y-festivales/${item.id}`}
-                  passHref
-                  legacyBehavior
-                >
-                  <a className="mt-auto inline-block rounded-lg bg-gray-800 px-5 py-2 text-center text-base font-medium text-white shadow transition-colors hover:bg-gray-700">
-                    Ver más
-                  </a>
-                </Link>
-              ) : (
-                <span className="mt-auto inline-block px-5 py-2 italic text-gray-400">
-                  Sin detalle
-                </span>
-              )}
+          {/* md:grid-cols-2 lg:grid-cols-4 */}
+          {paginatedData.length === 0 ? (
+            <div className="col-span-full py-8 text-center text-gray-400">
+              No se encontraron ferias ni festivales.
             </div>
-          ))
-        )}
+          ) : (
+            paginatedData.map((item) => (
+              <div
+                key={item.id || item.name}
+                className="flex min-h-60 flex-col gap-3 rounded-xl bg-slate-950/90 p-6 text-white/90 shadow-xl"
+              >
+                <h2 className="text-primary-400 mb-1 line-clamp-1 text-2xl font-bold">
+                  {item.name || "Nombre no disponible"}
+                </h2>
+                <p className="mb-2 line-clamp-3 text-base leading-relaxed text-white/80">
+                  {item.description || "Descripción no disponible."}
+                </p>
+                <div className="mb-4 flex flex-wrap gap-4 text-sm">
+                  <div>
+                    <span className="font-semibold text-white/70">Mes:</span>{" "}
+                    {item.month || "No disponible"}
+                  </div>
+                  <div>
+                    <span className="font-semibold text-white/70">Ciudad:</span>{" "}
+                    {item.city?.name || "No disponible"}
+                  </div>
+                </div>
+                {item.id && typeof item.id === "number" ? (
+                  <Link
+                    href={`/ferias-y-festivales/${item.id}`}
+                    passHref
+                    legacyBehavior
+                  >
+                    <a className="mt-auto inline-block rounded-lg bg-gray-800 px-5 py-2 text-center text-base font-medium text-white shadow transition-colors hover:bg-gray-700">
+                      Ver más
+                    </a>
+                  </Link>
+                ) : (
+                  <span className="mt-auto inline-block px-5 py-2 italic text-gray-400">
+                    Sin detalle
+                  </span>
+                )}
+              </div>
+            ))
+          )}
         </article>
       </EntityPageLayout>
     </>

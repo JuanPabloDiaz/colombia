@@ -10,7 +10,6 @@ import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import Pagination from "@/components/ui/Pagination";
 
-
 export default function ComunidadesIndigenas() {
   const pageTitle = metadata.ind.title;
 
@@ -55,7 +54,6 @@ export default function ComunidadesIndigenas() {
 
   return (
     <>
-      
       <EntityPageLayout
         title={pageTitle}
         isLoading={

@@ -35,7 +35,10 @@ export default function EspeciesInvasorasClient() {
     setCurrentPage(1);
   }, [pageSize]);
 
-  if (isLoading && (!allInvasiveSpecieData || allInvasiveSpecieData.length === 0)) {
+  if (
+    isLoading &&
+    (!allInvasiveSpecieData || allInvasiveSpecieData.length === 0)
+  ) {
     return (
       <section className="flex min-h-[40vh] items-center justify-center">
         <LoadingSpinner size={64} key={"loading"} />
@@ -46,9 +49,14 @@ export default function EspeciesInvasorasClient() {
   return (
     <EntityPageLayout
       title={pageTitle}
-      isLoading={isLoading && (!allInvasiveSpecieData || allInvasiveSpecieData.length === 0)}
+      isLoading={
+        isLoading &&
+        (!allInvasiveSpecieData || allInvasiveSpecieData.length === 0)
+      }
       gridCols="md:grid-cols-2 lg:grid-cols-4"
-      pageSizeSelector={<PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />}
+      pageSizeSelector={
+        <PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />
+      }
       pagination={
         totalPages > 1 && (
           <div className="mb-8 mt-8 flex justify-center">
@@ -67,20 +75,21 @@ export default function EspeciesInvasorasClient() {
               key={species.id || species.name}
               title={species.name}
               subtitle={species.category}
-          description={species.description}
-          imageUrl={species.urlImage}
-          alt={species.name}
-          imageWidth={320}
-          imageHeight={213}
-          imageStyle="cover"
-          viewMoreHref={`/especies-invasoras/${species.id}`}
-          titleWordsCount={6}
-        />
-        ))
+              description={species.description}
+              imageUrl={species.urlImage}
+              alt={species.name}
+              imageWidth={320}
+              imageHeight={213}
+              imageStyle="cover"
+              viewMoreHref={`/especies-invasoras/${species.id}`}
+              titleWordsCount={6}
+            />
+          ))
         : !isLoading && (
             <p className="col-span-full text-center">
               No hay platos típicos para mostrar en este momento.
             </p>
-          )}    </EntityPageLayout>
+          )}{" "}
+    </EntityPageLayout>
   );
 }

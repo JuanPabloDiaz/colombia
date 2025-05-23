@@ -9,26 +9,43 @@ const ENTITY_FIELDS = {
     { label: "OACI", value: (e) => e.oaciCode || "OACI no disponible" },
   ],
   departamento: [
-    { label: "Superficie", value: (e) => e.surface ? `${e.surface} km²` : "Superficie no disponible" },
-    { label: "Población", value: (e) => e.population?.toLocaleString() || "Población no disponible" },
-    { label: "Municipios", value: (e) => e.municipalities || "Municipios no disponibles" },
+    {
+      label: "Superficie",
+      value: (e) =>
+        e.surface ? `${e.surface} km²` : "Superficie no disponible",
+    },
+    {
+      label: "Población",
+      value: (e) => e.population?.toLocaleString() || "Población no disponible",
+    },
+    {
+      label: "Municipios",
+      value: (e) => e.municipalities || "Municipios no disponibles",
+    },
   ],
   // Agrega más tipos aquí según lo necesites
 };
 
-export default function EntityCard({ entity, type = "aeropuerto", linkBase, extraFields }) {
+export default function EntityCard({
+  entity,
+  type = "aeropuerto",
+  linkBase,
+  extraFields,
+}) {
   const fields = ENTITY_FIELDS[type] || [];
   const entityLink = linkBase || `/${type}s/${entity.id}`;
 
   return (
-    <div className="flex min-h-48 md:min-h-60 flex-col gap-2 md:gap-3 rounded-xl bg-slate-950/90 p-4 md:p-6 text-white/90 shadow-md md:shadow-xl">
-      <h2 className="text-primary-400 mb-1 text-xl md:text-2xl font-bold line-clamp-2">{entity.name}</h2>
+    <div className="flex min-h-48 flex-col gap-2 rounded-xl bg-slate-950/90 p-4 text-white/90 shadow-md md:min-h-60 md:gap-3 md:p-6 md:shadow-xl">
+      <h2 className="text-primary-400 mb-1 line-clamp-2 text-xl font-bold md:text-2xl">
+        {entity.name}
+      </h2>
       {entity.description && (
-        <p className="mb-1 md:mb-2 line-clamp-2 md:line-clamp-3 text-sm md:text-base leading-relaxed text-white/80">
+        <p className="mb-1 line-clamp-2 text-sm leading-relaxed text-white/80 md:mb-2 md:line-clamp-3 md:text-base">
           {entity.description}
         </p>
       )}
-      <div className="mb-2 md:mb-4 flex flex-wrap gap-2 md:gap-4 text-xs md:text-sm">
+      <div className="mb-2 flex flex-wrap gap-2 text-xs md:mb-4 md:gap-4 md:text-sm">
         {fields.map(({ label, value }) => (
           <div key={label} className="w-full md:w-auto">
             <span className="font-semibold text-white/70">{label}:</span>{" "}
@@ -39,11 +56,10 @@ export default function EntityCard({ entity, type = "aeropuerto", linkBase, extr
         {extraFields && extraFields(entity)}
       </div>
       <Link href={entityLink} passHref legacyBehavior>
-        <a className="mt-auto inline-block rounded-lg bg-gray-800 px-3 py-1.5 md:px-5 md:py-2 text-center text-sm md:text-base font-medium text-white shadow transition-colors hover:bg-gray-700 active:bg-gray-600">
+        <a className="mt-auto inline-block rounded-lg bg-gray-800 px-3 py-1.5 text-center text-sm font-medium text-white shadow transition-colors hover:bg-gray-700 active:bg-gray-600 md:px-5 md:py-2 md:text-base">
           Ver más
         </a>
       </Link>
     </div>
   );
 }
-

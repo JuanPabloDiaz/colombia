@@ -110,11 +110,18 @@ export default function CardDetail({
           </div>
         </div>
         <Stack mt={[3, 6]} spacing={[2, 3]} align="center">
-          <Heading size={["sm", "md"]} textAlign="center" lineHeight={["1.3", "1.5"]}>
+          <Heading
+            size={["sm", "md"]}
+            textAlign="center"
+            lineHeight={["1.3", "1.5"]}
+          >
             {cropWords(title, titleWordsCount ?? 2)}
           </Heading>
           {badgeText && (
-            <Badge colorScheme={badgeColor || "purple"} fontSize={["0.7em", "0.9em"]}>
+            <Badge
+              colorScheme={badgeColor || "purple"}
+              fontSize={["0.7em", "0.9em"]}
+            >
               {badgeText}
             </Badge>
           )}
@@ -135,10 +142,10 @@ export default function CardDetail({
           {/* Botón Ver más que redirige si hay viewMoreHref */}
           {viewMoreHref && (
             <Link href={viewMoreHref} passHref legacyBehavior>
-              <Button 
-                as="a" 
-                colorScheme="teal" 
-                variant="outline" 
+              <Button
+                as="a"
+                colorScheme="teal"
+                variant="outline"
                 size="sm"
                 fontSize={["xs", "sm"]}
                 px={[2, 4]}
@@ -150,9 +157,9 @@ export default function CardDetail({
           )}
           {/* Botón secundario opcional */}
           {buttonTwo && (
-            <Button 
-              colorScheme="teal" 
-              variant="outline" 
+            <Button
+              colorScheme="teal"
+              variant="outline"
               size="sm"
               fontSize={["xs", "sm"]}
               px={[2, 4]}

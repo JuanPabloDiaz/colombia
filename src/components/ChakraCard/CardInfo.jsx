@@ -23,7 +23,9 @@ export default function CardInfo({ title, subtitle, description }) {
         color="white.500"
       >
         <CardHeader padding={["12px", "20px"]}>
-          <Heading size={["sm", "md"]} lineHeight={["1.2", "1.4"]}>{title}</Heading>
+          <Heading size={["sm", "md"]} lineHeight={["1.2", "1.4"]}>
+            {title}
+          </Heading>
         </CardHeader>
         <CardBody padding={["12px", "20px"]}>
           <Box>

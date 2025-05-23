@@ -43,9 +43,13 @@ export default function DepartamentosClient() {
   return (
     <EntityPageLayout
       title={pageTitle}
-      isLoading={isLoading && (!allDepartamentData || allDepartamentData.length === 0)}
+      isLoading={
+        isLoading && (!allDepartamentData || allDepartamentData.length === 0)
+      }
       gridCols="md:grid-cols-2 lg:grid-cols-4"
-      pageSizeSelector={<PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />}
+      pageSizeSelector={
+        <PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />
+      }
       pagination={
         totalPages > 1 && (
           <div className="mb-8 mt-8 flex justify-center">
@@ -59,7 +63,11 @@ export default function DepartamentosClient() {
       }
     >
       {paginatedData.map((departamento) => (
-        <EntityCard key={departamento.id || departamento.name} entity={departamento} type="departamento" />
+        <EntityCard
+          key={departamento.id || departamento.name}
+          entity={departamento}
+          type="departamento"
+        />
       ))}
     </EntityPageLayout>
   );

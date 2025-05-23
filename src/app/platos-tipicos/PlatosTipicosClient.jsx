@@ -19,7 +19,10 @@ export default function PlatosTipicosClient() {
 
   // Ordena y calcula los datos paginados
   const sortedData = useMemo(
-    () => (allTypicalDishData ? [...allTypicalDishData].sort((a, b) => a.id - b.id) : []),
+    () =>
+      allTypicalDishData
+        ? [...allTypicalDishData].sort((a, b) => a.id - b.id)
+        : [],
     [allTypicalDishData],
   );
   const totalPages = useMemo(
@@ -65,25 +68,25 @@ export default function PlatosTipicosClient() {
       }
     >
       {paginatedData && paginatedData.length > 0
-          ? paginatedData.map((dish) => (
-              <CardDetail
-                key={dish.id}
-                title={dish.name}
-                description={dish.description || "Descripción no disponible"}
-                imageUrl={dish.imageUrl}
-                alt={dish.name || "Imagen de plato típico"}
-                imageWidth={320}
-                imageHeight={213}
-                imageStyle="cover"
-                viewMoreHref={`/platos-tipicos/${dish.id}`}
-                titleWordsCount={3}
-                />
-            ))
-          : !isLoading && (
-              <p className="col-span-full text-center">
-                No hay platos típicos para mostrar en este momento.
-              </p>
-            )}
+        ? paginatedData.map((dish) => (
+            <CardDetail
+              key={dish.id}
+              title={dish.name}
+              description={dish.description || "Descripción no disponible"}
+              imageUrl={dish.imageUrl}
+              alt={dish.name || "Imagen de plato típico"}
+              imageWidth={320}
+              imageHeight={213}
+              imageStyle="cover"
+              viewMoreHref={`/platos-tipicos/${dish.id}`}
+              titleWordsCount={3}
+            />
+          ))
+        : !isLoading && (
+            <p className="col-span-full text-center">
+              No hay platos típicos para mostrar en este momento.
+            </p>
+          )}
     </EntityPageLayout>
   );
 }

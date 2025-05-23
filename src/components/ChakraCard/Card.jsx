@@ -36,16 +36,24 @@ export default function MyCard({
               <Box
                 w={["15%", "25%"]} // 15% on mobile, 25% on larger screens
                 mr={["3%", "5%"]} // 3% margin on mobile, 5% margin on larger screens
-                className={`flex items-center justify-center ${IconClassName || ''}`}
+                className={`flex items-center justify-center ${IconClassName || ""}`}
               >
                 {icon}
               </Box>
             )}
             <Box w={icon ? ["82%", "70%"] : "100%"}>
-              <Heading size="xs" textTransform="uppercase" lineHeight={["1.2", "1.4"]}>
+              <Heading
+                size="xs"
+                textTransform="uppercase"
+                lineHeight={["1.2", "1.4"]}
+              >
                 {title}
               </Heading>
-              <Text pt="2" fontSize={["xs", "sm"]} className={classNameText || ''}>
+              <Text
+                pt="2"
+                fontSize={["xs", "sm"]}
+                className={classNameText || ""}
+              >
                 {formattedText}
               </Text>
             </Box>
