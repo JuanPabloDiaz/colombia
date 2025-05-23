@@ -8,7 +8,7 @@ import RadioCard from "@/components/Card/RadioCard";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import PageSection from "@/components/PageSection";
 import Pagination from "@/components/ui/Pagination"; // Import the Pagination component
-import Head from "next/head";
+
 
 export default function Radio() {
   const pageTitle = metadata.fm.title;
@@ -35,9 +35,7 @@ export default function Radio() {
 
   return (
     <>
-      <Head>
-        <title>{`${pageTitle} • Colombia 360`}</title>
-      </Head>
+      
       <main>
         <PageSection
           title={pageTitle}
