@@ -20,7 +20,7 @@ export const metadata = {
       "regiones, colombia, geografía, cultura, Andes, Caribe, Pacífico, Amazonía, Orinoquía",
     path: "/regiones",
   },
-  ciu: {
+  city: {
     title: "Ciudades",
     description:
       "Descubre las principales ciudades de Colombia, desde sus capitales vibrantes hasta encantadores pueblos.",
