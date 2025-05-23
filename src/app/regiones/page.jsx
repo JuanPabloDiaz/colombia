@@ -8,6 +8,7 @@ import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import DepartamentoCard from "@/components/Card/DepartamentoCard"; // Using DepartamentoCard as it's used for similar overview cards
 import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
 import Pagination from "@/components/ui/Pagination";
+import Head from "next/head";
 
 export default function Regiones() {
   const pageTitle = metadata.reg.title;
@@ -35,7 +36,9 @@ export default function Regiones() {
 
   return (
     <>
-      <title>{`${pageTitle} • Colombia 360`}</title>
+      <Head>
+        <title>{`${pageTitle} • Colombia 360`}</title>
+      </Head>
       <EntityPageLayout
         title={pageTitle}
         isLoading={isLoading && (!regionData || regionData.length === 0)}

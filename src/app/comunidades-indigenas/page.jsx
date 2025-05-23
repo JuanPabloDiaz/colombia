@@ -9,6 +9,7 @@ import CardBadge from "@/components/Card/CardBadge";
 import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import Pagination from "@/components/ui/Pagination";
+import Head from "next/head";
 
 export default function ComunidadesIndigenas() {
   const pageTitle = metadata.ind.title;
@@ -41,7 +42,9 @@ export default function ComunidadesIndigenas() {
 
   return (
     <>
-      <title>{`${pageTitle} • Colombia 360`}</title>
+      <Head>
+        <title>{`${pageTitle} • Colombia 360`}</title>
+      </Head>
       <EntityPageLayout
         title={pageTitle}
         isLoading={isLoading && (!allNativeCommunityData || allNativeCommunityData.length === 0)}

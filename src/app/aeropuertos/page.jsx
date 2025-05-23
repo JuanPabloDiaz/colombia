@@ -8,6 +8,7 @@ import PageSection from "@/components/PageSection";
 import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
 import DepartamentoCard from "@/components/Card/DepartamentoCard";
 import Pagination from "@/components/ui/Pagination"; // Import the Pagination component
+import Head from "next/head";
 
 export default function Aeropuertos() {
   const pageTitle = metadata.air.title;
@@ -34,7 +35,9 @@ export default function Aeropuertos() {
 
   return (
     <>
-      <title>{`${pageTitle} • Colombia 360`}</title>
+      <Head>
+        <title>{`${pageTitle} • Colombia 360`}</title>
+      </Head>
       <PageSection title={pageTitle} isLoading={isLoading && airportData.length === 0} gridCols="md:grid-cols-2 lg:grid-cols-4">
         {/* Sorting is applied to the paginated slice. This is acceptable per instructions. */}
         {airportData

@@ -5,6 +5,7 @@ import "./mapas.css";
 
 import { ColombiaMap } from "@/components/Map/ColombiaMap";
 import PageSection from "@/components/PageSection";
+import Head from "next/head";
 
 import { metadata } from "@/components/metadata";
 
@@ -13,7 +14,9 @@ export default function Prueba() {
 
   return (
     <>
-      <title>{`${pageTitle} • Colombia 360`}</title>
+      <Head>
+        <title>{`${pageTitle} • Colombia 360`}</title>
+      </Head>
       <PageSection title={pageTitle}>
       <section className="flex w-full items-center justify-center rounded-lg bg-slate-950/90">
         <div

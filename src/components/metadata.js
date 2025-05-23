@@ -16,6 +16,9 @@ export const metadata = {
   tur: {
     title: "Turismo",
   },
+  plato: {
+    title: "Platos Típicos",
+  },
   pre: {
     title: "Presidentes",
   },
