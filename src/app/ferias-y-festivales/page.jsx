@@ -5,19 +5,18 @@ import { AppContext } from "@/context";
 import PageSizeSelector from "@/components/ui/PageSizeSelector";
 import Link from "next/link";
 import Pagination from "@/components/ui/Pagination";
-import PageSection from "@/components/PageSection";
+import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import Head from "next/head";
 import { metadata } from "@/components/metadata";
-
 
 export default function FeriasYFestivales() {
   const pageTitle = metadata.traditionalFairAndFestival.title;
   const {
-    traditionalFairAndFestivalData,
+    allTraditionalFairAndFestivalData,
     isLoading,
   } = useContext(AppContext);
 
-  const [pageSize, setPageSize] = useState(8);
+  const [pageSize, setPageSize] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchInput, setSearchInput] = useState("");
   const [filteredData, setFilteredData] = useState(null);
@@ -25,9 +24,9 @@ export default function FeriasYFestivales() {
 
   // Sort and filter data
   const sortedData = useMemo(() => {
-    const data = filteredData !== null ? filteredData : traditionalFairAndFestivalData;
+    const data = filteredData !== null ? filteredData : allTraditionalFairAndFestivalData;
     return data ? [...data].sort((a, b) => (a.name && b.name ? a.name.localeCompare(b.name) : 0)) : [];
-  }, [filteredData, traditionalFairAndFestivalData]);
+  }, [filteredData, allTraditionalFairAndFestivalData]);
 
   const totalPages = useMemo(() => Math.ceil(sortedData.length / pageSize) || 1, [sortedData, pageSize]);
   const paginatedData = useMemo(() => {
@@ -46,10 +45,10 @@ export default function FeriasYFestivales() {
     try {
       // Use context search functions if available, otherwise filter locally
       // This assumes you have searchTraditionalFairAndFestivalByName and searchTraditionalFairAndFestivalByKeyword
-      if (typeof traditionalFairAndFestivalData !== "undefined") {
+      if (typeof allTraditionalFairAndFestivalData !== "undefined") {
         const q = searchInput.toLowerCase();
-        const byName = traditionalFairAndFestivalData.filter(item => item.name?.toLowerCase().includes(q));
-        const byKeyword = traditionalFairAndFestivalData.filter(item => item.keywords?.some(kw => kw.toLowerCase().includes(q)));
+        const byName = allTraditionalFairAndFestivalData.filter(item => item.name?.toLowerCase().includes(q));
+        const byKeyword = allTraditionalFairAndFestivalData.filter(item => item.keywords?.some(kw => kw.toLowerCase().includes(q)));
         // Merge and deduplicate by id
         const merged = [...byName, ...byKeyword].reduce((acc, curr) => {
           if (!acc.some(item => item.id === curr.id)) acc.push(curr);
@@ -65,7 +64,7 @@ export default function FeriasYFestivales() {
   };
 
   // Loading state
-  if (isLoading && (!traditionalFairAndFestivalData || traditionalFairAndFestivalData.length === 0)) {
+  if (isLoading && (!allTraditionalFairAndFestivalData || allTraditionalFairAndFestivalData.length === 0)) {
     return (
       <section className="flex items-center justify-center py-10">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -104,9 +103,10 @@ export default function FeriasYFestivales() {
           </div>
         </div>
       </div>
-      <PageSection
+      {console.log("allTraditionalFairAndFestivalData", allTraditionalFairAndFestivalData)}
+      <EntityPageLayout
         title={pageTitle}
-        isLoading={isLoading && (!traditionalFairAndFestivalData || traditionalFairAndFestivalData.length === 0)}
+        isLoading={isLoading && (!allTraditionalFairAndFestivalData || allTraditionalFairAndFestivalData.length === 0)}
         gridCols="md:grid-cols-2 lg:grid-cols-4"
         pageSizeSelector={<PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />}
         pagination={
@@ -145,15 +145,19 @@ export default function FeriasYFestivales() {
                   <span className="font-semibold text-white/70">Ciudad:</span> {item.city?.name || "No disponible"}
                 </div>
               </div>
-              <Link href={`/ferias-y-festivales/${item.id || item.name}`} passHref legacyBehavior>
-                <a className="inline-block mt-auto px-5 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition-colors text-base font-medium text-center">
-                  Ver más
-                </a>
-              </Link>
+              {item.id ? (
+                <Link href={`/ferias-y-festivales/${item.id}`} passHref legacyBehavior>
+                  <a className="inline-block mt-auto px-5 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition-colors text-base font-medium text-center">
+                    Ver más
+                  </a>
+                </Link>
+              ) : (
+                <span className="inline-block mt-auto px-5 py-2 text-gray-400 italic">Sin detalle</span>
+              )}
             </div>
           ))
         )}
-      </PageSection>
+      </EntityPageLayout>
     </>
   );
 }
