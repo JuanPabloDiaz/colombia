@@ -9,6 +9,7 @@ import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
 import DepartamentoCard from "@/components/Card/DepartamentoCard";
 import Pagination from "@/components/ui/Pagination"; 
 import PageSizeSelector from "@/components/ui/PageSizeSelector"; 
+import Head from "next/head";
 
 export default function CategoriasNaturaleza() {
   const pageTitle = metadata.catNat.title;
@@ -40,7 +41,9 @@ export default function CategoriasNaturaleza() {
 
   return (
     <>
-      <title>{`${pageTitle} • Colombia 360`}</title>
+      <Head>
+        <title>{`${pageTitle} • Colombia 360`}</title>
+      </Head>
       <PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />
       <PageSection title={pageTitle} isLoading={isLoading && (!allCategoryNaturalAreaData || allCategoryNaturalAreaData.length === 0)} gridCols="md:grid-cols-2 lg:grid-cols-4">
         {paginatedData.map((category) => (

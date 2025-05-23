@@ -9,6 +9,7 @@ import { metadata } from "@/components/metadata";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
 import Pagination from "@/components/ui/Pagination";
+import Head from "next/head";
 
 export default function Presidentes() {
   const pageTitle = metadata.pre.title;
@@ -40,7 +41,9 @@ export default function Presidentes() {
   
   return (
     <>
-    <title>{`${pageTitle} • Colombia 360`}</title>
+      <Head>
+        <title>{`${pageTitle} • Colombia 360`}</title>
+      </Head>
       <EntityPageLayout
         title={pageTitle}
         isLoading={isLoading && (!allPresidentData || allPresidentData.length === 0)}
