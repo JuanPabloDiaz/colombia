@@ -9,7 +9,7 @@ export default function PageSection({
 }) {
   return (
     <section className="mb-8">
-      <h2 className="text-primary-400 mb-4 text-center text-3xl font-bold">
+      <h2 className="text-primary-400 mb-4 text-center text-3xl font-bold rounded-lg bg-primary w-fit mx-auto p-2 shadow-sm shadow-primary-600 ">
         {title}
       </h2>
       {isLoading ? (

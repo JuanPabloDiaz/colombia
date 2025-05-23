@@ -15,7 +15,7 @@ export default function PageSizeSelector({
 }) {
   return (
     <div className={`mb-4 flex items-center justify-end gap-2 ${className}`}>
-      <label htmlFor="page-size" className="text-sm text-white/70">
+      <label htmlFor="page-size" className="text-sm rounded bg-slate-800 px-2 py-1 text-white">
         Items por página:
       </label>
       <select

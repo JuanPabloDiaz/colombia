@@ -8,7 +8,6 @@ import Card from "@/components/ChakraCard/Card";
 import CardArray from "@/components/ChakraCard/CardArray";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 
-import { metadata } from "@/components/metadata";
 import {
   CircleDollarSign,
   LandPlot,
@@ -20,8 +19,6 @@ import {
 } from "lucide-react";
 
 export default function Home() {
-  const pageTitle = metadata.home.title;
-
   const { generalData, isLoading } = useContext(AppContext);
 
   if (isLoading) {
@@ -40,17 +37,11 @@ export default function Home() {
   ];
 
   return (
-    <>
-      <title>{`${pageTitle} • Juan Diaz`}</title>
-      <main className="">
-        {/* <section className="h-full w-full"> */}
-        <section>
-          <h1 className="mx-auto mb-8 w-fit rounded-xl bg-slate-950/90 p-4 text-4xl font-bold text-white/60">
-            {pageTitle}
-          </h1>
-          <div className="w-full max-w-[1400px] gap-10 lg:grid-cols-2 xl:grid-cols-3">
-            <section>
-              <article
+    <main className="mt-12">
+      <section>
+        <div className="w-full max-w-[1400px] gap-10 lg:grid-cols-2 xl:grid-cols-3">
+          <section>
+            <article
                 className="mb-10 flex flex-col-reverse md:mb-0 md:grid md:w-full md:items-center md:gap-6"
                 style={{ gridTemplateColumns: "65% 35%" }}
               >
@@ -131,6 +122,5 @@ export default function Home() {
           </div>
         </section>
       </main>
-    </>
-  );
+    );
 }

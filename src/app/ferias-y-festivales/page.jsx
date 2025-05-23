@@ -6,6 +6,7 @@ import PageSizeSelector from "@/components/ui/PageSizeSelector";
 import Link from "next/link";
 import Pagination from "@/components/ui/Pagination";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
+import SearchFerias from "@/components/ui/SearchFerias";
 
 import { metadata } from "@/components/metadata";
 
@@ -34,12 +35,6 @@ export default function FeriasYFestivales() {
       a.name && b.name ? a.name.localeCompare(b.name) : 0,
     );
   }, [filteredData, allTraditionalFairAndFestivalData]);
-
-  // TEMPORAL: inspeccionar estructura de datos
-  console.log(
-    "allTraditionalFairAndFestivalData",
-    allTraditionalFairAndFestivalData,
-  );
 
   const totalPages = useMemo(
     () => Math.ceil(sortedData.length / pageSize) || 1,
@@ -107,31 +102,6 @@ export default function FeriasYFestivales() {
 
   return (
     <>
-      
-      <div className="mb-8 px-4">
-        <div className="flex flex-col items-center justify-center gap-4 md:flex-row">
-          <div className="flex w-full flex-col items-center md:w-1/2">
-            <input
-              type="text"
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-              placeholder="Buscar Ferias y Festivales por nombre o palabra clave..."
-              className="w-full rounded-md bg-slate-950/90 px-4 py-2 shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
-              onKeyDown={(e) => {
-                if (e.key === "Enter") handleSearch();
-              }}
-              disabled={searching}
-            />
-            <button
-              onClick={handleSearch}
-              className="mt-2 w-full rounded-md bg-primary px-6 py-2 font-semibold text-white shadow-md hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
-              disabled={searching}
-            >
-              {searching ? "Buscando..." : "Buscar"}
-            </button>
-          </div>
-        </div>
-      </div>
       <EntityPageLayout
         title={pageTitle}
         isLoading={
@@ -139,7 +109,7 @@ export default function FeriasYFestivales() {
           (!allTraditionalFairAndFestivalData ||
             allTraditionalFairAndFestivalData.length === 0)
         }
-        gridCols="md:grid-cols-2 lg:grid-cols-4"
+        gridCols=""
         pageSizeSelector={
           <PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />
         }
@@ -155,6 +125,14 @@ export default function FeriasYFestivales() {
           )
         }
       >
+        <SearchFerias
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+          handleSearch={handleSearch}
+          searching={searching}
+        />
+        <article className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {/* md:grid-cols-2 lg:grid-cols-4 */}
         {paginatedData.length === 0 ? (
           <div className="col-span-full py-8 text-center text-gray-400">
             No se encontraron ferias ni festivales.
@@ -199,6 +177,7 @@ export default function FeriasYFestivales() {
             </div>
           ))
         )}
+        </article>
       </EntityPageLayout>
     </>
   );
