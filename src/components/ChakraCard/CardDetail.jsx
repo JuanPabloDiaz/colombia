@@ -50,89 +50,106 @@ export default function CardDetail({
 
   return (
     <Card
-      boxShadow="lg"
+      boxShadow="md"
       borderRadius="xl"
       bg="rgba(2, 6, 23, 0.7)"
       color="white.500"
       transition="transform 0.2s, box-shadow 0.2s"
       _hover={{
-        transform: "translateY(-4px) scale(1.03)",
-        boxShadow: "2xl",
+        transform: "translateY(-2px) scale(1.02)",
+        boxShadow: "lg",
         bg: "rgba(2, 6, 23, 0.85)",
       }}
       maxW="sm"
-      minW="250px"
-      minH="420px"
+      minW={["auto", "250px"]}
+      minH={["350px", "420px"]}
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
     >
-      <CardBody p={4}>
+      <CardBody p={[2, 4]}>
         <div
           style={{
             position: "relative",
-            width: 240,
-            height: 240,
+            width: "100%",
+            maxWidth: 240,
+            height: ["180px", "240px"],
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             overflow: "hidden",
-            borderRadius: "1rem",
+            borderRadius: "0.75rem",
             background: "#222",
             margin: "0 auto",
           }}
         >
           <Image
             src={showFallback ? fallbackImage : imageUrl}
-            alt={alt || title || "Presidente de Colombia"}
-            width={240}
-            height={240}
+            alt={alt || title || "Imagen"}
+            width={["100%", 240]}
+            height={["180px", 240]}
             objectFit="cover"
-            borderRadius="1rem"
+            borderRadius="0.75rem"
             style={{
               width: "100%",
               height: "100%",
               objectFit: "cover",
               objectPosition: "center 15%",
-              borderRadius: "1rem",
+              borderRadius: "0.75rem",
               opacity: showFallback ? 0.65 : 1,
               transition: "opacity 0.2s",
             }}
           />
         </div>
-        <Stack mt="6" spacing="3" align="center">
-          <Heading size="md" textAlign="center">
+        <Stack mt={[3, 6]} spacing={[2, 3]} align="center">
+          <Heading size={["sm", "md"]} textAlign="center" lineHeight={["1.3", "1.5"]}>
             {cropWords(title, titleWordsCount ?? 2)}
           </Heading>
           {badgeText && (
-            <Badge colorScheme={badgeColor || "purple"} fontSize="0.9em">
+            <Badge colorScheme={badgeColor || "purple"} fontSize={["0.7em", "0.9em"]}>
               {badgeText}
             </Badge>
           )}
           <Text
-            fontSize="sm"
+            fontSize={["xs", "sm"]}
             color="white.400"
-            noOfLines={3}
+            noOfLines={[2, 3]}
             textAlign="center"
+            lineHeight={["1.4", "1.6"]}
           >
             {description}
           </Text>
         </Stack>
       </CardBody>
-      <Divider my={2} borderColor="whiteAlpha.300" />
-      <CardFooter>
+      <Divider my={[1, 2]} borderColor="whiteAlpha.300" />
+      <CardFooter p={[2, 4]}>
         <ButtonGroup spacing="2" width="100%" justifyContent="center">
           {/* Botón Ver más que redirige si hay viewMoreHref */}
           {viewMoreHref && (
             <Link href={viewMoreHref} passHref legacyBehavior>
-              <Button as="a" colorScheme="teal" variant="outline" size="sm">
+              <Button 
+                as="a" 
+                colorScheme="teal" 
+                variant="outline" 
+                size="sm"
+                fontSize={["xs", "sm"]}
+                px={[2, 4]}
+                py={[1, 2]}
+              >
                 Ver más
               </Button>
             </Link>
           )}
           {/* Botón secundario opcional */}
           {buttonTwo && (
-            <Button colorScheme="teal" variant="outline" size="sm">
+            <Button 
+              colorScheme="teal" 
+              variant="outline" 
+              size="sm"
+              fontSize={["xs", "sm"]}
+              px={[2, 4]}
+              py={[1, 2]}
+            >
               {buttonTwo}
             </Button>
           )}

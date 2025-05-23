@@ -14,13 +14,13 @@ export default function PageSizeSelector({
   className = "",
 }) {
   return (
-    <div className={`mb-4 flex items-center justify-end gap-2 ${className}`}>
-      <label htmlFor="page-size" className="text-sm rounded bg-slate-800 px-2 py-1 text-white">
-        Items por página:
+    <div className={`mb-2 md:mb-4 flex items-center justify-end gap-1 md:gap-2 ${className}`}>
+      <label htmlFor="page-size" className="text-xs md:text-sm rounded bg-slate-800/90 px-1.5 py-0.5 md:px-2 md:py-1 text-white shadow-sm">
+        Items:
       </label>
       <select
         id="page-size"
-        className="rounded bg-slate-800 px-2 py-1 text-white"
+        className="rounded bg-slate-800/90 px-1.5 py-0.5 md:px-2 md:py-1 text-xs md:text-sm text-white shadow-sm"
         value={pageSize}
         onChange={(e) => setPageSize(Number(e.target.value))}
       >

@@ -23,22 +23,24 @@ export const Footer = () => {
   ];
 
   return (
-    <main className="w-full bg-slate-950/90 py-4 font-semibold">
+    <main className="w-full bg-slate-950/95 py-3 font-medium md:py-4 md:font-semibold">
       <section>
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-6">
           {socials.map((social, index) => (
             <Link href={social.href} key={index} aria-label={social.ariaLabel}>
-              <div>{social.icon}</div>
+              <div className="rounded-full p-1 hover:bg-gray-800 active:bg-gray-700">
+                {social.icon}
+              </div>
             </Link>
           ))}
         </div>
       </section>
-      <section className="mt-4 flex items-center justify-around gap-4">
+      <section className="mt-3 flex flex-wrap items-center justify-center gap-2 px-2 text-xs md:mt-4 md:flex-row md:justify-around md:gap-4 md:text-sm">
         <p className="text-center">
-          © {new Date().getFullYear()}
+          © 2023 {new Date().getFullYear()}
           <a
             href="https://jpdiaz.dev/"
-            className="px-2 text-white/40 hover:underline"
+            className="px-1 text-white/40 hover:underline md:px-2"
           >
             Juan Diaz
           </a>
@@ -46,7 +48,7 @@ export const Footer = () => {
         <p className="text-center">
           <a
             href="https://github.com/JuanPabloDiaz/colombia?tab=MIT-1-ov-file"
-            className="px-2 text-white/70 hover:underline"
+            className="px-1 text-white/70 hover:underline md:px-2"
           >
             licencia MIT
           </a>
@@ -54,7 +56,7 @@ export const Footer = () => {
         <p className="text-center">
           <a
             href="https://github.com/JuanPabloDiaz/colombia"
-            className="px-2 text-white/70 hover:underline"
+            className="px-1 text-white/70 hover:underline md:px-2"
           >
             Repo
           </a>
@@ -62,7 +64,7 @@ export const Footer = () => {
         <p className="text-center">
           <a
             href="https://api-colombia.com/"
-            className="px-2 text-white/80 hover:underline"
+            className="px-1 text-white/80 hover:underline md:px-2"
           >
             API Colombia
           </a>

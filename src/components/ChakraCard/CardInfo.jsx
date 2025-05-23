@@ -22,28 +22,22 @@ export default function CardInfo({ title, subtitle, description }) {
         }}
         color="white.500"
       >
-        <CardHeader>
-          <Heading size="md">{title}</Heading>
+        <CardHeader padding={["12px", "20px"]}>
+          <Heading size={["sm", "md"]} lineHeight={["1.2", "1.4"]}>{title}</Heading>
         </CardHeader>
-        <CardBody>
+        <CardBody padding={["12px", "20px"]}>
           <Box>
             <Heading size="xs" textTransform="uppercase">
               {subtitle}
             </Heading>
             <Text
-              pt="4"
-              pr="6"
-              fontSize="lg"
-              // className={`overflow-hidden transition-all duration-200 ${isExpanded ? "h-auto" : "h-40"}`}
-              // style={{
-              //   lineHeight: "1.3rem",
-              //   textOverflow: "ellipsis",
-              //   // whiteSpace: "nowrap",
-              // }}
+              pt={["2", "4"]}
+              pr={["2", "6"]}
+              fontSize={["md", "lg"]}
+              lineHeight={["1.4", "1.6"]}
             >
               {description}
             </Text>
-            {/*             <Text onClick={() => setIsExpanded(!isExpanded)}>Read More</Text> */}
           </Box>
         </CardBody>
       </Card>
