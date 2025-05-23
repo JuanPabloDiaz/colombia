@@ -9,6 +9,7 @@ import {
   FerrisWheel,
   Tent,
   Scale,
+  CookingPot,
   Trees,
   LandPlot,
   Plane,
@@ -78,6 +79,11 @@ export const Nav = ({ setOpen, ul_className }) => {
       href: "/comunidades-indigenas",
       icon: <Tent />,
     },
+    {
+      title: "Platos Tipicos",
+      href: "/platos-tipicos",
+      icon: <CookingPot />,
+    },
     // {
     //   title: "Aeropuertos",
     //   href: "/aeropuertos",
@@ -129,6 +135,7 @@ export const Nav = ({ setOpen, ul_className }) => {
           "/radio",
           "/especies-invasoras",
           "/comunidades-indigenas",
+          "/platos-tipicos",
         ];
 
         const isAllowedRoute = allowedRoutes.includes(link.href);
