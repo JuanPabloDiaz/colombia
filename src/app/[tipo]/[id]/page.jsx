@@ -40,7 +40,6 @@ export default function EntityDetailPage({ params }) {
     departamentData,
     allAirportData,
     typicalDishData,
-    typicalDishData,
     traditionalFairAndFestivalData,
     fetchTraditionalFairAndFestivalById,
     traditionalFairAndFestivalDetail,
