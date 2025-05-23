@@ -3,54 +3,36 @@
 import React, { useContext, useState, useMemo } from "react";
 import { AppContext } from "@/context";
 import PageSizeSelector from "@/components/ui/PageSizeSelector";
-
-import { metadata } from "@/components/metadata"; 
-import CardDetail from "@/components/ChakraCard/CardDetail";
-import EntityPageLayout from "@/components/ui/EntityPageLayout";
-import LoadingCardDetail from "@/components/Loading/LoadingCardDetail";
-// Airports generally don't have images in this dataset, so ImageChecker might not be necessary.
-// import ImageChecker from "@/components/ImageChecker/ImageChecker"; 
+import Link from "next/link";
 import Pagination from "@/components/ui/Pagination";
+import EntityPageLayout from "@/components/ui/EntityPageLayout";
+import { metadata } from "@/components/metadata";
+import Head from "next/head";
 
+const pageTitle = metadata.air.title;
 export default function Aeropuertos() {
-  const pageTitle = metadata.air.title; 
-
   const { allAirportData, isLoading } = useContext(AppContext);
-  const [pageSize, setPageSize] = useState(12); 
+  const [pageSize, setPageSize] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
 
   const sortedData = useMemo(() => (allAirportData ? [...allAirportData].sort((a, b) => a.id - b.id) : []), [allAirportData]);
   const totalPages = useMemo(() => Math.ceil(sortedData.length / pageSize) || 1, [sortedData, pageSize]);
   const paginatedData = useMemo(() => {
     const start = (currentPage - 1) * pageSize;
-    const page = sortedData.slice(start, start + pageSize);
-    return page;
+    return sortedData.slice(start, start + pageSize);
   }, [sortedData, currentPage, pageSize]);
+  React.useEffect(() => { setCurrentPage(1); }, [pageSize, sortedData]);
 
-  React.useEffect(() => { 
-    setCurrentPage(1); 
-  }, [pageSize, sortedData]);
-
-  // Show loading state
-  if (isLoading && (!allAirportData || allAirportData.length === 0)) {
-    return (
-      <section className="flex items-center justify-center">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {Array.from({ length: pageSize }).map((_, index) => (
-            <LoadingCardDetail key={index} />
-          ))}
-        </div>
-      </section>
-    );
-  }
-
+  // Show loading state only if data hasn't been loaded yet for the first time
   return (
     <>
+    <Head>
       <title>{`${pageTitle} • Colombia 360`}</title>
+    </Head>
       <EntityPageLayout
         title={pageTitle}
         isLoading={isLoading && (!allAirportData || allAirportData.length === 0)}
-        gridCols="md:grid-cols-2 lg:grid-cols-4" 
+        gridCols="md:grid-cols-2 lg:grid-cols-4"
         pageSizeSelector={<PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />}
         pagination={
           totalPages > 1 && (
@@ -65,16 +47,21 @@ export default function Aeropuertos() {
         }
       >
         {paginatedData.map((airport) => (
-          <CardDetail
-            key={airport.id || airport.name}
-            title={airport.name}
-            description={`IATA: ${airport.iataCode || "N/A"} • OACI: ${airport.oaciCode || "N/A"} • Tipo: ${airport.type || "N/A"}`}
-            badgeText={airport.city?.name || "Ciudad no disponible"}
-            // No imageUrl for airports in this dataset
-            alt={airport.name || "Aeropuerto"}
-            viewMoreHref={`/aeropuertos/${airport.id}`}
-            titleWordsCount={7} // Airport names can be longer
-          />
+          <div key={airport.id || airport.name} className="rounded-xl bg-slate-950/90 text-white/90 shadow-xl flex flex-col gap-3 p-6 min-h-60">
+            <h2 className="text-2xl font-bold mb-1 text-primary-400">{airport.name}</h2>
+            <p className="text-base leading-relaxed mb-2 text-white/80 line-clamp-3">{airport.description}</p>
+            <div className="flex flex-wrap gap-4 text-sm mb-4">
+              <div><span className="font-semibold text-white/70">Ciudad:</span> {airport.city?.name || "Ciudad no disponible"}</div>
+              <div><span className="font-semibold text-white/70">Tipo:</span> {airport.type || "Tipo no disponible"}</div>
+              <div><span className="font-semibold text-white/70">IATA:</span> {airport.iataCode || "IATA no disponible"}</div>
+              <div><span className="font-semibold text-white/70">OACI:</span> {airport.oaciCode || "OACI no disponible"}</div>
+              
+
+            </div>
+            <Link href={`/aeropuertos/${airport.id}`} passHref legacyBehavior>
+              <a className="inline-block mt-auto px-5 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition-colors text-base font-medium text-center">Ver más</a>
+            </Link>
+          </div>
         ))}
       </EntityPageLayout>
     </>
