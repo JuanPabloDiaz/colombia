@@ -1,5 +1,6 @@
 "use client";
 import React, { useContext } from "react";
+import Image from "next/image";
 import { AppContext } from "@/context";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
@@ -132,7 +133,7 @@ export default function EntityDetailPage({ params }) {
     currentRegionDetail,
     currentCityDetail,
     currentConstitutionArticleDetail,
-    // dataMap // dataMap itself doesn't need to be a dep if its constituent arrays are stable or handled by their own effects elsewhere
+    dataMap // Adding dataMap as a dependency
   ]);
 
   React.useEffect(() => {
@@ -292,7 +293,7 @@ export default function EntityDetailPage({ params }) {
         <div className="mt-4 w-full max-w-3xl rounded-3xl bg-slate-900/90 p-8 text-white shadow-xl">
           <div className="flex flex-wrap gap-8">
             <div className="flex w-72 flex-none items-start justify-center">
-              <img
+              <Image
                 src={entity.image || "/assets/images/fallback-person.jpg"}
                 alt={
                   entity.name + (entity.lastName ? " " + entity.lastName : "")
@@ -419,7 +420,7 @@ export default function EntityDetailPage({ params }) {
         <div className="mt-4 w-full max-w-2xl overflow-hidden rounded-3xl bg-slate-900/90 p-0 text-white shadow-xl">
           {/* Imagen principal */}
           <div className="flex aspect-[4/3] w-full items-center justify-center bg-black">
-            <img
+            <Image
               src={
                 entity.images && entity.images.length > 0
                   ? entity.images[0]
@@ -427,6 +428,8 @@ export default function EntityDetailPage({ params }) {
               }
               alt={entity.name}
               className="h-full max-h-[360px] w-full object-cover"
+              width={800}
+              height={600}
             />
           </div>
           <div className="flex flex-col gap-2 p-6">
@@ -473,7 +476,7 @@ export default function EntityDetailPage({ params }) {
             {entity.images && entity.images.length > 1 && (
               <div className="flex gap-2 overflow-x-auto pb-2 pt-2">
                 {entity.images.slice(1).map((img, idx) => (
-                  <img
+                  <Image
                     key={idx}
                     src={img}
                     alt={`Imagen secundaria ${idx + 1}`}
@@ -517,10 +520,12 @@ export default function EntityDetailPage({ params }) {
         <div className="mt-4 w-full max-w-2xl overflow-hidden rounded-3xl bg-slate-900/90 text-white shadow-xl">
           {/* Imagen principal */}
           <div className="flex aspect-[4/3] w-full items-center justify-center bg-black">
-            <img
+            <Image
               src={entity.urlImage || "/assets/images/fallback-species.jpg"}
               alt={entity.name}
               className="h-full max-h-[360px] w-full object-contain"
+              width={800}
+              height={600}
             />
           </div>
           <div className="flex flex-col gap-3 p-6">
@@ -592,12 +597,14 @@ export default function EntityDetailPage({ params }) {
           <div className="flex max-h-[600px] w-full flex-col items-center justify-center gap-4 overflow-y-auto bg-black p-4 md:max-h-none md:w-1/2">
             {entity.urlImages && entity.urlImages.length > 0 ? (
               entity.urlImages.map((img, idx) => (
-                <img
+                <Image
                   key={idx}
                   src={img}
                   alt={entity.name + " mapa " + (idx + 1)}
                   className="mx-auto mb-2 max-h-[520px] min-h-[320px] w-auto rounded-xl object-contain shadow-lg"
                   style={{ background: "transparent" }}
+                  width={800}
+                  height={600}
                 />
               ))
             ) : (
@@ -627,7 +634,7 @@ export default function EntityDetailPage({ params }) {
         <BackButton tipo={tipo} />
         <div className="mt-4 flex w-full max-w-2xl flex-col items-center rounded-3xl bg-slate-900/90 p-8 text-white shadow-xl">
           <div className="flex w-full flex-col items-center">
-            <img
+            <Image
               src={entity.imageUrl || "/assets/images/fallback-place.jpg"}
               alt={entity.name}
               width={540}
@@ -888,16 +895,17 @@ export default function EntityDetailPage({ params }) {
     // Only proceed if 'entity' is defined for these other types
     return (
       <main className="flex min-h-[80vh] flex-col items-center py-8">
-        // ... (rest of the existing default layout for 'entity') // Ensure this
-        block is correctly handling the 'entity' variable which is now // only
-        set for types NOT handled by the new specific detail states. // The
-        following is the original content of the default layout, adjusted
-        slightly for context
+        {/* 
+          Rest of the existing default layout for 'entity'.
+          Ensure this block is correctly handling the 'entity' variable which is now only
+          set for types NOT handled by the new specific detail states.
+          The following is the original content of the default layout, adjusted slightly for context
+        */}
         <BackButton tipo={tipo} />
         <div className="mt-4 w-full max-w-3xl rounded-3xl bg-slate-900/90 p-8 text-white shadow-xl">
           <div className="flex flex-wrap gap-8">
             <div className="flex w-80 flex-none items-start justify-center">
-              <img
+              <Image
                 src={
                   tipo === "mapas" &&
                   Array.isArray(entity.urlImages) &&
@@ -967,7 +975,7 @@ export default function EntityDetailPage({ params }) {
       <div className="mt-4 w-full max-w-3xl rounded-3xl bg-slate-900/90 p-8 text-white shadow-xl">
         <div className="flex flex-wrap gap-8">
           <div className="flex w-80 flex-none items-start justify-center">
-            <img
+            <Image
               src={
                 tipo === "mapas"
                   ? entity.urlImages || "/assets/images/fallback-place.jpg"

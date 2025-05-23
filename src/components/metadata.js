@@ -42,7 +42,7 @@ export const metadata = {
     keywords: "turismo, colombia, geografía, ubicación",
     path: "/turismo",
   },
-  plaTip: {
+  food: {
     title: "Platos Típicos",
     path: "/platos-tipicos",
   },

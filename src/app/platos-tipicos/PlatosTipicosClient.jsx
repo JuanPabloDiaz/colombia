@@ -10,7 +10,7 @@ import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
 // Line removed as it was unused.
 
-const pageTitle = metadata.plato?.title;
+const pageTitle = metadata.food?.title;
 
 export default function PlatosTipicosClient() {
   const { allTypicalDishData, isLoading } = useContext(AppContext);

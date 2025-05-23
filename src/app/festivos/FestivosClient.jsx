@@ -51,6 +51,7 @@ export default function FestivosClient() {
     holidaysByYearMonthData,
     currentQueryType,
     isLoading,
+    displayedHolidays.length, // Added missing dependency
   ]);
 
   const handleSearch = () => {

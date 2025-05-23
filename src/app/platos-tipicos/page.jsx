@@ -2,10 +2,10 @@ import { metadata } from "@/components/metadata";
 import PlatosTipicosClient from "./PlatosTipicosClient";
 
 export const generateMetadata = () => ({
-  title: `${metadata.plaTip?.title} • Colombia 360`,
-  description: metadata.plaTip?.description,
-  keywords: metadata.plaTip?.keywords,
-  path: metadata.plaTip?.path,
+  title: `${metadata.food?.title} • Colombia 360`,
+  description: metadata.food?.description,
+  keywords: metadata.food?.keywords,
+  path: metadata.food?.path,
 });
 
 export default function PlatosTipicosPage() {

@@ -18,11 +18,10 @@ import {
   ShieldPlus,
   Cannabis,
   RadioTower,
-  // New icons
-  LayoutGrid, // For Regiones
-  Building2, // For Ciudades
-  FileText, // For Artículos Constitución
-  CalendarDays, // For Días Festivos
+  LayoutGrid,
+  Building2,
+  FileText,
+  CalendarDays,
 } from "lucide-react";
 
 import { useToast } from "@/components/ui/use-toast";
@@ -47,15 +46,20 @@ export const Nav = ({ setOpen, ul_className }) => {
       href: "/departamentos",
       icon: <ShieldPlus />,
     },
-    // {
-    //   title: "Regiones",
-    //   href: "/regiones",
-    //   icon: <LandPlot />,
-    // },
+
     {
-      title: "Ferias y Festivales",
-      href: "/ferias-y-festivales",
-      icon: <PartyPopper />,
+      title: "Ciudades",
+      href: "/ciudades",
+      icon: <Building2 />,
+    },
+
+      // icon: <FileText />,
+      // //   icon: <Landmark />,
+    
+    {
+      title: "Constitución",
+      href: "/constitucion",
+      icon: <FileText />,
     },
     {
       title: "Turismo",
@@ -102,34 +106,18 @@ export const Nav = ({ setOpen, ul_className }) => {
       href: "/platos-tipicos",
       icon: <CookingPot />,
     },
-    // {
-    //   title: "Constitution",
-    //   href: "/constitution",
-    //   icon: <Landmark />,
-    // },
     {
       title: "Radio",
       href: "/radio",
       icon: <RadioTower />,
     },
-    // New links
     {
       title: "Regiones",
       href: "/regiones",
       icon: <LayoutGrid />,
     },
     {
-      title: "Ciudades",
-      href: "/ciudades",
-      icon: <Building2 />,
-    },
-    {
-      title: "Artículos Constitución",
-      href: "/articulos-constitucion",
-      icon: <FileText />,
-    },
-    {
-      title: "Días Festivos",
+      title: "Festivos",
       href: "/festivos",
       icon: <CalendarDays />,
     },
@@ -161,10 +149,9 @@ export const Nav = ({ setOpen, ul_className }) => {
           "/aeropuertos",
           "/platos-tipicos",
           "/ferias-y-festivales",
-          // New allowed routes
           "/regiones",
           "/ciudades",
-          "/articulos-constitucion",
+          "/constitucion",
           "/festivos", // New allowed route for Días Festivos
         ];
 
