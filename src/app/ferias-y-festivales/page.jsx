@@ -83,21 +83,20 @@ export default function FeriasYFestivales() {
         <title>{`${pageTitle} • Colombia 360`}</title>
       </Head>
       <div className="mb-8 px-4">
-        <h2 className="text-2xl font-bold text-center my-4">Buscar Ferias y Festivales</h2>
         <div className="flex flex-col md:flex-row justify-center items-center gap-4">
           <div className="flex flex-col items-center w-full md:w-1/2">
             <input
               type="text"
               value={searchInput}
               onChange={e => setSearchInput(e.target.value)}
-              placeholder="Buscar por nombre o palabra clave..."
-              className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 w-full"
+              placeholder="Buscar Ferias y Festivales por nombre o palabra clave..."
+              className="px-4 py-2 rounded-md shadow-sm bg-slate-950/90 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary w-full"
               onKeyDown={e => { if (e.key === "Enter") handleSearch(); }}
               disabled={searching}
             />
             <button
               onClick={handleSearch}
-              className="mt-2 px-6 py-2 bg-green-600 text-white font-semibold rounded-md shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 w-full"
+              className="mt-2 px-6 py-2 bg-primary text-white font-semibold rounded-md shadow-md hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 w-full"
               disabled={searching}
             >
               {searching ? "Buscando..." : "Buscar"}
