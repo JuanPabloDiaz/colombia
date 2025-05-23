@@ -8,7 +8,7 @@ import { metadata } from "@/components/metadata";
 import CardDetail from "@/components/ChakraCard/CardDetail";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
-import ImageChecker from "@/components/ImageChecker/ImageChecker";
+// Line removed as it was unused.
 
 const pageTitle = metadata.plato?.title;
 
