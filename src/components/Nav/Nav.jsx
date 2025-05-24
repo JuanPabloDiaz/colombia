@@ -22,6 +22,7 @@ import {
   Building2,
   FileText,
   CalendarDays,
+  Map,
 } from "lucide-react";
 
 import { useToast } from "@/components/ui/use-toast";
@@ -87,6 +88,11 @@ export const Nav = ({ setOpen, ul_className }) => {
       icon: <MapPin />,
     },
     {
+      title: "Mapa Turístico",
+      href: "/mapa-turistico",
+      icon: <Map />,
+    },
+    {
       title: "Especies Invasoras",
       href: "/especies-invasoras",
       icon: <Cannabis />,
@@ -142,6 +148,7 @@ export const Nav = ({ setOpen, ul_className }) => {
           "/presidentes",
           "/turismo",
           "/mapas",
+          "/mapa-turistico",
           "/departamentos",
           "/radio",
           "/especies-invasoras",
@@ -152,7 +159,7 @@ export const Nav = ({ setOpen, ul_className }) => {
           "/regiones",
           "/ciudades",
           "/constitucion",
-          "/festivos", // New allowed route for Días Festivos
+          "/festivos",
         ];
 
         const isAllowedRoute = allowedRoutes.includes(link.href);

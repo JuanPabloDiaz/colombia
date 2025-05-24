@@ -42,6 +42,13 @@ export const metadata = {
     keywords: "turismo, colombia, geografía, ubicación",
     path: "/turismo",
   },
+  mapTur: {
+    title: "Mapa Turístico",
+    description: "Mapa interactivo de los destinos turísticos de Colombia.",
+    keywords:
+      "mapa turístico, turismo Colombia, destinos turísticos, lugares para visitar en Colombia",
+    path: "/mapa-turistico",
+  },
   food: {
     title: "Platos Típicos",
     path: "/platos-tipicos",
