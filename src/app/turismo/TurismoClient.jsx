@@ -69,37 +69,36 @@ export default function TurismoClient() {
         )
       }
     >
-        <div className="rounded-lg bg-slate-950/90 p-6 shadow-md text-white/90 flex flex-col gap-2">
-          <h2 className="mb-4 text-xl font-semibold">
-            ¿Quieres explorar Colombia en un mapa interactivo?
-          </h2>
-          <p className="mb-4 text-white/70">
-            Visita nuestro mapa turístico para descubrir los mejores destinos de
-            Colombia.
-          </p>
-          <Link
-            href="/mapa-turistico"
-            className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-white transition-colors hover:bg-primary/90"
+      <div className="flex flex-col gap-2 rounded-lg bg-slate-950/90 p-6 text-white/90 shadow-md">
+        <h2 className="mb-4 text-xl font-semibold">
+          ¿Quieres explorar Colombia en un mapa interactivo?
+        </h2>
+        <p className="mb-4 text-white/70">
+          Visita nuestro mapa turístico para descubrir los mejores destinos de
+          Colombia.
+        </p>
+        <Link
+          href="/mapa-turistico"
+          className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-white transition-colors hover:bg-primary/90"
+        >
+          Ver Mapa Turístico
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="ml-2 h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            Ver Mapa Turístico
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="ml-2 h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </Link>
+      </div>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         {paginatedData && paginatedData.length > 0
           ? paginatedData.map((tour) => {
               const fullName = tour.name;
