@@ -1,6 +1,7 @@
 "use client";
 import React, { useContext } from "react";
 import Image from "next/image";
+import useAviationAirport from "@/hooks/useAviationAirport";
 import { AppContext } from "@/context";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
@@ -173,23 +174,43 @@ export default function EntityDetailPage({ params }) {
 
   // --- FIN LÓGICA ROBUSTA ---
 
-  // Generic entity finding for types not handled by specific detail states
-  // This part might need to be re-evaluated based on how new types are handled.
-  // For new types (regions, ciudades, articulos-constitucion), we will rely on their specific detail states.
+  // Determine entity first for potential hook usage
   let entity;
-  if (tipo === "departamentos") {
+   if (tipo === "departamentos") {
     entity = departamentData.find((dep) => String(dep.id) === String(id));
   } else if (
+    tipo === "ferias-y-festivales" &&
+    (traditionalFairAndFestivalDetail || localEntity)
+  ) {
+    entity = traditionalFairAndFestivalDetail?.id === id ? traditionalFairAndFestivalDetail : localEntity;
+  } else if (tipo === "regiones" && currentRegionDetail?.id == id) { // Use == for string/number comparison if IDs can be mixed
+    entity = currentRegionDetail;
+  } else if (tipo === "ciudades" && currentCityDetail?.id == id) {
+    entity = currentCityDetail;
+  } else if ( tipo === "articulos-constitucion" && currentConstitutionArticleDetail?.id == id) {
+    entity = currentConstitutionArticleDetail;
+  }
+  else if ( // Fallback for other types from dataMap, including aeropuertos initially
     tipo !== "regiones" &&
     tipo !== "ciudades" &&
     tipo !== "articulos-constitucion" &&
-    tipo !== "ferias-y-festivales"
+    tipo !== "ferias-y-festivales" // Already handled above
   ) {
     const list = dataMap[tipo] || [];
     entity = list.find((item) => String(item.id) === String(id));
-  } else if (tipo === "ferias-y-festivales") {
-    entity = localEntity; // Use the localEntity state for ferias-y-festivales
   }
+  // If tipo is "ferias-y-festivales" and entity is not set yet (still fetching or not found)
+  // This might be redundant if the above logic for ferias-y-festivales is comprehensive
+  if (tipo === "ferias-y-festivales" && !entity) {
+    entity = localEntity;
+  }
+
+
+  // Call the hook unconditionally at the top level.
+  // The hook itself will only fetch if potentialOaciCode is valid.
+  const potentialOaciCode = tipo === "aeropuertos" && entity ? entity.oaciCode : null;
+  const { aviationAirportData, isAviationAirportLoading, aviationAirportError } = useAviationAirport(potentialOaciCode);
+
 
   // General Not Found (if not handled by specific type block)
   // This will be refined as specific type blocks have their own loading/not found.
@@ -344,11 +365,31 @@ export default function EntityDetailPage({ params }) {
 
   // Layout especial para Aeropuerto
   if (tipo === "aeropuertos") {
+    // Hook is now called above, unconditionally.
+    // We still need to ensure 'entity' is defined for this block to render api-colombia data.
+    if (!entity) { // If entity for airport is not found by this point
+        if (isLoading && (!dataMap[tipo] || dataMap[tipo].length === 0)) {
+             return (
+                <div className="flex min-h-[40vh] flex-col items-center justify-center text-center">
+                    <span className="mb-4 text-lg font-semibold text-slate-300">Cargando datos del aeropuerto...</span>
+                    <BackButton tipo={tipo} />
+                </div>
+            );
+        }
+        return ( // Airport entity not found from api-colombia
+            <div className="flex min-h-[40vh] flex-col items-center justify-center text-center">
+                <span className="mb-4 text-lg font-semibold text-red-400">Aeropuerto no encontrado en los datos base.</span>
+                <BackButton tipo={tipo} />
+            </div>
+        );
+    }
+
     return (
       <main className="flex min-h-[80vh] flex-col items-center py-8">
         <BackButton tipo={tipo} />
         <div className="mt-4 w-full max-w-2xl overflow-hidden rounded-3xl bg-slate-900/90 p-0 text-white shadow-xl">
           <div className="flex flex-col gap-2 p-6">
+            {/* Existing data from api-colombia */}
             <h1 className="text-primary-400 mb-1 text-3xl font-extrabold leading-tight">
               {entity.name}
             </h1>
@@ -406,6 +447,98 @@ export default function EntityDetailPage({ params }) {
                 {entity.oaciCode || "OACI no disponible"}
               </div>
             </div>
+
+            {/* New Section for AviationAPI Data */}
+            <div className="mt-6 border-t border-slate-700 pt-6">
+              <h2 className="text-primary-300 mb-4 text-2xl font-bold">
+                Información Adicional (AviationAPI)
+              </h2>
+              {isAviationAirportLoading && (
+                <p className="text-slate-300">Cargando información adicional...</p>
+              )}
+              {aviationAirportError && !isAviationAirportLoading && (
+                <p className="text-red-400">
+                  Información adicional no disponible: {aviationAirportError}
+                </p>
+              )}
+              {!isAviationAirportLoading && !aviationAirportError && aviationAirportData && (
+                <div className="grid grid-cols-1 gap-x-4 gap-y-3 text-sm md:grid-cols-2">
+                  <div className="mt-1">
+                    <strong className="font-semibold text-white/70">ICAO:</strong>
+                    <span className="ml-1 text-white/90">{aviationAirportData.icao_code || "N/A"}</span>
+                  </div>
+                  <div className="mt-1">
+                    <strong className="font-semibold text-white/70">IATA:</strong>
+                    <span className="ml-1 text-white/90">{aviationAirportData.iata_code || "N/A"}</span>
+                  </div>
+                  <div className="mt-1">
+                    <strong className="font-semibold text-white/70">Ciudad:</strong>
+                    <span className="ml-1 text-white/90">{aviationAirportData.city || "N/A"}</span>
+                  </div>
+                  <div className="mt-1">
+                    <strong className="font-semibold text-white/70">País ISO:</strong>
+                    <span className="ml-1 text-white/90">{aviationAirportData.country_iso2 || "N/A"}</span>
+                  </div>
+                  <div className="mt-1">
+                    <strong className="font-semibold text-white/70">Latitud:</strong>
+                    <span className="ml-1 text-white/90">{aviationAirportData.latitude_deg?.toFixed(6) || "N/A"}</span>
+                  </div>
+                  <div className="mt-1">
+                    <strong className="font-semibold text-white/70">Longitud:</strong>
+                    <span className="ml-1 text-white/90">{aviationAirportData.longitude_deg?.toFixed(6) || "N/A"}</span>
+                  </div>
+                  <div className="mt-1">
+                    <strong className="font-semibold text-white/70">Elevación (pies):</strong>
+                    <span className="ml-1 text-white/90">{aviationAirportData.elevation_ft?.toLocaleString() || "N/A"}</span>
+                  </div>
+                  <div className="mt-1">
+                    <strong className="font-semibold text-white/70">Tipo de Aeropuerto:</strong>
+                    <span className="ml-1 text-white/90">{aviationAirportData.type || "N/A"}</span>
+                  </div>
+                  <div className="mt-1 md:col-span-2">
+                    <strong className="font-semibold text-white/70">Zona Horaria:</strong>
+                    <span className="ml-1 text-white/90">{aviationAirportData.timezone || "N/A"}</span>
+                  </div>
+
+                  {aviationAirportData.runways && aviationAirportData.runways.length > 0 && (
+                    <div className="mt-3 pt-3 md:col-span-2">
+                      <h3 className="text-primary-200 mb-2 text-lg font-semibold">Pistas</h3>
+                      {aviationAirportData.runways.map((runway, index) => (
+                        <div key={runway.id || index} className="mb-3 rounded-md bg-slate-800 p-3 shadow-inner">
+                          <p className="text-sm">
+                            <strong className="text-white/70">Identificador Principal:</strong> <span className="text-white/90">{runway.le_ident || "N/A"}</span>
+                          </p>
+                           <p className="text-sm">
+                            <strong className="text-white/70">Identificador Secundario:</strong> <span className="text-white/90">{runway.he_ident || "N/A"}</span>
+                          </p>
+                          <p className="text-sm">
+                            <strong className="text-white/70">Dimensiones:</strong> 
+                            <span className="text-white/90">
+                              {runway.length_ft ? `${runway.length_ft.toLocaleString()} pies de largo` : ""}
+                              {runway.length_ft && runway.width_ft ? " x " : ""}
+                              {runway.width_ft ? `${runway.width_ft.toLocaleString()} pies de ancho` : ""}
+                              {!runway.length_ft && !runway.width_ft ? "Dimensiones no disponibles" : ""}
+                            </span>
+                          </p>
+                          <p className="text-sm">
+                            <strong className="text-white/70">Superficie:</strong> <span className="text-white/90">{runway.surface || "N/A"}</span>
+                          </p>
+                          {runway.lighted !== undefined && (
+                             <p className="text-sm">
+                              <strong className="text-white/70">Iluminada:</strong> <span className="text-white/90">{runway.lighted ? "Sí" : "No"}</span>
+                            </p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+              {!isAviationAirportLoading && !aviationAirportError && !aviationAirportData && (
+                 <p className="text-slate-400">No se encontró información adicional para este aeropuerto.</p>
+              )}
+            </div>
+            {/* End of New Section */}
           </div>
         </div>
       </main>
