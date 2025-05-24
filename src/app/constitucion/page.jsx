@@ -1,4 +1,4 @@
-import ArticulosConstitucionClient from "./ConstitucionClient";
+import ConstitucionClient from "./ConstitucionClient";
 import { metadata as projectMetadata } from "@/components/metadata";
 
 export async function generateMetadata() {
@@ -11,6 +11,6 @@ export async function generateMetadata() {
   };
 }
 
-export default function ArticulosConstitucionPage() {
-  return <ArticulosConstitucionClient />;
+export default function ConstitucionPage() {
+  return <ConstitucionClient />;
 }
