@@ -10,9 +10,11 @@ import EntityCard from "@/components/ui/EntityCard";
 
 const pageTitle = metadata.city.title;
 
+const DEFAULT_PAGE_SIZE = 4;
+
 export default function CiudadesClient() {
   const { allCityData, isLoading } = useContext(AppContext);
-  const [pageSize, setPageSize] = useState(4);
+  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const [currentPage, setCurrentPage] = useState(1);
 
   const sortedData = useMemo(

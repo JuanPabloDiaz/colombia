@@ -10,9 +10,11 @@ import EntityCard from "@/components/ui/EntityCard";
 
 const pageTitle = metadata.air.title;
 
+const DEFAULT_PAGE_SIZE = 4;
+
 export default function AeropuertosClient() {
   const { allAirportData, isLoading } = useContext(AppContext);
-  const [pageSize, setPageSize] = useState(4);
+  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const [currentPage, setCurrentPage] = useState(1);
 
   const sortedData = useMemo(

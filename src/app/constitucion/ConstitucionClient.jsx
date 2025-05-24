@@ -5,6 +5,7 @@ import { AppContext } from "@/context";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import EntityCard from "@/components/ui/EntityCard";
 import Pagination from "@/components/ui/Pagination";
+import PageSizeSelector from "@/components/ui/PageSizeSelector";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 
 export default function ArticulosConstitucionClient() {
@@ -17,7 +18,6 @@ export default function ArticulosConstitucionClient() {
     searchConstitutionArticlesByChapter,
     searchedConstitutionArticles,
     isLoading: contextIsLoading,
-    fetchConstitutionArticlesPaged, // To reset/refetch main list
   } = useContext(AppContext);
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -95,11 +95,11 @@ export default function ArticulosConstitucionClient() {
   const handleClearSearch = async () => {
     setIsSearching(true);
     setSearchTerm("");
-    // Reset search results in context by calling the function with null/empty params or a dedicated reset function if available
-    // For now, we'll re-fetch the first page of the main list.
-    // A more ideal solution would be a `clearSearchedConstitutionArticles()` in context.
-    await searchConstitutionArticlesByKeyword("", 1); // Effectively clears by searching for empty string which should yield no results or all
-    await fetchConstitutionArticlesPaged(1); // Refetch the main list
+    // Reset search results in context by calling the function with null/empty params
+    // For now, we'll just clear the search and go back to the first page of the main list
+    await searchConstitutionArticlesByKeyword("", 1); // Effectively clears by searching for empty string
+    // Go back to the main list's first page
+    goToConstitutionArticlePage(1);
     setLocalCurrentPage(1);
     setIsSearching(false);
   };
@@ -121,8 +121,30 @@ export default function ArticulosConstitucionClient() {
 
   const isLoading = contextIsLoading || isSearching;
 
+  const DEFAULT_PAGE_SIZE = 4;
+  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
+  const [currentPage, setCurrentPage] = useState(1);
+
   return (
-    <EntityPageLayout title="Artículos de la Constitución">
+    <EntityPageLayout 
+      title="Artículos de la Constitución"
+      isLoading={isLoading}
+      gridCols="md:grid-cols-2 lg:grid-cols-3"
+      pageSizeSelector={
+        <PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />
+      }
+      pagination={
+        totalPages > 1 && (
+          <div className="mb-8 mt-8 flex justify-center">
+            <Pagination
+              currentPage={localCurrentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          </div>
+        )
+      }
+    >
       <div className="mb-6 rounded-lg bg-slate-800 p-4 shadow">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <input
@@ -169,13 +191,13 @@ export default function ArticulosConstitucionClient() {
       )}
 
       {articlesToDisplay.length > 0 && (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {articlesToDisplay.map((article) => (
             <EntityCard
-              key={article.id || article.name} // Assuming articles have an id or unique name
+              key={article.id || article.name}
               entity={article}
               type="articulos-constitucion"
-              linkBase={`/articulos-constitucion/${article.id || article.name}`} // Adjust if detail pages use a different param
+              linkBase={`/constitucion/${article.id || article.name}`}
             />
           ))}
         </div>

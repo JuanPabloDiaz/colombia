@@ -8,7 +8,7 @@ import Pagination from "@/components/ui/Pagination";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import PageSizeSelector from "@/components/ui/PageSizeSelector";
 
-const DEFAULT_PAGE_SIZE = 12; // Or use ITEMS_PER_PAGE from context if appropriate
+const DEFAULT_PAGE_SIZE = 4;
 
 export default function RegionesClient() {
   const { allRegionData, isLoading: contextIsLoading } = useContext(AppContext);

@@ -11,10 +11,11 @@ import EntityPageLayout from "@/components/ui/EntityPageLayout";
 // Line removed as it was unused.
 
 const pageTitle = metadata.food?.title;
+const DEFAULT_PAGE_SIZE = 4;
 
 export default function PlatosTipicosClient() {
   const { allTypicalDishData, isLoading } = useContext(AppContext);
-  const [pageSize, setPageSize] = useState(4);
+  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Ordena y calcula los datos paginados

@@ -10,10 +10,11 @@ import CardDetail from "@/components/ChakraCard/CardDetail";
 import { metadata } from "@/components/metadata";
 
 const pageTitle = metadata.espInv.title;
+const DEFAULT_PAGE_SIZE = 4;
 
 export default function EspeciesInvasorasClient() {
   const { allInvasiveSpecieData, isLoading } = useContext(AppContext);
-  const [pageSize, setPageSize] = useState(4);
+  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const [currentPage, setCurrentPage] = useState(1);
 
   const sortedData = useMemo(
