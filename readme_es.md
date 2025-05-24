@@ -71,24 +71,6 @@ Este proyecto fue construido utilizando tecnologías modernas:
 
 <img src="./public/assets/images/lighthouse.jpg"/>
 
-### Vista de escritorio 🖥️
-
-<a href="https://colombia.jpdiaz.dev">
-<img src="./src/assets/images/desktop.png" />
-</a>
-
-### Vista de iPad 📱
-
-<a href="https://colombia.jpdiaz.dev">
-<img src="./src/assets/images/ipad.png" width="300" />
-</a>
-
-### Vista móvil 📱
-
-<a href="https://colombia.jpdiaz.dev">
-<img src="./src/assets/images/phone.png" width="250" />
-</a>
-
 ## 🗺️ Rutas Disponibles
 
 La aplicación incluye las siguientes secciones:
