@@ -11,10 +11,11 @@ import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import ImageChecker from "@/components/ImageChecker/ImageChecker";
 
 const pageTitle = metadata.tur.title;
+const DEFAULT_PAGE_SIZE = 4;
 
 export default function TurismoClient() {
   const { allTouristicAttractionData, isLoading } = useContext(AppContext);
-  const [pageSize, setPageSize] = useState(4);
+  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Ordena y calcula los datos paginados

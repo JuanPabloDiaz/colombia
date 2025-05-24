@@ -7,6 +7,7 @@ export const AppContext = createContext();
 
 const API_COL_BASE_URL = "https://api-colombia.com/api/v1";
 const ITEMS_PER_PAGE = 12;
+const CONSTITUTION_ITEMS_PER_PAGE = 10;
 
 export const DataProvider = ({ children }) => {
   const [activeApiCalls, setActiveApiCalls] = useState(0);
@@ -53,15 +54,92 @@ export const DataProvider = ({ children }) => {
 
   // *****************       REGION        *****************
   const [allRegionData, setAllRegionData] = useState([]);
+  const [currentRegionDetail, setCurrentRegionDetail] = useState(null);
+  const [currentRegionDepartments, setCurrentRegionDepartments] = useState([]);
   const [regionCurrentPage, setRegionCurrentPage] = useState(1);
-  useEffect(() => {
+
+  const fetchRegions = () => {
     setActiveApiCalls((prev) => prev + 1);
     fetch(`${API_COL_BASE_URL}/Region`)
       .then((response) => response.json())
       .then((json) => setAllRegionData(json))
-      .catch((error) => console.error("Error fetching Region data: ", error))
+      .catch((error) => console.error("Error fetching Regions: ", error))
       .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
+  // *****************       HOLIDAYS        *****************
+  const [holidaysByYearData, setHolidaysByYearData] = useState([]);
+  const [holidaysByYearMonthData, setHolidaysByYearMonthData] = useState([]);
+
+  const fetchHolidaysByYear = (year) => {
+    if (!year) {
+      setHolidaysByYearData([]);
+      return;
+    }
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(`${API_COL_BASE_URL}/Holiday/year/${year}`)
+      .then((response) => response.json())
+      .then((json) => {
+        setHolidaysByYearData(json);
+        setHolidaysByYearMonthData([]); // Clear more specific data
+      })
+      .catch((error) => {
+        console.error(`Error fetching Holidays for year ${year}: `, error);
+        setHolidaysByYearData([]); // Set to empty on error
+      })
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
+  const fetchHolidaysByYearMonth = (year, month) => {
+    if (!year || !month) {
+      setHolidaysByYearMonthData([]);
+      return;
+    }
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(`${API_COL_BASE_URL}/Holiday/year/${year}/month/${month}`)
+      .then((response) => response.json())
+      .then((json) => {
+        setHolidaysByYearMonthData(json);
+        setHolidaysByYearData([]); // Clear less specific data
+      })
+      .catch((error) => {
+        console.error(
+          `Error fetching Holidays for year ${year}, month ${month}: `,
+          error,
+        );
+        setHolidaysByYearMonthData([]); // Set to empty on error
+      })
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
+  const fetchRegionById = (id) => {
+    setCurrentRegionDetail(null); // Reset before fetching
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(`${API_COL_BASE_URL}/Region/${id}`)
+      .then((response) => response.json())
+      .then((json) => setCurrentRegionDetail(json))
+      .catch((error) =>
+        console.error(`Error fetching Region by ID (${id}): `, error),
+      )
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
+  const fetchRegionDepartments = (id) => {
+    setCurrentRegionDepartments([]); // Reset before fetching
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(`${API_COL_BASE_URL}/Region/${id}/departments`)
+      .then((response) => response.json())
+      .then((json) => setCurrentRegionDepartments(json))
+      .catch((error) =>
+        console.error(`Error fetching Region Departments (${id}): `, error),
+      )
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
+  useEffect(() => {
+    fetchRegions();
   }, []);
+
   const regionTotalPages = Math.ceil(allRegionData.length / ITEMS_PER_PAGE);
   const goToRegionPage = (page) => {
     if (page >= 1 && page <= regionTotalPages) {
@@ -74,6 +152,46 @@ export const DataProvider = ({ children }) => {
     regionStartIndex,
     regionEndIndex,
   );
+
+  // *****************       CITY        *****************
+  const [allCityData, setAllCityData] = useState([]);
+  const [currentCityDetail, setCurrentCityDetail] = useState(null);
+  const [cityCurrentPage, setCityCurrentPage] = useState(1);
+
+  const fetchCities = () => {
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(`${API_COL_BASE_URL}/City`)
+      .then((response) => response.json())
+      .then((json) => setAllCityData(json))
+      .catch((error) => console.error("Error fetching Cities: ", error))
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
+  const fetchCityById = (id) => {
+    setCurrentCityDetail(null); // Reset before fetching
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(`${API_COL_BASE_URL}/City/${id}`)
+      .then((response) => response.json())
+      .then((json) => setCurrentCityDetail(json))
+      .catch((error) =>
+        console.error(`Error fetching City by ID (${id}): `, error),
+      )
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
+  useEffect(() => {
+    fetchCities();
+  }, []);
+
+  const cityTotalPages = Math.ceil(allCityData.length / ITEMS_PER_PAGE);
+  const goToCityPage = (page) => {
+    if (page >= 1 && page <= cityTotalPages) {
+      setCityCurrentPage(page);
+    }
+  };
+  const cityStartIndex = (cityCurrentPage - 1) * ITEMS_PER_PAGE;
+  const cityEndIndex = cityStartIndex + ITEMS_PER_PAGE;
+  const paginatedCityData = allCityData.slice(cityStartIndex, cityEndIndex);
 
   // *****************       TOURISTIC ATTRACTION        *****************
   const [allTouristicAttractionData, setAllTouristicAttractionData] = useState(
@@ -306,17 +424,124 @@ export const DataProvider = ({ children }) => {
   );
 
   // *****************       CONSTITUTION ARTICLE        *****************
-  const [constitutionArticleData, setConstitutionArticleData] = useState([]);
-  useEffect(() => {
+  const [allConstitutionArticlesData, setAllConstitutionArticlesData] =
+    useState([]);
+  const [constitutionArticlesPagedData, setConstitutionArticlesPagedData] =
+    useState({ data: [], pagination: {} });
+  const [
+    currentConstitutionArticleDetail,
+    setCurrentConstitutionArticleDetail,
+  ] = useState(null);
+  const [constitutionArticleCurrentPage, setConstitutionArticleCurrentPage] =
+    useState(1);
+  const [constitutionArticlePageSize, setConstitutionArticlePageSize] =
+    useState(CONSTITUTION_ITEMS_PER_PAGE);
+  const [constitutionArticleTotalItems, setConstitutionArticleTotalItems] =
+    useState(0);
+  const [searchedConstitutionArticles, setSearchedConstitutionArticles] =
+    useState({ data: [], pagination: {} });
+
+  const fetchAllConstitutionArticles = () => {
     setActiveApiCalls((prev) => prev + 1);
     fetch(`${API_COL_BASE_URL}/ConstitutionArticle`)
       .then((response) => response.json())
-      .then((json) => setConstitutionArticleData(json))
+      .then((json) => setAllConstitutionArticlesData(json))
       .catch((error) =>
-        console.error("Error fetching Constitution Article data: ", error),
+        console.error("Error fetching all Constitution Articles: ", error),
       )
       .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
+  const fetchConstitutionArticlesPaged = (
+    page,
+    pageSize = CONSTITUTION_ITEMS_PER_PAGE,
+  ) => {
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(
+      `${API_COL_BASE_URL}/ConstitutionArticle/pagedList?page=${page}&pagesize=${pageSize}`,
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        setConstitutionArticlesPagedData(json);
+        setConstitutionArticleTotalItems(json.totalItems || 0); // Assuming API returns totalItems
+        setConstitutionArticleCurrentPage(page);
+        setConstitutionArticlePageSize(pageSize);
+      })
+      .catch((error) =>
+        console.error("Error fetching paged Constitution Articles: ", error),
+      )
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
+  const fetchConstitutionArticleById = (id) => {
+    setCurrentConstitutionArticleDetail(null); // Reset before fetching
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(`${API_COL_BASE_URL}/ConstitutionArticle/${id}`)
+      .then((response) => response.json())
+      .then((json) => setCurrentConstitutionArticleDetail(json))
+      .catch((error) =>
+        console.error(
+          `Error fetching Constitution Article by ID (${id}): `,
+          error,
+        ),
+      )
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
+  const searchConstitutionArticlesByKeyword = (
+    keyword,
+    page,
+    pageSize = CONSTITUTION_ITEMS_PER_PAGE,
+  ) => {
+    setSearchedConstitutionArticles({ data: [], pagination: {} }); // Reset
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(
+      `${API_COL_BASE_URL}/ConstitutionArticle/search/${keyword}?page=${page}&pagesize=${pageSize}`,
+    )
+      .then((response) => response.json())
+      .then((json) => setSearchedConstitutionArticles(json))
+      .catch((error) =>
+        console.error(
+          `Error searching Constitution Articles by keyword (${keyword}): `,
+          error,
+        ),
+      )
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
+  const searchConstitutionArticlesByChapter = (
+    chapter,
+    page,
+    pageSize = CONSTITUTION_ITEMS_PER_PAGE,
+  ) => {
+    setSearchedConstitutionArticles({ data: [], pagination: {} }); // Reset
+    setActiveApiCalls((prev) => prev + 1);
+    fetch(
+      `${API_COL_BASE_URL}/ConstitutionArticle/byChapterNumber/${chapter}?page=${page}&pagesize=${pageSize}`,
+    )
+      .then((response) => response.json())
+      .then((json) => setSearchedConstitutionArticles(json))
+      .catch((error) =>
+        console.error(
+          `Error searching Constitution Articles by chapter (${chapter}): `,
+          error,
+        ),
+      )
+      .finally(() => setActiveApiCalls((prev) => prev - 1));
+  };
+
+  useEffect(() => {
+    fetchAllConstitutionArticles();
+    fetchConstitutionArticlesPaged(1, CONSTITUTION_ITEMS_PER_PAGE);
   }, []);
+
+  const constitutionArticleTotalPages = Math.ceil(
+    constitutionArticleTotalItems / constitutionArticlePageSize,
+  );
+
+  const goToConstitutionArticlePage = (page) => {
+    fetchConstitutionArticlesPaged(page, constitutionArticlePageSize);
+  };
 
   // *****************       RADIO        *****************
   const [allRadioData, setAllRadioData] = useState([]);
@@ -507,10 +732,22 @@ export const DataProvider = ({ children }) => {
         goToDepartmentPage,
         // Region
         allRegionData,
-        regionData: paginatedRegionData,
+        regionData: paginatedRegionData, // This is the paginated list for general browsing
         regionCurrentPage,
         regionTotalPages,
         goToRegionPage,
+        fetchRegionById,
+        currentRegionDetail,
+        fetchRegionDepartments,
+        currentRegionDepartments,
+        // City
+        allCityData,
+        cityData: paginatedCityData,
+        cityCurrentPage,
+        cityTotalPages,
+        goToCityPage,
+        fetchCityById,
+        currentCityDetail,
         // Touristic Attraction
         allTouristicAttractionData,
         touristicAttractionData: paginatedTouristicAttractionData,
@@ -557,7 +794,16 @@ export const DataProvider = ({ children }) => {
         airportTotalPages,
         goToAirportPage,
         // Constitution Article
-        constitutionArticleData,
+        allConstitutionArticlesData, // Full list of articles
+        constitutionArticlesPagedData, // Paginated list of articles
+        constitutionArticleCurrentPage,
+        constitutionArticleTotalPages,
+        goToConstitutionArticlePage,
+        fetchConstitutionArticleById,
+        currentConstitutionArticleDetail,
+        searchConstitutionArticlesByKeyword,
+        searchConstitutionArticlesByChapter,
+        searchedConstitutionArticles,
         // Radio
         allRadioData,
         radioData: paginatedRadioData,
@@ -582,6 +828,11 @@ export const DataProvider = ({ children }) => {
         fetchTraditionalFairAndFestivalCityDetails,
         searchTraditionalFairAndFestivalByName,
         searchTraditionalFairAndFestivalByKeyword,
+        // Holidays
+        holidaysByYearData,
+        fetchHolidaysByYear,
+        holidaysByYearMonthData,
+        fetchHolidaysByYearMonth,
       }}
     >
       {children}

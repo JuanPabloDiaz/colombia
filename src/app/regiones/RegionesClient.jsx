@@ -8,19 +8,18 @@ import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import { metadata } from "@/components/metadata";
 import EntityCard from "@/components/ui/EntityCard";
 
-const pageTitle = metadata.air.title;
+const pageTitle = metadata.reg.title;
 
 const DEFAULT_PAGE_SIZE = 4;
 
-export default function AeropuertosClient() {
-  const { allAirportData, isLoading } = useContext(AppContext);
+export default function RegionesClient() {
+  const { allRegionData, isLoading } = useContext(AppContext);
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const [currentPage, setCurrentPage] = useState(1);
 
   const sortedData = useMemo(
-    () =>
-      allAirportData ? [...allAirportData].sort((a, b) => a.id - b.id) : [],
-    [allAirportData],
+    () => (allRegionData ? [...allRegionData].sort((a, b) => a.id - b.id) : []),
+    [allRegionData],
   );
   const totalPages = useMemo(
     () => Math.ceil(sortedData.length / pageSize) || 1,
@@ -45,7 +44,7 @@ export default function AeropuertosClient() {
   return (
     <EntityPageLayout
       title={pageTitle}
-      isLoading={isLoading && (!allAirportData || allAirportData.length === 0)}
+      isLoading={isLoading && (!allRegionData || allRegionData.length === 0)}
       gridCols="md:grid-cols-2 lg:grid-cols-4"
       pageSizeSelector={
         <PageSizeSelector pageSize={pageSize} setPageSize={setPageSize} />
@@ -62,11 +61,11 @@ export default function AeropuertosClient() {
         )
       }
     >
-      {paginatedData.map((airport) => (
+      {paginatedData.map((region) => (
         <EntityCard
-          key={airport.id || airport.name}
-          entity={airport}
-          type="aeropuerto"
+          key={region.id || region.name}
+          entity={region}
+          type="region"
         />
       ))}
     </EntityPageLayout>

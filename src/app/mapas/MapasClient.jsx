@@ -10,10 +10,11 @@ import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
 
 const pageTitle = metadata.map.title;
+const DEFAULT_PAGE_SIZE = 4;
 
 export default function MapasClient() {
   const { mapData, isLoading } = useContext(AppContext);
-  const [pageSize, setPageSize] = useState(4);
+  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Ordena y calcula los datos paginados

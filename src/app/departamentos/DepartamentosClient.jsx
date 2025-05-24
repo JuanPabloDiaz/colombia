@@ -10,10 +10,11 @@ import { metadata } from "@/components/metadata";
 import EntityCard from "@/components/ui/EntityCard";
 
 const pageTitle = metadata.dep.title;
+const DEFAULT_PAGE_SIZE = 4;
 
 export default function DepartamentosClient() {
   const { allDepartamentData, isLoading } = useContext(AppContext);
-  const [pageSize, setPageSize] = useState(4);
+  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const [currentPage, setCurrentPage] = useState(1);
 
   const sortedData = useMemo(

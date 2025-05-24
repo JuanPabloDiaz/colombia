@@ -11,7 +11,7 @@ import SearchFerias from "@/components/ui/SearchFerias";
 import { metadata } from "@/components/metadata";
 
 export default function FeriasYFestivales() {
-  const pageTitle = metadata.traditionalFairAndFestival.title;
+  const pageTitle = metadata.fairFest.title;
   const { allTraditionalFairAndFestivalData, isLoading } =
     useContext(AppContext);
 

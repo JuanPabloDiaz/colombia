@@ -18,6 +18,10 @@ import {
   ShieldPlus,
   Cannabis,
   RadioTower,
+  LayoutGrid,
+  Building2,
+  FileText,
+  CalendarDays,
 } from "lucide-react";
 
 import { useToast } from "@/components/ui/use-toast";
@@ -42,15 +46,20 @@ export const Nav = ({ setOpen, ul_className }) => {
       href: "/departamentos",
       icon: <ShieldPlus />,
     },
-    // {
-    //   title: "Regiones",
-    //   href: "/regiones",
-    //   icon: <LandPlot />,
-    // },
+
     {
-      title: "Ferias y Festivales",
-      href: "/ferias-y-festivales",
-      icon: <PartyPopper />,
+      title: "Ciudades",
+      href: "/ciudades",
+      icon: <Building2 />,
+    },
+
+    // icon: <FileText />,
+    // //   icon: <Landmark />,
+
+    {
+      title: "Constitución",
+      href: "/constitucion",
+      icon: <FileText />,
     },
     {
       title: "Turismo",
@@ -97,15 +106,20 @@ export const Nav = ({ setOpen, ul_className }) => {
       href: "/platos-tipicos",
       icon: <CookingPot />,
     },
-    // {
-    //   title: "Constitution",
-    //   href: "/constitution",
-    //   icon: <Landmark />,
-    // },
     {
       title: "Radio",
       href: "/radio",
       icon: <RadioTower />,
+    },
+    {
+      title: "Regiones",
+      href: "/regiones",
+      icon: <LayoutGrid />,
+    },
+    {
+      title: "Festivos",
+      href: "/festivos",
+      icon: <CalendarDays />,
     },
   ];
 
@@ -135,6 +149,10 @@ export const Nav = ({ setOpen, ul_className }) => {
           "/aeropuertos",
           "/platos-tipicos",
           "/ferias-y-festivales",
+          "/regiones",
+          "/ciudades",
+          "/constitucion",
+          "/festivos", // New allowed route for Días Festivos
         ];
 
         const isAllowedRoute = allowedRoutes.includes(link.href);
