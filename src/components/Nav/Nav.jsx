@@ -53,9 +53,9 @@ export const Nav = ({ setOpen, ul_className }) => {
       icon: <Building2 />,
     },
 
-      // icon: <FileText />,
-      // //   icon: <Landmark />,
-    
+    // icon: <FileText />,
+    // //   icon: <Landmark />,
+
     {
       title: "Constitución",
       href: "/constitucion",

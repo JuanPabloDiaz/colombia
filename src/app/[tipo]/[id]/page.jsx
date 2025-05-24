@@ -133,7 +133,7 @@ export default function EntityDetailPage({ params }) {
     currentRegionDetail,
     currentCityDetail,
     currentConstitutionArticleDetail,
-    dataMap // Adding dataMap as a dependency
+    dataMap, // Adding dataMap as a dependency
   ]);
 
   React.useEffect(() => {

@@ -32,14 +32,17 @@ export default function ConstitucionClient() {
 
   // Determine if a search is active and has results
   const isSearchActive = useMemo(
-    () => searchedConstitutionArticles && searchedConstitutionArticles.data?.length > 0,
-    [searchedConstitutionArticles]
+    () =>
+      searchedConstitutionArticles &&
+      searchedConstitutionArticles.data?.length > 0,
+    [searchedConstitutionArticles],
   );
 
   // Check if a search has been attempted
   const searchAttempted = useMemo(
-    () => searchedConstitutionArticles && searchedConstitutionArticles.pagination,
-    [searchedConstitutionArticles]
+    () =>
+      searchedConstitutionArticles && searchedConstitutionArticles.pagination,
+    [searchedConstitutionArticles],
   );
 
   // Sync with context page
@@ -49,7 +52,12 @@ export default function ConstitucionClient() {
     } else if (isSearchActive) {
       setCurrentPage(searchedConstitutionArticles.pagination?.currentPage || 1);
     }
-  }, [constitutionArticleCurrentPage, searchedConstitutionArticles, isSearchActive, searchAttempted]);
+  }, [
+    constitutionArticleCurrentPage,
+    searchedConstitutionArticles,
+    isSearchActive,
+    searchAttempted,
+  ]);
 
   // Reset to page 1 when page size changes
   useEffect(() => {
@@ -62,7 +70,11 @@ export default function ConstitucionClient() {
       return searchedConstitutionArticles.data || [];
     }
     return constitutionArticlesPagedData?.data || [];
-  }, [isSearchActive, searchedConstitutionArticles, constitutionArticlesPagedData]);
+  }, [
+    isSearchActive,
+    searchedConstitutionArticles,
+    constitutionArticlesPagedData,
+  ]);
 
   // Calculate total pages
   const totalPages = useMemo(() => {
@@ -70,7 +82,11 @@ export default function ConstitucionClient() {
       return searchedConstitutionArticles.pagination?.totalPages || 1;
     }
     return constitutionArticleTotalPages || 1;
-  }, [isSearchActive, searchedConstitutionArticles, constitutionArticleTotalPages]);
+  }, [
+    isSearchActive,
+    searchedConstitutionArticles,
+    constitutionArticleTotalPages,
+  ]);
 
   // Handle search
   const handleSearch = async () => {

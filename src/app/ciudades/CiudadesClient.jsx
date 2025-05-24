@@ -18,8 +18,7 @@ export default function CiudadesClient() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const sortedData = useMemo(
-    () =>
-      allCityData ? [...allCityData].sort((a, b) => a.id - b.id) : [],
+    () => (allCityData ? [...allCityData].sort((a, b) => a.id - b.id) : []),
     [allCityData],
   );
   const totalPages = useMemo(

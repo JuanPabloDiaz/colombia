@@ -9,7 +9,7 @@ export const Sidebar = ({ setOpen }) => {
       <div className="mb-4 flex justify-center">
         <Logo width={70} height={70} />
       </div>
-      <div className="flex-1 overflow-y-auto pb-4 pr-1 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent">
+      <div className="scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent flex-1 overflow-y-auto pb-4 pr-1">
         <Nav
           ul_className="flex flex-col items-baseline gap-3"
           setOpen={setOpen}

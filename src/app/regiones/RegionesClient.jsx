@@ -18,8 +18,7 @@ export default function RegionesClient() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const sortedData = useMemo(
-    () =>
-      allRegionData ? [...allRegionData].sort((a, b) => a.id - b.id) : [],
+    () => (allRegionData ? [...allRegionData].sort((a, b) => a.id - b.id) : []),
     [allRegionData],
   );
   const totalPages = useMemo(
