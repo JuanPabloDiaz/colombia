@@ -148,7 +148,7 @@ export const Nav = ({ setOpen, ul_className }) => {
           "/presidentes",
           "/turismo",
           "/mapas",
-          "/mapa-turistico", // Nueva ruta para el mapa turístico
+          "/mapa-turistico",
           "/departamentos",
           "/radio",
           "/especies-invasoras",
