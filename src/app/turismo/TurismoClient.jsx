@@ -9,6 +9,7 @@ import CardDetail from "@/components/ChakraCard/CardDetail";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import ImageChecker from "@/components/ImageChecker/ImageChecker";
+import Link from "next/link";
 
 const pageTitle = metadata.tur.title;
 const DEFAULT_PAGE_SIZE = 4;
@@ -98,6 +99,19 @@ export default function TurismoClient() {
               No hay turismo para mostrar en este momento.
             </p>
           )}
+
+      <div className="container mx-auto mt-8 px-4 py-6 text-center">
+        <div className="rounded-lg bg-gray-50 p-6 shadow-md">
+          <h2 className="mb-4 text-xl font-semibold text-gray-800">¿Quieres explorar Colombia en un mapa interactivo?</h2>
+          <p className="mb-4 text-gray-700">Visita nuestro mapa turístico para descubrir los mejores destinos de Colombia.</p>
+          <Link href="/mapa-turistico" className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-white transition-colors hover:bg-primary/90">
+            Ver Mapa Turístico
+            <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </div>
+      </div>
     </EntityPageLayout>
   );
 }
