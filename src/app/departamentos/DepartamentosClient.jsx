@@ -2,7 +2,6 @@
 
 import React, { useContext, useState, useMemo } from "react";
 import { AppContext } from "@/context";
-import InteractiveColombiaMap from '@/components/InteractiveMap/InteractiveColombiaMap';
 import PageSizeSelector from "@/components/ui/PageSizeSelector";
 import Pagination from "@/components/ui/Pagination";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
@@ -19,7 +18,10 @@ export default function DepartamentosClient() {
   const [currentPage, setCurrentPage] = useState(1);
 
   if (allDepartamentData && allDepartamentData.length > 0) {
-    console.log("Sample department data (DepartamentosClient):", JSON.stringify(allDepartamentData[0], null, 2));
+    console.log(
+      "Sample department data (DepartamentosClient):",
+      JSON.stringify(allDepartamentData[0], null, 2),
+    );
   }
 
   const sortedData = useMemo(
@@ -68,11 +70,6 @@ export default function DepartamentosClient() {
         )
       }
     >
-      {/* Interactive Colombia Map */}
-      <div className="mb-8">
-        <InteractiveColombiaMap departments={sortedData} />
-      </div>
-
       {/* Department Cards */}
       {paginatedData.map((departamento) => (
         <EntityCard

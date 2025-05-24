@@ -36,11 +36,16 @@ export const Nav = ({ setOpen, ul_className }) => {
       href: "/",
       icon: <Home />,
     },
-    // {
-    //   title: "Prueba",
-    //   href: "/prueba",
-    //   icon: <Landmark />,
-    // },
+    {
+      title: "Prueba",
+      href: "/prueba",
+      icon: <Landmark />,
+    },
+    {
+      title: "Prueba2",
+      href: "/prueba2",
+      icon: <Landmark />,
+    },
     {
       title: "Departamentos",
       href: "/departamentos",
@@ -129,6 +134,8 @@ export const Nav = ({ setOpen, ul_className }) => {
     if (b.title === "Inicio") return 1;
     if (a.title === "Prueba" && b.title !== "Inicio") return -1; // removed after testing
     if (b.title === "Prueba" && a.title !== "Inicio") return 1; // removed after testing
+    if (a.title === "Prueba 2" && b.title !== "Inicio") return -1; // removed after testing
+    if (b.title === "Prueba 2" && a.title !== "Inicio") return 1; // removed after testing
     return a.title.localeCompare(b.title);
   });
 
@@ -139,6 +146,7 @@ export const Nav = ({ setOpen, ul_className }) => {
         const allowedRoutes = [
           "/",
           "/prueba",
+          "/prueba2",
           "/presidentes",
           "/turismo",
           "/mapas",

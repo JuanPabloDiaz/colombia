@@ -16,7 +16,7 @@ export const Footer = () => {
       ariaLabel: "Linkedin profile for Juan Diaz",
     },
     {
-      href: "https://twitter.com/1diazdev",
+      href: "https://twitter.com/JuanDiaz_427",
       icon: <Twitter className="h-4 w-4" />,
       ariaLabel: "Twitter profile for Juan Diaz",
     },
