@@ -4,6 +4,10 @@ import React from "react";
 import { useContext } from "react";
 import { AppContext } from "@/context";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
+import EntityPageLayout from "@/components/ui/EntityPageLayout";
+import { metadata } from "@/components/metadata";
+
+const pageTitle = metadata.mapTur.title;
 
 const MapaTuristicoClient = () => {
   const { isLoading } = useContext(AppContext);
@@ -17,17 +21,19 @@ const MapaTuristicoClient = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-center text-3xl font-bold text-primary md:text-4xl">
-          Mapa Turístico de Colombia
-        </h1>
-        <p className="mt-4 text-center text-lg text-gray-600">
-          Explora los mejores destinos turísticos de Colombia en este mapa interactivo
+    <EntityPageLayout
+      title={pageTitle}
+      isLoading={isLoading}
+      gridCols="container mx-auto px-4 py-8"
+    >
+      <div className="flex flex-col gap-2 rounded-xl bg-slate-950/90 p-4 text-white/90 shadow-md md:gap-3 md:p-6 md:shadow-xl">
+        <p className="mb-2 text-center text-lg text-gray-200">
+          Explora los mejores destinos turísticos de Colombia en este mapa
+          interactivo
         </p>
       </div>
 
-      <div className="relative h-[80vh] w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl">
+      <div className="relative h-[70vh] w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl">
         <iframe
           src="https://turismo.colombia.jpdiaz.dev/"
           width="100%"
@@ -39,15 +45,17 @@ const MapaTuristicoClient = () => {
         />
       </div>
 
-      <div className="mt-8 space-y-4 rounded-lg bg-gray-50 p-6 shadow-md">
-        <h2 className="text-xl font-semibold text-gray-800">Acerca de este mapa</h2>
-        <p className="text-gray-700">
-          Este mapa interactivo muestra los principales destinos turísticos de Colombia, 
-          permitiéndote explorar la diversidad cultural, histórica y natural del país.
+      <div className="flex min-h-48 flex-col gap-2 rounded-xl bg-slate-950/90 p-4 text-white/90 shadow-md md:min-h-60 md:gap-3 md:p-6 md:shadow-xl">
+        <h2 className="mb-2 text-xl font-semibold">Acerca de este mapa</h2>
+        <p className="mb-2 text-gray-200">
+          Este mapa interactivo muestra los principales destinos turísticos de
+          Colombia, permitiéndote explorar la diversidad cultural, histórica y
+          natural del país.
         </p>
-        <p className="text-gray-700">
-          Puedes hacer clic en los marcadores para obtener más información sobre cada destino,
-          incluyendo descripciones, imágenes y consejos para visitantes.
+        <p className="text-gray-200">
+          Puedes hacer clic en los marcadores para obtener más información sobre
+          cada destino, incluyendo descripciones, imágenes y consejos para
+          visitantes.
         </p>
         <div className="mt-4 flex justify-center">
           <a
@@ -74,7 +82,7 @@ const MapaTuristicoClient = () => {
           </a>
         </div>
       </div>
-    </div>
+    </EntityPageLayout>
   );
 };
 

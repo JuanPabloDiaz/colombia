@@ -11,8 +11,9 @@ const TourismMap = () => {
         <h1 className="bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-center text-4xl font-extrabold text-transparent md:text-5xl">
           Mapa Turístico de Colombia
         </h1>
-        <p className="mt-4 text-center text-lg text-gray-600 max-w-2xl mx-auto">
-          Explora los mejores destinos turísticos de Colombia en este mapa interactivo
+        <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-gray-600">
+          Explora los mejores destinos turísticos de Colombia en este mapa
+          interactivo
         </p>
       </div>
 
@@ -36,10 +37,14 @@ const TourismMap = () => {
           <MapPin className="h-6 w-6 text-blue-500" /> Acerca de este mapa
         </h2>
         <p className="mb-2 text-gray-700">
-          Este mapa interactivo muestra los principales destinos turísticos de Colombia, permitiéndote explorar la diversidad cultural, histórica y natural del país.
+          Este mapa interactivo muestra los principales destinos turísticos de
+          Colombia, permitiéndote explorar la diversidad cultural, histórica y
+          natural del país.
         </p>
         <p className="text-gray-700">
-          Puedes hacer clic en los marcadores para obtener más información sobre cada destino, incluyendo descripciones, imágenes y consejos para visitantes.
+          Puedes hacer clic en los marcadores para obtener más información sobre
+          cada destino, incluyendo descripciones, imágenes y consejos para
+          visitantes.
         </p>
         <div className="mt-6 flex justify-center">
           <a

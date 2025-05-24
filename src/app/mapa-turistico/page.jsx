@@ -1,11 +1,12 @@
+import { metadata } from "@/components/metadata";
 import MapaTuristicoClient from "./MapaTuristicoClient";
 
-export const metadata = {
-  title: "Mapa Turístico • Colombia 360",
-  description: "Explora los mejores destinos turísticos de Colombia en un mapa interactivo",
-  keywords: "mapa turístico, turismo Colombia, destinos turísticos, lugares para visitar en Colombia",
-  path: "/mapa-turistico",
-};
+export const generateMetadata = () => ({
+  title: `${metadata.mapTur.title} • Colombia 360`,
+  description: metadata.mapTur.description,
+  keywords: metadata.mapTur.keywords,
+  path: metadata.mapTur.path,
+});
 
 export default function MapaTuristicoPage() {
   return <MapaTuristicoClient />;
