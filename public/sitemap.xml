@@ -99,6 +99,12 @@
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://colombia.jpdiaz.dev/mapa-turistico</loc>
+    <lastmod>2025-05-23</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
   
   
   <!-- Referencia a API externa -->
