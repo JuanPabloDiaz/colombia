@@ -10,9 +10,6 @@ import SearchFerias from "@/components/ui/SearchFerias";
 
 import { metadata } from "@/components/metadata";
 
-// Required for Next.js on Cloudflare
-export const runtime = "edge";
-
 export default function FeriasYFestivales() {
   const pageTitle = metadata.fairFest.title;
   const { allTraditionalFairAndFestivalData, isLoading } =

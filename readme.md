@@ -132,7 +132,10 @@ To get started with [colombia 360](https://colombia.jpdiaz.dev), simply clone th
 - Run before Deploy: `npm run build`
 - Check for Next.js errors: `npm run lint`
 - Format code: `npm run format`
+- Clean: `npm run clean`
 - Run Lighthouse locally: `npm run lighthouse`
+- Preview on Cloudflare: `npm run preview:cloudflare`
+- Deploy on Cloudflare: `npm run deploy:cloudflare`
 
 ## 🗂️ Related Projects
 
@@ -161,7 +164,10 @@ Resource list that I find helpful and would like to give credit to:
 [![Vercel](https://img.shields.io/badge/Vercel-000?style=for-the-badge&logo=Vercel&logoColor=white)](https://vercel.com/)
 [![Netlify](https://img.shields.io/badge/Netlify-000?style=for-the-badge&logo=Netlify&logoColor=white)](https://netlify.com/)
 [![Cloudflare](https://img.shields.io/badge/Cloudflare-000?style=for-the-badge&logo=Cloudflare&logoColor=white)](https://cloudflare.com/)
-*note: [video: deploy nextjs on cloudflare](https://www.youtube.com/watch?v=A49jpNN4omY)*
+- [video: deploy nextjs on cloudflare pages](https://www.youtube.com/watch?v=A49jpNN4omY)
+- [Deploy nextjs on cloudflare workers](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/#deploy-an-existing-nextjs-project-on-workers)(recommended)
+- 
+
 
 ### 🔥 Cool Projects using API-Colombia:
 

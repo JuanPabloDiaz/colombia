@@ -11,9 +11,6 @@ export async function generateMetadata() {
   };
 }
 
-// Required for Next.js on Cloudflare
-export const runtime = "edge";
-
 export default function FestivosPage() {
   return <FestivosClient />;
 }

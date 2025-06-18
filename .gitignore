@@ -46,3 +46,6 @@ TO-DO-PLAIN.MD
 
 # lighthouse CI
 /.unlighthouse/
+
+# cloudflare
+.open-next

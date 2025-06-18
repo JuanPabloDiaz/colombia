@@ -5,9 +5,6 @@ import { AppContext } from "@/context";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 
-// Required for Next.js on Cloudflare
-export const runtime = "edge";
-
 function BackButton({ tipo }) {
   return (
     <Link href={`/${tipo}`} passHref legacyBehavior>

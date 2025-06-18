@@ -8,9 +8,6 @@ export const generateMetadata = () => ({
   path: metadata.food?.path,
 });
 
-// Required for Next.js on Cloudflare
-export const runtime = "edge";
-
 export default function PlatosTipicosPage() {
   return <PlatosTipicosClient />;
 }

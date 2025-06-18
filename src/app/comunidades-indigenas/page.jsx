@@ -10,9 +10,6 @@ import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import EntityPageLayout from "@/components/ui/EntityPageLayout";
 import Pagination from "@/components/ui/Pagination";
 
-// Required for Next.js on Cloudflare
-export const runtime = "edge";
-
 export default function ComunidadesIndigenas() {
   const pageTitle = metadata.ind.title;
 

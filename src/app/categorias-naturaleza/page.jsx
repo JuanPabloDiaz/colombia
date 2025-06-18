@@ -10,9 +10,6 @@ import DepartamentoCard from "@/components/Card/DepartamentoCard";
 import Pagination from "@/components/ui/Pagination";
 import PageSizeSelector from "@/components/ui/PageSizeSelector";
 
-// Required for Next.js on Cloudflare
-export const runtime = "edge";
-
 export default function CategoriasNaturaleza() {
   const pageTitle = metadata.catNat.title;
 

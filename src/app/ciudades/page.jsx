@@ -1,9 +1,6 @@
 import CiudadesClient from "./CiudadesClient";
 import { metadata as projectMetadata } from "@/components/metadata";
 
-// Required for Next.js on Cloudflare
-export const runtime = "edge";
-
 export async function generateMetadata() {
   const pageMeta = projectMetadata.city;
   return {

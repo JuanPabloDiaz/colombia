@@ -1,0 +1,12 @@
+{
+    "main": ".open-next/worker.js",
+    "name": "colombia",
+    "compatibility_date": "2025-06-18",
+    "compatibility_flags": [
+      "nodejs_compat"
+    ],
+    "assets": {
+      "directory": ".open-next/assets",
+      "binding": "ASSETS"
+    }
+  }
