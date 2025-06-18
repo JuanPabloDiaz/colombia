@@ -8,6 +8,9 @@ export const generateMetadata = () => ({
   path: metadata.map.path,
 });
 
+// Required for Next.js on Cloudflare
+export const runtime = "edge";
+
 export default function MapasPage() {
   return <MapasClient />;
 }

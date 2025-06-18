@@ -8,6 +8,9 @@ export const generateMetadata = () => ({
   path: metadata.pre?.path,
 });
 
+// Required for Next.js on Cloudflare
+export const runtime = "edge";
+
 export default function PresidentesPage() {
   return <PresidentesClient />;
 }

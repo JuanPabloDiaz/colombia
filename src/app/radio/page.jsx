@@ -9,6 +9,9 @@ import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import PageSection from "@/components/PageSection";
 import Pagination from "@/components/ui/Pagination";
 
+// Required for Next.js on Cloudflare
+export const runtime = "edge";
+
 export default function Radio() {
   const pageTitle = metadata.fm.title;
   const {

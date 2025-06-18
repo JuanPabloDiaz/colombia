@@ -8,6 +8,9 @@ import PageSection from "@/components/PageSection";
 
 import { metadata } from "@/components/metadata";
 
+// Required for Next.js on Cloudflare
+export const runtime = "edge";
+
 export default function Prueba() {
   const pageTitle = metadata.test.title;
 

@@ -9,6 +9,9 @@ import CardDetail from "@/components/ChakraCard/CardDetail"; // Using CardDetail
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import Pagination from "@/components/ui/Pagination";
 
+// Required for Next.js on Cloudflare
+export const runtime = "edge";
+
 export default function Naturaleza() {
   const pageTitle = metadata.nat.title;
 

@@ -10,9 +10,9 @@ Read this document in [Español](/readme_es.md)
 
 <div align="center">
 
-[![](https://img.shields.io/badge/View%20Demo-000?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://colombia.jpdiaz.dev/)
-[![repo](https://img.shields.io/badge/View%20Code-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/JuanPabloDiaz/colombia)
+[![demo](https://img.shields.io/badge/View%20Demo-000?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://colombia.jpdiaz.dev/)
 [![backup demo](https://img.shields.io/badge/Backup%20Demo-000?style=for-the-badge&logo=Netlify&logoColor=white)](https://clombia.netlify.app/)
+[![repo](https://img.shields.io/badge/View%20Code-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/JuanPabloDiaz/colombia)
 
 
 </div>
@@ -155,7 +155,13 @@ Resource list that I find helpful and would like to give credit to:
 
 [![Next.js](https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=Next.js&logoColor=white)](https://nextjs.org/)
 [![Tailwind-CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com/)
+
+*You can deploy this project using the following services:*
+
 [![Vercel](https://img.shields.io/badge/Vercel-000?style=for-the-badge&logo=Vercel&logoColor=white)](https://vercel.com/)
+[![Netlify](https://img.shields.io/badge/Netlify-000?style=for-the-badge&logo=Netlify&logoColor=white)](https://netlify.com/)
+[![Cloudflare](https://img.shields.io/badge/Cloudflare-000?style=for-the-badge&logo=Cloudflare&logoColor=white)](https://cloudflare.com/)
+*note: [video: deploy nextjs on cloudflare](https://www.youtube.com/watch?v=A49jpNN4omY)*
 
 ### 🔥 Cool Projects using API-Colombia:
 
