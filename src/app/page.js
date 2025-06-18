@@ -56,7 +56,7 @@ export default function Home() {
                 {generalData.flags && (
                   <div className="relative h-[250px] w-[250px] overflow-hidden rounded-lg md:h-[400px] md:w-[400px]">
                     <Image
-                      src={generalData.flags[0]}
+                      src={generalData.flags[0] || "/assets/images/colombia-flag.svg"}
                       alt={generalData.name}
                       width={400}
                       height={400}
