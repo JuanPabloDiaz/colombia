@@ -135,8 +135,8 @@ To get started with [colombia 360](https://colombia.jpdiaz.dev), simply clone th
 - Format code: `npm run format`
 - Clean: `npm run clean`
 - Run Lighthouse locally: `npm run lighthouse`
-- Preview on Cloudflare: `npm run preview:cloudflare`
-- Deploy on Cloudflare: `npm run deploy:cloudflare`
+- Preview on Cloudflare: `npm run preview`
+- Deploy on Cloudflare: `npm run deploy`
 
 ## 🗂️ Related Projects
 
