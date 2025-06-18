@@ -12,6 +12,8 @@ Read this document in [Español](/readme_es.md)
 
 [![](https://img.shields.io/badge/View%20Demo-000?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://colombia.jpdiaz.dev/)
 [![repo](https://img.shields.io/badge/View%20Code-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/JuanPabloDiaz/colombia)
+[![backup demo](https://img.shields.io/badge/Backup%20Demo-000?style=for-the-badge&logo=Netlify&logoColor=white)](https://clombia.netlify.app/)
+
 
 </div>
 
