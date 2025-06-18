@@ -22,7 +22,7 @@ export default function Prueba() {
             <ColombiaMap />
           </div>
           <div className=" h-vh w-1/2 bg-slate-50">
-            <p>Prueba Cloudflare Worker. Is it working?</p>
+            <p>Prueba</p>
           </div>
         </section>
       </PageSection>
