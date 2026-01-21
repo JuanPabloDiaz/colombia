@@ -50,6 +50,6 @@
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.12",
     "tailwindcss": "^3.4.3",
-    "wrangler": "^4.20.2"
+    "wrangler": "^4.59.3"
   }
 }
